@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN" "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd" >
+
+<hibernate-mapping>
+ 	<class name="com.EntityClasses.UserRole" table="user_roles">
+ 	 	
+ 	    <id name="userRoleId" column="user_role_id">
+            <generator class="increment"/>
+        </id>
+        
+        <property name="role" type="java.lang.String">
+            <column name="role" length="45" not-null="true" />
+        </property>
+        
+    <property name="created_at" column="created_at"/>
+    <property name="updated_at" column="updated_at"/>
+        <many-to-one name="user_info" class="com.EntityClasses.User_Info" >
+            <column name="id" not-null="true" />
+        </many-to-one>
+        
+    </class>
+</hibernate-mapping>
+

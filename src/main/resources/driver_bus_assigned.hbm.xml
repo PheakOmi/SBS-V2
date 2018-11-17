@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN" "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd" >
+
+<hibernate-mapping>
+ 	<class name="com.EntityClasses.driver_bus_assigned" table="driver_bus_assigned">
+ 	 	
+ 	 <id name="id" column="id" >    
+ 	    <generator class="increment"/>    
+ 	 </id>
+ 	
+ 	
+    <property name="schedule_id"  column="schedule_id"/>
+    <property name="driver_id" column="driver_id"/>
+    <property name="bus_id" column="bus_id"/>
+    <property name="dept_date" column="dept_date"/>
+    <property name="dept_time" column="dept_time"/>
+    <property name="created_at" column="created_at"/>
+    <property name="updated_at" column="updated_at"/>
+   
+    
+ 	</class>
+</hibernate-mapping>

@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN" "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd" >
+
+<hibernate-mapping>
+ 	<class name="com.EntityClasses.Schedule_Master" table="schedule_master">
+ 	 	
+ 	 <id name="id" column="id" >    
+ 	    <generator class="increment"/>    
+ 	 </id>
+    <property name="bus_id"  column="bus_id"/>
+    <property name="from_id" column="from_id"/>
+    <property name="to_id" column="to_id"/>
+    <property name="driver_id" column="driver_id"/>
+    <property name="destination_id" column="destination_id"/>
+    <property name="source_id" column="source_id"/>
+   	<property name="dept_date"  column="dept_date"/>
+    <property name="dept_time" column="dept_time"/>
+    <property name="arrival_time" column="arrival_time"/>
+    <property name="description" column="description"/>
+    <property name="code" column="code"/>
+    <property name="no_seat" column="no_seat"/>
+    <property name="actual_dept_time" column="actual_dept_time"/>
+    <property name="number_customer" column="number_customer"/>
+    <property name="number_staff" column="number_staff"/>
+    <property name="number_student" column="number_student"/>
+    <property name="created_at" column="created_at"/>
+    <property name="updated_at" column="updated_at"/>
+    
+    
+ 	</class>
+</hibernate-mapping>

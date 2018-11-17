@@ -1,0 +1,74 @@
+<html>
+<head></head>
+<body>
+   <div style="text-align:left;background-color:white;padding:5%">
+	   <table style="font-family: arial, sans-serif; border-collapse: collapse;width: 100%;">
+			  <tr>
+			    <td><img style="width:120px;height:100px" src="http://vkirirom.com/images/About_Company/vKirirom.png"></td>
+			  </tr>
+			  <tr>
+			  	<td>
+			  		<p style="color:black;">Dear, ${name}</p>
+			  		<p style="color:black;">Below is the list of schedules on November.</p>
+				    <table style="font-family: arial, sans-serif; border-collapse: collapse;width: 100%; color:black">
+					  <tr>
+					    <th style="border: 1px solid #dddddd;text-align: center;padding: 8px;">Date</th>
+					    <th style="border: 1px solid #dddddd;text-align: center;padding: 8px;">Time</th>
+					    <th style="border: 1px solid #dddddd;text-align: center;padding: 8px;">From</th>
+					    <th style="border: 1px solid #dddddd;text-align: center;padding: 8px;">To</th>
+					    <th style="border: 1px solid #dddddd;text-align: center;padding: 8px;"># of seats</th>
+					  </tr>
+					  <tr>
+					    <td style="border: 1px solid #dddddd;text-align: center;padding: 8px;">${date1}</td>
+					    <td style="border: 1px solid #dddddd;text-align: center;padding: 8px;">${time1}</td>
+					    <td style="border: 1px solid #dddddd;text-align: center;padding: 8px;"> ${from1}</td>
+					    <td style="border: 1px solid #dddddd;text-align: center;padding: 8px;"> ${to1}</td>
+					    <td style="border: 1px solid #dddddd;text-align: center;padding: 8px;"> ${allowed1}</td>
+					  </tr>
+					  <tr>
+                        <td style="border: 1px solid #dddddd;text-align: center;padding: 8px;">${date2}</td>
+                        <td style="border: 1px solid #dddddd;text-align: center;padding: 8px;">${time2}</td>
+                        <td style="border: 1px solid #dddddd;text-align: center;padding: 8px;"> ${from2}</td>
+                        <td style="border: 1px solid #dddddd;text-align: center;padding: 8px;"> ${to2}</td>
+                        <td style="border: 1px solid #dddddd;text-align: center;padding: 8px;"> ${allowed2}</td>
+                      </tr>
+                      <tr>
+                        <td style="border: 1px solid #dddddd;text-align: center;padding: 8px;">${date3}</td>
+                        <td style="border: 1px solid #dddddd;text-align: center;padding: 8px;">${time3}</td>
+                        <td style="border: 1px solid #dddddd;text-align: center;padding: 8px;"> ${from3}</td>
+                        <td style="border: 1px solid #dddddd;text-align: center;padding: 8px;"> ${to3}</td>
+                        <td style="border: 1px solid #dddddd;text-align: center;padding: 8px;"> ${allowed3}</td>
+                      </tr>
+                      <tr>
+                        <td style="border: 1px solid #dddddd;text-align: center;padding: 8px;">${date4}</td>
+                        <td style="border: 1px solid #dddddd;text-align: center;padding: 8px;">${time4}</td>
+                        <td style="border: 1px solid #dddddd;text-align: center;padding: 8px;"> ${from4}</td>
+                        <td style="border: 1px solid #dddddd;text-align: center;padding: 8px;"> ${to4}</td>
+                        <td style="border: 1px solid #dddddd;text-align: center;padding: 8px;"> ${allowed4}</td>
+                      </tr>
+                      <tr>
+                        <td style="border: 1px solid #dddddd;text-align: center;padding: 8px;">${date5}</td>
+                        <td style="border: 1px solid #dddddd;text-align: center;padding: 8px;">${time5}</td>
+                        <td style="border: 1px solid #dddddd;text-align: center;padding: 8px;"> ${from5}</td>
+                        <td style="border: 1px solid #dddddd;text-align: center;padding: 8px;"> ${to5}</td>
+                        <td style="border: 1px solid #dddddd;text-align: center;padding: 8px;"> ${allowed5}</td>
+                      </tr>
+
+
+					</table>
+					<br>
+
+
+                    <p style="color:black;">Please click <a href="http://shuttlebus.vkirirom.com">here</a> to start booking.</p>
+                    <p style="color:black;">If the above link does not work for you, please copy and paste the following into your browser address bar:</p>
+                    <p>http://shuttlebus.vkirirom.com</p>
+                    <p style="color:black;">Thank you,</p>
+                    <p style="color:black;">A2A Shuttle Bus Team</p>
+
+			  	</td>
+			  <tr>
+		</table>
+   </div>
+</body>
+
+</html>

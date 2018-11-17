@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN" "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd" >
+
+<hibernate-mapping>
+ 	<class name="com.EntityClasses.Location_Master" table="location_master">
+ 	 	
+ 	 <id name="id" column="id" >    
+ 	    <generator class="increment"/>    
+ 	 </id>
+ 	 
+    <property name="name"  column="name"/>
+    <property name="abbreviation"  column="abbreviation"/>
+    <property name="created_at" column="created_at"/>
+    <property name="updated_at" column="updated_at"/>
+    <property name="dept_time"  column="dept_time"/>
+    <property name="enabled" type="java.lang.Boolean">
+            <column name="enabled" not-null="true" />
+     </property>
+     <property name="forstudent" type="java.lang.Boolean">
+            <column name="forstudent" not-null="true" />
+     </property>
+    
+ 	</class>
+</hibernate-mapping>

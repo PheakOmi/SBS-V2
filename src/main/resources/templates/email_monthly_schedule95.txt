@@ -1,0 +1,707 @@
+<html>
+<head></head>
+<body>
+   <div style="text-align:left;background-color:white;padding:5%">
+	   <table style="font-family: arial, sans-serif; border-collapse: collapse;width: 100%;">
+			  <tr>
+			    <td><img style="width:120px;height:100px" src="http://vkirirom.com/images/About_Company/vKirirom.png"></td>
+			  </tr>
+			  <tr>
+			  	<td>
+			  		<p style="color:black;">Dear, ${name}</p>
+			  		<p style="color:black;">Below is the list of schedules on November.</p>
+				    <table style="font-family: arial, sans-serif; border-collapse: collapse;width: 100%; color:black">
+					  <tr>
+					    <th style="border: 1px solid #dddddd;text-align: center;padding: 8px;">Date</th>
+					    <th style="border: 1px solid #dddddd;text-align: center;padding: 8px;">Time</th>
+					    <th style="border: 1px solid #dddddd;text-align: center;padding: 8px;">From</th>
+					    <th style="border: 1px solid #dddddd;text-align: center;padding: 8px;">To</th>
+					    <th style="border: 1px solid #dddddd;text-align: center;padding: 8px;"># of seats</th>
+					  </tr>
+            <tr>
+                        <td style="border: 1px solid #dddddd;text-align: center;padding: 8px;">${date1}</td>
+                        <td style="border: 1px solid #dddddd;text-align: center;padding: 8px;">${time1}</td>
+                        <td style="border: 1px solid #dddddd;text-align: center;padding: 8px;"> ${from1}</td>
+                        <td style="border: 1px solid #dddddd;text-align: center;padding: 8px;"> ${to1}</td>
+                        <td style="border: 1px solid #dddddd;text-align: center;padding: 8px;"> ${allowed1}</td>
+                      </tr>
+                      <tr>
+                          <td style="border: 1px solid #dddddd;text-align: center;padding: 8px;">${date2}</td>
+                          <td style="border: 1px solid #dddddd;text-align: center;padding: 8px;">${time2}</td>
+                          <td style="border: 1px solid #dddddd;text-align: center;padding: 8px;"> ${from2}</td>
+                          <td style="border: 1px solid #dddddd;text-align: center;padding: 8px;"> ${to2}</td>
+                          <td style="border: 1px solid #dddddd;text-align: center;padding: 8px;"> ${allowed2}</td>
+                        </tr>
+                        <tr>
+                          <td style="border: 1px solid #dddddd;text-align: center;padding: 8px;">${date3}</td>
+                          <td style="border: 1px solid #dddddd;text-align: center;padding: 8px;">${time3}</td>
+                          <td style="border: 1px solid #dddddd;text-align: center;padding: 8px;"> ${from3}</td>
+                          <td style="border: 1px solid #dddddd;text-align: center;padding: 8px;"> ${to3}</td>
+                          <td style="border: 1px solid #dddddd;text-align: center;padding: 8px;"> ${allowed3}</td>
+                        </tr>
+                        <tr>
+                          <td style="border: 1px solid #dddddd;text-align: center;padding: 8px;">${date4}</td>
+                          <td style="border: 1px solid #dddddd;text-align: center;padding: 8px;">${time4}</td>
+                          <td style="border: 1px solid #dddddd;text-align: center;padding: 8px;"> ${from4}</td>
+                          <td style="border: 1px solid #dddddd;text-align: center;padding: 8px;"> ${to4}</td>
+                          <td style="border: 1px solid #dddddd;text-align: center;padding: 8px;"> ${allowed4}</td>
+                        </tr>
+                        <tr>
+                          <td style="border: 1px solid #dddddd;text-align: center;padding: 8px;">${date5}</td>
+                          <td style="border: 1px solid #dddddd;text-align: center;padding: 8px;">${time5}</td>
+                          <td style="border: 1px solid #dddddd;text-align: center;padding: 8px;"> ${from5}</td>
+                          <td style="border: 1px solid #dddddd;text-align: center;padding: 8px;"> ${to5}</td>
+                          <td style="border: 1px solid #dddddd;text-align: center;padding: 8px;"> ${allowed5}</td>
+                        </tr>
+
+                        <tr>
+                          <td style="border: 1px solid #dddddd;text-align: center;padding: 8px;">${date6}</td>
+                          <td style="border: 1px solid #dddddd;text-align: center;padding: 8px;">${time6}</td>
+                          <td style="border: 1px solid #dddddd;text-align: center;padding: 8px;"> ${from6}</td>
+                          <td style="border: 1px solid #dddddd;text-align: center;padding: 8px;"> ${to6}</td>
+                          <td style="border: 1px solid #dddddd;text-align: center;padding: 8px;"> ${allowed6}</td>
+                        </tr>
+                        <tr>
+                            <td style="border: 1px solid #dddddd;text-align: center;padding: 8px;">${date7}</td>
+                            <td style="border: 1px solid #dddddd;text-align: center;padding: 8px;">${time7}</td>
+                            <td style="border: 1px solid #dddddd;text-align: center;padding: 8px;"> ${from7}</td>
+                            <td style="border: 1px solid #dddddd;text-align: center;padding: 8px;"> ${to7}</td>
+                            <td style="border: 1px solid #dddddd;text-align: center;padding: 8px;"> ${allowed7}</td>
+                          </tr>
+                          <tr>
+                            <td style="border: 1px solid #dddddd;text-align: center;padding: 8px;">${date8}</td>
+                            <td style="border: 1px solid #dddddd;text-align: center;padding: 8px;">${time8}</td>
+                            <td style="border: 1px solid #dddddd;text-align: center;padding: 8px;"> ${from8}</td>
+                            <td style="border: 1px solid #dddddd;text-align: center;padding: 8px;"> ${to8}</td>
+                            <td style="border: 1px solid #dddddd;text-align: center;padding: 8px;"> ${allowed8}</td>
+                          </tr>
+                          <tr>
+                            <td style="border: 1px solid #dddddd;text-align: center;padding: 8px;">${date9}</td>
+                            <td style="border: 1px solid #dddddd;text-align: center;padding: 8px;">${time9}</td>
+                            <td style="border: 1px solid #dddddd;text-align: center;padding: 8px;"> ${from9}</td>
+                            <td style="border: 1px solid #dddddd;text-align: center;padding: 8px;"> ${to9}</td>
+                            <td style="border: 1px solid #dddddd;text-align: center;padding: 8px;"> ${allowed9}</td>
+                          </tr>
+                          <tr>
+                            <td style="border: 1px solid #dddddd;text-align: center;padding: 8px;">${date10}</td>
+                            <td style="border: 1px solid #dddddd;text-align: center;padding: 8px;">${time10}</td>
+                            <td style="border: 1px solid #dddddd;text-align: center;padding: 8px;"> ${from10}</td>
+                            <td style="border: 1px solid #dddddd;text-align: center;padding: 8px;"> ${to10}</td>
+                            <td style="border: 1px solid #dddddd;text-align: center;padding: 8px;"> ${allowed10}</td>
+                          </tr>
+                          <tr>
+                            <td style="border: 1px solid #dddddd;text-align: center;padding: 8px;">${date11}</td>
+                            <td style="border: 1px solid #dddddd;text-align: center;padding: 8px;">${time11}</td>
+                            <td style="border: 1px solid #dddddd;text-align: center;padding: 8px;"> ${from11}</td>
+                            <td style="border: 1px solid #dddddd;text-align: center;padding: 8px;"> ${to11}</td>
+                            <td style="border: 1px solid #dddddd;text-align: center;padding: 8px;"> ${allowed11}</td>
+                          </tr>
+                          <tr>
+                              <td style="border: 1px solid #dddddd;text-align: center;padding: 8px;">${date12}</td>
+                              <td style="border: 1px solid #dddddd;text-align: center;padding: 8px;">${time12}</td>
+                              <td style="border: 1px solid #dddddd;text-align: center;padding: 8px;"> ${from12}</td>
+                              <td style="border: 1px solid #dddddd;text-align: center;padding: 8px;"> ${to12}</td>
+                              <td style="border: 1px solid #dddddd;text-align: center;padding: 8px;"> ${allowed12}</td>
+                            </tr>
+                            <tr>
+                              <td style="border: 1px solid #dddddd;text-align: center;padding: 8px;">${date13}</td>
+                              <td style="border: 1px solid #dddddd;text-align: center;padding: 8px;">${time13}</td>
+                              <td style="border: 1px solid #dddddd;text-align: center;padding: 8px;"> ${from13}</td>
+                              <td style="border: 1px solid #dddddd;text-align: center;padding: 8px;"> ${to13}</td>
+                              <td style="border: 1px solid #dddddd;text-align: center;padding: 8px;"> ${allowed13}</td>
+                            </tr>
+                            <tr>
+                              <td style="border: 1px solid #dddddd;text-align: center;padding: 8px;">${date14}</td>
+                              <td style="border: 1px solid #dddddd;text-align: center;padding: 8px;">${time14}</td>
+                              <td style="border: 1px solid #dddddd;text-align: center;padding: 8px;"> ${from14}</td>
+                              <td style="border: 1px solid #dddddd;text-align: center;padding: 8px;"> ${to14}</td>
+                              <td style="border: 1px solid #dddddd;text-align: center;padding: 8px;"> ${allowed14}</td>
+                            </tr>
+                            <tr>
+                              <td style="border: 1px solid #dddddd;text-align: center;padding: 8px;">${date15}</td>
+                              <td style="border: 1px solid #dddddd;text-align: center;padding: 8px;">${time15}</td>
+                              <td style="border: 1px solid #dddddd;text-align: center;padding: 8px;"> ${from15}</td>
+                              <td style="border: 1px solid #dddddd;text-align: center;padding: 8px;"> ${to15}</td>
+                              <td style="border: 1px solid #dddddd;text-align: center;padding: 8px;"> ${allowed15}</td>
+                            </tr>
+                  <tr>
+                    <td style="border: 1px solid #dddddd;text-align: center;padding: 8px;">${date16}</td>
+                    <td style="border: 1px solid #dddddd;text-align: center;padding: 8px;">${time16}</td>
+                    <td style="border: 1px solid #dddddd;text-align: center;padding: 8px;"> ${from16}</td>
+                    <td style="border: 1px solid #dddddd;text-align: center;padding: 8px;"> ${to16}</td>
+                    <td style="border: 1px solid #dddddd;text-align: center;padding: 8px;"> ${allowed16}</td>
+                  </tr>
+                  <tr>
+                      <td style="border: 1px solid #dddddd;text-align: center;padding: 8px;">${date17}</td>
+                      <td style="border: 1px solid #dddddd;text-align: center;padding: 8px;">${time17}</td>
+                      <td style="border: 1px solid #dddddd;text-align: center;padding: 8px;"> ${from17}</td>
+                      <td style="border: 1px solid #dddddd;text-align: center;padding: 8px;"> ${to17}</td>
+                      <td style="border: 1px solid #dddddd;text-align: center;padding: 8px;"> ${allowed17}</td>
+                    </tr>
+                    <tr>
+                      <td style="border: 1px solid #dddddd;text-align: center;padding: 8px;">${date18}</td>
+                      <td style="border: 1px solid #dddddd;text-align: center;padding: 8px;">${time18}</td>
+                      <td style="border: 1px solid #dddddd;text-align: center;padding: 8px;"> ${from18}</td>
+                      <td style="border: 1px solid #dddddd;text-align: center;padding: 8px;"> ${to18}</td>
+                      <td style="border: 1px solid #dddddd;text-align: center;padding: 8px;"> ${allowed18}</td>
+                    </tr>
+                    <tr>
+                      <td style="border: 1px solid #dddddd;text-align: center;padding: 8px;">${date19}</td>
+                      <td style="border: 1px solid #dddddd;text-align: center;padding: 8px;">${time19}</td>
+                      <td style="border: 1px solid #dddddd;text-align: center;padding: 8px;"> ${from19}</td>
+                      <td style="border: 1px solid #dddddd;text-align: center;padding: 8px;"> ${to19}</td>
+                      <td style="border: 1px solid #dddddd;text-align: center;padding: 8px;"> ${allowed19}</td>
+                    </tr>
+                    <tr>
+                      <td style="border: 1px solid #dddddd;text-align: center;padding: 8px;">${date20}</td>
+                      <td style="border: 1px solid #dddddd;text-align: center;padding: 8px;">${time20}</td>
+                      <td style="border: 1px solid #dddddd;text-align: center;padding: 8px;"> ${from20}</td>
+                      <td style="border: 1px solid #dddddd;text-align: center;padding: 8px;"> ${to20}</td>
+                      <td style="border: 1px solid #dddddd;text-align: center;padding: 8px;"> ${allowed20}</td>
+                    </tr>
+					  <tr>
+					    <td style="border: 1px solid #dddddd;text-align: center;padding: 8px;">${date21}</td>
+					    <td style="border: 1px solid #dddddd;text-align: center;padding: 8px;">${time21}</td>
+					    <td style="border: 1px solid #dddddd;text-align: center;padding: 8px;"> ${from21}</td>
+					    <td style="border: 1px solid #dddddd;text-align: center;padding: 8px;"> ${to21}</td>
+					    <td style="border: 1px solid #dddddd;text-align: center;padding: 8px;"> ${allowed21}</td>
+					  </tr>
+					  <tr>
+                        <td style="border: 1px solid #dddddd;text-align: center;padding: 8px;">${date22}</td>
+                        <td style="border: 1px solid #dddddd;text-align: center;padding: 8px;">${time22}</td>
+                        <td style="border: 1px solid #dddddd;text-align: center;padding: 8px;"> ${from22}</td>
+                        <td style="border: 1px solid #dddddd;text-align: center;padding: 8px;"> ${to22}</td>
+                        <td style="border: 1px solid #dddddd;text-align: center;padding: 8px;"> ${allowed22}</td>
+                      </tr>
+                      <tr>
+                        <td style="border: 1px solid #dddddd;text-align: center;padding: 8px;">${date23}</td>
+                        <td style="border: 1px solid #dddddd;text-align: center;padding: 8px;">${time23}</td>
+                        <td style="border: 1px solid #dddddd;text-align: center;padding: 8px;"> ${from23}</td>
+                        <td style="border: 1px solid #dddddd;text-align: center;padding: 8px;"> ${to23}</td>
+                        <td style="border: 1px solid #dddddd;text-align: center;padding: 8px;"> ${allowed23}</td>
+                      </tr>
+                      <tr>
+                        <td style="border: 1px solid #dddddd;text-align: center;padding: 8px;">${date24}</td>
+                        <td style="border: 1px solid #dddddd;text-align: center;padding: 8px;">${time24}</td>
+                        <td style="border: 1px solid #dddddd;text-align: center;padding: 8px;"> ${from24}</td>
+                        <td style="border: 1px solid #dddddd;text-align: center;padding: 8px;"> ${to24}</td>
+                        <td style="border: 1px solid #dddddd;text-align: center;padding: 8px;"> ${allowed24}</td>
+                      </tr>
+                      <tr>
+                        <td style="border: 1px solid #dddddd;text-align: center;padding: 8px;">${date25}</td>
+                        <td style="border: 1px solid #dddddd;text-align: center;padding: 8px;">${time25}</td>
+                        <td style="border: 1px solid #dddddd;text-align: center;padding: 8px;"> ${from25}</td>
+                        <td style="border: 1px solid #dddddd;text-align: center;padding: 8px;"> ${to25}</td>
+                        <td style="border: 1px solid #dddddd;text-align: center;padding: 8px;"> ${allowed25}</td>
+                      </tr>
+					  <tr>
+					    <td style="border: 1px solid #dddddd;text-align: center;padding: 8px;">${date26}</td>
+					    <td style="border: 1px solid #dddddd;text-align: center;padding: 8px;">${time26}</td>
+					    <td style="border: 1px solid #dddddd;text-align: center;padding: 8px;"> ${from26}</td>
+					    <td style="border: 1px solid #dddddd;text-align: center;padding: 8px;"> ${to26}</td>
+					    <td style="border: 1px solid #dddddd;text-align: center;padding: 8px;"> ${allowed26}</td>
+					  </tr>
+
+					  <tr>
+              <td style="border: 1px solid #dddddd;text-align: center;padding: 8px;">${date27}</td>
+              <td style="border: 1px solid #dddddd;text-align: center;padding: 8px;">${time27}</td>
+              <td style="border: 1px solid #dddddd;text-align: center;padding: 8px;"> ${from27}</td>
+              <td style="border: 1px solid #dddddd;text-align: center;padding: 8px;"> ${to27}</td>
+              <td style="border: 1px solid #dddddd;text-align: center;padding: 8px;"> ${allowed27}</td>
+            </tr>
+            <tr>
+              <td style="border: 1px solid #dddddd;text-align: center;padding: 8px;">${date28}</td>
+              <td style="border: 1px solid #dddddd;text-align: center;padding: 8px;">${time28}</td>
+              <td style="border: 1px solid #dddddd;text-align: center;padding: 8px;"> ${from28}</td>
+              <td style="border: 1px solid #dddddd;text-align: center;padding: 8px;"> ${to28}</td>
+              <td style="border: 1px solid #dddddd;text-align: center;padding: 8px;"> ${allowed28}</td>
+            </tr>
+            <tr>
+              <td style="border: 1px solid #dddddd;text-align: center;padding: 8px;">${date29}</td>
+              <td style="border: 1px solid #dddddd;text-align: center;padding: 8px;">${time29}</td>
+              <td style="border: 1px solid #dddddd;text-align: center;padding: 8px;"> ${from29}</td>
+              <td style="border: 1px solid #dddddd;text-align: center;padding: 8px;"> ${to29}</td>
+              <td style="border: 1px solid #dddddd;text-align: center;padding: 8px;"> ${allowed29}</td>
+            </tr>
+            <tr>
+              <td style="border: 1px solid #dddddd;text-align: center;padding: 8px;">${date30}</td>
+              <td style="border: 1px solid #dddddd;text-align: center;padding: 8px;">${time30}</td>
+              <td style="border: 1px solid #dddddd;text-align: center;padding: 8px;"> ${from30}</td>
+              <td style="border: 1px solid #dddddd;text-align: center;padding: 8px;"> ${to30}</td>
+              <td style="border: 1px solid #dddddd;text-align: center;padding: 8px;"> ${allowed30}</td>
+            </tr>
+					  <tr>
+					    <td style="border: 1px solid #dddddd;text-align: center;padding: 8px;">${date31}</td>
+					    <td style="border: 1px solid #dddddd;text-align: center;padding: 8px;">${time31}</td>
+					    <td style="border: 1px solid #dddddd;text-align: center;padding: 8px;"> ${from31}</td>
+					    <td style="border: 1px solid #dddddd;text-align: center;padding: 8px;"> ${to31}</td>
+					    <td style="border: 1px solid #dddddd;text-align: center;padding: 8px;"> ${allowed31}</td>
+					  </tr>
+					  <tr>
+                        <td style="border: 1px solid #dddddd;text-align: center;padding: 8px;">${date32}</td>
+                        <td style="border: 1px solid #dddddd;text-align: center;padding: 8px;">${time32}</td>
+                        <td style="border: 1px solid #dddddd;text-align: center;padding: 8px;"> ${from32}</td>
+                        <td style="border: 1px solid #dddddd;text-align: center;padding: 8px;"> ${to32}</td>
+                        <td style="border: 1px solid #dddddd;text-align: center;padding: 8px;"> ${allowed32}</td>
+                      </tr>
+                      <tr>
+                        <td style="border: 1px solid #dddddd;text-align: center;padding: 8px;">${date33}</td>
+                        <td style="border: 1px solid #dddddd;text-align: center;padding: 8px;">${time33}</td>
+                        <td style="border: 1px solid #dddddd;text-align: center;padding: 8px;"> ${from33}</td>
+                        <td style="border: 1px solid #dddddd;text-align: center;padding: 8px;"> ${to33}</td>
+                        <td style="border: 1px solid #dddddd;text-align: center;padding: 8px;"> ${allowed33}</td>
+                      </tr>
+                      <tr>
+                        <td style="border: 1px solid #dddddd;text-align: center;padding: 8px;">${date34}</td>
+                        <td style="border: 1px solid #dddddd;text-align: center;padding: 8px;">${time34}</td>
+                        <td style="border: 1px solid #dddddd;text-align: center;padding: 8px;"> ${from34}</td>
+                        <td style="border: 1px solid #dddddd;text-align: center;padding: 8px;"> ${to34}</td>
+                        <td style="border: 1px solid #dddddd;text-align: center;padding: 8px;"> ${allowed34}</td>
+                      </tr>
+                      <tr>
+                        <td style="border: 1px solid #dddddd;text-align: center;padding: 8px;">${date35}</td>
+                        <td style="border: 1px solid #dddddd;text-align: center;padding: 8px;">${time35}</td>
+                        <td style="border: 1px solid #dddddd;text-align: center;padding: 8px;"> ${from35}</td>
+                        <td style="border: 1px solid #dddddd;text-align: center;padding: 8px;"> ${to35}</td>
+                        <td style="border: 1px solid #dddddd;text-align: center;padding: 8px;"> ${allowed35}</td>
+                      </tr>
+					  <tr>
+					    <td style="border: 1px solid #dddddd;text-align: center;padding: 8px;">${date36}</td>
+					    <td style="border: 1px solid #dddddd;text-align: center;padding: 8px;">${time36}</td>
+					    <td style="border: 1px solid #dddddd;text-align: center;padding: 8px;"> ${from36}</td>
+					    <td style="border: 1px solid #dddddd;text-align: center;padding: 8px;"> ${to36}</td>
+					    <td style="border: 1px solid #dddddd;text-align: center;padding: 8px;"> ${allowed36}</td>
+					  </tr>
+					  <tr>
+                        <td style="border: 1px solid #dddddd;text-align: center;padding: 8px;">${date37}</td>
+                        <td style="border: 1px solid #dddddd;text-align: center;padding: 8px;">${time37}</td>
+                        <td style="border: 1px solid #dddddd;text-align: center;padding: 8px;"> ${from37}</td>
+                        <td style="border: 1px solid #dddddd;text-align: center;padding: 8px;"> ${to37}</td>
+                        <td style="border: 1px solid #dddddd;text-align: center;padding: 8px;"> ${allowed37}</td>
+                      </tr>
+                      <tr>
+                        <td style="border: 1px solid #dddddd;text-align: center;padding: 8px;">${date38}</td>
+                        <td style="border: 1px solid #dddddd;text-align: center;padding: 8px;">${time38}</td>
+                        <td style="border: 1px solid #dddddd;text-align: center;padding: 8px;"> ${from38}</td>
+                        <td style="border: 1px solid #dddddd;text-align: center;padding: 8px;"> ${to38}</td>
+                        <td style="border: 1px solid #dddddd;text-align: center;padding: 8px;"> ${allowed38}</td>
+                      </tr>
+                      <tr>
+                        <td style="border: 1px solid #dddddd;text-align: center;padding: 8px;">${date39}</td>
+                        <td style="border: 1px solid #dddddd;text-align: center;padding: 8px;">${time39}</td>
+                        <td style="border: 1px solid #dddddd;text-align: center;padding: 8px;"> ${from39}</td>
+                        <td style="border: 1px solid #dddddd;text-align: center;padding: 8px;"> ${to39}</td>
+                        <td style="border: 1px solid #dddddd;text-align: center;padding: 8px;"> ${allowed39}</td>
+                      </tr>
+                      <tr>
+                        <td style="border: 1px solid #dddddd;text-align: center;padding: 8px;">${date40}</td>
+                        <td style="border: 1px solid #dddddd;text-align: center;padding: 8px;">${time40}</td>
+                        <td style="border: 1px solid #dddddd;text-align: center;padding: 8px;"> ${from40}</td>
+                        <td style="border: 1px solid #dddddd;text-align: center;padding: 8px;"> ${to40}</td>
+                        <td style="border: 1px solid #dddddd;text-align: center;padding: 8px;"> ${allowed40}</td>
+                      </tr>
+					  <tr>
+					    <td style="border: 1px solid #dddddd;text-align: center;padding: 8px;">${date41}</td>
+					    <td style="border: 1px solid #dddddd;text-align: center;padding: 8px;">${time41}</td>
+					    <td style="border: 1px solid #dddddd;text-align: center;padding: 8px;"> ${from41}</td>
+					    <td style="border: 1px solid #dddddd;text-align: center;padding: 8px;"> ${to41}</td>
+					    <td style="border: 1px solid #dddddd;text-align: center;padding: 8px;"> ${allowed41}</td>
+					  </tr>
+					  <tr>
+                        <td style="border: 1px solid #dddddd;text-align: center;padding: 8px;">${date42}</td>
+                        <td style="border: 1px solid #dddddd;text-align: center;padding: 8px;">${time42}</td>
+                        <td style="border: 1px solid #dddddd;text-align: center;padding: 8px;"> ${from42}</td>
+                        <td style="border: 1px solid #dddddd;text-align: center;padding: 8px;"> ${to42}</td>
+                        <td style="border: 1px solid #dddddd;text-align: center;padding: 8px;"> ${allowed42}</td>
+                      </tr>
+                      <tr>
+                        <td style="border: 1px solid #dddddd;text-align: center;padding: 8px;">${date43}</td>
+                        <td style="border: 1px solid #dddddd;text-align: center;padding: 8px;">${time43}</td>
+                        <td style="border: 1px solid #dddddd;text-align: center;padding: 8px;"> ${from43}</td>
+                        <td style="border: 1px solid #dddddd;text-align: center;padding: 8px;"> ${to43}</td>
+                        <td style="border: 1px solid #dddddd;text-align: center;padding: 8px;"> ${allowed43}</td>
+                      </tr>
+                      <tr>
+                        <td style="border: 1px solid #dddddd;text-align: center;padding: 8px;">${date44}</td>
+                        <td style="border: 1px solid #dddddd;text-align: center;padding: 8px;">${time44}</td>
+                        <td style="border: 1px solid #dddddd;text-align: center;padding: 8px;"> ${from44}</td>
+                        <td style="border: 1px solid #dddddd;text-align: center;padding: 8px;"> ${to44}</td>
+                        <td style="border: 1px solid #dddddd;text-align: center;padding: 8px;"> ${allowed44}</td>
+                      </tr>
+                      <tr>
+                        <td style="border: 1px solid #dddddd;text-align: center;padding: 8px;">${date45}</td>
+                        <td style="border: 1px solid #dddddd;text-align: center;padding: 8px;">${time45}</td>
+                        <td style="border: 1px solid #dddddd;text-align: center;padding: 8px;"> ${from45}</td>
+                        <td style="border: 1px solid #dddddd;text-align: center;padding: 8px;"> ${to45}</td>
+                        <td style="border: 1px solid #dddddd;text-align: center;padding: 8px;"> ${allowed45}</td>
+                      </tr>
+					  <tr>
+					    <td style="border: 1px solid #dddddd;text-align: center;padding: 8px;">${date46}</td>
+					    <td style="border: 1px solid #dddddd;text-align: center;padding: 8px;">${time46}</td>
+					    <td style="border: 1px solid #dddddd;text-align: center;padding: 8px;"> ${from46}</td>
+					    <td style="border: 1px solid #dddddd;text-align: center;padding: 8px;"> ${to46}</td>
+					    <td style="border: 1px solid #dddddd;text-align: center;padding: 8px;"> ${allowed46}</td>
+					  </tr>
+					  <tr>
+                        <td style="border: 1px solid #dddddd;text-align: center;padding: 8px;">${date47}</td>
+                        <td style="border: 1px solid #dddddd;text-align: center;padding: 8px;">${time47}</td>
+                        <td style="border: 1px solid #dddddd;text-align: center;padding: 8px;"> ${from47}</td>
+                        <td style="border: 1px solid #dddddd;text-align: center;padding: 8px;"> ${to47}</td>
+                        <td style="border: 1px solid #dddddd;text-align: center;padding: 8px;"> ${allowed47}</td>
+                      </tr>
+                      <tr>
+                        <td style="border: 1px solid #dddddd;text-align: center;padding: 8px;">${date48}</td>
+                        <td style="border: 1px solid #dddddd;text-align: center;padding: 8px;">${time48}</td>
+                        <td style="border: 1px solid #dddddd;text-align: center;padding: 8px;"> ${from48}</td>
+                        <td style="border: 1px solid #dddddd;text-align: center;padding: 8px;"> ${to48}</td>
+                        <td style="border: 1px solid #dddddd;text-align: center;padding: 8px;"> ${allowed48}</td>
+                      </tr>
+                      <tr>
+                        <td style="border: 1px solid #dddddd;text-align: center;padding: 8px;">${date49}</td>
+                        <td style="border: 1px solid #dddddd;text-align: center;padding: 8px;">${time49}</td>
+                        <td style="border: 1px solid #dddddd;text-align: center;padding: 8px;"> ${from49}</td>
+                        <td style="border: 1px solid #dddddd;text-align: center;padding: 8px;"> ${to49}</td>
+                        <td style="border: 1px solid #dddddd;text-align: center;padding: 8px;"> ${allowed49}</td>
+                      </tr>
+                      <tr>
+                        <td style="border: 1px solid #dddddd;text-align: center;padding: 8px;">${date50}</td>
+                        <td style="border: 1px solid #dddddd;text-align: center;padding: 8px;">${time50}</td>
+                        <td style="border: 1px solid #dddddd;text-align: center;padding: 8px;"> ${from50}</td>
+                        <td style="border: 1px solid #dddddd;text-align: center;padding: 8px;"> ${to50}</td>
+                        <td style="border: 1px solid #dddddd;text-align: center;padding: 8px;"> ${allowed50}</td>
+                      </tr>
+
+					  <tr>
+					    <td style="border: 1px solid #dddddd;text-align: center;padding: 8px;">${date51}</td>
+					    <td style="border: 1px solid #dddddd;text-align: center;padding: 8px;">${time51}</td>
+					    <td style="border: 1px solid #dddddd;text-align: center;padding: 8px;"> ${from51}</td>
+					    <td style="border: 1px solid #dddddd;text-align: center;padding: 8px;"> ${to51}</td>
+					    <td style="border: 1px solid #dddddd;text-align: center;padding: 8px;"> ${allowed51}</td>
+					  </tr>
+					  <tr>
+                        <td style="border: 1px solid #dddddd;text-align: center;padding: 8px;">${date52}</td>
+                        <td style="border: 1px solid #dddddd;text-align: center;padding: 8px;">${time52}</td>
+                        <td style="border: 1px solid #dddddd;text-align: center;padding: 8px;"> ${from52}</td>
+                        <td style="border: 1px solid #dddddd;text-align: center;padding: 8px;"> ${to52}</td>
+                        <td style="border: 1px solid #dddddd;text-align: center;padding: 8px;"> ${allowed52}</td>
+                      </tr>
+                      <tr>
+                        <td style="border: 1px solid #dddddd;text-align: center;padding: 8px;">${date53}</td>
+                        <td style="border: 1px solid #dddddd;text-align: center;padding: 8px;">${time53}</td>
+                        <td style="border: 1px solid #dddddd;text-align: center;padding: 8px;"> ${from53}</td>
+                        <td style="border: 1px solid #dddddd;text-align: center;padding: 8px;"> ${to53}</td>
+                        <td style="border: 1px solid #dddddd;text-align: center;padding: 8px;"> ${allowed53}</td>
+                      </tr>
+                      <tr>
+                        <td style="border: 1px solid #dddddd;text-align: center;padding: 8px;">${date54}</td>
+                        <td style="border: 1px solid #dddddd;text-align: center;padding: 8px;">${time54}</td>
+                        <td style="border: 1px solid #dddddd;text-align: center;padding: 8px;"> ${from54}</td>
+                        <td style="border: 1px solid #dddddd;text-align: center;padding: 8px;"> ${to54}</td>
+                        <td style="border: 1px solid #dddddd;text-align: center;padding: 8px;"> ${allowed54}</td>
+                      </tr>
+                      <tr>
+                        <td style="border: 1px solid #dddddd;text-align: center;padding: 8px;">${date55}</td>
+                        <td style="border: 1px solid #dddddd;text-align: center;padding: 8px;">${time55}</td>
+                        <td style="border: 1px solid #dddddd;text-align: center;padding: 8px;"> ${from55}</td>
+                        <td style="border: 1px solid #dddddd;text-align: center;padding: 8px;"> ${to55}</td>
+                        <td style="border: 1px solid #dddddd;text-align: center;padding: 8px;"> ${allowed55}</td>
+                      </tr>
+					  <tr>
+					    <td style="border: 1px solid #dddddd;text-align: center;padding: 8px;">${date56}</td>
+					    <td style="border: 1px solid #dddddd;text-align: center;padding: 8px;">${time56}</td>
+					    <td style="border: 1px solid #dddddd;text-align: center;padding: 8px;"> ${from56}</td>
+					    <td style="border: 1px solid #dddddd;text-align: center;padding: 8px;"> ${to56}</td>
+					    <td style="border: 1px solid #dddddd;text-align: center;padding: 8px;"> ${allowed56}</td>
+					  </tr>
+					  <tr>
+                        <td style="border: 1px solid #dddddd;text-align: center;padding: 8px;">${date57}</td>
+                        <td style="border: 1px solid #dddddd;text-align: center;padding: 8px;">${time57}</td>
+                        <td style="border: 1px solid #dddddd;text-align: center;padding: 8px;"> ${from57}</td>
+                        <td style="border: 1px solid #dddddd;text-align: center;padding: 8px;"> ${to57}</td>
+                        <td style="border: 1px solid #dddddd;text-align: center;padding: 8px;"> ${allowed57}</td>
+                      </tr>
+                      <tr>
+                        <td style="border: 1px solid #dddddd;text-align: center;padding: 8px;">${date58}</td>
+                        <td style="border: 1px solid #dddddd;text-align: center;padding: 8px;">${time58}</td>
+                        <td style="border: 1px solid #dddddd;text-align: center;padding: 8px;"> ${from58}</td>
+                        <td style="border: 1px solid #dddddd;text-align: center;padding: 8px;"> ${to58}</td>
+                        <td style="border: 1px solid #dddddd;text-align: center;padding: 8px;"> ${allowed58}</td>
+                      </tr>
+                      <tr>
+                        <td style="border: 1px solid #dddddd;text-align: center;padding: 8px;">${date59}</td>
+                        <td style="border: 1px solid #dddddd;text-align: center;padding: 8px;">${time59}</td>
+                        <td style="border: 1px solid #dddddd;text-align: center;padding: 8px;"> ${from59}</td>
+                        <td style="border: 1px solid #dddddd;text-align: center;padding: 8px;"> ${to59}</td>
+                        <td style="border: 1px solid #dddddd;text-align: center;padding: 8px;"> ${allowed59}</td>
+                      </tr>
+                      <tr>
+                        <td style="border: 1px solid #dddddd;text-align: center;padding: 8px;">${date60}</td>
+                        <td style="border: 1px solid #dddddd;text-align: center;padding: 8px;">${time60}</td>
+                        <td style="border: 1px solid #dddddd;text-align: center;padding: 8px;"> ${from60}</td>
+                        <td style="border: 1px solid #dddddd;text-align: center;padding: 8px;"> ${to60}</td>
+                        <td style="border: 1px solid #dddddd;text-align: center;padding: 8px;"> ${allowed60}</td>
+                      </tr>
+					  <tr>
+					    <td style="border: 1px solid #dddddd;text-align: center;padding: 8px;">${date61}</td>
+					    <td style="border: 1px solid #dddddd;text-align: center;padding: 8px;">${time61}</td>
+					    <td style="border: 1px solid #dddddd;text-align: center;padding: 8px;"> ${from61}</td>
+					    <td style="border: 1px solid #dddddd;text-align: center;padding: 8px;"> ${to61}</td>
+					    <td style="border: 1px solid #dddddd;text-align: center;padding: 8px;"> ${allowed61}</td>
+					  </tr>
+					  <tr>
+                        <td style="border: 1px solid #dddddd;text-align: center;padding: 8px;">${date62}</td>
+                        <td style="border: 1px solid #dddddd;text-align: center;padding: 8px;">${time62}</td>
+                        <td style="border: 1px solid #dddddd;text-align: center;padding: 8px;"> ${from62}</td>
+                        <td style="border: 1px solid #dddddd;text-align: center;padding: 8px;"> ${to62}</td>
+                        <td style="border: 1px solid #dddddd;text-align: center;padding: 8px;"> ${allowed62}</td>
+                      </tr>
+                      <tr>
+                        <td style="border: 1px solid #dddddd;text-align: center;padding: 8px;">${date63}</td>
+                        <td style="border: 1px solid #dddddd;text-align: center;padding: 8px;">${time63}</td>
+                        <td style="border: 1px solid #dddddd;text-align: center;padding: 8px;"> ${from63}</td>
+                        <td style="border: 1px solid #dddddd;text-align: center;padding: 8px;"> ${to63}</td>
+                        <td style="border: 1px solid #dddddd;text-align: center;padding: 8px;"> ${allowed63}</td>
+                      </tr>
+                      <tr>
+                        <td style="border: 1px solid #dddddd;text-align: center;padding: 8px;">${date64}</td>
+                        <td style="border: 1px solid #dddddd;text-align: center;padding: 8px;">${time64}</td>
+                        <td style="border: 1px solid #dddddd;text-align: center;padding: 8px;"> ${from64}</td>
+                        <td style="border: 1px solid #dddddd;text-align: center;padding: 8px;"> ${to64}</td>
+                        <td style="border: 1px solid #dddddd;text-align: center;padding: 8px;"> ${allowed64}</td>
+                      </tr>
+                      <tr>
+                        <td style="border: 1px solid #dddddd;text-align: center;padding: 8px;">${date65}</td>
+                        <td style="border: 1px solid #dddddd;text-align: center;padding: 8px;">${time65}</td>
+                        <td style="border: 1px solid #dddddd;text-align: center;padding: 8px;"> ${from65}</td>
+                        <td style="border: 1px solid #dddddd;text-align: center;padding: 8px;"> ${to65}</td>
+                        <td style="border: 1px solid #dddddd;text-align: center;padding: 8px;"> ${allowed65}</td>
+                      </tr>
+					  <tr>
+					    <td style="border: 1px solid #dddddd;text-align: center;padding: 8px;">${date66}</td>
+					    <td style="border: 1px solid #dddddd;text-align: center;padding: 8px;">${time66}</td>
+					    <td style="border: 1px solid #dddddd;text-align: center;padding: 8px;"> ${from66}</td>
+					    <td style="border: 1px solid #dddddd;text-align: center;padding: 8px;"> ${to66}</td>
+					    <td style="border: 1px solid #dddddd;text-align: center;padding: 8px;"> ${allowed66}</td>
+					  </tr>
+					  <tr>
+                        <td style="border: 1px solid #dddddd;text-align: center;padding: 8px;">${date67}</td>
+                        <td style="border: 1px solid #dddddd;text-align: center;padding: 8px;">${time67}</td>
+                        <td style="border: 1px solid #dddddd;text-align: center;padding: 8px;"> ${from67}</td>
+                        <td style="border: 1px solid #dddddd;text-align: center;padding: 8px;"> ${to67}</td>
+                        <td style="border: 1px solid #dddddd;text-align: center;padding: 8px;"> ${allowed67}</td>
+                      </tr>
+                      <tr>
+                        <td style="border: 1px solid #dddddd;text-align: center;padding: 8px;">${date68}</td>
+                        <td style="border: 1px solid #dddddd;text-align: center;padding: 8px;">${time68}</td>
+                        <td style="border: 1px solid #dddddd;text-align: center;padding: 8px;"> ${from68}</td>
+                        <td style="border: 1px solid #dddddd;text-align: center;padding: 8px;"> ${to68}</td>
+                        <td style="border: 1px solid #dddddd;text-align: center;padding: 8px;"> ${allowed68}</td>
+                      </tr>
+                      <tr>
+                        <td style="border: 1px solid #dddddd;text-align: center;padding: 8px;">${date69}</td>
+                        <td style="border: 1px solid #dddddd;text-align: center;padding: 8px;">${time69}</td>
+                        <td style="border: 1px solid #dddddd;text-align: center;padding: 8px;"> ${from69}</td>
+                        <td style="border: 1px solid #dddddd;text-align: center;padding: 8px;"> ${to69}</td>
+                        <td style="border: 1px solid #dddddd;text-align: center;padding: 8px;"> ${allowed69}</td>
+                      </tr>
+                      <tr>
+                        <td style="border: 1px solid #dddddd;text-align: center;padding: 8px;">${date70}</td>
+                        <td style="border: 1px solid #dddddd;text-align: center;padding: 8px;">${time70}</td>
+                        <td style="border: 1px solid #dddddd;text-align: center;padding: 8px;"> ${from70}</td>
+                        <td style="border: 1px solid #dddddd;text-align: center;padding: 8px;"> ${to70}</td>
+                        <td style="border: 1px solid #dddddd;text-align: center;padding: 8px;"> ${allowed70}</td>
+                      </tr>
+					  <tr>
+					    <td style="border: 1px solid #dddddd;text-align: center;padding: 8px;">${date71}</td>
+					    <td style="border: 1px solid #dddddd;text-align: center;padding: 8px;">${time71}</td>
+					    <td style="border: 1px solid #dddddd;text-align: center;padding: 8px;"> ${from71}</td>
+					    <td style="border: 1px solid #dddddd;text-align: center;padding: 8px;"> ${to71}</td>
+					    <td style="border: 1px solid #dddddd;text-align: center;padding: 8px;"> ${allowed71}</td>
+					  </tr>
+					  <tr>
+                        <td style="border: 1px solid #dddddd;text-align: center;padding: 8px;">${date72}</td>
+                        <td style="border: 1px solid #dddddd;text-align: center;padding: 8px;">${time72}</td>
+                        <td style="border: 1px solid #dddddd;text-align: center;padding: 8px;"> ${from72}</td>
+                        <td style="border: 1px solid #dddddd;text-align: center;padding: 8px;"> ${to72}</td>
+                        <td style="border: 1px solid #dddddd;text-align: center;padding: 8px;"> ${allowed72}</td>
+                      </tr>
+                      <tr>
+                        <td style="border: 1px solid #dddddd;text-align: center;padding: 8px;">${date73}</td>
+                        <td style="border: 1px solid #dddddd;text-align: center;padding: 8px;">${time73}</td>
+                        <td style="border: 1px solid #dddddd;text-align: center;padding: 8px;"> ${from73}</td>
+                        <td style="border: 1px solid #dddddd;text-align: center;padding: 8px;"> ${to73}</td>
+                        <td style="border: 1px solid #dddddd;text-align: center;padding: 8px;"> ${allowed73}</td>
+                      </tr>
+                      <tr>
+                        <td style="border: 1px solid #dddddd;text-align: center;padding: 8px;">${date74}</td>
+                        <td style="border: 1px solid #dddddd;text-align: center;padding: 8px;">${time74}</td>
+                        <td style="border: 1px solid #dddddd;text-align: center;padding: 8px;"> ${from74}</td>
+                        <td style="border: 1px solid #dddddd;text-align: center;padding: 8px;"> ${to74}</td>
+                        <td style="border: 1px solid #dddddd;text-align: center;padding: 8px;"> ${allowed74}</td>
+                      </tr>
+                      <tr>
+                        <td style="border: 1px solid #dddddd;text-align: center;padding: 8px;">${date75}</td>
+                        <td style="border: 1px solid #dddddd;text-align: center;padding: 8px;">${time75}</td>
+                        <td style="border: 1px solid #dddddd;text-align: center;padding: 8px;"> ${from75}</td>
+                        <td style="border: 1px solid #dddddd;text-align: center;padding: 8px;"> ${to75}</td>
+                        <td style="border: 1px solid #dddddd;text-align: center;padding: 8px;"> ${allowed75}</td>
+                      </tr>
+					  <tr>
+					    <td style="border: 1px solid #dddddd;text-align: center;padding: 8px;">${date76}</td>
+					    <td style="border: 1px solid #dddddd;text-align: center;padding: 8px;">${time76}</td>
+					    <td style="border: 1px solid #dddddd;text-align: center;padding: 8px;"> ${from76}</td>
+					    <td style="border: 1px solid #dddddd;text-align: center;padding: 8px;"> ${to76}</td>
+					    <td style="border: 1px solid #dddddd;text-align: center;padding: 8px;"> ${allowed76}</td>
+					  </tr>
+					  <tr>
+                        <td style="border: 1px solid #dddddd;text-align: center;padding: 8px;">${date77}</td>
+                        <td style="border: 1px solid #dddddd;text-align: center;padding: 8px;">${time77}</td>
+                        <td style="border: 1px solid #dddddd;text-align: center;padding: 8px;"> ${from77}</td>
+                        <td style="border: 1px solid #dddddd;text-align: center;padding: 8px;"> ${to77}</td>
+                        <td style="border: 1px solid #dddddd;text-align: center;padding: 8px;"> ${allowed77}</td>
+                      </tr>
+                      <tr>
+                        <td style="border: 1px solid #dddddd;text-align: center;padding: 8px;">${date78}</td>
+                        <td style="border: 1px solid #dddddd;text-align: center;padding: 8px;">${time78}</td>
+                        <td style="border: 1px solid #dddddd;text-align: center;padding: 8px;"> ${from78}</td>
+                        <td style="border: 1px solid #dddddd;text-align: center;padding: 8px;"> ${to78}</td>
+                        <td style="border: 1px solid #dddddd;text-align: center;padding: 8px;"> ${allowed78}</td>
+                      </tr>
+                      <tr>
+                        <td style="border: 1px solid #dddddd;text-align: center;padding: 8px;">${date79}</td>
+                        <td style="border: 1px solid #dddddd;text-align: center;padding: 8px;">${time79}</td>
+                        <td style="border: 1px solid #dddddd;text-align: center;padding: 8px;"> ${from79}</td>
+                        <td style="border: 1px solid #dddddd;text-align: center;padding: 8px;"> ${to79}</td>
+                        <td style="border: 1px solid #dddddd;text-align: center;padding: 8px;"> ${allowed79}</td>
+                      </tr>
+                      <tr>
+                        <td style="border: 1px solid #dddddd;text-align: center;padding: 8px;">${date80}</td>
+                        <td style="border: 1px solid #dddddd;text-align: center;padding: 8px;">${time80}</td>
+                        <td style="border: 1px solid #dddddd;text-align: center;padding: 8px;"> ${from80}</td>
+                        <td style="border: 1px solid #dddddd;text-align: center;padding: 8px;"> ${to80}</td>
+                        <td style="border: 1px solid #dddddd;text-align: center;padding: 8px;"> ${allowed80}</td>
+                      </tr>
+					  <tr>
+					    <td style="border: 1px solid #dddddd;text-align: center;padding: 8px;">${date81}</td>
+					    <td style="border: 1px solid #dddddd;text-align: center;padding: 8px;">${time81}</td>
+					    <td style="border: 1px solid #dddddd;text-align: center;padding: 8px;"> ${from81}</td>
+					    <td style="border: 1px solid #dddddd;text-align: center;padding: 8px;"> ${to81}</td>
+					    <td style="border: 1px solid #dddddd;text-align: center;padding: 8px;"> ${allowed81}</td>
+					  </tr>
+					  <tr>
+                        <td style="border: 1px solid #dddddd;text-align: center;padding: 8px;">${date82}</td>
+                        <td style="border: 1px solid #dddddd;text-align: center;padding: 8px;">${time82}</td>
+                        <td style="border: 1px solid #dddddd;text-align: center;padding: 8px;"> ${from82}</td>
+                        <td style="border: 1px solid #dddddd;text-align: center;padding: 8px;"> ${to82}</td>
+                        <td style="border: 1px solid #dddddd;text-align: center;padding: 8px;"> ${allowed82}</td>
+                      </tr>
+                      <tr>
+                        <td style="border: 1px solid #dddddd;text-align: center;padding: 8px;">${date83}</td>
+                        <td style="border: 1px solid #dddddd;text-align: center;padding: 8px;">${time83}</td>
+                        <td style="border: 1px solid #dddddd;text-align: center;padding: 8px;"> ${from83}</td>
+                        <td style="border: 1px solid #dddddd;text-align: center;padding: 8px;"> ${to83}</td>
+                        <td style="border: 1px solid #dddddd;text-align: center;padding: 8px;"> ${allowed83}</td>
+                      </tr>
+                      <tr>
+                        <td style="border: 1px solid #dddddd;text-align: center;padding: 8px;">${date84}</td>
+                        <td style="border: 1px solid #dddddd;text-align: center;padding: 8px;">${time84}</td>
+                        <td style="border: 1px solid #dddddd;text-align: center;padding: 8px;"> ${from84}</td>
+                        <td style="border: 1px solid #dddddd;text-align: center;padding: 8px;"> ${to84}</td>
+                        <td style="border: 1px solid #dddddd;text-align: center;padding: 8px;"> ${allowed84}</td>
+                      </tr>
+                      <tr>
+                        <td style="border: 1px solid #dddddd;text-align: center;padding: 8px;">${date85}</td>
+                        <td style="border: 1px solid #dddddd;text-align: center;padding: 8px;">${time85}</td>
+                        <td style="border: 1px solid #dddddd;text-align: center;padding: 8px;"> ${from85}</td>
+                        <td style="border: 1px solid #dddddd;text-align: center;padding: 8px;"> ${to85}</td>
+                        <td style="border: 1px solid #dddddd;text-align: center;padding: 8px;"> ${allowed85}</td>
+                      </tr>
+					  <tr>
+					    <td style="border: 1px solid #dddddd;text-align: center;padding: 8px;">${date86}</td>
+					    <td style="border: 1px solid #dddddd;text-align: center;padding: 8px;">${time86}</td>
+					    <td style="border: 1px solid #dddddd;text-align: center;padding: 8px;"> ${from86}</td>
+					    <td style="border: 1px solid #dddddd;text-align: center;padding: 8px;"> ${to86}</td>
+					    <td style="border: 1px solid #dddddd;text-align: center;padding: 8px;"> ${allowed86}</td>
+					  </tr>
+					  <tr>
+                        <td style="border: 1px solid #dddddd;text-align: center;padding: 8px;">${date87}</td>
+                        <td style="border: 1px solid #dddddd;text-align: center;padding: 8px;">${time87}</td>
+                        <td style="border: 1px solid #dddddd;text-align: center;padding: 8px;"> ${from87}</td>
+                        <td style="border: 1px solid #dddddd;text-align: center;padding: 8px;"> ${to87}</td>
+                        <td style="border: 1px solid #dddddd;text-align: center;padding: 8px;"> ${allowed87}</td>
+                      </tr>
+                      <tr>
+                        <td style="border: 1px solid #dddddd;text-align: center;padding: 8px;">${date88}</td>
+                        <td style="border: 1px solid #dddddd;text-align: center;padding: 8px;">${time88}</td>
+                        <td style="border: 1px solid #dddddd;text-align: center;padding: 8px;"> ${from88}</td>
+                        <td style="border: 1px solid #dddddd;text-align: center;padding: 8px;"> ${to88}</td>
+                        <td style="border: 1px solid #dddddd;text-align: center;padding: 8px;"> ${allowed88}</td>
+                      </tr>
+                      <tr>
+                        <td style="border: 1px solid #dddddd;text-align: center;padding: 8px;">${date89}</td>
+                        <td style="border: 1px solid #dddddd;text-align: center;padding: 8px;">${time89}</td>
+                        <td style="border: 1px solid #dddddd;text-align: center;padding: 8px;"> ${from89}</td>
+                        <td style="border: 1px solid #dddddd;text-align: center;padding: 8px;"> ${to89}</td>
+                        <td style="border: 1px solid #dddddd;text-align: center;padding: 8px;"> ${allowed89}</td>
+                      </tr>
+                      <tr>
+                        <td style="border: 1px solid #dddddd;text-align: center;padding: 8px;">${date90}</td>
+                        <td style="border: 1px solid #dddddd;text-align: center;padding: 8px;">${time90}</td>
+                        <td style="border: 1px solid #dddddd;text-align: center;padding: 8px;"> ${from90}</td>
+                        <td style="border: 1px solid #dddddd;text-align: center;padding: 8px;"> ${to90}</td>
+                        <td style="border: 1px solid #dddddd;text-align: center;padding: 8px;"> ${allowed90}</td>
+                      </tr>
+					  <tr>
+					    <td style="border: 1px solid #dddddd;text-align: center;padding: 8px;">${date91}</td>
+					    <td style="border: 1px solid #dddddd;text-align: center;padding: 8px;">${time91}</td>
+					    <td style="border: 1px solid #dddddd;text-align: center;padding: 8px;"> ${from91}</td>
+					    <td style="border: 1px solid #dddddd;text-align: center;padding: 8px;"> ${to91}</td>
+					    <td style="border: 1px solid #dddddd;text-align: center;padding: 8px;"> ${allowed91}</td>
+					  </tr>
+					  <tr>
+                        <td style="border: 1px solid #dddddd;text-align: center;padding: 8px;">${date92}</td>
+                        <td style="border: 1px solid #dddddd;text-align: center;padding: 8px;">${time92}</td>
+                        <td style="border: 1px solid #dddddd;text-align: center;padding: 8px;"> ${from92}</td>
+                        <td style="border: 1px solid #dddddd;text-align: center;padding: 8px;"> ${to92}</td>
+                        <td style="border: 1px solid #dddddd;text-align: center;padding: 8px;"> ${allowed92}</td>
+                      </tr>
+                      <tr>
+                        <td style="border: 1px solid #dddddd;text-align: center;padding: 8px;">${date93}</td>
+                        <td style="border: 1px solid #dddddd;text-align: center;padding: 8px;">${time93}</td>
+                        <td style="border: 1px solid #dddddd;text-align: center;padding: 8px;"> ${from93}</td>
+                        <td style="border: 1px solid #dddddd;text-align: center;padding: 8px;"> ${to93}</td>
+                        <td style="border: 1px solid #dddddd;text-align: center;padding: 8px;"> ${allowed93}</td>
+                      </tr>
+                      <tr>
+                        <td style="border: 1px solid #dddddd;text-align: center;padding: 8px;">${date94}</td>
+                        <td style="border: 1px solid #dddddd;text-align: center;padding: 8px;">${time94}</td>
+                        <td style="border: 1px solid #dddddd;text-align: center;padding: 8px;"> ${from94}</td>
+                        <td style="border: 1px solid #dddddd;text-align: center;padding: 8px;"> ${to94}</td>
+                        <td style="border: 1px solid #dddddd;text-align: center;padding: 8px;"> ${allowed94}</td>
+                      </tr>
+                      <tr>
+                        <td style="border: 1px solid #dddddd;text-align: center;padding: 8px;">${date95}</td>
+                        <td style="border: 1px solid #dddddd;text-align: center;padding: 8px;">${time95}</td>
+                        <td style="border: 1px solid #dddddd;text-align: center;padding: 8px;"> ${from95}</td>
+                        <td style="border: 1px solid #dddddd;text-align: center;padding: 8px;"> ${to95}</td>
+                        <td style="border: 1px solid #dddddd;text-align: center;padding: 8px;"> ${allowed95}</td>
+                      </tr>
+
+
+					</table>
+					<br>
+
+
+                    <p style="color:black;">Please click <a href="http://shuttlebus.vkirirom.com">here</a> to start booking.</p>
+                    <p style="color:black;">If the above link does not work for you, please copy and paste the following into your browser address bar:</p>
+                    <p>http://shuttlebus.vkirirom.com</p>
+                    <p style="color:black;">Thank you,</p>
+                    <p style="color:black;">A2A Shuttle Bus Team</p>
+
+			  	</td>
+			  <tr>
+		</table>
+   </div>
+</body>
+
+</html>

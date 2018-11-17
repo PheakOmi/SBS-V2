@@ -1,0 +1,17 @@
+<html>
+ 
+<head></head>
+ 
+<body>
+    <p style="color:red">Dear ${firstName} ${lastName},</p>
+    <p> <b>FreeMarker template !!!</b></p>
+    <p style="color:red;">I am red</p>
+   
+	
+    <a href="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAH0AAAB9AQAAAACn+1GIAAAA80lEQVR42u3VsQ2DMBAF0JOuoIsXQGINd54pCwR7AXslOq+B5AWguwLlck6BQopw7hIpVOg13H1/C+DjQ/CHrwUPyBluAEYNiUsEuDh50UKEEu18sdgE69QMIfe3FqiTuv5t9M8geURb9zNqqF+25XgMJxDyPNIQYR7VsE4cCL0bkhqiQybZDPWwZvYWrlNv1OAdSoTQNcC9q3kv3T7pOSRCsZVmowbJQ/ZLeU/9HAJJHYqHktTwPKsh0aCHZ4Ok2r1Rg/R0cZt52fYU5DYsHXrYl1NB4G2csAmYUFJJapBJvau3h9UgeXhpkN2MGv6/gh+AB5TqW52CurFJAAAAAElFTkSuQmCC">view</a>
+    <p>Thanks</p>
+    <p>${signature}</p>
+    <p>${location}</p>
+</body>
+ 
+</html>

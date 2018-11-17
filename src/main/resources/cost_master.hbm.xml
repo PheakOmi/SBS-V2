@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN" "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd" >
+
+<hibernate-mapping>
+ 	<class name="com.EntityClasses.Cost" table="cost_master">
+ 	 	
+ 	 <id name="id" column="id" >    
+ 	    <generator class="increment"/>    
+ 	 </id>
+    <property name="adult" column="adult"/>
+    <property name="child" column="child"/>
+
+    <property name="created_at" column="created_at"/>
+    <property name="updated_at" column="updated_at"/>
+ 	</class>
+</hibernate-mapping>

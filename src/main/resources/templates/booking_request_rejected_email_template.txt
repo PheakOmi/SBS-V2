@@ -1,0 +1,25 @@
+<html>
+<head></head>
+ 
+<body>
+   <div style="background-color:LightGray;padding:5%;color:black;">
+	   <div style="text-align:left;background-color:white;padding:3%">
+	   <table style="font-family: arial, sans-serif; border-collapse: collapse;width: 100%;">
+			  <tr>
+			    <td><img style="width:120px;height:100px" src="http://vkirirom.com/images/About_Company/vKirirom.png"></td>
+			  </tr>
+			  <tr>
+				<p style="color:black;"> Dear ${name}, </p>
+				 <p style="color:black;"> Your booking request has been rejected, please try to book selecting another departure time.</p>
+			    <p style="color:black;">Please click <a href="http://shuttlebus.vkirirom.com">here</a> to start booking.</p>
+				<p style="color:black;">If the above link does not work for you, please copy and paste the following into your browser address bar:</p>
+				<p>http://shuttlebus.vkirirom.com</p>
+			    <p style="color:black;">We are truely sorry for that.</p>
+			    <p style="color:black;">Kirirom Shuttle Bus Support</p>
+			  </tr>
+		    
+	    </div>
+   </div>
+</body>
+
+</html>

@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN" "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd" >
+
+<hibernate-mapping>
+ 	<class name="com.EntityClasses.Bus_Master" table="bus_master">
+ 	 	
+ 	 <id name="id" column="id" >    
+ 	    <generator class="increment"/>    
+ 	 </id>
+ 	 
+    <property name="plate_number"  column="plate_number"/>
+    <property name="model" column="model"/>
+    <property name="number_of_seat" column="number_of_seat"/>
+    <property name="availability" type="java.lang.Boolean">
+            <column name="availability" not-null="true" />
+     </property>
+     <property name="description" column="description"/>
+    <property name="created_at" column="created_at"/>
+    <property name="updated_at" column="updated_at"/>
+    <property name="enabled" type="java.lang.Boolean">
+            <column name="enabled" not-null="true" />
+     </property>
+    
+ 	</class>
+</hibernate-mapping>

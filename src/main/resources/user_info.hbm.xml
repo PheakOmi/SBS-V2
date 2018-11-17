@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN" "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd" >
+
+<hibernate-mapping>
+ 	<class name="com.EntityClasses.User_Info" table="user_info">
+ 	 	
+ 	 <id name="id" column="id" >    
+ 	    <generator class="increment"/>    
+ 	 </id>
+    <property name="name" column="name"/>
+    <property name="email" column="email"/>
+    <property name="password" column="password"/>
+    <property name="googlePassword" column="googlepassword"/>
+    <property name="created_at" column="created_at"/>
+    <property name="updated_at" column="updated_at"/>
+    <property name="enabled" type="java.lang.Boolean">
+            <column name="enabled" not-null="true" />
+     </property>
+     <property name="batch_id" column="batch_id"/>
+    <property name="reset_token" column="reset_token"/>
+    <property name="username" column="username"/>
+    <property name="gender" column="gender"/>
+    <property name="phone_number" column="phone_number"/>
+    <property name="number_ticket" column="number_ticket"/>
+    <property name="profile" column="profile"/>
+    
+    <set name="userRole" inverse="true" cascade="all">
+        <key>
+            <column name="id" not-null="true" />
+        </key>
+        <one-to-many class="com.EntityClasses.UserRole" />
+    </set>
+    
+ 	</class>
+
+</hibernate-mapping>

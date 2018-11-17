@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN" "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd" >
+
+<hibernate-mapping>
+ 	<class name="com.EntityClasses.Booking_Master" table="booking_master">
+ 	 	
+ 	 <id name="id" column="id" >    
+ 	    <generator class="increment"/>    
+ 	 </id>
+    <property name="user_id"  column="user_id"/>
+    <property name="destination_id" column="destination_id"/>
+    <property name="from_id" column="from_id"/>
+    <property name="to_id" column="to_id"/>
+    <property name="source_id" column="source_id"/>
+    <property name="schedule_id" column="schedule_id"/>
+    <property name="dept_date" column="dept_date"/>
+    <property name="dept_time" column="dept_time"/>
+    <property name="number_booking" column="number_booking"/>
+    <property name="adult" column="adult"/>
+    <property name="child" column="child"/>
+    <property name="total_cost" column="total_cost"/>
+    <property name="notification" column="notification"/>
+    <property name="qr" column="qr"/>
+    <property name="status" column="status"/>
+    <property name="code" column="code"/>
+    <property name="description" column="description"/>
+    <property name="created_at" column="created_at"/>
+    <property name="updated_at" column="updated_at"/>
+    <property name="qr_status" column="qr_status"/>
+    <property name="email_confirm" column="email_confirm"/>
+    <property name="qr_name" column="qr_name"/>
+    <property name="payment" column="payment"/>
+    <property name="transaction_id" column="transaction_id"/>
+    <property name="booking_request_id" column="booking_request_id"/>
+ 	</class>
+</hibernate-mapping>

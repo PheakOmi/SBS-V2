@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-configuration PUBLIC
+		"-//Hibernate/Hibernate Configuration DTD 3.0//EN"
+		"http://hibernate.sourceforge.net/hibernate-configuration-3.0.dtd">
+		
+		
+<hibernate-configuration>
+    <session-factory>
+        <property name="hibernate.dialect">org.hibernate.dialect.PostgreSQLDialect</property>
+        <property name="hibernate.connection.driver_class">org.postgresql.Driver</property>
+         <property name="hibernate.connection.url">jdbc:postgresql://localhost/SBS</property>
+
+        <property name="hibernate.connection.username">postgres</property>
+
+        <property name="hibernate.connection.password">admin</property>
+         
+        <!--  <property name="current_session_context_class">thread</property> -->
+        <property name="cache.provider_class">org.hibernate.cache.NoCacheProvider</property>
+        <property name="show_sql">false</property>
+        <property name="hbm2ddl.auto">update</property>
+
+         <mapping resource ="batch_master.hbm.xml"/>
+         <mapping resource ="booking_master.hbm.xml"/>
+         <mapping resource ="bus_master.hbm.xml"/>
+         <mapping resource ="driver_bus_assigned.hbm.xml"/>
+         <mapping resource ="location_master.hbm.xml"/>
+         <mapping resource ="pickup_location_master.hbm.xml"/>
+         <mapping resource ="schedule_master.hbm.xml"/>
+         <mapping resource ="user_info.hbm.xml"/>
+         <mapping resource ="userRole.hbm.xml"/>
+         <mapping resource ="booking_request_master.hbm.xml"/>
+         <mapping resource ="dept_time_master.hbm.xml"/>
+         <mapping resource ="cost_master.hbm.xml"/>
+         <mapping resource ="refund_master.hbm.xml"/>
+
+         
+         
+    </session-factory>
+</hibernate-configuration>

@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN" "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd" >
+
+<hibernate-mapping>
+ 	<class name="com.EntityClasses.Booking_Request_Master" table="booking_request_master">
+ 	 	
+ 	 <id name="id" column="id" >    
+ 	    <generator class="increment"/>    
+ 	 </id>
+    <property name="destination_id" column="destination_id"/>
+    <property name="source_id" column="source_id"/>
+    <property name="from_id" column="from_id"/>
+    <property name="approved_by" column="approved_by"/>
+    <property name="to_id" column="to_id"/>
+    <property name="dept_time" column="dept_time"/>
+    <property name="dept_date" column="dept_date"/>
+    <property name="description" column="description"/>
+    <property name="feedback" column="feedback"/>
+    <property name="status" column="status"/>
+    <property name="token" column="token"/>
+    <property name="user_id"  column="user_id"/>
+    <property name="created_at" column="created_at"/>
+    <property name="updated_at" column="updated_at"/>
+ 	</class>
+</hibernate-mapping>
+
+        private int id;
+        private int destination_id;
+        private int source_id;
+        private int from_id;
+        private int approved_by;
+        private int to_id;
+        private Time dept_time;
+        private Date dept_date;
+        private String description;
+        private String feedback;
+        private String status;
+        private String token;
+        private int user_id;
+        private Timestamp created_at;
+        private Timestamp updated_at;

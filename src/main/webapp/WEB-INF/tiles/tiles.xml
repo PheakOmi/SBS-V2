@@ -1,0 +1,150 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE tiles-definitions PUBLIC
+       "-//Apache Software Foundation//DTD Tiles Configuration 3.0//EN"
+       "http://tiles.apache.org/dtds/tiles-config_3_0.dtd">
+<tiles-definitions>
+	<definition name="base.definition"
+		template="/WEB-INF/views/template/layout.jsp">
+		<put-attribute name="title" value="" />
+		<put-attribute name="header" value="/WEB-INF/views/layout/header.jsp" />
+		<put-attribute name="sidebar" value="/WEB-INF/views/layout/sidebar.jsp" />
+		<put-attribute name="footer" value="/WEB-INF/views/layout/footer.jsp" />
+	</definition>
+	<definition name="base.definition2"
+		template="/WEB-INF/views/template/layout2.jsp">
+		<put-attribute name="title" value="" />
+	</definition>
+	<definition name="base.definition3"
+				template="/WEB-INF/views/template/layout3.jsp">
+		<put-attribute name="title" value="" />
+		<!--<put-attribute name="header" value="/WEB-INF/views/layout/header.jsp" />-->
+		<!--<put-attribute name="sidebar" value="/WEB-INF/views/layout/sidebar.jsp" />-->
+		<!--<put-attribute name="footer" value="/WEB-INF/views/layout/footer.jsp" />-->
+	</definition>
+	<definition name="bus_management" extends="base.definition">
+		<put-attribute name="title" value="Bus Management" />
+		<put-attribute name="body" value="/WEB-INF/views/view/bus_management.jsp" />		
+	</definition>
+	<definition name="report" extends="base.definition">
+		<put-attribute name="title" value="Reports" />
+		<put-attribute name="body" value="/WEB-INF/views/view/report.jsp" />		
+	</definition>
+	<definition name="sReport" extends="base.definition">
+		<put-attribute name="title" value="Reports" />
+		<put-attribute name="body" value="/WEB-INF/views/view/sReport.jsp" />		
+	</definition>
+	<definition name="bookingReport2" extends="base.definition">
+		<put-attribute name="title" value="Bookings Report" />
+		<put-attribute name="body" value="/WEB-INF/views/view/bookingReport2.jsp" />		
+	</definition>
+	<definition name="location_management" extends="base.definition">
+		<put-attribute name="title" value="Location Management" />
+		<put-attribute name="body" value="/WEB-INF/views/view/location_management.jsp" />		
+	</definition>
+	<definition name="input_schedule" extends="base.definition3">
+		<put-attribute name="title" value="Input Monthly Schedule" />
+		<put-attribute name="body" value="/WEB-INF/views/view/input_schedule.jsp" />
+	</definition>
+	<definition name="ticketmng" extends="base.definition">
+		<put-attribute name="title" value="Reset Tickets" />
+		<put-attribute name="body" value="/WEB-INF/views/view/ticketmng.jsp" />		
+	</definition>
+	<definition name="bus_update" extends="base.definition">
+		<put-attribute name="title" value="Bus Management" />
+		<put-attribute name="body" value="/WEB-INF/views/view/bus_update.jsp" />		
+	</definition>
+	<definition name="admin_booking" extends="base.definition">
+		<put-attribute name="title" value="Bookings" />
+		<put-attribute name="body" value="/WEB-INF/views/view/admin_booking.jsp" />		
+	</definition>
+	<definition name="refund_detail" extends="base.definition">
+		<put-attribute name="title" value="Refund Detail" />
+		<put-attribute name="body" value="/WEB-INF/views/view/refund_detail.jsp" />		
+	</definition>
+	<definition name="scheduleReport2" extends="base.definition">
+		<put-attribute name="title" value="Schedules Report" />
+		<put-attribute name="body" value="/WEB-INF/views/view/scheduleReport2.jsp" />		
+	</definition>
+	<definition name="admin_booking_request" extends="base.definition">
+		<put-attribute name="title" value="Booking Requests" />
+		<put-attribute name="body" value="/WEB-INF/views/view/admin_booking_request.jsp" />		
+	</definition>
+	<definition name="historical_booking_request" extends="base.definition">
+		<put-attribute name="title" value="Historical Booking Requests" />
+		<put-attribute name="body" value="/WEB-INF/views/view/historical_booking_request.jsp" />		
+	</definition>
+	<definition name="historical_request_detail" extends="base.definition">
+		<put-attribute name="title" value="Booking Request Detail" />
+		<put-attribute name="body" value="/WEB-INF/views/view/historical_request_detail.jsp" />		
+	</definition>
+	<definition name="departure_time" extends="base.definition">
+		<put-attribute name="title" value="Departure Time" />
+		<put-attribute name="body" value="/WEB-INF/views/view/departure_time.jsp" />		
+	</definition>
+	<definition name="departure_date" extends="base.definition">
+		<put-attribute name="title" value="Departure Date" />
+		<put-attribute name="body" value="/WEB-INF/views/view/departure_date.jsp" />		
+	</definition>
+	<definition name="pricemng" extends="base.definition">
+		<put-attribute name="title" value="Price Management" />
+		<put-attribute name="body" value="/WEB-INF/views/view/pricemng.jsp" />		
+	</definition>
+	<definition name="historical_booking" extends="base.definition">
+		<put-attribute name="title" value="Bookings" />
+		<put-attribute name="body" value="/WEB-INF/views/view/historical_booking.jsp" />		
+	</definition>
+	<definition name="admin_profile" extends="base.definition">
+		<put-attribute name="title" value="Profile" />
+		<put-attribute name="body" value="/WEB-INF/views/view/admin_profile.jsp" />		
+	</definition>
+	<definition name="booking_detail" extends="base.definition">
+		<put-attribute name="title" value="Booking Details" />
+		<put-attribute name="body" value="/WEB-INF/views/view/booking_detail.jsp" />		
+	</definition>
+	<definition name="schedule" extends="base.definition">
+		<put-attribute name="title" value="Schedules" />
+		<put-attribute name="body" value="/WEB-INF/views/view/schedule.jsp" />		
+	</definition>
+	<definition name="schedule_list" extends="base.definition">
+		<put-attribute name="title" value="Schedules" />
+		<put-attribute name="body" value="/WEB-INF/views/view/schedule_list.jsp" />		
+	</definition>
+	<definition name="refund_list" extends="base.definition">
+		<put-attribute name="title" value="Refunds" />
+		<put-attribute name="body" value="/WEB-INF/views/view/refund_list.jsp" />		
+	</definition>
+	<definition name="unpaid_booking_list" extends="base.definition">
+		<put-attribute name="title" value="Unpaid Bookings" />
+		<put-attribute name="body" value="/WEB-INF/views/view/unpaid_booking_list.jsp" />		
+	</definition>
+	<definition name="schedule_detail" extends="base.definition">
+		<put-attribute name="title" value="Schedule Detail" />
+		<put-attribute name="body" value="/WEB-INF/views/view/schedule_detail.jsp" />		
+	</definition>
+	<definition name="schedule_detail2" extends="base.definition">
+		<put-attribute name="title" value="Schedule Detail" />
+		<put-attribute name="body" value="/WEB-INF/views/view/schedule_detail2.jsp" />		
+	</definition>
+	<definition name="current_schedule" extends="base.definition">
+		<put-attribute name="title" value="Current Schedules" />
+		<put-attribute name="body" value="/WEB-INF/views/view/current_schedule.jsp" />		
+	</definition>
+	<definition name="historical_schedule" extends="base.definition">
+		<put-attribute name="title" value="Historical Schedules" />
+		<put-attribute name="body" value="/WEB-INF/views/view/historical_schedule.jsp" />		
+	</definition>
+	<definition name="create_schedule" extends="base.definition">
+		<put-attribute name="title" value="Create Schedule" />
+		<put-attribute name="body" value="/WEB-INF/views/view/create_schedule.jsp" />		
+	</definition>
+	<definition name="create_user" extends="base.definition">
+		<put-attribute name="title" value="Create User" />
+		<put-attribute name="body" value="/WEB-INF/views/view/create_user.jsp" />		
+	</definition>
+	<definition name="request_detail" extends="base.definition">
+		<put-attribute name="title" value="Booking Request Detail" />
+		<put-attribute name="body" value="/WEB-INF/views/view/request_detail.jsp" />		
+	</definition>
+	
+	
+</tiles-definitions>
