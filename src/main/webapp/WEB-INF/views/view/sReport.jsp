@@ -14,7 +14,6 @@
                                                 <table id="tt" class="table table-striped table-bordered table-hover">
                                                     <thead>
                                                         <tr>
-                                                            <th>No</th>
                                                             <th>Code</th>
                                                             <th>Bus</th>
                                                             <th>Driver</th>
@@ -237,15 +236,15 @@ $(document).ready(function(){
                                 var drivers  = response.drivers;
                                 for (var i=0;i<schedules.length;i++)
                                         {
-                                        var schedule = '<tr search" s-title="'+schedules[i].code+'" data-url="schedule_detail?id='+schedules[i].id+'"><td>'+(i+1)+'</td>'
+                                        var schedule = '<tr search" s-title="'+schedules[i].code+'" data-url="schedule_detail?id='+schedules[i].id+'">'
                                                             +'<td>'+schedules[i].code+'</td>'
                                                             +'<td>'+searchBus(schedules[i].bus_id,buses)+'</td>'
                                                             +'<td>'+searchDriver(schedules[i].driver_id,drivers)+'</td>'
-                                                            +'<td>'+searchLocation(schedules[i].from_id,locations)+'</td>'
-                                                            +'<td>'+searchLocation(schedules[i].to_id,locations)+'</td>'
+                                                            +'<td>'+searchLocation(schedules[i].source_id,locations)+'</td>'
+                                                            +'<td>'+searchLocation(schedules[i].destination_id,locations)+'</td>'
                                                             +'<td>'+formatDate(schedules[i].dept_date)+'</td>'
                                                             +'<td>'+schedules[i].dept_time+'</td>'
-                                                            +'<td>'+schedules[i].number_booking+'</td></tr>';
+                                                            +'<td>'+(schedules[i].number_staff+schedules[i].number_student+schedules[i].number_customer)+'</td></tr>';
                                         $("#allSchedules").append(schedule);                
                                         }
                                         $('#myModal').modal('toggle');

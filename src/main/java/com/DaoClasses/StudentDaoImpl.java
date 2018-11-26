@@ -127,52 +127,29 @@ public class StudentDaoImpl implements StudentDao{
         int user_id = id.getAuthentic();
         try {
 
-                    Booking_Master booking_master = new Booking_Master();
-                    booking_master.setUser_id(user_id);
-                    booking_master.setFrom_id(book_data.getSource());
-                    booking_master.setTo_id(book_data.getDestination());
-                    booking_master.setDept_date(java.sql.Date.valueOf(book_data.getDeparture_date()));
-                    booking_master.setDescription("student");
-                    booking_master.setQr_status(false);
-                    booking_master.setNotification("Booked");
-                    booking_master.setNumber_booking(1);
-                    booking_master.setCreated_at(created_at);
-                    booking_master.setAdult(1);
-                    booking_master.setChild(0);
-                    booking_master.setPayment("Succeed");
-                    booking_master.setBooking_request_id(0);
-                    location_master = (Location_Master) session.load(Location_Master.class,book_data.getSource());
-                    booking_master.setDept_time(location_master.getDept_time());
-                    session.save(booking_master);
-                    booking_master.setCode(Custom_Imp.getBookingSequence(booking_master.getId()));
-                    session.update(booking_master);
-                    count_ticket ++;
-
-
-            if(book_data.getChoice()==2){
-
-                        Booking_Master booking_return = new Booking_Master();
-                        booking_return.setUser_id(user_id);
-                        booking_return.setCreated_at(created_at);
-                        booking_return.setFrom_id(book_data.getDestination());
-                        booking_return.setTo_id(book_data.getSource());
-                        booking_return.setDept_date(java.sql.Date.valueOf(book_data.getReturn_date()));
-                        booking_return.setDescription("student");
-                        booking_return.setNotification("Booked");
-                        booking_return.setQr_status(false);
-                        booking_return.setChild(0);
-                        booking_return.setAdult(0);
-                        booking_return.setNumber_booking(1);
-                        booking_return.setPayment("Succeed");
-                        location_master = (Location_Master) session.load(Location_Master.class,book_data.getDestination());
-                        booking_return.setDept_time(location_master.getDept_time());
-                        session.save(booking_return);
-                        booking_return.setCode(Custom_Imp.getBookingSequence(booking_return.getId()));
-                        session.update(booking_return);
-                        count_ticket ++;
-
-            }
-
+                    for(int i = 0; i<book_data.getSchedule_id().length; i++) {
+                        Booking_Master booking_master = new Booking_Master();
+                        booking_master.setUser_id(user_id);
+                        booking_master.setSchedule_id(book_data.getSchedule_id()[i]);
+                        booking_master.setSource_id(new userDaoImpl().getScheduleById(book_data.getSchedule_id()[i]).getSource_id());
+                        booking_master.setDestination_id(new userDaoImpl().getScheduleById(book_data.getSchedule_id()[i]).getDestination_id());
+                        booking_master.setDept_date(new userDaoImpl().getScheduleById(book_data.getSchedule_id()[i]).getDept_date());
+                        booking_master.setDescription("student");
+                        booking_master.setQr_status(false);
+                        booking_master.setQr(new userDaoImpl().getScheduleById(book_data.getSchedule_id()[i]).getSource_id()+""+new userDaoImpl().getScheduleById(book_data.getSchedule_id()[i]).getDestination_id()+""+new userDaoImpl().getScheduleById(book_data.getSchedule_id()[i]).getDept_date()+""+new userDaoImpl().getScheduleById(book_data.getSchedule_id()[i]).getDept_time()+""+user_id);
+                        booking_master.setNotification("Booked");
+                        booking_master.setNumber_booking(1);
+                        booking_master.setCreated_at(created_at);
+                        booking_master.setAdult(1);
+                        booking_master.setChild(0);
+                        booking_master.setPayment("Succeed");
+                        booking_master.setBooking_request_id(0);
+                        booking_master.setDept_time(new userDaoImpl().getScheduleById(book_data.getSchedule_id()[i]).getDept_time());
+                        session.save(booking_master);
+                        booking_master.setCode(Custom_Imp.getBookingSequence(booking_master.getId()));
+                        session.update(booking_master);
+                        count_ticket++;
+                    }
 
             if(count_ticket>0){
                 User_Info user_info = (User_Info) session.load(User_Info.class,user_id);

@@ -73,11 +73,7 @@ $(document).ready(function(){
 		swal("Oops!", "The input cannot be empty", "error")
 		return
 		}
-        if(b_model.toLowerCase().search("rental")!=-1)
-        {
-        swal("Oops!", "The keyword Rental is reserverd, you cannot create bus with this model!", "error")  
-        return
-        }
+
 		if((format.test(b_plate)) || (format.test(b_model))|| (format.test(b_number_of_seat)))
 		{
 		swal("Oops!", "You cannot input special characters in any one of the fields", "error")  

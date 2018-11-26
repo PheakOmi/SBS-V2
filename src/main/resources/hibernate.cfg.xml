@@ -32,6 +32,7 @@
          <mapping resource ="dept_time_master.hbm.xml"/>
          <mapping resource ="cost_master.hbm.xml"/>
          <mapping resource ="refund_master.hbm.xml"/>
+        <mapping resource ="schedule_logs.hbm.xml"/>
 
          
          

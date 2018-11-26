@@ -23,19 +23,3 @@
     <property name="updated_at" column="updated_at"/>
  	</class>
 </hibernate-mapping>
-
-        private int id;
-        private int destination_id;
-        private int source_id;
-        private int from_id;
-        private int approved_by;
-        private int to_id;
-        private Time dept_time;
-        private Date dept_date;
-        private String description;
-        private String feedback;
-        private String status;
-        private String token;
-        private int user_id;
-        private Timestamp created_at;
-        private Timestamp updated_at;

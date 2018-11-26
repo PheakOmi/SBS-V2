@@ -8,7 +8,7 @@
                                     <div class="title-block">
                                         <h3 class="title"> Booking Request Information </h3> <br>
                                         <div id="actionn">
-                                       	<button type="button" class="btn btn-oval btn-success pull-left" onClick="goTO()" style="color:white;margin: 0 1% 0 2%;">Confirm</button>
+                                       	<button type="button" class="btn btn-oval btn-success pull-left" onClick="goTO()" style="color:white;margin: 0 1% 0 2%;">Approve</button>
                                         <button type="button" class="btn btn-oval btn-danger pull-left" onClick="reject()" style="color:white;">Reject</button>
                       					</div>                  
                       
@@ -49,15 +49,15 @@
                                             <input type="text" class="form-control" id="requestedOn" style="width: inherit;"> 
                                         </div>
                                         
-                                        <div class="form-group col-md-4" style="margin-bottom:2%;">
-                                            <label for="exampleInputPassword3"  style="margin-right:4%;">Booking Time Allowance</label>
-                                            <input type="text" name="time" class="form-control" id="timeAllowance" style="width: inherit;"> 
-                                        </div>
-                                        
-                                        <div class="form-group col-md-4" style="margin-bottom:2%;">
-                                            <label for="exampleInputPassword3"  style="margin-right:4%;">Number of bookings</label>
-                                            <input type="text" class="form-control" id="no_booking" style="width: inherit;"> 
-                                        </div>
+                                        <%--<div class="form-group col-md-4" style="margin-bottom:2%;">--%>
+                                            <%--<label for="exampleInputPassword3"  style="margin-right:4%;">Booking Time Allowance</label>--%>
+                                            <%--<input type="text" name="time" class="form-control" id="timeAllowance" style="width: inherit;"> --%>
+                                        <%--</div>--%>
+                                        <%----%>
+                                        <%--<div class="form-group col-md-4" style="margin-bottom:2%;">--%>
+                                            <%--<label for="exampleInputPassword3"  style="margin-right:4%;">Number of bookings</label>--%>
+                                            <%--<input type="text" class="form-control" id="no_booking" style="width: inherit;"> --%>
+                                        <%--</div>--%>
                                        
                                         
                                         <div class="form-group col-md-4" style="margin-bottom:2%;">
@@ -92,9 +92,9 @@ var id;
 var u_id;
 load = function () {
 	var data = ${data};
+	console.log(data)
 	var request = data.request;
 	var locations = data.locations;
-	var p_locations = data.p_locations;
     var customers = data.customers;
 	id= parseInt(request.id);
     u_id= parseInt(request.user_id);
@@ -102,14 +102,9 @@ load = function () {
 	if(request.status!="Pending")
 		$("#actionn").hide();
 	$("#uname").val(searchCustomer(request.user_id,customers));
-    if(request.source_id!=0)
-        $("#from").val(searchPLocation(request.source_id,p_locations)+", "+searchLocation(request.from_id,locations));
-    else
-        $("#from").val(searchLocation(request.from_id,locations));
-    if(request.destination_id!=0)
-        $("#to").val(searchPLocation(request.destination_id,p_locations)+", "+searchLocation(request.to_id,locations));
-    else
-        $("#to").val(searchLocation(request.to_id,locations));
+    $("#from").val(searchLocation(request.source_id,locations));
+    $("#to").val(searchLocation(request.destination_id,locations));
+
 
 
 	$("#dept_date").val(formatDate(request.dept_date));
@@ -123,7 +118,6 @@ load = function () {
 	
 	$("input").prop('disabled', true);
 	$("#description").prop('disabled', true);
-	$("#timeAllowance").prop('disabled', false);
 }
 
 $(document).ready(function(){
@@ -135,7 +129,6 @@ $(document).ready(function(){
     		type:'GET',
     		data:{	id:id,
                     user_id:u_id,
-    				provided_time:toDate($("#timeAllowance").val(),'h:m')
     			},
     		traditional: true,			
     		success: function(response){

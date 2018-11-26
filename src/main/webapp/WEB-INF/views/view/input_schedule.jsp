@@ -1,3 +1,5 @@
+<%@taglib prefix="sec"
+		  uri="http://www.springframework.org/security/tags"%>
 <body>
 <div id='wrap'>
 	<div id='calendar'></div>
@@ -53,8 +55,10 @@
 	</div>
 </div>
 <div style="width:800px; margin:10px auto;">
+<sec:authorize access="hasRole('ROLE_ADMIN')">
 	<button type="button" id="inputBtn" class="btn btn-success btn-lg btn-block" onclick="openModal()">Input Schedule</button>
 	<button type="button" id="emailBtn" class="btn btn-warning btn-lg btn-block" onclick="sendEmail()">Email All Schedules Of This Month</button>
+</sec:authorize>
 </div>
 
 </body>

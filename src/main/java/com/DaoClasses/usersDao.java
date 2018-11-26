@@ -34,7 +34,7 @@ public interface usersDao {
 	public List <Booking_Master> getAllCurrentBookings();
 	public List <Booking_Master> getAllHistoricalBookings();
 	public Booking_Master getBookingById (int id);
-	public List <Schedule_Master> getAllSchedulesByMonth(String month, String year) throws ParseException, java.text.ParseException;
+	public List <?> getAllSchedulesByMonth(String month, String year) throws ParseException, java.text.ParseException;
 	public List <Schedule_Master> schedule_list(String date, String month, String year) throws ParseException, java.text.ParseException;
 	public List<Booking_Master> getBookingByScheduleId (int id);
 	public Schedule_Master getScheduleById (int id);
@@ -44,7 +44,7 @@ public interface usersDao {
 	public List<User_Info> getAllUsers();
 	public Map<String, Object> saveSchedule(Schedule_Model schedule)throws ParseException;
 	public Map<String, Object> saveMultipleSchedule(Schedule_Model schedule)throws ParseException;
-	public int updateSchedule(Schedule_Model schedule) throws ParseException;
+	public Map<String, Object> updateSchedule(Schedule_Model schedule) throws ParseException;
 	public int updateSchedule2(Schedule_Model schedule) throws ParseException;
 	public List <Booking_Request_Master> getAllCurrentBookingRequests();
 	public Booking_Request_Master getBookingRequestById (int id);
@@ -81,5 +81,8 @@ public interface usersDao {
 	public int doneRefund(Refund_Master refund);
 	public int payBooking(Booking_Master booking);
 	public List<User_Info> getAllStudents();
-	public int sendMonthlySchedule(Schedule_Model model) throws ParseException;
+	public Map<String, Object> sendMonthlySchedule(Schedule_Model model) throws ParseException;
+	public int apReqEmail(String token, String type);
+	public List <Schedule_Log> getAllLogsBySchedeuleId(int id);
+	public Schedule_Log getScheduleLogById (int id);
 }

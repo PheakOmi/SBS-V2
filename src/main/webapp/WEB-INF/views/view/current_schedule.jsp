@@ -1,3 +1,5 @@
+<%@taglib prefix="sec"
+          uri="http://www.springframework.org/security/tags"%>
 <body onload="load()">
 <article class="content cards-page">
                     <div class="title-block">
@@ -16,7 +18,9 @@
                        
 	                         <div style="margin-bottom: 10px;">
 		                         <button data-toggle="tooltip" title="View all historical schedules" type="button" class="btn btn-pill-right btn-info pull-right" style="color:white;" onclick="location.href='historical_schedule';">View all historical schedules <i class="fa fa-angle-right"></i></button>
-		                         <button data-toggle="tooltip" title="Create a schedule" type="button" class="btn btn-info" onclick="window.location.href='create_schedule'" style="color:white;">Create</button>
+                                <sec:authorize access="hasRole('ROLE_ADMIN')">
+                                    <button data-toggle="tooltip" title="Create a schedule" type="button" class="btn btn-info" onclick="window.location.href='create_schedule'" style="color:white;">Create</button>
+                                </sec:authorize>
 	                      	 </div>
 	                      	 </div>
 	                      	 <div style="margin-bottom: 10px;">

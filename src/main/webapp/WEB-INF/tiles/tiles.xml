@@ -29,9 +29,17 @@
 		<put-attribute name="title" value="Reports" />
 		<put-attribute name="body" value="/WEB-INF/views/view/report.jsp" />		
 	</definition>
+	<definition name="log_detail" extends="base.definition">
+		<put-attribute name="title" value="Log Detail" />
+		<put-attribute name="body" value="/WEB-INF/views/view/log_detail.jsp" />
+	</definition>
 	<definition name="sReport" extends="base.definition">
 		<put-attribute name="title" value="Reports" />
 		<put-attribute name="body" value="/WEB-INF/views/view/sReport.jsp" />		
+	</definition>
+	<definition name="schedule_log_list" extends="base.definition">
+		<put-attribute name="title" value="Logs List" />
+		<put-attribute name="body" value="/WEB-INF/views/view/schedule_log_list.jsp" />
 	</definition>
 	<definition name="bookingReport2" extends="base.definition">
 		<put-attribute name="title" value="Bookings Report" />

@@ -160,8 +160,8 @@ load = function(){
 									
 									+'<td>'+bookings[i].code+'</td>'
 									+'<td class="user_info" style="color:blue" data='+bookings[i].user_id+'>'+searchCustomer(bookings[i].user_id,customers)+'</td>'
-									+'<td>'+searchLocation(bookings[i].from_id,locations)+'</td>'
-									+'<td>'+searchLocation(bookings[i].to_id,locations)+'</td>'
+									+'<td>'+searchLocation(bookings[i].source_id,locations)+'</td>'
+									+'<td>'+searchLocation(bookings[i].destination_id,locations)+'</td>'
 									+'<td>'+formatDate(bookings[i].dept_date)+'</td>'
 									+'<td>'+bookings[i].dept_time+'</td>'
 									+'<td>'+bookings[i].description+'</td></tr>';

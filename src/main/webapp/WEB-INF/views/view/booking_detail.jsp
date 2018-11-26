@@ -69,14 +69,16 @@ load = function () {
 	console.log(data)
 	$("#code").val(booking.code);
 	$("#uname").val(searchCustomer(booking.user_id,customers));
-	if(booking.source_id!=0)
-	    $("#from").val(searchPLocation(booking.source_id,p_locations)+", "+searchLocation(booking.from_id,locations));
-	else
-        $("#from").val(searchLocation(booking.from_id,locations));
-    if(booking.destination_id!=0)
-        $("#to").val(searchPLocation(booking.destination_id,p_locations)+", "+searchLocation(booking.to_id,locations));
-    else
-        $("#to").val(searchLocation(booking.to_id,locations));
+	// if(booking.source_id!=0)
+	//     $("#from").val(searchPLocation(booking.source_id,p_locations)+", "+searchLocation(booking.from_id,locations));
+	// else
+    //     $("#from").val(searchLocation(booking.from_id,locations));
+    // if(booking.destination_id!=0)
+    //     $("#to").val(searchPLocation(booking.destination_id,p_locations)+", "+searchLocation(booking.to_id,locations));
+    // else
+    //     $("#to").val(searchLocation(booking.to_id,locations));
+    $("#from").val(searchLocation(booking.source_id,locations));
+    $("#to").val(searchLocation(booking.destination_id,locations));
 
 	$("#dept_date").val(booking.dept_date);
 	$("#dept_time").val(booking.dept_time);

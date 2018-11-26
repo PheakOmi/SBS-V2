@@ -64,7 +64,7 @@ import com.client_mail.ApplicationConfig;
 //import com.client_mail.ApplicationConfig;
 //import com.client_mail.MailService;
 import com.client_mail.MailService;
-
+import getInfoLogin.IdUser;
 
 
 
@@ -398,6 +398,41 @@ public class userDaoImpl implements usersDao{
         }
         return users;
     }
+
+    public List<User_Info> getAllKITAdmins() {
+        List<User_Info> users= new ArrayList<User_Info>();
+        Transaction trns25 = null;
+        Session session = HibernateUtil.getSessionFactory().openSession();
+        try{
+            List<Map<String,Object>> list_map = new ArrayList<Map<String,Object>>();
+            trns25  = session.beginTransaction();
+            String queryString  = "from UserRole where role=:role";
+            Query query = session.createQuery(queryString);
+            query.setString("role", "ROLE_KIT_ADMIN");
+            List<UserRole> roles = query.list();
+            for(int i=0;i<roles.size();i++)
+            {
+                User_Info user1 = new User_Info();
+                User_Info user = roles.get(i).getUser_info();
+                user1.setId(user.getId());
+                user1.setUsername(user.getUsername());
+                user1.setEmail(user.getEmail());
+                users.add(user1);
+            }
+
+        }
+        catch(RuntimeException e)
+        {
+            e.printStackTrace();
+        }
+        finally{
+            session.flush();
+            session.close();
+        }
+        return users;
+    }
+
+
 
 
     public List<User_Info> getAllStudents() {
@@ -1000,6 +1035,29 @@ public class userDaoImpl implements usersDao{
         return request;
 		
 	}
+
+
+
+    public Schedule_Log getScheduleLogById (int id){
+        Schedule_Log log= new Schedule_Log();
+        Transaction trns19 = null;
+        Session session = HibernateUtil.getSessionFactory().openSession();
+        try {
+            trns19 = session.beginTransaction();
+            String queryString = "from Schedule_Log where id=:id";
+            Query query = session.createQuery(queryString);
+            query.setInteger("id",id);
+            log=(Schedule_Log)query.uniqueResult();
+        } catch (RuntimeException e) {
+            e.printStackTrace();
+            return log;
+        } finally {
+            session.flush();
+            session.close();
+        }
+        return log;
+
+    }
 	
 	
 	public List<Booking_Master> getBookingByScheduleId (int id){
@@ -1285,9 +1343,10 @@ public class userDaoImpl implements usersDao{
     		Timestamp created_at = new Timestamp(System.currentTimeMillis());
         	location.setCreated_at(created_at);
         	location.setEnabled(true);
-        	if(!location.getDept_time2().equals("nth"))
-        	location.setDept_time(java.sql.Time.valueOf(location.getDept_time2()));
-            session.save(location);  
+//        	if(!location.getDept_time2().equals("nth"))
+        	location.setDept_time(null);
+        	location.setForstudent(true);
+            session.save(location);
             session.getTransaction().commit();
         } catch (RuntimeException e) {
         	if (trns7 != null) {
@@ -1323,8 +1382,11 @@ public class userDaoImpl implements usersDao{
             s.setCode(getScheduleSequence(iid));
             session.update(s);
             session.getTransaction().commit();
+            schedule.setIdd(iid);
+            schedule.setDescription("Create");
+            saveScheduleLog(schedule);
             schedule.setDept_date2(java.sql.Date.valueOf(schedule.getDept_date()));
-            email_schedule_create(schedule);
+            map.put("schedule", schedule);
             map.put("status", "all fine");
             map.put("message", "Schedule "+getScheduleSequence(iid)+" has just been created successfully");
     		
@@ -1343,6 +1405,115 @@ public class userDaoImpl implements usersDao{
         return map;
 
 	}
+
+    public void  saveScheduleLog(Schedule_Model schedule) throws ParseException{
+        Schedule_Log log = new Schedule_Log();
+        Map<String, Object> map = new HashMap <String, Object>();
+        Transaction trns7 = null;
+        int iid;
+        Session session = HibernateUtil.getSessionFactory().openSession();
+        try {
+            trns7 = session.beginTransaction();
+            Timestamp created_at = new Timestamp(System.currentTimeMillis());
+            IdUser UserId = new IdUser();
+            User_Info user = (User_Info) session.load(User_Info.class,UserId.getAuthentic());
+            log.setSchedule_id(schedule.getIdd());
+            String driver = new String();
+            if(schedule.getDriver_id()==0)
+                driver="";
+            else
+                driver = getCustomerById(schedule.getDriver_id()).getUsername();
+            log.setDescription("From "+getLocationById(schedule.getSource_id()).getAbbreviation()+" To "+getLocationById(schedule.getDestination_id()).getAbbreviation()+";"+" On: "+schedule.getDept_time()+" "+schedule.getDept_date()+"; Bus: "+getBusById(schedule.getBus_id()).getModel()+" With: "+schedule.getNo_seat()+" seats; Driver: "+driver);
+            log.setCreated_at(created_at);
+            log.setUpdated_by(user.getUsername());
+            log.setAction(schedule.getDescription());
+            session.save(log);
+            session.getTransaction().commit();
+
+        } catch (RuntimeException e) {
+            if (trns7 != null) {
+                trns7.rollback();
+            }
+            e.printStackTrace();
+        } finally {
+            session.flush();
+            session.close();
+        }
+
+    }
+
+
+
+     public Map<String, Object> updateSchedule(Schedule_Model schedule) throws ParseException{
+        List <Schedule_Master> schedules  = new ArrayList<Schedule_Master>();
+        Schedule_Model old_schedule = new Schedule_Model();
+        Map<String, Object> map = new HashMap <String, Object>();
+        int count =0;
+        Date dept_date = null;
+        Time dept_time = null;
+        Transaction trns7 = null;
+        Session session = HibernateUtil.getSessionFactory().openSession();
+        try {
+            trns7 = session.beginTransaction();
+            schedules = getAllSchedules();
+            for(Schedule_Master ss:schedules)
+            {
+                if(schedule.getId()!=ss.getId())
+                {
+                    if (ss.getCode().equals(schedule.getCode()))
+                        count++;
+                }
+            }
+            if(count>=1){
+                map.put("status", "0");
+                return map;
+            }
+            String queryString = "FROM Schedule_Master where id=:id";
+            Query query = session.createQuery(queryString);
+            query.setInteger("id",schedule.getId());
+            Schedule_Master s  = (Schedule_Master) query.uniqueResult();
+
+            old_schedule.setDept_date2(s.getDept_date());
+            old_schedule.setNo_seat(s.getNo_seat());
+            old_schedule.setDept_time(s.getDept_time().toString());
+            old_schedule.setSource_id(s.getSource_id());
+            old_schedule.setDestination_id(s.getDestination_id());
+
+            Timestamp updated_at = new Timestamp(System.currentTimeMillis());
+            s.setBus_id(schedule.getBus_id());
+            s.setDriver_id(schedule.getDriver_id());
+            s.setSource_id(schedule.getSource_id());
+            s.setDestination_id(schedule.getDestination_id());
+            s.setNo_seat(schedule.getNo_seat());
+            s.setDept_date(java.sql.Date.valueOf(schedule.getDept_date()));
+            s.setDept_time(java.sql.Time.valueOf(schedule.getDept_time()));
+            s.setUpdated_at(updated_at);
+            session.update(s);
+            session.getTransaction().commit();
+            schedule.setIdd(schedule.getId());
+            schedule.setDescription("Update");
+            saveScheduleLog(schedule);
+            schedule.setDept_date2(java.sql.Date.valueOf(schedule.getDept_date()));
+
+//            email_schedule_update(old_schedule,schedule);
+        } catch (RuntimeException e) {
+            if (trns7 != null) {
+                trns7.rollback();
+            }
+            e.printStackTrace();
+            map.put("status", "5");
+            return map;
+        } finally {
+            session.flush();
+            session.close();
+        }
+         map.put("status", "1");
+         map.put("schedule", old_schedule);
+         map.put("new_schedule", schedule);
+         return map;
+    }
+
+
 
     public Map<String, Object> saveMultipleSchedule(Schedule_Model schedule) throws ParseException{
         Map<String, Object> map = new HashMap <String, Object>();
@@ -1369,6 +1540,10 @@ public class userDaoImpl implements usersDao{
                 s.setCode(getScheduleSequence(iid));
                 all_id = all_id+getScheduleSequence(iid)+", ";
                 session.update(s);
+                schedule.setIdd(iid);
+                schedule.setDept_date(date);
+                schedule.setDescription("Create");
+                saveScheduleLog(schedule);
             }
             session.getTransaction().commit();
 //            schedule.setDept_date2(java.sql.Date.valueOf(schedule.getDept_date()));
@@ -1435,6 +1610,52 @@ public class userDaoImpl implements usersDao{
             session.close();
         }
     }
+
+    public static void sendRequestEmail(Booking_Request_Master req) throws ParseException {
+        Transaction trns = null;
+        Session session = HibernateUtil.getSessionFactory().openSession();
+        try{
+            trns  = session.beginTransaction();
+            List<User_Info> users = new userDaoImpl().getAllKITAdmins();
+            SimpleDateFormat formatter = new SimpleDateFormat("dd MMMM yyyy");
+            String strDate = formatter.format(req.getDept_date());
+            String requester = new userDaoImpl().getCustomerById(req.getUser_id()).getUsername();
+            for(User_Info user:users){
+                Mail mail = new Mail();
+                mail.setMailFrom("vkirirom_shuttlebus@gmail.com");
+                mail.setMailTo(user.getEmail());
+                mail.setMailSubject("Booking Request Confirmation");
+
+                Map<String, Object> model = new HashMap<String, Object>();
+                model.put("name", user.getUsername());
+                model.put("requester", requester);
+                model.put("date", strDate);
+                model.put("time", req.getDept_time());
+                model.put("from", new userDaoImpl().getLocationById(req.getSource_id()).getName());
+                model.put("to", new userDaoImpl().getLocationById(req.getDestination_id()).getName());
+                model.put("reason", req.getDescription());
+                model.put("token", req.getToken());
+                mail.setModel(model);
+                mail.setFile_name("email_schedule_request.txt");
+
+
+                AbstractApplicationContext context = new AnnotationConfigApplicationContext(ApplicationConfig.class);
+                MailService mailService = (MailService) context.getBean("mailService");
+                mailService.sendEmail(mail);
+                context.close();
+            }
+        }
+        catch (RuntimeException e){
+            if (trns != null) {
+                trns.rollback();
+            }
+        }finally {
+            session.flush();
+            session.close();
+        }
+    }
+
+
 
     public void email_monthly_schedule(List<Schedule_Master> schedules) throws ParseException {
         Transaction trns = null;
@@ -2106,67 +2327,7 @@ public class userDaoImpl implements usersDao{
 	}
 	
 	
-	
-	
-	
-	public int updateSchedule(Schedule_Model schedule) throws ParseException{
-		List <Schedule_Master> schedules  = new ArrayList<Schedule_Master>();
-		int count =0;
-		Date dept_date = null;
-		Time dept_time = null;
-    	Transaction trns7 = null;
-        Session session = HibernateUtil.getSessionFactory().openSession();
-        try {
-            trns7 = session.beginTransaction();
-            schedules = getAllSchedules();
-            for(Schedule_Master ss:schedules)
-            {
-                if(schedule.getId()!=ss.getId())
-                        {
-                            if (ss.getCode().equals(schedule.getCode()))
-                                count++;
-                        }
-            }
-            if(count>=1)
-                return 0;
-            String queryString = "FROM Schedule_Master where id=:id";
-            Query query = session.createQuery(queryString);
-            query.setInteger("id",schedule.getId());
-            Schedule_Master s  = (Schedule_Master) query.uniqueResult();
 
-            Schedule_Model old_schedule = new Schedule_Model();
-            old_schedule.setDept_date2(s.getDept_date());
-            old_schedule.setNo_seat(s.getNo_seat());
-            old_schedule.setDept_time(s.getDept_time().toString());
-            old_schedule.setSource_id(s.getSource_id());
-            old_schedule.setDestination_id(s.getDestination_id());
-
-    		Timestamp updated_at = new Timestamp(System.currentTimeMillis());
-    		s.setBus_id(schedule.getBus_id());
-            s.setDriver_id(schedule.getDriver_id());
-            s.setSource_id(schedule.getSource_id());
-            s.setDestination_id(schedule.getDestination_id());
-            s.setNo_seat(schedule.getNo_seat());
-            s.setDept_date(java.sql.Date.valueOf(schedule.getDept_date()));
-            s.setDept_time(java.sql.Time.valueOf(schedule.getDept_time()));
-            s.setUpdated_at(updated_at);
-            session.update(s);  
-            session.getTransaction().commit();
-            schedule.setDept_date2(java.sql.Date.valueOf(schedule.getDept_date()));
-
-            email_schedule_update(old_schedule,schedule);
-        } catch (RuntimeException e) {
-        	if (trns7 != null) {
-                trns7.rollback();
-            }
-            e.printStackTrace();
-            return 5;
-        } finally {
-            session.flush();
-            session.close();
-        }
-		return 1;
-	}
 
 
 
@@ -2267,7 +2428,7 @@ public class userDaoImpl implements usersDao{
     		Timestamp updated_at = new Timestamp(System.currentTimeMillis());
 //    		r.setProvided_time(request.getProvided_time());
     		r.setUpdated_at(updated_at);
-    		r.setStatus("Confirmed");
+    		r.setStatus("Approved");
     		session.update(r);  
             session.getTransaction().commit();
         } catch (RuntimeException e) {
@@ -2282,9 +2443,44 @@ public class userDaoImpl implements usersDao{
         }
 		return 1;
 	}
-	
-	
-	
+
+
+    public int apReqEmail(String token, String type){
+	    List<Booking_Request_Master> requests = new ArrayList<Booking_Request_Master>();
+        Transaction trns7 = null;
+        Session session = HibernateUtil.getSessionFactory().openSession();
+        try {
+            trns7 = session.beginTransaction();
+            String queryString = "FROM Booking_Request_Master where token=:token";
+            Query query = session.createQuery(queryString);
+            query.setString("token", token);
+            requests  = (List<Booking_Request_Master>)query.list();
+            if (requests.size()!=1)
+            {
+                return 0;
+            }
+            Timestamp updated_at = new Timestamp(System.currentTimeMillis());
+            requests.get(0).setUpdated_at(updated_at);
+            if(type.equals("1"))
+                requests.get(0).setStatus("Approved");
+            else
+                requests.get(0).setStatus("Rejected");
+            session.update(requests.get(0));
+            session.getTransaction().commit();
+        } catch (RuntimeException e) {
+            if (trns7 != null) {
+                trns7.rollback();
+            }
+            e.printStackTrace();
+            return 5;
+        } finally {
+            session.flush();
+            session.close();
+        }
+        return 1;
+    }
+
+
 	public int rejectRequest(Booking_Request_Master request){
     	Transaction trns7 = null;
         Session session = HibernateUtil.getSessionFactory().openSession();
@@ -2547,6 +2743,26 @@ public class userDaoImpl implements usersDao{
 
 
 
+    public List <Schedule_Log> getAllLogsBySchedeuleId(int id){
+        List <Schedule_Log> logs  = new ArrayList<Schedule_Log>();
+        Transaction trns19 = null;
+        Session session = HibernateUtil.getSessionFactory().openSession();
+        try {
+            trns19 =  session.beginTransaction();
+            String queryString = "from Schedule_Log where schedule_id =:id";
+            Query query = session.createQuery(queryString);
+            query.setInteger("id", id);
+            logs=(List<Schedule_Log>)query.list();
+        } catch (RuntimeException e) {
+            e.printStackTrace();
+            return logs;
+        } finally {
+            session.flush();
+            session.close();
+        }
+        return logs;
+
+    }
 
 	
 	
@@ -2579,7 +2795,7 @@ public class userDaoImpl implements usersDao{
         Session session = HibernateUtil.getSessionFactory().openSession();
         try {
             trns19 =  session.beginTransaction();
-            String queryString = "from Booking_Request_Master where dept_date>=:localDate and status=:status and enabled=:enabled";
+            String queryString = "from Booking_Request_Master where dept_date>=:localDate and status=:status";
             Query query = session.createQuery(queryString);
             DateTimeFormatter dtf = DateTimeFormatter.ofPattern("yyyy-MM-dd");
             LocalDate localDate = LocalDate.now();
@@ -2587,7 +2803,6 @@ public class userDaoImpl implements usersDao{
             System.out.println(dtf.format(localDate));
             query.setDate("localDate", date);
             query.setString("status", "Pending");
-            query.setBoolean("enabled", true);
             requests=(List<Booking_Request_Master>)query.list();
         } catch (RuntimeException e) {
             e.printStackTrace();
@@ -2757,9 +2972,9 @@ public class userDaoImpl implements usersDao{
 		System.out.println("Time "+booking.getN());
 		String query = "from Booking_Master where id>0";
    		if(from!=0)
-   			query=query+" and from_id=:from";
+   			query=query+" and source_id=:from";
    		if(to!=0)
-   			query=query+" and to_id=:to";
+   			query=query+" and destination_id=:to";
    		if(!booking.getDept_date().equals("nth"))
    			query=query+" and dept_date=:date";
    		if(!booking.getN().toString().equals("nth"))
@@ -2814,9 +3029,9 @@ public class userDaoImpl implements usersDao{
         System.out.println("Time "+booking.getN());
         String query = "from Schedule_Master where id>0";
         if(from!=0)
-            query=query+" and from_id=:from";
+            query=query+" and source_id=:from";
         if(to!=0)
-            query=query+" and to_id=:to";
+            query=query+" and destination_id=:to";
         if(driver!=0)
             query=query+" and driver_id=:driver";
         if(bus!=0)
@@ -2894,50 +3109,67 @@ public class userDaoImpl implements usersDao{
 	}
 
 
-    public int sendMonthlySchedule(Schedule_Model model) throws ParseException{
-        List <Schedule_Master> schedules  = new ArrayList<Schedule_Master>();
-        schedules = getAllSchedulesByMonth(Integer.toString(model.getId()),Integer.toString(model.getIdd()));
+    public Map<String, Object> sendMonthlySchedule(Schedule_Model model) throws ParseException{
+        Map<String, Object> map = new HashMap <String, Object>();
+        List <?> schedules = getAllSchedulesByMonth(Integer.toString(model.getId()),Integer.toString(model.getIdd()));
         System.out.println("M = "+Integer.toString(model.getId())+" Y = "+Integer.toString(model.getIdd()));
         if(schedules.size()<=0)
-            return 5;
-        email_monthly_schedule(schedules);
-        return 1;
+        {
+            map.put("status", "5");
+            return map;
+        }
+
+        List <Schedule_Master> ss  = new ArrayList<Schedule_Master>();
+        for(int i=0; i<schedules.size(); i++) {
+            Object[] row = (Object[]) schedules.get(i);
+            Schedule_Master s = new Schedule_Master();
+            s.setDept_date((Date) row[0]);
+            s.setDept_time((Time)row[1]);
+            s.setSource_id((int)row[2]);
+            s.setDestination_id((int)row[3]);
+            s.setNo_seat(Integer.parseInt(row[4].toString()));
+
+            ss.add(s);
+        }
+        map.put("status", "1");
+        map.put("schedules", ss);
+        return map;
     }
 
-	
-	
-	
-	public List <Schedule_Master> getAllSchedulesByMonth(String month, String year) throws ParseException{
-		List <Schedule_Master> schedules  = new ArrayList<Schedule_Master>();
-		SimpleDateFormat formatter = new SimpleDateFormat("dd/MM/yyyy");
+
+
+
+    public List <?> getAllSchedulesByMonth(String month, String year) throws ParseException{
+        List <?> obj = new ArrayList<>();
+        SimpleDateFormat formatter = new SimpleDateFormat("dd/MM/yyyy");
         Transaction trns19 = null;
         Session session = HibernateUtil.getSessionFactory().openSession();
         try {
             trns19 =  session.beginTransaction();
-            String queryString = "from Schedule_Master s where s.dept_date between :date1 and :date2 order by s.dept_date";
+            String queryString = "select s.dept_date, s.dept_time, s.source_id, s.destination_id, sum(s.no_seat) from Schedule_Master s where s.dept_date between :date1 and :date2 group by (s.dept_date, s.dept_time, s.source_id, s.destination_id) order by s.dept_date";
             Query query = session.createQuery(queryString);
             Date date1;
-    		Date date2;
+            Date date2;
             String first = "01/"+month+"/"+year;
             date1 = formatter.parse(first);
-            String last = getLastDateOfMonth(date1)+"/"+month+"/"+year;
-       		date2 = formatter.parse(last);
-       		System.out.println(date1+"   "+date2);
-       		
-      		query.setDate("date1", date1);
+            String last = new userDaoImpl().getLastDateOfMonth(date1)+"/"+month+"/"+year;
+            date2 = formatter.parse(last);
+            System.out.println(date1+"   "+date2);
+
+            query.setDate("date1", date1);
             query.setDate("date2", date2);
 
-            schedules=(List<Schedule_Master>)query.list();
+            obj=query.list();
         } catch (RuntimeException e) {
             e.printStackTrace();
-            return schedules;
+            return obj;
         } finally {
             session.flush();
             session.close();
         }
-        return schedules;
-		
-	}
+        return obj;
+
+    }
 	
 	
 	

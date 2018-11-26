@@ -1,3 +1,5 @@
+<%@taglib prefix="sec"
+          uri="http://www.springframework.org/security/tags"%>
 <body onload="load()">
 <article class="content cards-page">
 
@@ -14,30 +16,32 @@
                             <input type="text" class="form-control" id="scode" style="width: inherit;" placeholder=Code required disabled> </div>
                         <div class="form-group col-md-4" style="margin-bottom:2%; float:left;">
                             <label for="exampleInputEmail3"  style="margin-right:4%;">Driver</label>
-                            <select class="form-control" style="width: inherit;" id="sdriver"><option></option></select> </div>
+                            <select class="form-control cpast" style="width: inherit;" id="sdriver"><option></option></select> </div>
                         <div class="form-group col-md-4" style="margin-bottom:2%; float:left;">
                             <label for="exampleInputPassword3"  style="margin-right:4%;">Bus</label>
-                            <select class="form-control" style="width: inherit;" id="sbus"><option></option></select> </div>
+                            <select class="form-control cpast" style="width: inherit;" id="sbus"><option></option></select> </div>
                         <div class="form-group col-md-4" style="margin-bottom:2%; float:left;">
                             <label for="exampleInputEmail3"  style="margin-right:4%;">From</label>
-                            <select class="form-control" style="width: inherit;" id="sfrom" required><option></option></select> </div>
+                            <select class="form-control cbooked" style="width: inherit;" id="sfrom" required><option></option></select> </div>
                         <div class="form-group col-md-4" style="margin-bottom:2%;float:left;">
                             <label for="exampleInputPassword3"  style="margin-right:4%;">To</label>
-                            <select class="form-control" style="width: inherit;" id="sto" required><option></option></select> </div>
+                            <select class="form-control cbooked" style="width: inherit;" id="sto" required><option></option></select> </div>
                         <div class="form-group col-md-4" style="margin-bottom:2%;float:left;">
                             <label for="exampleInputPassword3"  style="margin-right:4%;">Bookings Allowed</label>
                             <input type="text" class="form-control" id="sallowed" style="width: inherit;" placeholder="Bookings Allowed" required disabled> </div>
                         <div class="form-group col-md-4" style="margin-bottom:2%;float:left;">
                             <label for="exampleInputEmail3"  style="margin-right:4%;">Departure Date</label>
-                            <input type="text" name="no_past_date" class="form-control" id="sdeptdate" style="width: inherit;" placeholder="Departure Date" required> </div>
+                            <input type="text" name="no_past_date" class="form-control cbooked" id="sdeptdate" style="width: inherit;" placeholder="Departure Date" required> </div>
                         <div class="form-group col-md-4" style="margin-bottom:2%;float:left;">
                             <label for="exampleInputPassword3"  style="margin-right:4%;">Departure Time</label>
-                            <input type="text" name="time" class="form-control" id="sdepttime" style="width: inherit;" placeholder="Departure Time" required> </div>
+                            <input type="text" name="time" class="form-control cbooked" id="sdepttime" style="width: inherit;" placeholder="Departure Time" required> </div>
                         <div class="form-group col-md-4" style="margin-bottom:2%;float:left;">
                             <label for="exampleInputPassword3"  style="margin-right:4%;">Number Booked</label>
                             <input type="text" class="form-control" id="sbooked" style="width: inherit;" placeholder="Booked" required disabled> </div>
                         <div class="form-group col-md-12" style="margin-bottom:2%;">
-                            <button type="submit" class="btn btn-info">Update</button>
+                            <sec:authorize access="hasRole('ROLE_ADMIN')">
+                                <button type="submit" class="btn btn-info" id="ubtn">Update</button>
+                            </sec:authorize>
                         </div>
 
                     </form>
@@ -173,6 +177,13 @@
         $( ".unhoverr" ).on('click', function(e) {
             e.stopPropagation();
         });
+        $(".cbooked").prop('disabled', true);
+        if(data.daydiff=="past")
+        {
+            $(".cbooked").prop('disabled', true);
+            $(".cpast").prop('disabled', true);
+            $("#ubtn").hide();
+        }
 
 
         $( ".user_info" ).on('click', function(e) {

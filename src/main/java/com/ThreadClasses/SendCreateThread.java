@@ -1,0 +1,35 @@
+package com.ThreadClasses;
+
+import com.DaoClasses.userDaoImpl;
+import com.ModelClasses.Schedule_Model;
+
+public class SendCreateThread implements Runnable {
+
+    private Thread t;
+
+    Schedule_Model schedule_model;
+    public SendCreateThread(Schedule_Model schedule_model) {
+
+        this.schedule_model = schedule_model;
+
+    }
+
+    public void run(){
+        try {
+
+            new userDaoImpl().email_schedule_create(schedule_model);
+        }
+        catch (Exception e){
+
+        }
+    }
+
+    public void start () {
+        System.out.println("THREAD STARTED");
+        if (t == null) {
+            t = new Thread (this);
+            t.start ();
+        }
+    }
+
+}

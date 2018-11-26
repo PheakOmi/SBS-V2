@@ -30,6 +30,7 @@
                         <select class="form-control" style="width: inherit;" id="uusertype" required>
                             <option value="ROLE_ADMIN">Admin</option>
                             <option value="ROLE_DRIVER">Driver</option>
+
                         </select></div>
 
                     <div class="form-group col-md-12" style="margin-bottom:2%;">

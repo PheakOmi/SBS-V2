@@ -16,7 +16,6 @@
                                                 <table id="tt" class="table table-striped table-bordered table-hover">
                                                     <thead>
                                                         <tr>
-                                                            <th>No</th>
                                                             <th>Code</th>
                                                             <th>Name</th>
                                                             <th>From</th>
@@ -228,11 +227,11 @@ $(document).ready(function(){
                         
                                 for (var i=0;i<bookings.length;i++)
                                     {
-                                    var booking = '<tr class="hoverr search" s-title="'+bookings[i].code+'" data-url="booking_detail?id='+bookings[i].id+'"><td>'+(i+1)+'</td>'
+                                    var booking = '<tr class="hoverr search" s-title="'+bookings[i].code+'" data-url="booking_detail?id='+bookings[i].id+'">'
                                                         +'<td>'+bookings[i].code+'</td>'
                                                         +'<td>'+searchCustomer(bookings[i].user_id,customers)+'</td>'
-                                                        +'<td>'+searchLocation(bookings[i].from_id,locations)+'</td>'
-                                                        +'<td>'+searchLocation(bookings[i].to_id,locations)+'</td>'
+                                                        +'<td>'+searchLocation(bookings[i].source_id,locations)+'</td>'
+                                                        +'<td>'+searchLocation(bookings[i].destination_id,locations)+'</td>'
                                                         +'<td>'+formatDate(bookings[i].dept_date)+'</td>'
                                                         +'<td>'+bookings[i].dept_time+'</td>'
                                                         +'<td>'+bookings[i].number_booking+'</td>'

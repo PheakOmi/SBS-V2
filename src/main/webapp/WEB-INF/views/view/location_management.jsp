@@ -3,144 +3,10 @@
                     <div class="title-block">
                         <h3 class="title"> Location Management </h3><br>
                         <button type="button" class="btn btn-info" data-toggle="modal" data-target="#myModal">Create</button>
-                        <div class="modal fade" id="myModal" role="dialog">
-    <div class="modal-dialog">
-    
-      <!-- Modal content-->
-      <div class="modal-content">
-        <div class="modal-header">
-          <h4 class="modal-title center">Create a location</h4>
-          <button type="button" class="close" data-dismiss="modal">&times;</button>
-        </div>
-        <div class="modal-body">
-          <form id="myForm">
-                                        <div class="form-group">
-                                            <label class="control-label">Name</label>
-                                            <input type="text" class="form-control boxed" id="name" maxlength="30"  required> </div>
-                                        <div>
 
 
-                                        <div class="form-group">
-                                            <label class="control-label">Abbreviation</label>
-                                            <input type="text" class="form-control boxed" id="sname" maxlength="30"  required> </div>
-                                        <div>
-                                                
-                                                <label>
-                                                    <input class="checkbox rounded" type="checkbox" id="forstudent">
-                                                    <span>Also for students?</span>
-                                                </label>
-                                            </div>
-                                        <div class="form-group" style="display:none;" id="ddf">
-                                            <label class="control-label">Departure time for students</label>
-                                            <input type="text" name="time" class="form-control boxed" id="depttime"  required> </div>
-                                       
-                                         <button type="submit" id="bsubmit" class="btn btn-default" style="display:none;">Create</button>
-                                    </form>
-        </div>
-        <div class="modal-footer">
-          <button type="button" class="btn btn-default pull-left" data-dismiss="modal">Close</button>
-          <button onClick="goTO()" class="btn btn-info">Create</button>
-        </div>
-      </div>
-      
-    </div>
-  </div>
-  
-  
-  
-  
-  <div class="modal fade" id="myModal2" role="dialog">
-    <div class="modal-dialog">
-    
-      <!-- Modal content-->
-      <div class="modal-content">
-        <div class="modal-header">
-          <h4 class="modal-title center">Create a pick up location</h4>
-          <button type="button" class="close" data-dismiss="modal">&times;</button>
-        </div>
-        <div class="modal-body">
-          <form id="myForm2">
-                                        <div class="form-group">
-                                            <label class="control-label">Name</label>
-                                            <input type="text" class="form-control boxed" id="pname" maxlength="30"  required> </div>
-                                       
-                                         <button type="submit" id="bpsubmit" class="btn btn-default" style="display:none;">Create</button>
-                                    </form>
-        </div>
-        <div class="modal-footer">
-          <button type="button" class="btn btn-default pull-left" data-dismiss="modal">Close</button>
-          <button onClick="goTO2()" class="btn btn-info">Create</button>
-        </div>
-      </div>
-      
-    </div>
-  </div>
-  
-  
-  
-  <div class="modal fade" id="myModal3" role="dialog">
-    <div class="modal-dialog">
-    
-      <!-- Modal content-->
-      <div class="modal-content">
-        <div class="modal-header">
-          <h4 class="modal-title center">Update a location</h4>
-          <button type="button" class="close" data-dismiss="modal">&times;</button>
-        </div>
-        <div class="modal-body">
-          <form id="updateLocationForm">
-                                        <div class="form-group">
-                                            <label class="control-label">Name</label>
-                                            <input type="text" class="form-control boxed" id="updateLName" maxlength="30"  required> </div>
-                                       
-                                         <button type="submit" id="updateLocationBtn" class="btn btn-default" style="display:none;">Create</button>
-                                    </form>
-        </div>
-        <div class="modal-footer">
-          <button type="button" class="btn btn-default pull-left" data-dismiss="modal">Close</button>
-          <button onClick="goTO3()" class="btn btn-info">Update</button>
-        </div>
-      </div>
-      
-    </div>
-  </div>
-  
-  
-  
-  
-  
-   <div class="modal fade" id="myModal4" role="dialog">
-    <div class="modal-dialog">
-    
-      <!-- Modal content-->
-      <div class="modal-content">
-        <div class="modal-header">
-          <h4 class="modal-title center">Update a  pick up location</h4>
-          <button type="button" class="close" data-dismiss="modal">&times;</button>
-        </div>
-        <div class="modal-body">
-          <form id="updatePLocationForm">
-                                        <div class="form-group">
-                                            <label class="control-label">Name</label>
-                                            <input type="text" class="form-control boxed" id="updatePLName" maxlength="30"  required> </div>
-                                       
-                                         <button type="submit" id="updatePLocationBtn" class="btn btn-default" style="display:none;">Create</button>
-                                    </form>
-        </div>
-        <div class="modal-footer">
-          <button type="button" class="btn btn-default pull-left" data-dismiss="modal">Close</button>
-          <button onClick="goTO4()" class="btn btn-info">Update</button>
-        </div>
-      </div>
-      
-    </div>
-  </div>
-  
-  
-  
-  
-  
-  
+
+
                     </div>
  					<!-- section class="section">
                         <div class="row sameheight-container">
@@ -179,6 +45,135 @@
                                         </section>
                     </article>
 </body>
+
+ <div class="modal fade" id="myModal" role="dialog">
+     <div class="modal-dialog">
+
+         <!-- Modal content-->
+         <div class="modal-content">
+             <div class="modal-header">
+                 <h4 class="modal-title center">Create a location</h4>
+                 <button type="button" class="close" data-dismiss="modal">&times;</button>
+             </div>
+             <div class="modal-body">
+                 <form id="myForm">
+                     <div class="form-group">
+                         <label class="control-label">Name</label>
+                         <input type="text" class="form-control boxed" id="name" maxlength="30"  required> </div>
+                     <div>
+
+
+                         <div class="form-group">
+                             <label class="control-label">Abbreviation</label>
+                             <input type="text" class="form-control boxed" id="sname" maxlength="30"  required> </div>
+                         <%--<div>--%>
+
+                             <%--<label>--%>
+                                 <%--<input class="checkbox rounded" type="checkbox" id="forstudent">--%>
+                                 <%--<span>Also for students?</span>--%>
+                             <%--</label>--%>
+                         <%--</div>--%>
+                         <%--<div class="form-group" style="display:none;" id="ddf">--%>
+                             <%--<label class="control-label">Departure time for students</label>--%>
+                             <%--<input type="text" name="time" class="form-control boxed" id="depttime"  required> </div>--%>
+
+                         <button type="submit" id="bsubmit" class="btn btn-default" style="display:none;">Create</button>
+                     </div>
+                 </form>
+             </div>
+             <div class="modal-footer">
+                 <button type="button" class="btn btn-default pull-left" data-dismiss="modal">Close</button>
+                 <button onClick="goTO()" class="btn btn-info">Create</button>
+             </div>
+         </div>
+
+     </div>
+ </div>
+
+ <div class="modal fade" id="myModal2" role="dialog">
+     <div class="modal-dialog">
+
+         <!-- Modal content-->
+         <div class="modal-content">
+             <div class="modal-header">
+                 <h4 class="modal-title center">Create a pick up location</h4>
+                 <button type="button" class="close" data-dismiss="modal">&times;</button>
+             </div>
+             <div class="modal-body">
+                 <form id="myForm2">
+                     <div class="form-group">
+                         <label class="control-label">Name</label>
+                         <input type="text" class="form-control boxed" id="pname" maxlength="30"  required> </div>
+
+                     <button type="submit" id="bpsubmit" class="btn btn-default" style="display:none;">Create</button>
+                 </form>
+             </div>
+             <div class="modal-footer">
+                 <button type="button" class="btn btn-default pull-left" data-dismiss="modal">Close</button>
+                 <button onClick="goTO2()" class="btn btn-info">Create</button>
+             </div>
+         </div>
+
+     </div>
+ </div>
+
+
+ <div class="modal fade" id="myModal3" role="dialog">
+     <div class="modal-dialog">
+
+         <!-- Modal content-->
+         <div class="modal-content">
+             <div class="modal-header">
+                 <h4 class="modal-title center">Update a location</h4>
+                 <button type="button" class="close" data-dismiss="modal">&times;</button>
+             </div>
+             <div class="modal-body">
+                 <form id="updateLocationForm">
+                     <div class="form-group">
+                         <label class="control-label">Name</label>
+                         <input type="text" class="form-control boxed" id="updateLName" maxlength="30"  required> </div>
+
+                     <button type="submit" id="updateLocationBtn" class="btn btn-default" style="display:none;">Create</button>
+                 </form>
+             </div>
+             <div class="modal-footer">
+                 <button type="button" class="btn btn-default pull-left" data-dismiss="modal">Close</button>
+                 <button onClick="goTO3()" class="btn btn-info">Update</button>
+             </div>
+         </div>
+
+     </div>
+ </div>
+
+
+
+ <div class="modal fade" id="myModal4" role="dialog">
+     <div class="modal-dialog">
+
+         <!-- Modal content-->
+         <div class="modal-content">
+             <div class="modal-header">
+                 <h4 class="modal-title center">Update a  pick up location</h4>
+                 <button type="button" class="close" data-dismiss="modal">&times;</button>
+             </div>
+             <div class="modal-body">
+                 <form id="updatePLocationForm">
+                     <div class="form-group">
+                         <label class="control-label">Name</label>
+                         <input type="text" class="form-control boxed" id="updatePLName" maxlength="30"  required> </div>
+
+                     <button type="submit" id="updatePLocationBtn" class="btn btn-default" style="display:none;">Create</button>
+                 </form>
+             </div>
+             <div class="modal-footer">
+                 <button type="button" class="btn btn-default pull-left" data-dismiss="modal">Close</button>
+                 <button onClick="goTO4()" class="btn btn-info">Update</button>
+             </div>
+         </div>
+
+     </div>
+ </div>
+
 <script>
 var l;
 var llid;
@@ -333,8 +328,8 @@ $(document).ready(function(){
     		type:'GET',
     		data:{	name:b_name,
                     abbreviation:s_name,
-                    forstudent:fors,
-                    dept_time2:time
+                    // forstudent:fors,
+                    // dept_time2:time
     			},
     		traditional: true,			
     		success: function(response){
@@ -643,11 +638,11 @@ function getlength(number) {
     return number.toString().length;
 }
 
-$('#forstudent').on('click', function(){
-    console.log("clicked")
-            $('#ddf').toggle();
-            status = parseInt(status) +1;
-        });
+// $('#forstudent').on('click', function(){
+//     console.log("clicked")
+//             $('#ddf').toggle();
+//             status = parseInt(status) +1;
+//         });
 
 function toDate(dStr,format) {
     var now = new Date();

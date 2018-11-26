@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN" "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd" >
+
+<hibernate-mapping>
+ 	<class name="com.EntityClasses.Schedule_Log" table="schedule_logs">
+ 	 	
+ 	 <id name="id" column="id" >    
+ 	    <generator class="increment"/>    
+ 	 </id>
+    <property name="schedule_id"  column="schedule_id"/>
+    <property name="description" column="description"/>
+    <property name="created_at" column="created_at"/>
+    <property name="updated_by" column="updated_by"/>
+	<property name="action" column="action"/>
+
+ 	</class>
+</hibernate-mapping>

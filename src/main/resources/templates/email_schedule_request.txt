@@ -1,0 +1,31 @@
+<html>
+<head></head>
+
+<body>
+   <div style="background-color:LightGray;padding:5%;color:black;">
+	   <div style="text-align:left;background-color:white;padding:3%">
+	   <table style="font-family: arial, sans-serif; border-collapse: collapse;width: 100%;">
+			  <tr>
+			    <td><img style="width:120px;height:100px" src="http://vkirirom.com/images/About_Company/vKirirom.png"></td>
+			  </tr>
+			  <tr>
+				<p style="color:black;"> Dear ${name}, </p>
+				<p style="color:black;"> There is a new booking request from ${requester}.</p>
+				<p><b>Date: </b>${date}</p>
+				<p><b>Time: </b>${time}</p>
+				<p><b>From: </b>${from}</p>
+				<p><b>To: </b>${to}</p>
+				<p><b>Reason: </b>${reason}</p>
+			    <p style="color:black;">Please click <a href="http://shuttlebus.vkirirom.com/ReqEmail?token="${token}&type=1>here</a> to confirm or click <a href="http://shuttlebus.vkirirom.com/ReqEmail?token="${token}&type=0>here</a> to reject</p>
+				<p style="color:black;">If the above link does not work for you, please copy and paste the following links into your browser address bar:</p>
+				<b>Confirm: </b><p>http://shuttlebus.vkirirom.com/ReqEmail?token=${token}&type=1</p>
+				<b>Reject: </b><p>http://shuttlebus.vkirirom.com/ReqEmail?token=${token}&type=0</p>
+			    <p style="color:black;">Thank you,</p>
+			    <p style="color:black;">A2A Shuttle Bus Team</p>
+			  </tr>
+
+	    </div>
+   </div>
+</body>
+
+</html>

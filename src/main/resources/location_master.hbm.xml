@@ -17,7 +17,7 @@
             <column name="enabled" not-null="true" />
      </property>
      <property name="forstudent" type="java.lang.Boolean">
-            <column name="forstudent" not-null="true" />
+            <column name="forstudent" not-null="false" />
      </property>
     
  	</class>

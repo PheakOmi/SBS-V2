@@ -28,17 +28,17 @@
 
 
 
-                       		<div style="display: flex;flex-direction: column;">
-                       			<div style="margin-bottom: 10px;">
-		                         <button type="button" class="btn btn-info pull-left" style="color:white;" onclick="location.href='refund_list';">Booking Refunds <span style="background-color: red; margin-left:7px;" class="badge pull-right" id="refundnoti"></span> </button>
+                       		<%--<div style="display: flex;flex-direction: column;">--%>
+                       			<%--<div style="margin-bottom: 10px;">--%>
+		                         <%--<button type="button" class="btn btn-info pull-left" style="color:white;" onclick="location.href='refund_list';">Booking Refunds <span style="background-color: red; margin-left:7px;" class="badge pull-right" id="refundnoti"></span> </button>--%>
 
-		                          
+		                          <%----%>
 
-		                          <button type="button" class="btn btn-info pull-left" style="color:white; margin-left: 10px;" onclick="location.href='unpaid_booking_list';">Unpaid Bookings <span style="background-color: red; margin-left:7px;" class="badge pull-right" id="unpaidnoti"></span></button>
-		                         
-	                      	 </div>
-	                      	 
-                       		</div>
+		                          <%--<button type="button" class="btn btn-info pull-left" style="color:white; margin-left: 10px;" onclick="location.href='unpaid_booking_list';">Unpaid Bookings <span style="background-color: red; margin-left:7px;" class="badge pull-right" id="unpaidnoti"></span></button>--%>
+		                         <%----%>
+	                      	 <%--</div>--%>
+	                      	 <%----%>
+                       		<%--</div>--%>
 
 
 
@@ -69,7 +69,7 @@
                                                 <table class="table table-striped table-bordered table-hover">
                                                     <thead>
                                                         <tr>
-                                                        	<th></th>
+                                                        	<%--<th></th>--%>
                                            
                                                             <th>Code</th>
                                                             <th>Name</th>
@@ -165,12 +165,12 @@ load = function(){
 			bookings = response.bookings;
 			locations = response.locations;
 			customers = response.customers;
-			unpaid = response.unpaid;
-			refund = response.refund;
-			if(unpaid.length>0)
-                $("#unpaidnoti").text(unpaid.length);
-            if(refund.length>0)
-                $("#refundnoti").text(refund.length);
+			// unpaid = response.unpaid;
+			// refund = response.refund;
+			// if(unpaid.length>0)
+            //     $("#unpaidnoti").text(unpaid.length);
+            // if(refund.length>0)
+            //     $("#refundnoti").text(refund.length);
 			all = bookings.length
 			console.log(locations)
 			var no_student = 0
@@ -184,20 +184,20 @@ load = function(){
 
 				var color="";
 				var cb="<td></td>";
-				if(bookings[i].notification=="Unassigned")
-					{
-						color = "background-color: coral;";
-						cb = '<td class="unhoverr"><label class="item-check" id="select-all-items"><input type="checkbox" class="checkbox">'
-    					+'<span></span></label></td>';
-    				}
+				// if(bookings[i].notification=="Unassigned")
+				// 	{
+				// 		color = "background-color: coral;";
+				// 		cb = '<td class="unhoverr"><label class="item-check" id="select-all-items"><input type="checkbox" class="checkbox">'
+    			// 		+'<span></span></label></td>';
+    			// 	}
 				var booking = '<tr class="hoverr search '+bookings[i].description+'" tofind="'+bookings[i].id+'"style="'+color+'"s-title="'+bookings[i].code+searchCustomer(bookings[i].user_id,customers).toLowerCase()+'" deptdate="'+formatDate(bookings[i].dept_date)+'" from="'+bookings[i].from_id+'"'+
 				'destination="'+bookings[i].destination_id+'"'+'source="'+bookings[i].source_id+'"'+'to="'+bookings[i].to_id+'"'+'data-url="booking_detail?id='+bookings[i].id+'">'
-									+cb
+									// +cb
 									
 									+'<td>'+bookings[i].code+'</td>'
 									+'<td class="user_info" style="color:blue" data='+bookings[i].user_id+'>'+searchCustomer(bookings[i].user_id,customers)+'</td>'
-									+'<td>'+searchLocation(bookings[i].from_id,locations)+'</td>'
-									+'<td>'+searchLocation(bookings[i].to_id,locations)+'</td>'
+									+'<td>'+searchLocation(bookings[i].source_id,locations)+'</td>'
+									+'<td>'+searchLocation(bookings[i].destination_id,locations)+'</td>'
 									+'<td>'+formatDate(bookings[i].dept_date)+'</td>'
 									+'<td>'+bookings[i].dept_time+'</td>'
 									+'<td>'+bookings[i].description+'</td></tr>';

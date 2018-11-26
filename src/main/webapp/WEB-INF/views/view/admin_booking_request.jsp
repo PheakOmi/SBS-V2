@@ -2,8 +2,8 @@
 <article class="content cards-page">
                     <div class="title-block">
                         <h3 class="title"> Booking Requests </h3>
-                         <p class="title-description"> All to-be-confirmed requests made by customers </p> 
-                         <button type="button" class="btn btn-pill-right btn-info pull-right" style="color:white;" onclick="location.href='historical_booking_request';">View all historical and confirmed requests <i class="fa fa-angle-right"></i></button>
+                         <p class="title-description"> All to-be-approved requests </p>
+                         <button type="button" class="btn btn-pill-right btn-info pull-right" style="color:white;" onclick="location.href='historical_booking_request';">View all historical and approved requests <i class="fa fa-angle-right"></i></button>
                     </div>
                     <section class="section">
                         <div class="row">
@@ -11,7 +11,7 @@
                                 <div class="card">
                                     <div class="card-block">
                                         <div class="card-title-block">
-                                            <h3 class="title">Requests to be confirmed </h3>
+                                            <h3 class="title">Requests to be approved </h3>
                                             
                                         </div>
                                         <section class="example">
@@ -19,13 +19,11 @@
                                                 <table class="table table-striped table-bordered table-hover">
                                                     <thead>
                                                         <tr>
-                                                            <th>No</th>
                                                             <th>Name</th>
                                                             <th>From</th>
                                                             <th>To</th>
                                                             <th>Departure Date</th>
                                                             <th>Departure Time</th>
-                                                            <th>Number of bookings</th>
                                                             <th>Status</th>
                                                         </tr>
                                                     </thead>
@@ -56,13 +54,12 @@ load = function(){
             customers = response.customers;
 			for (var i=0;i<requests.length;i++)
 			{
-			var booking = '<tr class="hoverr" style="background-color:#f9cdad;" data-url="request_detail?id='+requests[i].id+'"><td>'+(i+1)+'</td>'
+			var booking = '<tr class="hoverr" style="background-color:#f9cdad;" data-url="request_detail?id='+requests[i].id+'">'
 								+'<td>'+searchCustomer(requests[i].user_id,customers)+'</td>'
-								+'<td>'+searchLocation(requests[i].from_id,locations)+'</td>'
-								+'<td>'+searchLocation(requests[i].to_id,locations)+'</td>'
+								+'<td>'+searchLocation(requests[i].source_id,locations)+'</td>'
+								+'<td>'+searchLocation(requests[i].destination_id,locations)+'</td>'
 								+'<td>'+formatDate(requests[i].dept_date)+'</td>'
 								+'<td>'+requests[i].dept_time+'</td>'
-								+'<td>'+requests[i].number_of_booking+'</td>'
 								+'<td>'+requests[i].status+'</td></tr>';
 			$("#allRequest").append(booking);				
 			}

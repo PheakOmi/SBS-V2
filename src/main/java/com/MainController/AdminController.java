@@ -16,12 +16,13 @@ import java.util.Map;
 import com.EntityClasses.*;
 import com.ModelClasses.*;
 
+import com.ThreadClasses.*;
 import org.codehaus.jackson.map.ObjectMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.ModelAndView;
-
+import com.ThreadClasses.SendCreateThread;
 import com.DaoClasses.userDaoImpl;
 import com.ServiceClasses.usersService;
 
@@ -271,6 +272,23 @@ public class AdminController {
 
 
 
+	@RequestMapping(value="/schedule_log_list", method=RequestMethod.GET)
+	public ModelAndView schedule_log_list(@RequestParam(value = "id", required=true, defaultValue = "0") Integer id) {
+		Map<String,Object> map = new HashMap<String,Object>();
+		map.put("logs", usersService1.getAllLogsBySchedeuleId(id));
+		map.put("code", usersService1.getScheduleById(id).getCode());
+		ObjectMapper mapper = new ObjectMapper();
+		String json="";
+		try {
+			json = mapper.writeValueAsString(map);
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		return new ModelAndView("schedule_log_list","data",json);
+	}
+
+
+
 	@RequestMapping(value="/refund_detail", method=RequestMethod.GET)
 	public ModelAndView refund_detail(@RequestParam(value = "id", required=true, defaultValue = "0") Integer id, @RequestParam(value = "rid", required=true, defaultValue = "0") Integer rid) {
 		Booking_Master booking = usersService1.getBookingById(id);
@@ -315,13 +333,32 @@ public class AdminController {
 
 //=========================Returns booking request detail view================================
 	@RequestMapping(value="/request_detail", method=RequestMethod.GET)
-	public ModelAndView request_detail(@RequestParam(value = "id", required=true, defaultValue = "0") Integer id) {
+	public ModelAndView request_detail(@RequestParam(value = "id", required=true, defaultValue = "0") Integer id) throws ParseException{
 		Booking_Request_Master request = usersService1.getBookingRequestById(id);
 		Map<String,Object> map = new HashMap<String,Object>();
+		Calendar cal = Calendar.getInstance();
+		SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
+		String today=sdf.format(cal.getTime());
+		Date d1 = sdf.parse(today);
+		Date d2 = null;
+
 		map.put("request", request);
 		map.put("p_locations", usersService1.getAllPickUpLocations());
 		map.put("locations", usersService1.getAllLocations());
 		map.put("customers", usersService1.getAlCustomers());
+
+		d1.setHours(0);
+		d1.setMinutes(0);
+		d1.setSeconds(0);
+		d2 = request.getCreated_at();
+		long diff = d2.getTime() - d1.getTime();
+		long diffDays = diff / (24 * 60 * 60 * 1000);
+		if (diffDays<0)
+			map.put("daydiff","past");
+		else
+			map.put("daydiff","current");
+
+
 		ObjectMapper mapper = new ObjectMapper();
 		String json="";
 		try {
@@ -332,6 +369,21 @@ public class AdminController {
 		return new ModelAndView("request_detail","data",json);
 	}
 
+
+	@RequestMapping(value="/log_detail", method=RequestMethod.GET)
+	public ModelAndView log_detail(@RequestParam(value = "id", required=true, defaultValue = "0") Integer id) throws ParseException{
+		Schedule_Log log = usersService1.getScheduleLogById(id);
+		Map<String,Object> map = new HashMap<String,Object>();
+		map.put("log", log);
+		ObjectMapper mapper = new ObjectMapper();
+		String json="";
+		try {
+			json = mapper.writeValueAsString(map);
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		return new ModelAndView("log_detail","data",json);
+	}
 
 
 //=========================Returns historical booking request detail view================================
@@ -358,6 +410,11 @@ public class AdminController {
 	@RequestMapping(value="/schedule_detail", method=RequestMethod.GET)
 	public ModelAndView schedule_detail(@RequestParam(value = "id", required=true, defaultValue = "0") Integer id) throws ParseException {
 		Map<String,Object> map = new HashMap<String,Object>();
+		Calendar cal = Calendar.getInstance();
+		SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
+		String today=sdf.format(cal.getTime());
+		Date d1 = sdf.parse(today);
+		Date d2 = null;
         Schedule_Master schedule = usersService1.getScheduleById(id);
         String screen = "";
 		map.put("schedule", schedule);
@@ -368,6 +425,17 @@ public class AdminController {
 		map.put("bookings", usersService1.getBookingByScheduleId(id));
 		map.put("drivers", usersService1.getAlDrivers());
 		map.put("customers", usersService1.getAlCustomers());
+		d1.setHours(0);
+		d1.setMinutes(0);
+		d1.setSeconds(0);
+		d2 = schedule.getDept_date();
+		long diff = d2.getTime() - d1.getTime();
+		long diffDays = diff / (24 * 60 * 60 * 1000);
+		if (diffDays<0)
+			map.put("daydiff","past");
+		else
+			map.put("daydiff","current");
+
 		if(schedule.getNumber_customer()+schedule.getNumber_student()+schedule.getNumber_staff()>0)
 			screen+="schedule_detail2";
 		else
@@ -448,15 +516,44 @@ public class AdminController {
 	public @ResponseBody Map<String,Object> toSaveSchedule(Schedule_Model schedule) throws Exception{
 		Map<String,Object> res = new HashMap<String,Object>();
 		res = usersService1.saveSchedule(schedule);
-		System.out.println("S Java");
+		SendCreateThread  sendCreateThread = new SendCreateThread((Schedule_Model) res.get("schedule"));
+		sendCreateThread.start();
+		System.out.println("start return");
 		return res;
 		}
+
+
+//====================To save schedule by admin============================
+	@RequestMapping(value="/updateSchedule", method=RequestMethod.GET)
+	public @ResponseBody Map<String,Object> toUpdateSchedule(Schedule_Model schedule) throws Exception{
+		Map<String,Object> map = new HashMap<String,Object>();
+	//		System.out.println(schedule.getCode()+"  "+schedule.getDriver_id()+"  "+schedule.getBus_id()+"  "+schedule.getSource_id()+"  "+schedule.getDestination_id()+"  "+schedule.getNumber_booking()+"  "+schedule.getDept_date()+"  "+schedule.getDept_time());;
+		Map<String,Object> res = new HashMap<String,Object>();
+		res = usersService1.updateSchedule(schedule);
+		if(res.get("status").equals("0"))
+		{
+			map.put("status","0");
+			map.put("message","Code already existed!");
+		}
+		else if(res.get("status").equals("1"))
+		{
+			map.put("status","1");
+			map.put("message","Schedule has just been updated successfully");
+		}
+		else
+		{
+			map.put("status","5");
+			map.put("message","Technical problem occurs");
+		}
+		SendUpdateThread  sendUpdateThread = new SendUpdateThread((Schedule_Model) res.get("schedule"), (Schedule_Model) res.get("new_schedule"));
+		sendUpdateThread.start();
+		return map;
+	}
+
 	@RequestMapping(value="/createMultipleSchedule", method=RequestMethod.GET)
 	public @ResponseBody Map<String,Object> createMultipleSchedule(Schedule_Model schedule) throws Exception{
 		Map<String,Object> res = new HashMap<String,Object>();
 		res = usersService1.saveMultipleSchedule(schedule);
-		for(String d:schedule.getDate_arr())
-		System.out.println(d);
 		return res;
 	}
 
@@ -576,17 +673,21 @@ public class AdminController {
 		@RequestMapping(value="/sendMonthlySchedule", method=RequestMethod.GET)
 		public @ResponseBody Map<String,Object> sendMonthlySchedule(Schedule_Model model) throws Exception{
 			Map<String,Object> map = new HashMap<String,Object>();
-			int check = usersService1.sendMonthlySchedule(model);
-			if(check==1)
+			Map<String,Object> res = new HashMap<String,Object>();
+			res = usersService1.sendMonthlySchedule(model);
+			if(res.get("status").equals("1"))
 			{
 				map.put("status","1");
-				map.put("message","Emails have been sent to all users!");
+				map.put("message","Emails are being sent in background!");
 			}
 			else
 			{
 				map.put("status","5");
 				map.put("message","No Schedules Found In This Month!");
 			}
+			SendMonthlyThread  sendMonthlyThread = new SendMonthlyThread((List <Schedule_Master>)res.get("schedules"));
+			sendMonthlyThread.start();
+
 			return map;
 		}
 
@@ -629,6 +730,28 @@ public class AdminController {
 
 
 
+		@RequestMapping(value="/ReqEmail", method=RequestMethod.GET)
+		public Map<String,Object> apReqEmail(@RequestParam(value = "token", required=true) String token, @RequestParam(value = "type", required=true) String type) throws Exception{
+			Map<String,Object> map = new HashMap<String,Object>();
+			int check = usersService1.apReqEmail(token, type);
+			System.out.println("Checkkkkkk "+Integer.toString(check));
+			if(check==0)
+			{
+				map.put("status","0");
+				map.put("message","Token not found!");
+			}
+			else if(check==1)
+			{
+				map.put("status","1");
+				map.put("message","Request has just been confirmed successfully");
+			}
+			else
+			{
+				map.put("status","5");
+				map.put("message","Technical problem occurs");
+			}
+			return map;
+		}
 
 
 		@RequestMapping(value="/updateDate", method=RequestMethod.GET)
@@ -729,29 +852,6 @@ public class AdminController {
 
 
 
-//====================To save schedule by admin============================
-	@RequestMapping(value="/updateSchedule", method=RequestMethod.GET)
-	public @ResponseBody Map<String,Object> toUpdateSchedule(Schedule_Model schedule) throws Exception{
-		Map<String,Object> map = new HashMap<String,Object>();
-//		System.out.println(schedule.getCode()+"  "+schedule.getDriver_id()+"  "+schedule.getBus_id()+"  "+schedule.getSource_id()+"  "+schedule.getDestination_id()+"  "+schedule.getNumber_booking()+"  "+schedule.getDept_date()+"  "+schedule.getDept_time());;
-		int check = usersService1.updateSchedule(schedule);
-		if(check==0)
-		{
-			map.put("status","0");
-			map.put("message","Code already existed!");
-		}
-		else if(check==1)
-		{
-			map.put("status","1");
-			map.put("message","Schedule has just been updated successfully");
-		}
-		else
-		{
-			map.put("status","5");
-			map.put("message","Technical problem occurs");
-		}
-		return map;
-		}
 
 		//====================To save schedule by admin (Schedule that already had bookings============================
 	@RequestMapping(value="/updateSchedule2", method=RequestMethod.GET)
@@ -888,7 +988,7 @@ public class AdminController {
 			map.put("message","This request has just been confirmed successfully");
 			User_Info user = usersService1.getCustomerById(request.getUser_id());
 			String email = user.getEmail();
-			usersService1.confirmedRequest(email);
+//			usersService1.confirmedRequest(email);
 		}
 
 		return map;
@@ -1143,7 +1243,7 @@ public class AdminController {
 		// if(check==0)
 		// {
 		// 	map.put("status","0");
-		// 	map.put("message","Location name already existed!");
+		// 	map.put("message","Locatio	n name already existed!");
 		// }
 		// else if(check==1)
 		// {
@@ -1455,7 +1555,7 @@ public class AdminController {
 	@RequestMapping(value="/getAllSchedulesByMonth", method=RequestMethod.GET)
 	public @ResponseBody Map<String,Object> getAllSchedulesByMonth(@RequestParam(value = "month", required=true, defaultValue = "0") Integer month, @RequestParam(value = "year", required=true, defaultValue = "0") Integer year) throws ParseException{
 		 Map<String,Object> map = new HashMap<String,Object>();
-			List<Schedule_Master> list = usersService1.getAllSchedulesByMonth(Integer.toString(month),Integer.toString(year));
+			List<?> list = usersService1.getAllSchedulesByMonth(Integer.toString(month),Integer.toString(year));
 			if (list != null)
 				map.put("schedules", list);
 			else

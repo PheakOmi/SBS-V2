@@ -1,3 +1,5 @@
+<%@taglib prefix="sec"
+          uri="http://www.springframework.org/security/tags"%>
 <body onload="load()">
 <article class="content cards-page">
 
@@ -14,30 +16,32 @@
                             <input type="text" class="form-control" id="scode" style="width: inherit;" placeholder=Code required disabled> </div>
                         <div class="form-group col-md-4" style="margin-bottom:2%; float:left;">
                             <label for="exampleInputEmail3"  style="margin-right:4%;">Driver</label>
-                            <select class="form-control" style="width: inherit;" id="sdriver"><option></option></select> </div>
+                            <select class="form-control cpast" style="width: inherit;" id="sdriver"><option></option></select> </div>
                         <div class="form-group col-md-4" style="margin-bottom:2%; float:left;">
                             <label for="exampleInputPassword3"  style="margin-right:4%;">Bus</label>
-                            <select class="form-control" style="width: inherit;" id="sbus"><option></option></select> </div>
+                            <select class="form-control cpast" style="width: inherit;" id="sbus"><option></option></select> </div>
                         <div class="form-group col-md-4" style="margin-bottom:2%; float:left;">
                             <label for="exampleInputEmail3"  style="margin-right:4%;">From</label>
-                            <select class="form-control" style="width: inherit;" id="sfrom" required><option></option></select> </div>
+                            <select class="form-control cpast" style="width: inherit;" id="sfrom" required><option></option></select> </div>
                         <div class="form-group col-md-4" style="margin-bottom:2%;float:left;">
                             <label for="exampleInputPassword3"  style="margin-right:4%;">To</label>
-                            <select class="form-control" style="width: inherit;" id="sto" required><option></option></select> </div>
+                            <select class="form-control cpast" style="width: inherit;" id="sto" required><option></option></select> </div>
                         <div class="form-group col-md-4" style="margin-bottom:2%;float:left;">
                             <label for="exampleInputPassword3"  style="margin-right:4%;">Bookings Allowed</label>
                             <input type="text" class="form-control" id="sallowed" style="width: inherit;" placeholder="Bookings Allowed" required disabled> </div>
                         <div class="form-group col-md-4" style="margin-bottom:2%;float:left;">
                             <label for="exampleInputEmail3"  style="margin-right:4%;">Departure Date</label>
-                            <input type="text" name="no_past_date" class="form-control" id="sdeptdate" style="width: inherit;" placeholder="Departure Date" required> </div>
+                            <input type="text" name="no_past_date" class="form-control cpast" id="sdeptdate" style="width: inherit;" placeholder="Departure Date" required> </div>
                         <div class="form-group col-md-4" style="margin-bottom:2%;float:left;">
                             <label for="exampleInputPassword3"  style="margin-right:4%;">Departure Time</label>
-                            <input type="text" name="time" class="form-control" id="sdepttime" style="width: inherit;" placeholder="Departure Time" required> </div>
+                            <input type="text" name="time" class="form-control cpast" id="sdepttime" style="width: inherit;" placeholder="Departure Time" required> </div>
                         <div class="form-group col-md-4" style="margin-bottom:2%;float:left;">
                             <label for="exampleInputPassword3"  style="margin-right:4%;">Number Booked</label>
                             <input type="text" class="form-control" id="sbooked" style="width: inherit;" placeholder="Booked" required disabled> </div>
                         <div class="form-group col-md-12" style="margin-bottom:2%;">
-                            <button type="submit" class="btn btn-info">Update</button>
+                            <sec:authorize access="hasRole('ROLE_ADMIN')">
+                                <button type="submit" class="btn btn-info" id="ubtn">Update</button>
+                            </sec:authorize>
                         </div>
 
                     </form>
@@ -78,8 +82,9 @@
                                 </div>
 
                             </div>
-                        </div>
 
+                        </div>
+                        <button onclick="goLog()" style="color:white;" class="btn btn-info pull-right btn-sm" id="logBtn"> <i class="fas fa-sticky-note"></i> View Log</button>
                     </div>
 
 
@@ -148,6 +153,11 @@
             $("#sdriver").append("<option value="+all_driver[i].id+">"+all_driver[i].name+" </option>");
         $("#sdriver").val(schedule.driver_id);
         $("#sbus").val(schedule.bus_id);
+        if(data.daydiff=="past")
+        {
+            $(".cpast").prop('disabled', true);
+            $("#ubtn").hide();
+        }
 
     }
 
@@ -322,6 +332,11 @@
             return now.getHours()+":"+now.getMinutes()+":"+now.getSeconds();
         }else
             return "Invalid Format";
+    }
+
+    function goLog() {
+        location.href='schedule_log_list?id='+idd;
+
     }
 
 

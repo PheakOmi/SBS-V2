@@ -82,7 +82,7 @@ public class usersServiceImpl implements usersService{
 	public Booking_Master getBookingById (int id){
 		return usersDao1.getBookingById(id);
 	}
-	public List <Schedule_Master> getAllSchedulesByMonth(String month, String year) throws ParseException, java.text.ParseException{
+	public List <?> getAllSchedulesByMonth(String month, String year) throws ParseException, java.text.ParseException{
 		return usersDao1.getAllSchedulesByMonth(month, year);
 	}
 	public List <Schedule_Master> schedule_list(String date, String month, String year) throws ParseException, java.text.ParseException{
@@ -112,7 +112,7 @@ public class usersServiceImpl implements usersService{
 	public Map<String, Object> saveMultipleSchedule(Schedule_Model schedule)throws ParseException{
 		return usersDao1.saveMultipleSchedule(schedule);
 	}
-	public int updateSchedule(Schedule_Model schedule) throws ParseException{
+	public Map<String, Object> updateSchedule(Schedule_Model schedule) throws ParseException{
 		return usersDao1.updateSchedule(schedule);
 	}
 	public int updateSchedule2(Schedule_Model schedule) throws ParseException{
@@ -234,8 +234,18 @@ public class usersServiceImpl implements usersService{
 	public List<User_Info> getAllStudents(){
 		return usersDao1.getAllStudents();
 	}
-	public int sendMonthlySchedule(Schedule_Model model) throws ParseException{
+	public Map<String, Object> sendMonthlySchedule(Schedule_Model model) throws ParseException{
 		return usersDao1.sendMonthlySchedule(model);
+	}
+	public int apReqEmail(String token, String type){
+		return usersDao1.apReqEmail(token, type);
+	}
+	public List <Schedule_Log> getAllLogsBySchedeuleId(int id){
+		return usersDao1.getAllLogsBySchedeuleId(id);
+
+	}
+	public Schedule_Log getScheduleLogById (int id){
+		return usersDao1.getScheduleLogById(id);
 	}
 }
 
