@@ -2,8 +2,9 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="06345a70-3328-4d36-a0c8-0657007cf460" name="Default" comment="">
+      <change beforePath="$PROJECT_DIR$/.gitignore" beforeDir="false" afterPath="$PROJECT_DIR$/.gitignore" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/DaoClasses/StudentDaoImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/DaoClasses/StudentDaoImpl.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/MainController/StudentController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/MainController/StudentController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/DaoClasses/test2.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/DaoClasses/test2.java" afterDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/target/" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -43,8 +44,9 @@
         <counts>
           <entry key="class" value="2" />
           <entry key="css" value="3" />
+          <entry key="gitignore" value="1" />
           <entry key="html" value="1" />
-          <entry key="java" value="151" />
+          <entry key="java" value="155" />
           <entry key="js" value="11" />
           <entry key="json" value="3" />
           <entry key="jsp" value="81" />
@@ -58,11 +60,11 @@
           <entry key="CLASS" value="2" />
           <entry key="CSS" value="3" />
           <entry key="HTML" value="1" />
-          <entry key="JAVA" value="151" />
+          <entry key="JAVA" value="155" />
           <entry key="JSON" value="3" />
           <entry key="JSP" value="81" />
           <entry key="JavaScript" value="11" />
-          <entry key="PLAIN_TEXT" value="21" />
+          <entry key="PLAIN_TEXT" value="22" />
           <entry key="RNG Compact" value="1" />
           <entry key="XML" value="20" />
         </counts>
@@ -70,7 +72,8 @@
       <usages-collector id="statistics.file.extensions.edit">
         <counts>
           <entry key="css" value="16" />
-          <entry key="java" value="7183" />
+          <entry key="gitignore" value="1" />
+          <entry key="java" value="7296" />
           <entry key="js" value="451" />
           <entry key="jsp" value="4638" />
           <entry key="txt" value="823" />
@@ -80,10 +83,10 @@
       <usages-collector id="statistics.file.types.edit">
         <counts>
           <entry key="CSS" value="16" />
-          <entry key="JAVA" value="7183" />
+          <entry key="JAVA" value="7296" />
           <entry key="JSP" value="4638" />
           <entry key="JavaScript" value="451" />
-          <entry key="PLAIN_TEXT" value="823" />
+          <entry key="PLAIN_TEXT" value="824" />
           <entry key="XML" value="293" />
         </counts>
       </usages-collector>
@@ -91,18 +94,6 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/java/com/MainController/AdminController.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="292">
-              <caret line="522" column="37" lean-forward="true" selection-start-line="522" selection-start-column="37" selection-end-line="522" selection-end-column="37" />
-              <folding>
-                <element signature="imports" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/main/java/com/DaoClasses/userDaoImpl.java">
           <provider selected="true" editor-type-id="text-editor">
@@ -135,7 +126,7 @@
           </provider>
         </entry>
       </file>
-      <file pinned="false" current-in-tab="true">
+      <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/main/java/com/MainController/StudentController.java">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="386">
@@ -150,8 +141,8 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/main/java/com/DaoClasses/StudentDaoImpl.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="197">
-              <caret line="149" column="23" lean-forward="true" selection-start-line="149" selection-start-column="23" selection-end-line="149" selection-end-column="23" />
+            <state relative-caret-position="411">
+              <caret line="234" column="9" lean-forward="true" selection-start-line="234" selection-start-column="9" selection-end-line="234" selection-end-column="9" />
               <folding>
                 <element signature="imports" expanded="true" />
                 <element signature="e#7465#7481#0" expanded="true" />
@@ -161,40 +152,47 @@
           </provider>
         </entry>
       </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/java/com/ModelClasses/Student_Booking.java">
+      <file pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/.gitignore">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="300">
-              <caret line="20" column="28" lean-forward="true" selection-start-line="20" selection-start-column="28" selection-end-line="20" selection-end-column="28" />
-              <folding>
-                <element signature="e#300#301#0" expanded="true" />
-                <element signature="e#334#335#0" expanded="true" />
-                <element signature="e#385#386#0" expanded="true" />
-                <element signature="e#431#432#0" expanded="true" />
-                <element signature="e#490#491#0" expanded="true" />
-                <element signature="e#531#532#0" expanded="true" />
-                <element signature="e#567#568#0" expanded="true" />
-                <element signature="e#605#606#0" expanded="true" />
-                <element signature="e#639#640#0" expanded="true" />
-                <element signature="e#693#694#0" expanded="true" />
-                <element signature="e#739#740#0" expanded="true" />
-                <element signature="e#777#778#0" expanded="true" />
-                <element signature="e#811#812#0" expanded="true" />
-                <element signature="e#865#866#0" expanded="true" />
-                <element signature="e#911#912#0" expanded="true" />
-                <element signature="e#952#953#0" expanded="true" />
-                <element signature="e#989#990#0" expanded="true" />
-                <element signature="e#1049#1050#0" expanded="true" />
-                <element signature="e#1101#1102#0" expanded="true" />
-                <element signature="e#1139#1140#0" expanded="true" />
-                <element signature="e#1173#1174#0" expanded="true" />
-                <element signature="e#1227#1228#0" expanded="true" />
-                <element signature="e#1273#1274#0" expanded="true" />
-                <element signature="e#1303#1304#0" expanded="true" />
-                <element signature="e#1332#1333#0" expanded="true" />
-                <element signature="e#1373#1374#0" expanded="true" />
-                <element signature="e#1409#1410#0" expanded="true" />
-              </folding>
+            <state relative-caret-position="30">
+              <caret line="2" column="6" selection-start-line="2" selection-start-column="6" selection-end-line="2" selection-end-column="6" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/main/java/com/ModelClasses/Customer_Booking.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="60">
+              <caret line="4" column="24" lean-forward="true" selection-start-line="4" selection-start-column="24" selection-end-line="4" selection-end-column="24" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/main/java/com/MainController/CustomerController.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="360">
+              <caret line="145" column="74" lean-forward="true" selection-start-line="145" selection-start-column="74" selection-end-line="145" selection-end-column="74" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/main/java/com/DaoClasses/Customer_Schedule_Generation_Imp.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="54">
+              <caret line="170" column="65" lean-forward="true" selection-start-line="170" selection-start-column="65" selection-end-line="170" selection-end-column="65" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/main/java/com/DaoClasses/test2.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="225">
+              <caret line="15" column="9" lean-forward="true" selection-start-line="7" selection-start-column="8" selection-end-line="15" selection-end-column="9" />
             </state>
           </provider>
         </entry>
@@ -221,7 +219,6 @@
   </component>
   <component name="FindInProjectRecents">
     <findStrings>
-      <find>createLocation</find>
       <find>cron</find>
       <find>saveSchedule</find>
       <find>detail</find>
@@ -251,6 +248,7 @@
       <find>setDe</find>
       <find>getSc</find>
       <find>getScheduleB</find>
+      <find>booking(</find>
     </findStrings>
     <replaceStrings>
       <replace>&lt;tr&gt;</replace>
@@ -266,13 +264,11 @@
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
       <list>
-        <option value="$PROJECT_DIR$/src/main/java/com/EntityClasses/Booking_Request_Master.java" />
         <option value="$PROJECT_DIR$/src/main/java/com/DaoClasses/Custom_Imp.java" />
         <option value="$PROJECT_DIR$/src/main/java/com/DaoClasses/Request_Booking.java" />
         <option value="$PROJECT_DIR$/src/main/resources/booking_request_master.hbm.xml" />
         <option value="$PROJECT_DIR$/src/main/java/com/MainController/SecurityController.java" />
         <option value="$PROJECT_DIR$/src/main/java/com/ThreadClasses/SendCreateThread.java" />
-        <option value="$PROJECT_DIR$/src/main/java/com/DaoClasses/test2.java" />
         <option value="$PROJECT_DIR$/src/main/java/com/ThreadClasses/SendReqAdminThread.java" />
         <option value="$PROJECT_DIR$/src/main/java/com/ThreadClasses/SendReqKITAdminThread.java" />
         <option value="$PROJECT_DIR$/src/main/java/com/ThreadClasses/SendUpdateThread.java" />
@@ -315,8 +311,10 @@
         <option value="$PROJECT_DIR$/src/main/webapp/WEB-INF/views/view/create_schedule.jsp" />
         <option value="$PROJECT_DIR$/src/main/java/com/DaoClasses/userDaoImpl.java" />
         <option value="$PROJECT_DIR$/src/main/java/com/ModelClasses/Student_Booking.java" />
-        <option value="$PROJECT_DIR$/src/main/java/com/DaoClasses/StudentDaoImpl.java" />
         <option value="$PROJECT_DIR$/src/main/java/com/MainController/StudentController.java" />
+        <option value="$PROJECT_DIR$/src/main/java/com/DaoClasses/test2.java" />
+        <option value="$PROJECT_DIR$/src/main/java/com/DaoClasses/StudentDaoImpl.java" />
+        <option value="$PROJECT_DIR$/.gitignore" />
       </list>
     </option>
   </component>
@@ -541,7 +539,7 @@
     <property name="SearchEverywhereHistoryKey" value="loca&#9;FILE&#9;file:///Users/sopheakdy/Documents/Dexpertize/SBS/Version 2.0/Shuttle-Bus-System-master/src/main/webapp/WEB-INF/views/view/location_management.jsp&#10;hi&#9;FILE&#9;file:///Users/sopheakdy/Documents/Dexpertize/SBS/Version 2.0/Shuttle-Bus-System-master/src/main/resources/hibernate.cfg.xml&#10;cfg&#9;FILE&#9;file:///Users/sopheakdy/Documents/Dexpertize/SBS/Version 2.0/Shuttle-Bus-System-master/src/main/resources/hibernate.cfg.xml&#10;getHours&#9;null&#9;null&#10;z-in&#9;null&#9;null&#10;fc-day-content&#9;null&#9;null&#10;slickjs&#9;FILE&#9;file:///Users/sopheakdy/Documents/Dexpertize/SBS/Version 2.0/Shuttle-Bus-System-master/src/main/webapp/resources/Bootstrap/js/slider/slick.min.js" />
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="aspect.path.notification.shown" value="true" />
-    <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1543334451569" />
+    <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1543337099014" />
     <property name="last_opened_file_path" value="$PROJECT_DIR$" />
     <property name="list.type.of.created.stylesheet" value="CSS" />
     <property name="settings.editor.selected.configurable" value="project.propVCSSupport.Mappings" />
@@ -734,12 +732,12 @@
       <workItem from="1543197312105" duration="2390000" />
       <workItem from="1543199943596" duration="2618000" />
       <workItem from="1543213162119" duration="10427000" />
-      <workItem from="1543291826936" duration="11853000" />
+      <workItem from="1543291826936" duration="13718000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="335734000" />
+    <option name="totallyTimeSpent" value="337599000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="0" y="0" width="1440" height="900" extended-state="0" />
@@ -755,8 +753,8 @@
       <window_info id="Web" order="7" sideWeight="0.5008726" side_tool="true" weight="0.26510575" />
       <window_info id="Capture Tool" order="8" />
       <window_info anchor="bottom" id="Message" order="0" />
-      <window_info anchor="bottom" id="Find" order="1" visible="true" weight="0.32891566" />
-      <window_info anchor="bottom" id="Run" order="2" weight="0.31566265" />
+      <window_info anchor="bottom" id="Find" order="1" weight="0.32891566" />
+      <window_info anchor="bottom" id="Run" order="2" visible="true" weight="0.31566265" />
       <window_info anchor="bottom" id="Debug" order="3" weight="0.4" />
       <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
       <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
@@ -787,34 +785,6 @@
     <option name="myLimit" value="2678400000" />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/src/main/resources/templates/email_schedule_request.txt">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="270">
-          <caret line="18" column="194" lean-forward="true" selection-start-line="18" selection-start-column="194" selection-end-line="18" selection-end-column="194" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/webapp/WEB-INF/views/view/input_schedule.jsp">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="915">
-          <caret line="61" column="6" lean-forward="true" selection-start-line="61" selection-start-column="6" selection-end-line="61" selection-end-column="6" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="jar://$MAVEN_REPOSITORY$/org/springframework/security/spring-security-core/4.2.3.RELEASE/spring-security-core-4.2.3.RELEASE.jar!/org/springframework/security/core/userdetails/UserDetails.class">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="90">
-          <caret line="11" column="17" selection-start-line="11" selection-start-column="17" selection-end-line="11" selection-end-column="17" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/webapp/WEB-INF/views/view/admin_booking_request.jsp">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="420">
-          <caret line="62" column="72" lean-forward="true" selection-start-line="56" selection-start-column="12" selection-end-line="62" selection-end-column="72" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/main/webapp/WEB-INF/views/view/historical_booking_request.jsp">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="341">
@@ -1165,13 +1135,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/MainController/CustomerController.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1018">
-          <caret line="249" column="22" lean-forward="true" selection-start-line="249" selection-start-column="22" selection-end-line="249" selection-end-column="22" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/com/DaoClasses/Custom_Imp.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="299">
@@ -1186,6 +1149,16 @@
           <folding>
             <element signature="imports" expanded="true" />
             <element signature="e#36305#36322#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/MainController/StudentController.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="386">
+          <caret line="39" column="217" selection-start-line="39" selection-start-column="217" selection-end-line="39" selection-end-column="217" />
+          <folding>
+            <element signature="imports" expanded="true" />
           </folding>
         </state>
       </provider>
@@ -1226,10 +1199,38 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/MainController/CustomerController.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="360">
+          <caret line="145" column="74" lean-forward="true" selection-start-line="145" selection-start-column="74" selection-end-line="145" selection-end-column="74" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/ModelClasses/Customer_Booking.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="60">
+          <caret line="4" column="24" lean-forward="true" selection-start-line="4" selection-start-column="24" selection-end-line="4" selection-end-column="24" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/DaoClasses/Customer_Schedule_Generation_Imp.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="54">
+          <caret line="170" column="65" lean-forward="true" selection-start-line="170" selection-start-column="65" selection-end-line="170" selection-end-column="65" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/DaoClasses/test2.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="225">
+          <caret line="15" column="9" lean-forward="true" selection-start-line="7" selection-start-column="8" selection-end-line="15" selection-end-column="9" />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/com/DaoClasses/StudentDaoImpl.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="197">
-          <caret line="149" column="23" lean-forward="true" selection-start-line="149" selection-start-column="23" selection-end-line="149" selection-end-column="23" />
+        <state relative-caret-position="411">
+          <caret line="234" column="9" lean-forward="true" selection-start-line="234" selection-start-column="9" selection-end-line="234" selection-end-column="9" />
           <folding>
             <element signature="imports" expanded="true" />
             <element signature="e#7465#7481#0" expanded="true" />
@@ -1238,13 +1239,10 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/MainController/StudentController.java">
+    <entry file="file://$PROJECT_DIR$/.gitignore">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="386">
-          <caret line="39" column="217" selection-start-line="39" selection-start-column="217" selection-end-line="39" selection-end-column="217" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
+        <state relative-caret-position="30">
+          <caret line="2" column="6" selection-start-line="2" selection-start-column="6" selection-end-line="2" selection-end-column="6" />
         </state>
       </provider>
     </entry>
