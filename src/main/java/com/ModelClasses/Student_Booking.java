@@ -4,8 +4,8 @@ public class Student_Booking {
 
     private int destination;
     private int source;
-    private String departure_date;
-    private String return_date;
+    private String depart_date;
+    private String date_return;
     private String departure_time;
     private String return_time;
     private int choice;
@@ -26,28 +26,20 @@ public class Student_Booking {
         this.source = source;
     }
 
-    public String getDeparture_date() {
-        return departure_date;
+    public String getDepart_date() {
+        return depart_date;
     }
 
-    public void setDeparture_date(String departure_date) {
-        this.departure_date = departure_date;
+    public void setDepart_date(String depart_date) {
+        this.depart_date = depart_date;
     }
 
-    public String getReturn_date() {
-        return return_date;
+    public String getDate_return() {
+        return date_return;
     }
 
-    public void setReturn_date(String return_date) {
-        this.return_date = return_date;
-    }
-
-    public int getChoice() {
-        return choice;
-    }
-
-    public void setChoice(int choice) {
-        this.choice = choice;
+    public void setDate_return(String date_return) {
+        this.date_return = date_return;
     }
 
     public String getDeparture_time() {
@@ -64,5 +56,13 @@ public class Student_Booking {
 
     public void setReturn_time(String return_time) {
         this.return_time = return_time;
+    }
+
+    public int getChoice() {
+        return choice;
+    }
+
+    public void setChoice(int choice) {
+        this.choice = choice;
     }
 }

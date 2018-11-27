@@ -116,6 +116,9 @@ public class StudentDaoImpl implements StudentDao{
         return map;
     }
 
+
+
+
     public Map<String,Object> student_booking(Student_Booking book_data){
 
         Session session = HibernateUtil.getSessionFactory().openSession();
@@ -125,50 +128,104 @@ public class StudentDaoImpl implements StudentDao{
         Timestamp created_at = new Timestamp(System.currentTimeMillis());
         int count_ticket = 0;
         int user_id = id.getAuthentic();
-        try {
 
-//                    for(int i = 0; i<book_data.getSchedule_id().length; i++) {
-//                        Booking_Master booking_master = new Booking_Master();
-//                        booking_master.setUser_id(user_id);
-//                        booking_master.setSchedule_id(book_data.getSchedule_id()[i]);
-//                        booking_master.setSource_id(new userDaoImpl().getScheduleById(book_data.getSchedule_id()[i]).getSource_id());
-//                        booking_master.setDestination_id(new userDaoImpl().getScheduleById(book_data.getSchedule_id()[i]).getDestination_id());
-//                        booking_master.setDept_date(new userDaoImpl().getScheduleById(book_data.getSchedule_id()[i]).getDept_date());
-//                        booking_master.setDescription("student");
-//                        booking_master.setQr_status(false);
-//                        booking_master.setQr(new userDaoImpl().getScheduleById(book_data.getSchedule_id()[i]).getSource_id()+""+new userDaoImpl().getScheduleById(book_data.getSchedule_id()[i]).getDestination_id()+""+new userDaoImpl().getScheduleById(book_data.getSchedule_id()[i]).getDept_date()+""+new userDaoImpl().getScheduleById(book_data.getSchedule_id()[i]).getDept_time()+""+user_id);
-//                        booking_master.setNotification("Booked");
-//                        booking_master.setNumber_booking(1);
-//                        booking_master.setCreated_at(created_at);
-//                        booking_master.setAdult(1);
-//                        booking_master.setChild(0);
-//                        booking_master.setPayment("Succeed");
-//                        booking_master.setBooking_request_id(0);
-//                        booking_master.setDept_time(new userDaoImpl().getScheduleById(book_data.getSchedule_id()[i]).getDept_time());
-//                        session.save(booking_master);
-//                        booking_master.setCode(Custom_Imp.getBookingSequence(booking_master.getId()));
-//                        session.update(booking_master);
-//                        count_ticket++;
-//                    }
-
-            if(count_ticket>0){
-                User_Info user_info = (User_Info) session.load(User_Info.class,user_id);
-                user_info.setNumber_ticket(user_info.getNumber_ticket() -count_ticket);
-                session.update(user_info);
-            }
-            session.beginTransaction().commit();
-            map.put("status",true);
-
-        } catch (RuntimeException e) {
-            e.printStackTrace();
-            session.beginTransaction().rollback();
+        int schedule_id1 = new userDaoImpl().searchScheduleId(java.sql.Date.valueOf(book_data.getDepart_date()), java.sql.Time.valueOf(book_data.getDepart_time()), book_data.getSource(), book_data.getDestination());
+        int schedule_id2 =5;
+        if(book_data.getChoice()==2){
+            schedule_id2 = new userDaoImpl().searchScheduleId(java.sql.Date.valueOf(book_data.getDate_return()), java.sql.Time.valueOf(book_data.getReturn_time()), book_data.getDestination(), book_data.getSource());
         }
-        finally {
-            session.flush();
-            session.close();
+        if(schedule_id1==0&&schedule_id2==0)
+        {
+            map.put("status","555");
+            return map;
+        }
+        else if(schedule_id1==0)
+        {
+            map.put("status","5");
+            return map;
+        }
+        else if(schedule_id2==0)
+        {
+            map.put("status","55");
+            return map;
+        }
+        else {
+
+            try {
+
+                Booking_Master booking_master = new Booking_Master();
+                booking_master.setUser_id(user_id);
+                booking_master.setDestination_id(book_data.getDestination());
+                booking_master.setSource_id(book_data.getSource());
+                booking_master.setSchedule_id(schedule_id1);
+                booking_master.setDept_date(java.sql.Date.valueOf(book_data.getDepart_date()));
+                booking_master.setDept_time(java.sql.Time.valueOf(book_data.getDepart_time()));
+                booking_master.setNumber_booking(1);
+                booking_master.setAdult(1);
+                booking_master.setChild(0);
+                booking_master.setNotification("Booked");
+                booking_master.setQr(book_data.getSource() + "" + book_data.getDestination() + "" + book_data.getDepart_date() + "" + book_data.getDepart_time() + "" + user_id);
+                booking_master.setDescription("student");
+                booking_master.setCreated_at(created_at);
+                booking_master.setQr_status(false);
+                booking_master.setPayment("Succeed");
+                booking_master.setBooking_request_id(0);
+                session.save(booking_master);
+                booking_master.setCode(Custom_Imp.getBookingSequence(booking_master.getId()));
+                count_ticket++;
+
+
+                if (book_data.getChoice() == 2) {
+
+                    Booking_Master booking_return = new Booking_Master();
+                    booking_return.setUser_id(user_id);
+                    booking_return.setDestination_id(book_data.getSource());
+                    booking_return.setSource_id(book_data.getDestination());
+                    booking_return.setSchedule_id(schedule_id2);
+                    booking_return.setDept_date(java.sql.Date.valueOf(book_data.getDate_return()));
+                    booking_return.setDept_time(java.sql.Time.valueOf(book_data.getReturn_time()));
+                    booking_return.setNumber_booking(1);
+                    booking_return.setAdult(1);
+                    booking_return.setChild(0);
+                    booking_return.setNotification("Booked");
+                    booking_return.setQr(book_data.getDestination() + "" + book_data.getSource() + "" + book_data.getReturn_time() + "" + book_data.getReturn_time() + "" + user_id);
+                    booking_return.setDescription("student");
+                    booking_return.setCreated_at(created_at);
+                    booking_return.setQr_status(false);
+                    booking_return.setPayment("Succeed");
+                    booking_return.setBooking_request_id(0);
+                    session.save(booking_return);
+                    booking_return.setCode(Custom_Imp.getBookingSequence(booking_return.getId()));
+                    count_ticket++;
+
+                }
+
+
+                if (count_ticket > 0) {
+                    User_Info user_info = (User_Info) session.load(User_Info.class, user_id);
+                    user_info.setNumber_ticket(user_info.getNumber_ticket() - count_ticket);
+                    session.update(user_info);
+                }
+                session.beginTransaction().commit();
+                map.put("status", "1");
+
+            } catch (RuntimeException e) {
+                e.printStackTrace();
+                session.beginTransaction().rollback();
+                map.put("status","0");
+            } finally {
+                session.flush();
+                session.close();
+            }
         }
         return map;
     }
+
+
+
+
+
+
 
     public List<Object> list_booking_date(){
         List<Object> list_date_booking = new ArrayList<Object>();

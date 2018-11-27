@@ -1102,8 +1102,39 @@ public class userDaoImpl implements usersDao{
         return schedule;
 		
 	}
-	
-	
+
+
+
+    public int searchScheduleId(Date date, Time time, int source, int destination){
+        List <Schedule_Master> schedules  = new ArrayList<Schedule_Master>();
+        org.hibernate.Transaction trns19 = null;
+        Session session = HibernateUtil.getSessionFactory().openSession();
+        try {
+            trns19 = session.beginTransaction();
+            String queryString = "from Schedule_Master where dept_date=:date and dept_time=:time and source_id=:source and destination_id=:destination";
+            Query query = session.createQuery(queryString);
+            query.setDate("date",date);
+            query.setTime("time",time);
+            query.setInteger("source",source);
+            query.setInteger("destination",destination);
+            schedules=(List <Schedule_Master>)query.list();
+            for(Schedule_Master schedule:schedules)
+            {
+                if(schedule.getNo_seat()>(schedule.getNumber_staff()+schedule.getNumber_student()+schedule.getNumber_customer())){
+                    return schedule.getId();
+                }
+            }
+            return 0;
+        } catch (RuntimeException e) {
+            e.printStackTrace();
+            return 0;
+        } finally {
+            session.flush();
+            session.close();
+        }
+    }
+
+
 	public Location_Master getLocationById (int id){
 		Location_Master location= new Location_Master();
         Transaction trns19 = null;
