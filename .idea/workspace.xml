@@ -2,11 +2,13 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="06345a70-3328-4d36-a0c8-0657007cf460" name="Default" comment="">
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/DaoClasses/StudentDaoImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/DaoClasses/StudentDaoImpl.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/MainController/StudentController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/MainController/StudentController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.gitignore" beforeDir="false" afterPath="$PROJECT_DIR$/.gitignore" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/webapp/WEB-INF/views/view/student/home.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/WEB-INF/views/view/student/home.jsp" afterDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/target/" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
+    <option name="TRACKING_ENABLED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -91,11 +93,11 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file pinned="false" current-in-tab="false">
+      <file leaf-file-name="AdminController.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/main/java/com/MainController/AdminController.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="292">
-              <caret line="522" column="37" lean-forward="true" selection-start-line="522" selection-start-column="37" selection-end-line="522" selection-end-column="37" />
+            <state relative-caret-position="-3668">
+              <caret line="522" column="37" selection-start-line="522" selection-start-column="37" selection-end-line="522" selection-end-column="37" />
               <folding>
                 <element signature="imports" expanded="true" />
               </folding>
@@ -103,42 +105,49 @@
           </provider>
         </entry>
       </file>
-      <file pinned="false" current-in-tab="false">
+      <file leaf-file-name="home.jsp" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/main/webapp/WEB-INF/views/view/student/home.jsp">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="267">
+              <caret line="37" lean-forward="true" selection-start-line="37" selection-end-line="37" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name=".gitignore" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/.gitignore">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="56">
+              <caret line="2" column="6" selection-start-line="2" selection-start-column="6" selection-end-line="2" selection-end-column="6" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="userDaoImpl.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/main/java/com/DaoClasses/userDaoImpl.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="288">
-              <caret line="1123" column="44" lean-forward="true" selection-start-line="1123" selection-start-column="44" selection-end-line="1123" selection-end-column="44" />
+            <state relative-caret-position="29652">
+              <caret line="1123" column="44" selection-start-line="1123" selection-start-column="44" selection-end-line="1123" selection-end-column="44" />
               <folding>
                 <element signature="imports" expanded="true" />
-                <element signature="e#36305#36322#0" expanded="true" />
               </folding>
             </state>
           </provider>
         </entry>
       </file>
-      <file pinned="false" current-in-tab="false">
+      <file leaf-file-name="create_schedule.jsp" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/main/webapp/WEB-INF/views/view/create_schedule.jsp">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="278">
+            <state relative-caret-position="4984">
               <caret line="178" column="94" selection-start-line="178" selection-start-column="94" selection-end-line="178" selection-end-column="94" />
-              <folding>
-                <element signature="n#style#0;n#div#4;n#form#0;n#div#0;n#div#0;n#div#0;n#section#0;n#article#0;n#body#0;n#!!top" expanded="true" />
-                <element signature="n#style#0;n#label#0;n#div#7;n#form#0;n#div#0;n#div#0;n#div#0;n#section#0;n#article#0;n#body#0;n#!!top" expanded="true" />
-                <element signature="n#style#0;n#input#0;n#div#7;n#form#0;n#div#0;n#div#0;n#div#0;n#section#0;n#article#0;n#body#0;n#!!top" expanded="true" />
-                <element signature="n#style#0;n#div#8;n#form#0;n#div#0;n#div#0;n#div#0;n#section#0;n#article#0;n#body#0;n#!!top" expanded="true" />
-                <element signature="n#style#0;n#label#0;n#div#8;n#form#0;n#div#0;n#div#0;n#div#0;n#section#0;n#article#0;n#body#0;n#!!top" expanded="true" />
-                <element signature="n#style#0;n#input#0;n#div#8;n#form#0;n#div#0;n#div#0;n#div#0;n#section#0;n#article#0;n#body#0;n#!!top" expanded="true" />
-                <element signature="n#style#0;n#div#9;n#form#0;n#div#0;n#div#0;n#div#0;n#section#0;n#article#0;n#body#0;n#!!top" expanded="true" />
-                <element signature="n#style#0;n#input#0;n#div#9;n#form#0;n#div#0;n#div#0;n#div#0;n#section#0;n#article#0;n#body#0;n#!!top" expanded="true" />
-              </folding>
             </state>
           </provider>
         </entry>
       </file>
-      <file pinned="false" current-in-tab="true">
+      <file leaf-file-name="StudentController.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/main/java/com/MainController/StudentController.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="386">
+            <state relative-caret-position="-118">
               <caret line="39" column="217" selection-start-line="39" selection-start-column="217" selection-end-line="39" selection-end-column="217" />
               <folding>
                 <element signature="imports" expanded="true" />
@@ -147,25 +156,23 @@
           </provider>
         </entry>
       </file>
-      <file pinned="false" current-in-tab="false">
+      <file leaf-file-name="StudentDaoImpl.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/main/java/com/DaoClasses/StudentDaoImpl.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="197">
-              <caret line="149" column="23" lean-forward="true" selection-start-line="149" selection-start-column="23" selection-end-line="149" selection-end-column="23" />
+            <state relative-caret-position="3808">
+              <caret line="149" column="23" selection-start-line="149" selection-start-column="23" selection-end-line="149" selection-end-column="23" />
               <folding>
                 <element signature="imports" expanded="true" />
-                <element signature="e#7465#7481#0" expanded="true" />
-                <element signature="e#21098#21114#0" expanded="true" />
               </folding>
             </state>
           </provider>
         </entry>
       </file>
-      <file pinned="false" current-in-tab="false">
+      <file leaf-file-name="Student_Booking.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/main/java/com/ModelClasses/Student_Booking.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="300">
-              <caret line="20" column="28" lean-forward="true" selection-start-line="20" selection-start-column="28" selection-end-line="20" selection-end-column="28" />
+            <state relative-caret-position="448">
+              <caret line="20" column="28" selection-start-line="20" selection-start-column="28" selection-end-line="20" selection-end-column="28" />
               <folding>
                 <element signature="e#300#301#0" expanded="true" />
                 <element signature="e#334#335#0" expanded="true" />
@@ -199,11 +206,11 @@
           </provider>
         </entry>
       </file>
-      <file pinned="false" current-in-tab="false">
+      <file leaf-file-name="Custom_Imp.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/main/java/com/DaoClasses/Custom_Imp.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="299">
-              <caret line="939" column="83" lean-forward="true" selection-start-line="939" selection-start-column="48" selection-end-line="939" selection-end-column="83" />
+            <state relative-caret-position="26292">
+              <caret line="939" column="83" selection-start-line="939" selection-start-column="48" selection-end-line="939" selection-end-column="83" />
             </state>
           </provider>
         </entry>
@@ -266,8 +273,6 @@
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
       <list>
-        <option value="$PROJECT_DIR$/src/main/java/com/EntityClasses/Booking_Request_Master.java" />
-        <option value="$PROJECT_DIR$/src/main/java/com/DaoClasses/Custom_Imp.java" />
         <option value="$PROJECT_DIR$/src/main/java/com/DaoClasses/Request_Booking.java" />
         <option value="$PROJECT_DIR$/src/main/resources/booking_request_master.hbm.xml" />
         <option value="$PROJECT_DIR$/src/main/java/com/MainController/SecurityController.java" />
@@ -317,6 +322,8 @@
         <option value="$PROJECT_DIR$/src/main/java/com/ModelClasses/Student_Booking.java" />
         <option value="$PROJECT_DIR$/src/main/java/com/DaoClasses/StudentDaoImpl.java" />
         <option value="$PROJECT_DIR$/src/main/java/com/MainController/StudentController.java" />
+        <option value="$PROJECT_DIR$/src/main/webapp/WEB-INF/views/view/student/home.jsp" />
+        <option value="$PROJECT_DIR$/.gitignore" />
       </list>
     </option>
   </component>
@@ -333,10 +340,9 @@
       </MavenImportingSettings>
     </option>
   </component>
-  <component name="ProjectFrameBounds" fullScreen="true">
-    <option name="y" value="23" />
-    <option name="width" value="1366" />
-    <option name="height" value="650" />
+  <component name="ProjectFrameBounds">
+    <option name="width" value="1920" />
+    <option name="height" value="1080" />
   </component>
   <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
   <component name="ProjectView">
@@ -350,131 +356,29 @@
           <expand>
             <path>
               <item name="SpringRegister3" type="b2602c69:ProjectViewProjectNode" />
-              <item name="Shuttle-Bus-System-master" type="462c0819:PsiDirectoryNode" />
+              <item name="SBS-V2" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
               <item name="SpringRegister3" type="b2602c69:ProjectViewProjectNode" />
-              <item name="Shuttle-Bus-System-master" type="462c0819:PsiDirectoryNode" />
+              <item name="SBS-V2" type="462c0819:PsiDirectoryNode" />
               <item name="src" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
               <item name="SpringRegister3" type="b2602c69:ProjectViewProjectNode" />
-              <item name="Shuttle-Bus-System-master" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="main" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="SpringRegister3" type="b2602c69:ProjectViewProjectNode" />
-              <item name="Shuttle-Bus-System-master" type="462c0819:PsiDirectoryNode" />
+              <item name="SBS-V2" type="462c0819:PsiDirectoryNode" />
               <item name="src" type="462c0819:PsiDirectoryNode" />
               <item name="main" type="462c0819:PsiDirectoryNode" />
-              <item name="java" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
               <item name="SpringRegister3" type="b2602c69:ProjectViewProjectNode" />
-              <item name="Shuttle-Bus-System-master" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="main" type="462c0819:PsiDirectoryNode" />
-              <item name="java" type="462c0819:PsiDirectoryNode" />
-              <item name="com" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="SpringRegister3" type="b2602c69:ProjectViewProjectNode" />
-              <item name="Shuttle-Bus-System-master" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="main" type="462c0819:PsiDirectoryNode" />
-              <item name="java" type="462c0819:PsiDirectoryNode" />
-              <item name="com" type="462c0819:PsiDirectoryNode" />
-              <item name="Config" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="SpringRegister3" type="b2602c69:ProjectViewProjectNode" />
-              <item name="Shuttle-Bus-System-master" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="main" type="462c0819:PsiDirectoryNode" />
-              <item name="java" type="462c0819:PsiDirectoryNode" />
-              <item name="com" type="462c0819:PsiDirectoryNode" />
-              <item name="Config" type="462c0819:PsiDirectoryNode" />
-              <item name="Core" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="SpringRegister3" type="b2602c69:ProjectViewProjectNode" />
-              <item name="Shuttle-Bus-System-master" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="main" type="462c0819:PsiDirectoryNode" />
-              <item name="java" type="462c0819:PsiDirectoryNode" />
-              <item name="com" type="462c0819:PsiDirectoryNode" />
-              <item name="DaoClasses" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="SpringRegister3" type="b2602c69:ProjectViewProjectNode" />
-              <item name="Shuttle-Bus-System-master" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="main" type="462c0819:PsiDirectoryNode" />
-              <item name="java" type="462c0819:PsiDirectoryNode" />
-              <item name="com" type="462c0819:PsiDirectoryNode" />
-              <item name="MainController" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="SpringRegister3" type="b2602c69:ProjectViewProjectNode" />
-              <item name="Shuttle-Bus-System-master" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="main" type="462c0819:PsiDirectoryNode" />
-              <item name="java" type="462c0819:PsiDirectoryNode" />
-              <item name="com" type="462c0819:PsiDirectoryNode" />
-              <item name="ModelClasses" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="SpringRegister3" type="b2602c69:ProjectViewProjectNode" />
-              <item name="Shuttle-Bus-System-master" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="main" type="462c0819:PsiDirectoryNode" />
-              <item name="java" type="462c0819:PsiDirectoryNode" />
-              <item name="com" type="462c0819:PsiDirectoryNode" />
-              <item name="ServiceClasses" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="SpringRegister3" type="b2602c69:ProjectViewProjectNode" />
-              <item name="Shuttle-Bus-System-master" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="main" type="462c0819:PsiDirectoryNode" />
-              <item name="java" type="462c0819:PsiDirectoryNode" />
-              <item name="com" type="462c0819:PsiDirectoryNode" />
-              <item name="ThreadClasses" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="SpringRegister3" type="b2602c69:ProjectViewProjectNode" />
-              <item name="Shuttle-Bus-System-master" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="main" type="462c0819:PsiDirectoryNode" />
-              <item name="java" type="462c0819:PsiDirectoryNode" />
-              <item name="getInfoLogin" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="SpringRegister3" type="b2602c69:ProjectViewProjectNode" />
-              <item name="Shuttle-Bus-System-master" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="main" type="462c0819:PsiDirectoryNode" />
-              <item name="resources" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="SpringRegister3" type="b2602c69:ProjectViewProjectNode" />
-              <item name="Shuttle-Bus-System-master" type="462c0819:PsiDirectoryNode" />
+              <item name="SBS-V2" type="462c0819:PsiDirectoryNode" />
               <item name="src" type="462c0819:PsiDirectoryNode" />
               <item name="main" type="462c0819:PsiDirectoryNode" />
               <item name="webapp" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
               <item name="SpringRegister3" type="b2602c69:ProjectViewProjectNode" />
-              <item name="Shuttle-Bus-System-master" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="main" type="462c0819:PsiDirectoryNode" />
-              <item name="webapp" type="462c0819:PsiDirectoryNode" />
-              <item name="resources" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="SpringRegister3" type="b2602c69:ProjectViewProjectNode" />
-              <item name="Shuttle-Bus-System-master" type="462c0819:PsiDirectoryNode" />
+              <item name="SBS-V2" type="462c0819:PsiDirectoryNode" />
               <item name="src" type="462c0819:PsiDirectoryNode" />
               <item name="main" type="462c0819:PsiDirectoryNode" />
               <item name="webapp" type="462c0819:PsiDirectoryNode" />
@@ -482,16 +386,7 @@
             </path>
             <path>
               <item name="SpringRegister3" type="b2602c69:ProjectViewProjectNode" />
-              <item name="Shuttle-Bus-System-master" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="main" type="462c0819:PsiDirectoryNode" />
-              <item name="webapp" type="462c0819:PsiDirectoryNode" />
-              <item name="WEB-INF" type="462c0819:PsiDirectoryNode" />
-              <item name="tiles" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="SpringRegister3" type="b2602c69:ProjectViewProjectNode" />
-              <item name="Shuttle-Bus-System-master" type="462c0819:PsiDirectoryNode" />
+              <item name="SBS-V2" type="462c0819:PsiDirectoryNode" />
               <item name="src" type="462c0819:PsiDirectoryNode" />
               <item name="main" type="462c0819:PsiDirectoryNode" />
               <item name="webapp" type="462c0819:PsiDirectoryNode" />
@@ -500,17 +395,7 @@
             </path>
             <path>
               <item name="SpringRegister3" type="b2602c69:ProjectViewProjectNode" />
-              <item name="Shuttle-Bus-System-master" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="main" type="462c0819:PsiDirectoryNode" />
-              <item name="webapp" type="462c0819:PsiDirectoryNode" />
-              <item name="WEB-INF" type="462c0819:PsiDirectoryNode" />
-              <item name="views" type="462c0819:PsiDirectoryNode" />
-              <item name="layout" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="SpringRegister3" type="b2602c69:ProjectViewProjectNode" />
-              <item name="Shuttle-Bus-System-master" type="462c0819:PsiDirectoryNode" />
+              <item name="SBS-V2" type="462c0819:PsiDirectoryNode" />
               <item name="src" type="462c0819:PsiDirectoryNode" />
               <item name="main" type="462c0819:PsiDirectoryNode" />
               <item name="webapp" type="462c0819:PsiDirectoryNode" />
@@ -520,13 +405,24 @@
             </path>
             <path>
               <item name="SpringRegister3" type="b2602c69:ProjectViewProjectNode" />
-              <item name="Shuttle-Bus-System-master" type="462c0819:PsiDirectoryNode" />
+              <item name="SBS-V2" type="462c0819:PsiDirectoryNode" />
               <item name="src" type="462c0819:PsiDirectoryNode" />
               <item name="main" type="462c0819:PsiDirectoryNode" />
               <item name="webapp" type="462c0819:PsiDirectoryNode" />
               <item name="WEB-INF" type="462c0819:PsiDirectoryNode" />
               <item name="views" type="462c0819:PsiDirectoryNode" />
               <item name="view" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="SpringRegister3" type="b2602c69:ProjectViewProjectNode" />
+              <item name="SBS-V2" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="main" type="462c0819:PsiDirectoryNode" />
+              <item name="webapp" type="462c0819:PsiDirectoryNode" />
+              <item name="WEB-INF" type="462c0819:PsiDirectoryNode" />
+              <item name="views" type="462c0819:PsiDirectoryNode" />
+              <item name="view" type="462c0819:PsiDirectoryNode" />
+              <item name="student" type="462c0819:PsiDirectoryNode" />
             </path>
           </expand>
           <select />
@@ -586,9 +482,6 @@
           <option name="ENABLED" value="true" />
         </pattern>
       </extension>
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
     </configuration>
     <configuration name="StudentDaoImpl" type="Application" factoryName="Application" nameIsGenerated="true">
       <option name="ALTERNATIVE_JRE_PATH" value="IntelliJ IDEA IU-181.5087.20" />
@@ -601,13 +494,10 @@
           <option name="ENABLED" value="true" />
         </pattern>
       </extension>
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
     </configuration>
     <configuration default="true" type="Application" factoryName="Application">
       <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
-      <method v="2">
+      <method>
         <option name="Make" enabled="true" />
       </method>
     </configuration>
@@ -621,21 +511,48 @@
           <option name="ENABLED" value="true" />
         </pattern>
       </extension>
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
     </configuration>
     <configuration default="true" type="JUnit" factoryName="JUnit">
+      <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="false" />
+      <option name="ALTERNATIVE_JRE_PATH" />
+      <option name="PACKAGE_NAME" />
+      <option name="MAIN_CLASS_NAME" />
+      <option name="METHOD_NAME" />
+      <option name="TEST_OBJECT" value="class" />
+      <option name="VM_PARAMETERS" />
+      <option name="PARAMETERS" />
       <option name="WORKING_DIRECTORY" value="%MODULE_WORKING_DIR%" />
-      <method v="2">
+      <option name="PASS_PARENT_ENVS" value="true" />
+      <option name="TEST_SEARCH_SCOPE">
+        <value defaultName="singleModule" />
+      </option>
+      <patterns />
+      <method>
         <option name="Make" enabled="true" />
       </method>
     </configuration>
     <configuration default="true" type="TestNG" factoryName="TestNG">
+      <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="false" />
+      <option name="ALTERNATIVE_JRE_PATH" />
+      <option name="SUITE_NAME" />
+      <option name="PACKAGE_NAME" />
+      <option name="MAIN_CLASS_NAME" />
+      <option name="METHOD_NAME" />
+      <option name="GROUP_NAME" />
+      <option name="TEST_OBJECT" value="CLASS" />
+      <option name="VM_PARAMETERS" />
+      <option name="PARAMETERS" />
       <option name="WORKING_DIRECTORY" value="%MODULE_WORKING_DIR%" />
+      <option name="OUTPUT_DIRECTORY" />
+      <option name="PASS_PARENT_ENVS" value="true" />
+      <option name="TEST_SEARCH_SCOPE">
+        <value defaultName="singleModule" />
+      </option>
+      <option name="USE_DEFAULT_REPORTERS" value="false" />
+      <option name="PROPERTIES_FILE" />
       <properties />
       <listeners />
-      <method v="2">
+      <method>
         <option name="Make" enabled="true" />
       </method>
     </configuration>
@@ -735,49 +652,52 @@
       <workItem from="1543199943596" duration="2618000" />
       <workItem from="1543213162119" duration="10427000" />
       <workItem from="1543291826936" duration="11853000" />
+      <workItem from="1543334935516" duration="2009000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="335734000" />
+    <option name="totallyTimeSpent" value="337743000" />
   </component>
   <component name="ToolWindowManager">
-    <frame x="0" y="0" width="1440" height="900" extended-state="0" />
+    <frame x="0" y="0" width="1920" height="1080" extended-state="0" />
     <editor active="true" />
     <layout>
-      <window_info active="true" content_ui="combo" id="Project" order="0" sideWeight="0.4991274" visible="true" weight="0.29542202" />
-      <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
-      <window_info id="Persistence" order="2" side_tool="true" />
-      <window_info id="Designer" order="3" />
-      <window_info id="Image Layers" order="4" />
-      <window_info id="UI Designer" order="5" />
-      <window_info id="Favorites" order="6" side_tool="true" />
-      <window_info id="Web" order="7" sideWeight="0.5008726" side_tool="true" weight="0.26510575" />
-      <window_info id="Capture Tool" order="8" />
-      <window_info anchor="bottom" id="Message" order="0" />
-      <window_info anchor="bottom" id="Find" order="1" visible="true" weight="0.32891566" />
-      <window_info anchor="bottom" id="Run" order="2" weight="0.31566265" />
-      <window_info anchor="bottom" id="Debug" order="3" weight="0.4" />
-      <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
-      <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
-      <window_info anchor="bottom" id="TODO" order="6" />
-      <window_info anchor="bottom" id="Spring" order="7" />
-      <window_info anchor="bottom" id="Terminal" order="8" sideWeight="0.49848944" weight="0.4313253" />
-      <window_info anchor="bottom" id="Java Enterprise" order="9" weight="0.32984293" />
-      <window_info anchor="bottom" id="Database Changes" order="10" show_stripe_button="false" />
-      <window_info anchor="bottom" id="Version Control" order="11" />
-      <window_info anchor="bottom" id="Messages" order="12" weight="0.32891566" />
-      <window_info anchor="bottom" id="Event Log" order="13" sideWeight="0.50151056" side_tool="true" weight="0.81445783" />
-      <window_info anchor="right" id="Preview" order="0" weight="0.3297568" />
-      <window_info anchor="right" id="Commander" order="1" weight="0.4" />
-      <window_info anchor="right" id="Ant Build" order="2" weight="0.25" />
-      <window_info anchor="right" content_ui="combo" id="Hierarchy" order="3" weight="0.25" />
       <window_info anchor="right" id="Palette" order="4" />
-      <window_info anchor="right" id="Capture Analysis" order="5" />
-      <window_info anchor="right" id="Database" order="6" weight="0.32904148" />
-      <window_info anchor="right" id="Palette&#9;" order="7" />
-      <window_info anchor="right" id="Theme Preview" order="8" />
+      <window_info anchor="bottom" id="Event Log" order="13" sideWeight="0.50151056" side_tool="true" weight="0.81445783" />
       <window_info anchor="right" id="Maven Projects" order="9" />
+      <window_info anchor="bottom" id="Database Changes" order="10" show_stripe_button="false" />
+      <window_info id="Capture Tool" order="8" />
+      <window_info id="Designer" order="3" />
+      <window_info anchor="bottom" id="Docker" />
+      <window_info anchor="right" id="Database" order="6" weight="0.32904148" />
+      <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
+      <window_info anchor="right" id="Ant Build" order="2" weight="0.25" />
+      <window_info id="UI Designer" order="5" />
+      <window_info anchor="bottom" id="Debug" order="3" weight="0.4" />
+      <window_info anchor="bottom" id="TODO" order="6" />
+      <window_info anchor="right" id="Palette&#9;" order="7" />
+      <window_info id="Image Layers" order="4" />
+      <window_info anchor="bottom" id="Java Enterprise" order="9" weight="0.32984293" />
+      <window_info anchor="right" id="Capture Analysis" order="5" />
+      <window_info anchor="bottom" id="Version Control" order="11" />
+      <window_info anchor="bottom" id="Run" order="2" weight="0.31566265" />
+      <window_info anchor="bottom" id="Spring" order="7" />
+      <window_info anchor="bottom" id="Terminal" order="8" sideWeight="0.49848944" visible="true" weight="0.45954692" />
+      <window_info id="Persistence" order="2" side_tool="true" />
+      <window_info active="true" content_ui="combo" id="Project" order="0" sideWeight="0.4991274" visible="true" weight="0.30107528" />
+      <window_info id="Web" order="7" sideWeight="0.5008726" side_tool="true" weight="0.26510575" />
+      <window_info id="Learn" />
+      <window_info anchor="right" id="Theme Preview" order="8" />
+      <window_info id="Favorites" order="6" side_tool="true" />
+      <window_info anchor="right" id="Preview" order="0" weight="0.3297568" />
+      <window_info anchor="bottom" id="Messages" order="12" weight="0.32891566" />
+      <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
+      <window_info anchor="right" id="Commander" order="1" weight="0.4" />
+      <window_info anchor="bottom" id="Find" order="1" visible="true" weight="0.32891566" />
+      <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
+      <window_info anchor="bottom" id="Message" order="0" />
+      <window_info anchor="right" content_ui="combo" id="Hierarchy" order="3" weight="0.25" />
     </layout>
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -787,20 +707,6 @@
     <option name="myLimit" value="2678400000" />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/src/main/resources/templates/email_schedule_request.txt">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="270">
-          <caret line="18" column="194" lean-forward="true" selection-start-line="18" selection-start-column="194" selection-end-line="18" selection-end-column="194" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/webapp/WEB-INF/views/view/input_schedule.jsp">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="915">
-          <caret line="61" column="6" lean-forward="true" selection-start-line="61" selection-start-column="6" selection-end-line="61" selection-end-column="6" />
-        </state>
-      </provider>
-    </entry>
     <entry file="jar://$MAVEN_REPOSITORY$/org/springframework/security/spring-security-core/4.2.3.RELEASE/spring-security-core-4.2.3.RELEASE.jar!/org/springframework/security/core/userdetails/UserDetails.class">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="90">
@@ -910,32 +816,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="201">
           <caret line="15" lean-forward="true" selection-start-line="15" selection-end-line="15" />
-          <folding>
-            <element signature="e#273#274#0" expanded="true" />
-            <element signature="e#293#294#0" expanded="true" />
-            <element signature="e#334#335#0" expanded="true" />
-            <element signature="e#361#362#0" expanded="true" />
-            <element signature="e#241#242#0" expanded="true" />
-            <element signature="e#257#258#0" expanded="true" />
-            <element signature="e#287#288#0" expanded="true" />
-            <element signature="e#306#307#0" expanded="true" />
-            <element signature="e#338#339#0" expanded="true" />
-            <element signature="e#363#364#0" expanded="true" />
-            <element signature="e#411#412#0" expanded="true" />
-            <element signature="e#448#449#0" expanded="true" />
-            <element signature="e#482#483#0" expanded="true" />
-            <element signature="e#506#507#0" expanded="true" />
-            <element signature="e#555#556#0" expanded="true" />
-            <element signature="e#590#591#0" expanded="true" />
-            <element signature="e#625#626#0" expanded="true" />
-            <element signature="e#650#651#0" expanded="true" />
-            <element signature="e#701#702#0" expanded="true" />
-            <element signature="e#738#739#0" expanded="true" />
-            <element signature="e#775#776#0" expanded="true" />
-            <element signature="e#799#800#0" expanded="true" />
-            <element signature="e#851#852#0" expanded="true" />
-            <element signature="e#886#887#0" expanded="true" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -1068,20 +948,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="250">
           <caret line="211" column="5" lean-forward="true" selection-start-line="211" selection-start-column="5" selection-end-line="211" selection-end-column="5" />
-          <folding>
-            <element signature="e#4015#4016#0" expanded="true" />
-            <element signature="e#4040#4041#0" expanded="true" />
-            <element signature="e#4091#4092#0" expanded="true" />
-            <element signature="e#4128#4129#0" expanded="true" />
-            <element signature="e#4163#4164#0" expanded="true" />
-            <element signature="e#4188#4189#0" expanded="true" />
-            <element signature="e#4239#4240#0" expanded="true" />
-            <element signature="e#4276#4277#0" expanded="true" />
-            <element signature="e#4328#4329#0" expanded="true" />
-            <element signature="e#4347#4348#0" expanded="true" />
-            <element signature="e#4387#4388#0" expanded="true" />
-            <element signature="e#4412#4413#0" expanded="true" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -1113,24 +979,10 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/MainController/AdminController.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="292">
-          <caret line="522" column="37" lean-forward="true" selection-start-line="522" selection-start-column="37" selection-end-line="522" selection-end-column="37" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/com/ServiceClasses/usersServiceImpl.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="398">
           <caret line="250" column="54" selection-start-line="250" selection-start-column="54" selection-end-line="250" selection-end-column="54" />
-          <folding>
-            <element signature="e#7819#7820#0" expanded="true" />
-            <element signature="e#7865#7866#0" expanded="true" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -1143,18 +995,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/main/webapp/WEB-INF/views/view/create_schedule.jsp">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="278">
+        <state relative-caret-position="4984">
           <caret line="178" column="94" selection-start-line="178" selection-start-column="94" selection-end-line="178" selection-end-column="94" />
-          <folding>
-            <element signature="n#style#0;n#div#4;n#form#0;n#div#0;n#div#0;n#div#0;n#section#0;n#article#0;n#body#0;n#!!top" expanded="true" />
-            <element signature="n#style#0;n#label#0;n#div#7;n#form#0;n#div#0;n#div#0;n#div#0;n#section#0;n#article#0;n#body#0;n#!!top" expanded="true" />
-            <element signature="n#style#0;n#input#0;n#div#7;n#form#0;n#div#0;n#div#0;n#div#0;n#section#0;n#article#0;n#body#0;n#!!top" expanded="true" />
-            <element signature="n#style#0;n#div#8;n#form#0;n#div#0;n#div#0;n#div#0;n#section#0;n#article#0;n#body#0;n#!!top" expanded="true" />
-            <element signature="n#style#0;n#label#0;n#div#8;n#form#0;n#div#0;n#div#0;n#div#0;n#section#0;n#article#0;n#body#0;n#!!top" expanded="true" />
-            <element signature="n#style#0;n#input#0;n#div#8;n#form#0;n#div#0;n#div#0;n#div#0;n#section#0;n#article#0;n#body#0;n#!!top" expanded="true" />
-            <element signature="n#style#0;n#div#9;n#form#0;n#div#0;n#div#0;n#div#0;n#section#0;n#article#0;n#body#0;n#!!top" expanded="true" />
-            <element signature="n#style#0;n#input#0;n#div#9;n#form#0;n#div#0;n#div#0;n#div#0;n#section#0;n#article#0;n#body#0;n#!!top" expanded="true" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -1174,26 +1016,25 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/com/DaoClasses/Custom_Imp.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="299">
-          <caret line="939" column="83" lean-forward="true" selection-start-line="939" selection-start-column="48" selection-end-line="939" selection-end-column="83" />
+        <state relative-caret-position="26292">
+          <caret line="939" column="83" selection-start-line="939" selection-start-column="48" selection-end-line="939" selection-end-column="83" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/com/DaoClasses/userDaoImpl.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="288">
-          <caret line="1123" column="44" lean-forward="true" selection-start-line="1123" selection-start-column="44" selection-end-line="1123" selection-end-column="44" />
+        <state relative-caret-position="29652">
+          <caret line="1123" column="44" selection-start-line="1123" selection-start-column="44" selection-end-line="1123" selection-end-column="44" />
           <folding>
             <element signature="imports" expanded="true" />
-            <element signature="e#36305#36322#0" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/com/ModelClasses/Student_Booking.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="300">
-          <caret line="20" column="28" lean-forward="true" selection-start-line="20" selection-start-column="28" selection-end-line="20" selection-end-column="28" />
+        <state relative-caret-position="448">
+          <caret line="20" column="28" selection-start-line="20" selection-start-column="28" selection-end-line="20" selection-end-column="28" />
           <folding>
             <element signature="e#300#301#0" expanded="true" />
             <element signature="e#334#335#0" expanded="true" />
@@ -1228,23 +1069,45 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/com/DaoClasses/StudentDaoImpl.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="197">
-          <caret line="149" column="23" lean-forward="true" selection-start-line="149" selection-start-column="23" selection-end-line="149" selection-end-column="23" />
+        <state relative-caret-position="3808">
+          <caret line="149" column="23" selection-start-line="149" selection-start-column="23" selection-end-line="149" selection-end-column="23" />
           <folding>
             <element signature="imports" expanded="true" />
-            <element signature="e#7465#7481#0" expanded="true" />
-            <element signature="e#21098#21114#0" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/com/MainController/StudentController.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="386">
+        <state relative-caret-position="-118">
           <caret line="39" column="217" selection-start-line="39" selection-start-column="217" selection-end-line="39" selection-end-column="217" />
           <folding>
             <element signature="imports" expanded="true" />
           </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/MainController/AdminController.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-3668">
+          <caret line="522" column="37" selection-start-line="522" selection-start-column="37" selection-end-line="522" selection-end-column="37" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/webapp/WEB-INF/views/view/student/home.jsp">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="267">
+          <caret line="37" lean-forward="true" selection-start-line="37" selection-end-line="37" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/.gitignore">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="56">
+          <caret line="2" column="6" selection-start-line="2" selection-start-column="6" selection-end-line="2" selection-end-column="6" />
         </state>
       </provider>
     </entry>
