@@ -37,9 +37,9 @@ public class StudentController {
     @RequestMapping(value = "/student_booking", method = RequestMethod.POST)
     @ResponseBody
     public Map<String, Object> student_booking(@RequestBody Student_Booking book_data) {
-//        System.out.println(book_data.getChoice()+" "+book_data.getDestination()+" "+book_data.getSource()+" "+book_data.getDeparture_date()+" "+book_data.getDeparture_time()+book_data.getReturn_date()+book_data.getReturn_time());
-//        return studentDao.student_booking(book_data);
-        return null;
+        System.out.println(book_data.getChoice()+" # "+book_data.getDestination()+" # "+book_data.getSource()+" # "+book_data.getDepart_date()+" # "+book_data.getDeparture_time()+" # "+book_data.getDate_return()+" # "+book_data.getReturn_time());
+        return studentDao.student_booking(book_data);
+//        return null;
     }
 
 

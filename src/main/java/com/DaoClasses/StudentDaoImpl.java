@@ -129,7 +129,7 @@ public class StudentDaoImpl implements StudentDao{
         int count_ticket = 0;
         int user_id = id.getAuthentic();
 
-        int schedule_id1 = new userDaoImpl().searchScheduleId(java.sql.Date.valueOf(book_data.getDepart_date()), java.sql.Time.valueOf(book_data.getDepart_time()), book_data.getSource(), book_data.getDestination());
+        int schedule_id1 = new userDaoImpl().searchScheduleId(java.sql.Date.valueOf(book_data.getDepart_date()), java.sql.Time.valueOf(book_data.getDeparture_time()), book_data.getSource(), book_data.getDestination());
         int schedule_id2 =5;
         if(book_data.getChoice()==2){
             schedule_id2 = new userDaoImpl().searchScheduleId(java.sql.Date.valueOf(book_data.getDate_return()), java.sql.Time.valueOf(book_data.getReturn_time()), book_data.getDestination(), book_data.getSource());
@@ -159,12 +159,12 @@ public class StudentDaoImpl implements StudentDao{
                 booking_master.setSource_id(book_data.getSource());
                 booking_master.setSchedule_id(schedule_id1);
                 booking_master.setDept_date(java.sql.Date.valueOf(book_data.getDepart_date()));
-                booking_master.setDept_time(java.sql.Time.valueOf(book_data.getDepart_time()));
+                booking_master.setDept_time(java.sql.Time.valueOf(book_data.getDeparture_time()));
                 booking_master.setNumber_booking(1);
                 booking_master.setAdult(1);
                 booking_master.setChild(0);
                 booking_master.setNotification("Booked");
-                booking_master.setQr(book_data.getSource() + "" + book_data.getDestination() + "" + book_data.getDepart_date() + "" + book_data.getDepart_time() + "" + user_id);
+                booking_master.setQr(book_data.getSource() + "" + book_data.getDestination() + "" + book_data.getDepart_date() + "" + book_data.getDeparture_time() + "" + user_id);
                 booking_master.setDescription("student");
                 booking_master.setCreated_at(created_at);
                 booking_master.setQr_status(false);
