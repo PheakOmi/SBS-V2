@@ -9,7 +9,7 @@
                                         <h3 class="title"> Schedule Detail </h3>
                                     </div>
                                     <form class="form-inline" id="myForm">
-                                       
+
                                        <div class="form-group col-md-4" style="margin-bottom:2%;">
                                             <label for="exampleInputEmail3"  style="margin-right:4%;">Driver</label>
                                             <select class="form-control" style="width: inherit;" id="sdriver"><option></option></select> </div>
@@ -32,6 +32,16 @@
                                         <div class="form-group col-md-4" style="margin-bottom:2%;">
                                             <label for="exampleInputPassword3"  style="margin-right:4%;">Number of seats</label>
                                             <input type="text" class="form-control" style="width: inherit;" id="sno_seat" maxlength="3" placeholder="Number of seats" required disabled> </div>
+                                        <div class="form-group col-md-4" style="margin-bottom:2%;">
+                                            <label for="exampleInputPassword3"  style="margin-right:4%;">Return?</label>
+                                            <input class="checkbox" style="display: block" type="checkbox" id="sreturn">
+                                             </div>
+                                        <div class="form-group col-md-4 dreturn" style="display: none;margin-bottom:2%;">
+                                            <label for="exampleInputEmail3"  style="margin-right:4%;">Return Date</label>
+                                            <input type="text" name="no_past_date" class="form-control" style="width: inherit;" id="sreturndate" placeholder="Return Date" > </div>
+                                        <div class="form-group col-md-4 dreturn" style="display: none; margin-bottom:2%;">
+                                            <label for="exampleInputPassword3"  style="margin-right:4%;">Return Time</label>
+                                            <input type="text" name="time" class="form-control" style="width: inherit;" id="sreturntime" placeholder="Return Time" > </div>
                                         <div class="form-group col-md-12" style="margin-bottom:2%;">
 											<button type="submit" class="btn btn-info">Create</button>
 											</div>
@@ -83,6 +93,7 @@ var locations;
 var s_code;
 var all_driver;
 var all_bus;
+var status = 0;
 load = function () {
 	var data = ${data};
 	console.log(data)
@@ -150,7 +161,26 @@ $(document).ready(function(){
 		e.preventDefault();
 		var dateee = $("#sdeptdate").val();
 		var convertedDate = dateee.replace(/(\d\d)\/(\d\d)\/(\d{4})/, "$3-$1-$2");
-        console.log(convertedDate)
+
+        var rdateee = $("#sreturndate").val();
+        var rconvertedDate = "nth";
+        if(rdateee!=""||rdateee!=null)
+            rconvertedDate = rdateee.replace(/(\d\d)\/(\d\d)\/(\d{4})/, "$3-$1-$2");
+
+        var rtimeee = $("#sreturntime").val();
+        var rconvertedTime = "nth";
+        if(rtimeee!=""||rtimeee!=null)
+            rconvertedTime = toDate($("#sreturntime").val(),'h:m');
+
+        var fors = false;
+        if(parseInt(status)>0){
+            if(parseInt(status)%2!=0)
+            {
+                if($("#sreturndate").val()==""||$("#sreturndate").val()==null||$("#sreturntime").val()==""||$("#sdepttime").val()==null)
+                fors = true
+            }
+        }
+
         var driver, bus;
 		if($("#sdriver").val()==""||$("#sdriver").val()==null)
 		{
@@ -194,7 +224,10 @@ $(document).ready(function(){
     				destination_id:parseInt($("#sto").val()),
     				no_seat:parseInt($("#sno_seat").val()),
     				dept_date:convertedDate,
-    				dept_time:toDate($("#sdepttime").val(),'h:m')
+    				dept_time:toDate($("#sdepttime").val(),'h:m'),
+                    round:fors,
+                    return_date:rconvertedDate,
+                    return_time:rconvertedTime
     			},
     		traditional: true,			
     		success: function(response){
@@ -253,6 +286,12 @@ function searchBusSeat(id, myArray){
         }
     }
 }
+
+$('#sreturn').on('click', function(){
+    console.log("clicked")
+            $('.dreturn').toggle();
+            status = parseInt(status) +1;
+        });
 
 function toDate(dStr,format) {
 	var now = new Date();

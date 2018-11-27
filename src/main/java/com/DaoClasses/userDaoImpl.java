@@ -1406,6 +1406,102 @@ public class userDaoImpl implements usersDao{
 
 	}
 
+
+
+    public Map<String, Object> saveSchedule(Schedule_Model schedule, String type) throws ParseException{
+        Schedule_Master s = new Schedule_Master();
+        Schedule_Master rs = new Schedule_Master();
+
+        String date = schedule.getDept_date();
+        String time = schedule.getDept_time();
+        int from  = schedule.getSource_id();
+        int to = schedule.getDestination_id();
+
+        String rdate = schedule.getReturn_date();
+        String rtime = schedule.getReturn_time();
+        int rfrom = schedule.getDestination_id();
+        int rto = schedule.getSource_id();
+
+        Map<String, Object> map = new HashMap <String, Object>();
+        Transaction trns7 = null;
+        int iid;
+        int riid;
+        Session session = HibernateUtil.getSessionFactory().openSession();
+        try {
+            trns7 = session.beginTransaction();
+            Timestamp created_at = new Timestamp(System.currentTimeMillis());
+            s.setBus_id(schedule.getBus_id());
+            s.setCreated_at(created_at);
+            s.setNo_seat(schedule.getNo_seat());
+            s.setDriver_id(schedule.getDriver_id());
+
+            s.setDept_date(java.sql.Date.valueOf(date));
+            s.setDept_time(java.sql.Time.valueOf(time));
+            s.setSource_id(from);
+            s.setDestination_id(to);
+
+            session.save(s);
+            iid = s.getId();
+            s.setCode(getScheduleSequence(iid));
+            session.update(s);
+            schedule.setIdd(iid);
+            schedule.setDescription("Create");
+            saveScheduleLog(schedule);
+
+
+            rs.setBus_id(schedule.getBus_id());
+            rs.setCreated_at(created_at);
+            rs.setNo_seat(schedule.getNo_seat());
+            rs.setDriver_id(schedule.getDriver_id());
+
+            rs.setDept_date(java.sql.Date.valueOf(rdate));
+            rs.setDept_time(java.sql.Time.valueOf(rtime));
+            rs.setSource_id(rfrom);
+            rs.setDestination_id(rto);
+
+            session.save(rs);
+            riid = rs.getId();
+            rs.setCode(getScheduleSequence(riid));
+            session.update(rs);
+            schedule.setIdd(riid);
+            schedule.setDescription("Create");
+            saveScheduleLog(schedule);
+
+            session.getTransaction().commit();
+
+            schedule.setDept_date2(java.sql.Date.valueOf(schedule.getDept_date()));
+
+            Schedule_Model return_schedule = new Schedule_Model();
+            return_schedule.setDept_date2(java.sql.Date.valueOf(rdate));
+            return_schedule.setDept_time(rtime);
+            return_schedule.setSource_id(rfrom);
+            return_schedule.setDestination_id(rto);
+            return_schedule.setNo_seat(schedule.getNo_seat());
+
+
+            map.put("schedule", schedule);
+            map.put("return_schedule", return_schedule);
+            map.put("status", "all fine");
+            map.put("message", "Schedule "+getScheduleSequence(iid)+" and "+getScheduleSequence(riid)+" have just been created successfully");
+
+        } catch (RuntimeException e) {
+            if (trns7 != null) {
+                trns7.rollback();
+            }
+            e.printStackTrace();
+            map.put("status", "error");
+            map.put("message", "Technical problem occurs");
+            return map;
+        } finally {
+            session.flush();
+            session.close();
+        }
+        return map;
+
+    }
+
+
+
     public void  saveScheduleLog(Schedule_Model schedule) throws ParseException{
         Schedule_Log log = new Schedule_Log();
         Map<String, Object> map = new HashMap <String, Object>();

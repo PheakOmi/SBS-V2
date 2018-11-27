@@ -83,4 +83,5 @@ public interface usersService {
 	public int apReqEmail(String token, String type);
 	public List <Schedule_Log> getAllLogsBySchedeuleId(int id);
 	public Schedule_Log getScheduleLogById (int id);
+	public Map<String, Object> saveSchedule(Schedule_Model schedule, String type) throws ParseException;
 }

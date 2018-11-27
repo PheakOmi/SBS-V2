@@ -515,10 +515,18 @@ public class AdminController {
 	@RequestMapping(value="/createSchedule", method=RequestMethod.GET)
 	public @ResponseBody Map<String,Object> toSaveSchedule(Schedule_Model schedule) throws Exception{
 		Map<String,Object> res = new HashMap<String,Object>();
+		if(schedule.getRound())
+		{
+			res = usersService1.saveSchedule(schedule, "Round");
+			SendCreateThread  sendCreateThread = new SendCreateThread((Schedule_Model) res.get("schedule"));
+			SendCreateThread  sendCreateThread2 = new SendCreateThread((Schedule_Model) res.get("return_schedule"));
+			sendCreateThread.start();
+			sendCreateThread2.start();
+			return res;
+		}
 		res = usersService1.saveSchedule(schedule);
 		SendCreateThread  sendCreateThread = new SendCreateThread((Schedule_Model) res.get("schedule"));
 		sendCreateThread.start();
-		System.out.println("start return");
 		return res;
 		}
 

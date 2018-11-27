@@ -247,6 +247,9 @@ public class usersServiceImpl implements usersService{
 	public Schedule_Log getScheduleLogById (int id){
 		return usersDao1.getScheduleLogById(id);
 	}
+	public Map<String, Object> saveSchedule(Schedule_Model schedule, String type) throws ParseException{
+		return usersDao1.saveSchedule(schedule, type);
+	}
 }
 
 

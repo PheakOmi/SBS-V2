@@ -17,6 +17,8 @@ public class Schedule_Model {
 	private int to_id;
 	private String dept_date;
 	private String dept_time;
+	private String return_date;
+	private String return_time;
 	private String description;
 	private String code;
 	private int no_seat;
@@ -30,7 +32,7 @@ public class Schedule_Model {
 	private Date dept_date2;
 	private Time dept_time2;
 	private String date_arr[];
-	
+	private Boolean round;
 	
 	
 	public int getFrom_id() {
@@ -187,5 +189,29 @@ public class Schedule_Model {
 
 	public void setDate_arr(String[] date_arr) {
 		this.date_arr = date_arr;
+	}
+
+	public String getReturn_date() {
+		return return_date;
+	}
+
+	public void setReturn_date(String return_date) {
+		this.return_date = return_date;
+	}
+
+	public String getReturn_time() {
+		return return_time;
+	}
+
+	public void setReturn_time(String return_time) {
+		this.return_time = return_time;
+	}
+
+	public Boolean getRound() {
+		return round;
+	}
+
+	public void setRound(Boolean round) {
+		this.round = round;
 	}
 }

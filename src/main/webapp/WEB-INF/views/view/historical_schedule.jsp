@@ -46,7 +46,7 @@
                                         <th>Departure Time</th>
                                         <th>Allowed</th>
                                         <th>Booked</th>
-                                        <th></th>
+
                                     </tr>
                                     </thead>
                                     <tbody id="allSchedules">
@@ -102,11 +102,7 @@
                         +'<td>'+formatDate(schedules[i].dept_date)+'</td>'
                         +'<td>'+timeConverter(schedules[i].dept_time)+'</td>'
                         +'<td>'+schedules[i].no_seat+'</td>'
-                        +'<td>'+(schedules[i].number_staff+schedules[i].number_student+schedules[i].number_customer)+'</td>';
-                    if(schedules[i].number_staff+schedules[i].number_student+schedules[i].number_customer<=0)
-                        schedule = schedule+'<td class="unhoverr" data-url="'+schedules[i].id+'" style="color:#e85a71"><i class="fa fa-trash"></i></td></tr>';
-                    else
-                        schedule = schedule +'<td></td></tr>';
+                        +'<td>'+(schedules[i].number_staff+schedules[i].number_student+schedules[i].number_customer)+'</td></tr>';
                     $("#allSchedules").append(schedule);
                 }
                 $( ".unhoverr" ).on('click', function(e) {
