@@ -32,9 +32,9 @@
         </form>
         <noscript>You need to enable JavaScript to run this app.</noscript>
         <div id="root"></div>
-        <script type="text/javascript" src="/resources/student/build/static/js/main.8d50fc5c.js"></script>
-        <link rel="stylesheet" href="/resources/student/build/static/css/main.4dd30cc9.css">
-       <!--<script type="text/javascript" src="http://localhost:3000/static/js/bundle.js"></script>-->
+        <script type="text/javascript" src="/resources/student/build/static/js/main.5825c071.js"></script>
+        <link rel="stylesheet" href="/resources\student\build\static\css\main.4dd30cc9.css">
+        <%--<script type="text/javascript" src="http://localhost:3000/static/js/bundle.js"></script>--%>
 
 
     </body>
