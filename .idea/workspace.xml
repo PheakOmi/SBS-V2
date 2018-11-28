@@ -3,19 +3,6 @@
   <component name="ChangeListManager">
     <list default="true" id="06345a70-3328-4d36-a0c8-0657007cf460" name="Default" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/DaoClasses/StudentDaoImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/DaoClasses/StudentDaoImpl.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/DaoClasses/userDaoImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/DaoClasses/userDaoImpl.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/DaoClasses/usersDao.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/DaoClasses/usersDao.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/MainController/AdminController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/MainController/AdminController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/ModelClasses/Schedule_Model.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/ModelClasses/Schedule_Model.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/ServiceClasses/usersService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/ServiceClasses/usersService.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/ServiceClasses/usersServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/ServiceClasses/usersServiceImpl.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/webapp/WEB-INF/views/template/layout.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/WEB-INF/views/template/layout.jsp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/webapp/WEB-INF/views/template/layout3.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/WEB-INF/views/template/layout3.jsp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/webapp/WEB-INF/views/view/create_schedule.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/WEB-INF/views/view/create_schedule.jsp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/webapp/WEB-INF/views/view/input_schedule.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/WEB-INF/views/view/input_schedule.jsp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/webapp/resources/Bootstrap/css/input_schedule.css" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/resources/Bootstrap/css/input_schedule.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/webapp/resources/Bootstrap/js/input_schedule.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/resources/Bootstrap/js/input_schedule.js" afterDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/target/" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -109,7 +96,7 @@
         <entry file="file://$PROJECT_DIR$/src/main/java/com/MainController/AdminController.java">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="361">
-              <caret line="573" column="19" lean-forward="true" selection-start-line="573" selection-start-column="19" selection-end-line="573" selection-end-column="19" />
+              <caret line="573" column="19" selection-start-line="573" selection-start-column="19" selection-end-line="573" selection-end-column="19" />
               <folding>
                 <element signature="imports" expanded="true" />
               </folding>
@@ -121,7 +108,7 @@
         <entry file="file://$PROJECT_DIR$/src/main/java/com/DaoClasses/userDaoImpl.java">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="393">
-              <caret line="1910" column="35" lean-forward="true" selection-start-line="1910" selection-start-column="35" selection-end-line="1910" selection-end-column="35" />
+              <caret line="1910" column="35" selection-start-line="1910" selection-start-column="35" selection-end-line="1910" selection-end-column="35" />
               <folding>
                 <element signature="imports" expanded="true" />
                 <element signature="e#36305#36322#0" expanded="true" />
@@ -137,7 +124,7 @@
         <entry file="file://$PROJECT_DIR$/src/main/java/com/client_mail/ApplicationConfig.java">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="371">
-              <caret line="37" column="62" lean-forward="true" selection-start-line="37" selection-start-column="51" selection-end-line="37" selection-end-column="62" />
+              <caret line="37" column="62" selection-start-line="37" selection-start-column="51" selection-end-line="37" selection-end-column="62" />
             </state>
           </provider>
         </entry>
@@ -146,7 +133,7 @@
         <entry file="file://$PROJECT_DIR$/src/main/webapp/WEB-INF/views/view/create_schedule.jsp">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="357">
-              <caret line="223" column="37" lean-forward="true" selection-start-line="223" selection-start-column="37" selection-end-line="223" selection-end-column="37" />
+              <caret line="223" column="37" selection-start-line="223" selection-start-column="37" selection-end-line="223" selection-end-column="37" />
               <folding>
                 <element signature="n#style#0;n#div#4;n#form#0;n#div#0;n#div#0;n#div#0;n#section#0;n#article#0;n#body#0;n#!!top" expanded="true" />
                 <element signature="n#style#0;n#label#0;n#div#7;n#form#0;n#div#0;n#div#0;n#div#0;n#section#0;n#article#0;n#body#0;n#!!top" expanded="true" />
@@ -165,7 +152,7 @@
         <entry file="file://$PROJECT_DIR$/src/main/webapp/WEB-INF/views/template/layout3.jsp">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="362">
-              <caret line="26" column="63" lean-forward="true" selection-start-line="26" selection-start-column="27" selection-end-line="26" selection-end-column="63" />
+              <caret line="26" column="63" selection-start-line="26" selection-start-column="27" selection-end-line="26" selection-end-column="63" />
               <folding>
                 <element signature="e#0#6#0" expanded="true" />
                 <element signature="e#7#13#0" expanded="true" />
@@ -194,7 +181,7 @@
         <entry file="file://$PROJECT_DIR$/src/main/java/com/DaoClasses/StudentDaoImpl.java">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="271">
-              <caret line="221" column="54" lean-forward="true" selection-start-line="221" selection-start-column="54" selection-end-line="221" selection-end-column="54" />
+              <caret line="221" column="54" selection-start-line="221" selection-start-column="54" selection-end-line="221" selection-end-column="54" />
               <folding>
                 <element signature="imports" expanded="true" />
               </folding>
@@ -502,7 +489,7 @@
     <property name="SearchEverywhereHistoryKey" value="la&#9;FILE&#9;file:///Users/sopheakdy/Documents/Dexpertize/SBS/Version 2.0/Shuttle-Bus-System-master/src/main/webapp/WEB-INF/views/template/layout.jsp&#10;input&#9;FILE&#9;file:///Users/sopheakdy/Documents/Dexpertize/SBS/Version 2.0/Shuttle-Bus-System-master/src/main/webapp/resources/Bootstrap/js/input_schedule.js&#10;loca&#9;FILE&#9;file:///Users/sopheakdy/Documents/Dexpertize/SBS/Version 2.0/Shuttle-Bus-System-master/src/main/webapp/WEB-INF/views/view/location_management.jsp&#10;hi&#9;FILE&#9;file:///Users/sopheakdy/Documents/Dexpertize/SBS/Version 2.0/Shuttle-Bus-System-master/src/main/resources/hibernate.cfg.xml&#10;cfg&#9;FILE&#9;file:///Users/sopheakdy/Documents/Dexpertize/SBS/Version 2.0/Shuttle-Bus-System-master/src/main/resources/hibernate.cfg.xml&#10;getHours&#9;null&#9;null&#10;z-in&#9;null&#9;null&#10;fc-day-content&#9;null&#9;null&#10;slickjs&#9;FILE&#9;file:///Users/sopheakdy/Documents/Dexpertize/SBS/Version 2.0/Shuttle-Bus-System-master/src/main/webapp/resources/Bootstrap/js/slider/slick.min.js" />
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="aspect.path.notification.shown" value="true" />
-    <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1543387154393" />
+    <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1543388473169" />
     <property name="last_opened_file_path" value="$PROJECT_DIR$" />
     <property name="list.type.of.created.stylesheet" value="CSS" />
     <property name="settings.editor.selected.configurable" value="project.propVCSSupport.Mappings" />
@@ -696,18 +683,17 @@
       <workItem from="1543197312105" duration="2390000" />
       <workItem from="1543199943596" duration="2618000" />
       <workItem from="1543213162119" duration="10427000" />
-      <workItem from="1543291826936" duration="22401000" />
+      <workItem from="1543291826936" duration="22842000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="346282000" />
+    <option name="totallyTimeSpent" value="346723000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="0" y="0" width="1440" height="900" extended-state="0" />
-    <editor active="true" />
     <layout>
-      <window_info active="true" content_ui="combo" id="Project" order="0" sideWeight="0.4991274" visible="true" weight="0.29542202" />
+      <window_info content_ui="combo" id="Project" order="0" sideWeight="0.4991274" visible="true" weight="0.29542202" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info id="Persistence" order="2" side_tool="true" />
       <window_info id="Designer" order="3" />
@@ -718,13 +704,13 @@
       <window_info id="Capture Tool" order="8" />
       <window_info anchor="bottom" id="Message" order="0" />
       <window_info anchor="bottom" id="Find" order="1" weight="0.32891566" />
-      <window_info anchor="bottom" id="Run" order="2" visible="true" weight="0.31566265" />
+      <window_info anchor="bottom" id="Run" order="2" weight="0.31566265" />
       <window_info anchor="bottom" id="Debug" order="3" weight="0.4" />
       <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
       <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
       <window_info anchor="bottom" id="TODO" order="6" />
       <window_info anchor="bottom" id="Spring" order="7" />
-      <window_info anchor="bottom" id="Terminal" order="8" sideWeight="0.49848944" weight="0.4313253" />
+      <window_info active="true" anchor="bottom" id="Terminal" order="8" sideWeight="0.49848944" visible="true" weight="0.4313253" />
       <window_info anchor="bottom" id="Java Enterprise" order="9" weight="0.32984293" />
       <window_info anchor="bottom" id="Database Changes" order="10" show_stripe_button="false" />
       <window_info anchor="bottom" id="Version Control" order="11" />
@@ -1103,7 +1089,7 @@
     <entry file="file://$PROJECT_DIR$/src/main/java/com/MainController/AdminController.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="361">
-          <caret line="573" column="19" lean-forward="true" selection-start-line="573" selection-start-column="19" selection-end-line="573" selection-end-column="19" />
+          <caret line="573" column="19" selection-start-line="573" selection-start-column="19" selection-end-line="573" selection-end-column="19" />
           <folding>
             <element signature="imports" expanded="true" />
           </folding>
@@ -1113,7 +1099,7 @@
     <entry file="file://$PROJECT_DIR$/src/main/java/com/DaoClasses/StudentDaoImpl.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="271">
-          <caret line="221" column="54" lean-forward="true" selection-start-line="221" selection-start-column="54" selection-end-line="221" selection-end-column="54" />
+          <caret line="221" column="54" selection-start-line="221" selection-start-column="54" selection-end-line="221" selection-end-column="54" />
           <folding>
             <element signature="imports" expanded="true" />
           </folding>
@@ -1130,7 +1116,7 @@
     <entry file="file://$PROJECT_DIR$/src/main/java/com/DaoClasses/userDaoImpl.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="393">
-          <caret line="1910" column="35" lean-forward="true" selection-start-line="1910" selection-start-column="35" selection-end-line="1910" selection-end-column="35" />
+          <caret line="1910" column="35" selection-start-line="1910" selection-start-column="35" selection-end-line="1910" selection-end-column="35" />
           <folding>
             <element signature="imports" expanded="true" />
             <element signature="e#36305#36322#0" expanded="true" />
@@ -1144,7 +1130,7 @@
     <entry file="file://$PROJECT_DIR$/src/main/java/com/client_mail/ApplicationConfig.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="371">
-          <caret line="37" column="62" lean-forward="true" selection-start-line="37" selection-start-column="51" selection-end-line="37" selection-end-column="62" />
+          <caret line="37" column="62" selection-start-line="37" selection-start-column="51" selection-end-line="37" selection-end-column="62" />
         </state>
       </provider>
     </entry>
@@ -1177,7 +1163,7 @@
     <entry file="file://$PROJECT_DIR$/src/main/webapp/WEB-INF/views/view/create_schedule.jsp">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="357">
-          <caret line="223" column="37" lean-forward="true" selection-start-line="223" selection-start-column="37" selection-end-line="223" selection-end-column="37" />
+          <caret line="223" column="37" selection-start-line="223" selection-start-column="37" selection-end-line="223" selection-end-column="37" />
           <folding>
             <element signature="n#style#0;n#div#4;n#form#0;n#div#0;n#div#0;n#div#0;n#section#0;n#article#0;n#body#0;n#!!top" expanded="true" />
             <element signature="n#style#0;n#label#0;n#div#7;n#form#0;n#div#0;n#div#0;n#div#0;n#section#0;n#article#0;n#body#0;n#!!top" expanded="true" />
@@ -1204,7 +1190,7 @@
     <entry file="file://$PROJECT_DIR$/src/main/webapp/WEB-INF/views/template/layout3.jsp">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="362">
-          <caret line="26" column="63" lean-forward="true" selection-start-line="26" selection-start-column="27" selection-end-line="26" selection-end-column="63" />
+          <caret line="26" column="63" selection-start-line="26" selection-start-column="27" selection-end-line="26" selection-end-column="63" />
           <folding>
             <element signature="e#0#6#0" expanded="true" />
             <element signature="e#7#13#0" expanded="true" />
