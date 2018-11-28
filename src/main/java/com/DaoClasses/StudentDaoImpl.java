@@ -291,9 +291,9 @@ public class StudentDaoImpl implements StudentDao{
                  map.put("status",booking_master.getNotification());
                  map.put("dept_time",booking_master.getDept_time());
                  location_master = (Location_Master)
-                         session.load(Location_Master.class,booking_master.getTo_id());
+                         session.load(Location_Master.class,booking_master.getDestination_id());
                  map.put("destination_name",location_master.getName());
-                 location_master = (Location_Master) session.load(Location_Master.class,booking_master.getFrom_id());
+                 location_master = (Location_Master) session.load(Location_Master.class,booking_master.getSource_id());
                  map.put("source_name",location_master.getName());
                  System.out.println(booking_master.getFrom_id());
                  if(booking_master.getSchedule_id() !=0 ){
