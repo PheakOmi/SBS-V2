@@ -273,7 +273,7 @@ public class StudentDaoImpl implements StudentDao{
          List<Booking_Master> list_booking = new ArrayList<Booking_Master>();
          Session session = HibernateUtil.getSessionFactory().openSession();
          try {
-             String hql = "From Booking_Master where notification != 'Cancelled' and user_id="+id.getAuthentic();
+             String hql = "From Booking_Master where notification != 'Cancelled' and user_id="+id.getAuthentic()+" order by dept_date desc";
              Query query = session.createQuery(hql);
              query.setMaxResults(10);
               list_booking= query.list();
