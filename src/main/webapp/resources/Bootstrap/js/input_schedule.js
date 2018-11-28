@@ -2415,7 +2415,7 @@ function enableTextSelection(element) {
             }
             var cb = ""
             if (date > today)
-                cb = '<div class="pull-left"><input type="checkbox" class="checkbox" info="'+formatDate(date, 'MM/dd/yyyy')+'"></div>'
+                cb = '<div class="pull-left"><input type="checkbox" class="checkbox ddatee" info="'+formatDate(date, 'MM/dd/yyyy')+'"></div>'
             html +=
                 "<div class='fc-day-content'>" +
                 "<div style='position:relative'> </div>" +
@@ -3179,7 +3179,7 @@ function enableTextSelection(element) {
 
                 var cb = ""
                 if (date > today)
-                    cb = '<div class="pull-left"><input type="checkbox" class="checkbox" info="'+formatDate(date, 'MM/dd/yyyy')+'"></div>'
+                    cb = '<div class="pull-left"><input type="checkbox" class="checkbox ddatee" info="'+formatDate(date, 'MM/dd/yyyy')+'"></div>'
                 cellHTML =
                     "<td class='" + classNames.join(' ') + "'>" +
                     "<div>" +

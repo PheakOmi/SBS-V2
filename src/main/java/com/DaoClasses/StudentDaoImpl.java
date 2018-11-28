@@ -160,6 +160,8 @@ public class StudentDaoImpl implements StudentDao{
                 booking_master.setDestination_id(book_data.getDestination());
                 booking_master.setSource_id(book_data.getSource());
                 booking_master.setSchedule_id(schedule_id1);
+                Schedule_Master schedule_master = new userDaoImpl().getScheduleById(schedule_id1);
+                schedule_master.setNumber_student(schedule_master.getNumber_student()+1);
                 booking_master.setDept_date(java.sql.Date.valueOf(book_data.getDepart_date()));
                 booking_master.setDept_time(java.sql.Time.valueOf(book_data.getDeparture_time()));
                 booking_master.setNumber_booking(1);
@@ -172,6 +174,7 @@ public class StudentDaoImpl implements StudentDao{
                 booking_master.setQr_status(false);
                 booking_master.setPayment("Succeed");
                 booking_master.setBooking_request_id(0);
+                session.update(schedule_master);
                 session.save(booking_master);
                 booking_master.setCode(Custom_Imp.getBookingSequence(booking_master.getId()));
                 count_ticket++;
@@ -184,6 +187,8 @@ public class StudentDaoImpl implements StudentDao{
                     booking_return.setDestination_id(book_data.getSource());
                     booking_return.setSource_id(book_data.getDestination());
                     booking_return.setSchedule_id(schedule_id2);
+                    Schedule_Master schedule_return = new userDaoImpl().getScheduleById(schedule_id2);
+                    schedule_return.setNumber_student(schedule_return.getNumber_student()+1);
                     booking_return.setDept_date(java.sql.Date.valueOf(book_data.getDate_return()));
                     booking_return.setDept_time(java.sql.Time.valueOf(book_data.getReturn_time()));
                     booking_return.setNumber_booking(1);
@@ -196,6 +201,7 @@ public class StudentDaoImpl implements StudentDao{
                     booking_return.setQr_status(false);
                     booking_return.setPayment("Succeed");
                     booking_return.setBooking_request_id(0);
+                    session.update(schedule_return);
                     session.save(booking_return);
                     booking_return.setCode(Custom_Imp.getBookingSequence(booking_return.getId()));
                     count_ticket++;
