@@ -123,6 +123,8 @@ public class StudentDaoImpl implements StudentDao{
 
         Session session = HibernateUtil.getSessionFactory().openSession();
         Map<String,Object> map = new HashMap<String, Object>();
+        book_data.setDeparture_time(converter(book_data.getDeparture_time()));
+        book_data.setReturn_time(converter(book_data.getReturn_time()));
         Custom_Imp custom_dao = new Custom_Imp();
         Location_Master location_master = new Location_Master();
         Timestamp created_at = new Timestamp(System.currentTimeMillis());
@@ -222,6 +224,16 @@ public class StudentDaoImpl implements StudentDao{
     }
 
 
+    public String converter(String in) {
+        try {
+            SimpleDateFormat inFormat = new SimpleDateFormat("hh:mm:ss aa");
+            SimpleDateFormat outFormat = new SimpleDateFormat("HH:mm:ss");
+            String time24 = outFormat.format(inFormat.parse(in));
+            return time24;
+        } catch (Exception e) {
+            return e.getMessage();
+        }
+    }
 
 
 
