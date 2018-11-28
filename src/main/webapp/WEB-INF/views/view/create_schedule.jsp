@@ -176,7 +176,10 @@ $(document).ready(function(){
         if(parseInt(status)>0){
             if(parseInt(status)%2!=0)
             {
-                if($("#sreturndate").val()==""||$("#sreturndate").val()==null||$("#sreturntime").val()==""||$("#sdepttime").val()==null)
+                if($("#sreturndate").val()==""||$("#sreturndate").val()==null||$("#sreturntime").val()==""||$("#sreturntime").val()==null){
+                    swal("Action Disallowed!", "You Return Date and Time cannot be blank!", "error")
+                    return
+                }
                 fors = true
             }
         }

@@ -153,19 +153,11 @@ var eee;
                       
                       $(".js-example-basic-multiple").select2();
                       var date_input=$('input[name="date"]');
-                      var no_past_date_input=$('input[name="no_past_date"]');
                       var time_input = $('input[name="time"]');
                       var options={
                           format: 'yyyy/mm/dd',
                           todayHighlight: true,
                           autoclose: true,
-                        };
-                      var dateToday = new Date();
-                      var no_past_options={
-                            format: 'yyyy/mm/dd',
-                            todayHighlight: true,
-                            autoclose: true,
-                            minDate: dateToday,
                         };
                         var slickjs = $("<link>");
                         $(slickjs).attr('rel', 'stylesheet');
@@ -187,6 +179,14 @@ var eee;
                         };
                         time_input.wickedpicker(options2);
                         date_input.datepicker(options);
+                        var no_past_date_input=$('input[name="no_past_date"]');
+                        var dateToday = new Date();
+                        var no_past_options={
+                            format: 'yyyy/mm/dd',
+                            todayHighlight: true,
+                            autoclose: true,
+                            minDate: dateToday,
+                        };
                         no_past_date_input.datepicker(no_past_options);
 
 

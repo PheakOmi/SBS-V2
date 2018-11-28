@@ -43,6 +43,29 @@
 					<div class="form-group" style="margin-bottom:2%;">
 						<label class="control-label">Number of seats</label>
 						<input type="text" class="form-control boxed" id="sno_seat" maxlength="3" placeholder="Number of seats" required disabled> </div>
+					<div class="form-group" style="margin-bottom:2%;">
+						<label class="control-label">Return</label>
+						<select class="form-control boxed" id="sreturn">
+							<option value=0></option>
+							<option value=1>Same Date</option>
+							<option value=2>Respectively</option>
+						</select>
+					</div>
+					<div id="option1" style="display:none">
+						<div class="form-group" style="margin-bottom:2%;">
+							<label class="control-label">Return Date</label>
+							<input type="text" name="no_past_date" class="form-control boxed" id="sreturndate1" placeholder="Return Date"> </div>
+						<div class="form-group" style="margin-bottom:2%;">
+							<label class="control-label">Return Time</label>
+							<input type="text" name="time" class="form-control boxed" id="sreturntime1" placeholder="Return Time"> </div>
+					</div>
+
+					<div id="option2" style="display:none">
+						<div class="form-group" style="margin-bottom:2%;">
+							<label class="control-label">Return Time</label>
+							<input type="text" name="time" class="form-control boxed" id="sreturntime2" placeholder="Return Time"> </div>
+					</div>
+
 					<button type="submit" id="bsubmit" class="btn btn-default" style="display:none;">Create</button>
 				</form>
 			</div>

@@ -86,4 +86,6 @@ public interface usersDao {
 	public List <Schedule_Log> getAllLogsBySchedeuleId(int id);
 	public Schedule_Log getScheduleLogById (int id);
 	public Map<String, Object> saveSchedule(Schedule_Model schedule, String type) throws ParseException;
+	public Map<String, Object> saveMultipleSchedule(Schedule_Model schedule, String type) throws ParseException;
+	public Map<String, Object> saveMultipleSchedule(Schedule_Model schedule, String type, String choice) throws ParseException;
 }

@@ -561,8 +561,18 @@ public class AdminController {
 	@RequestMapping(value="/createMultipleSchedule", method=RequestMethod.GET)
 	public @ResponseBody Map<String,Object> createMultipleSchedule(Schedule_Model schedule) throws Exception{
 		Map<String,Object> res = new HashMap<String,Object>();
-		res = usersService1.saveMultipleSchedule(schedule);
+		if(schedule.getChoice()==1)
+		{
+			res = usersService1.saveMultipleSchedule(schedule, "Round");
+			return res;
+		}
+		else if(schedule.getChoice()==0){
+			res = usersService1.saveMultipleSchedule(schedule);
+			return res;
+		}
+		res = usersService1.saveMultipleSchedule(schedule, "Round", "Respect");
 		return res;
+
 	}
 
 

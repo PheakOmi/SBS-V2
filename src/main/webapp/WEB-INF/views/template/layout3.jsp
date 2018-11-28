@@ -24,7 +24,7 @@
             text-align: center;
             font-size: 14px;
             font-family: 'Roboto', sans-serif;
-            background:url(http://www.digiphotohub.com/wp-content/uploads/2015/09/bigstock-Abstract-Blurred-Background-Of-92820527.jpg);
+            background:url('/resources/Bootstrap/css/myPic.jpg');
         }
 
         #wrap {
@@ -110,7 +110,7 @@
 
 
 <script>
-
+var status = 0;
                     $(document).ready(function(){
 
                         var date = new Date();
@@ -126,7 +126,7 @@
                                 for(i=0;i<response.schedules.length;i++) {
                                     var data = response.schedules[i]
                                     var sdate = new Date(data.dept_date)
-                                    var title = '&nbsp;'+searchLocation(data.source_id,response.locations) + "-" + searchLocation(data.destination_id, response.locations)+'&nbsp;&nbsp;&nbsp;&nbsp;'+ timeConv(data.dept_time)+'&nbsp;&nbsp;&nbsp;<span style="color:orange;">'+searchBusSeat(data.bus_id,response.buses)+'/'+(parseInt(data.number_staff)+parseInt(data.number_student)+parseInt(data.number_customer))+"</span>"
+                                    var title = '&nbsp;'+searchLocation(data.source_id,response.locations) + "-" + searchLocation(data.destination_id, response.locations)+'&nbsp;&nbsp;&nbsp;&nbsp;'+ timeConv(data.dept_time)+'&nbsp;&nbsp;&nbsp;<span style="color:orange;">'+(parseInt(data.number_staff)+parseInt(data.number_student)+parseInt(data.number_customer))+'/'+searchBusSeat(data.bus_id,response.buses)+"</span>"
                                     var date_obj = {
                                         title: title,
                                         start: new Date(sdate.getFullYear(), sdate.getMonth(), sdate.getDate()),
@@ -185,48 +185,6 @@
 
 
 
-
-
-
-                      
-                      $.ajax({
-                            url:'getBookingRequestNotification',
-                            type:'GET',
-                            success: function(response){
-                              if(response.requests.length>0)
-                              $("#notii").text(response.requests.length);
-                            },
-                          error: function(err){
-                            console.log(JSON.stringify(err));
-                            }
-                            
-                          });
-
-
-
-
-                      $.ajax({
-                              async: false,
-                              cache: false,
-                              type: "GET",
-                              url: "user_info",
-                              contentType: "application/json",
-                              timeout: 100000,
-                              success: function(data) {
-                                console.log(data);
-                                document.getElementById('fname').innerHTML=data.username;
-                                eee=data.email;
-                                
-                              },
-                              error: function(e) {
-                                console.log("ERROR: ", e);
-                              },
-                              done: function(e) {
-                                console.log("DONE");
-                              }
-                          });
-
-
                         $( "#settingMng" ).on( "click", function() {
                         $(".ir").slideToggle();
                         $("#dds1").toggleClass("irr");
@@ -238,9 +196,17 @@
                         $("#ddr1").toggleClass("irr");
                         $("#ddr2").toggleClass("irr");
                       });
-                
 
 
+                        var no_past_date_input=$('input[name="no_past_date"]');
+                        var dateToday = new Date();
+                        var no_past_options={
+                            format: 'yyyy/mm/dd',
+                            todayHighlight: true,
+                            autoclose: true,
+                            minDate: dateToday,
+                        };
+                        no_past_date_input.datepicker(no_past_options);
 
 
                         
@@ -281,10 +247,64 @@ $(window).bind("load", function() {
 
     });
 
+    $("#sreturn").change(function(){
+        var input  = this.value;
+        console.log(input)
+        if(input==1)
+        {
+            $('#option1').show();
+            $('#option2').hide();
+        }
+        else if(input==2){
+            $('#option2').show();
+            $('#option1').hide();
+        }
+        else {
+            $('#option1').hide();
+            $('#option2').hide();
+        }
+
+    });
+
+
+
 
 
     $("#myForm").on('submit',function(e){
         e.preventDefault();
+
+        var rdateee = $("#sreturndate1").val();
+        var rconvertedDate = "nth";
+        if(rdateee!=""||rdateee!=null)
+            rconvertedDate = rdateee.replace(/(\d\d)\/(\d\d)\/(\d{4})/, "$3-$1-$2");
+
+        var rtimeee = $("#sreturntime1").val();
+        var rconvertedTime = "nth";
+        if(rtimeee!=""||rtimeee!=null)
+            rconvertedTime = toDate($("#sreturntime1").val(),'h:m');
+
+        var rtimeee2 = $("#sreturntime2").val();
+        var rconvertedTime2 = "nth";
+        if(rtimeee2!=""||rtimeee2!=null)
+            rconvertedTime2 = toDate($("#sreturntime2").val(),'h:m');
+
+        if($("#sreturn").val()!=0){
+            if($("#sreturn").val==1)
+            {
+                if($("#sreturndate1").val()==""||$("#sreturndate1").val()==null||$("#sreturntime1").val()==""||$("#sreturntime1").val()==null){
+                    swal("Action Disallowed!", "Your Return Date and Time cannot be blank!", "error")
+                    return
+                }
+            }
+            else {
+                if($("#sreturntime2").val()==""||$("#sreturntime2").val()==null){
+                    swal("Action Disallowed!", "Your Return Time cannot be blank!", "error")
+                    return
+                }
+            }
+        }
+
+
         var driver, bus;
         if($("#sdriver").val()==""||$("#sdriver").val()==null)
         {
@@ -320,7 +340,7 @@ $(window).bind("load", function() {
         }
 
         var date_arr = [];
-        $(".selected").each(function(){
+        $('.ddatee:checkbox:checked').each(function(){
             var dateee = $(this).attr("info")
             var convertedDate = dateee.replace(/(\d\d)\/(\d\d)\/(\d{4})/, "$3-$1-$2");
             date_arr.push(convertedDate);
@@ -335,7 +355,11 @@ $(window).bind("load", function() {
                     destination_id:parseInt($("#sto").val()),
                     no_seat:parseInt($("#sno_seat").val()),
                     date_arr:date_arr,
-                    dept_time:toDate($("#sdepttime").val(),'h:m')
+                    dept_time:toDate($("#sdepttime").val(),'h:m'),
+                    return_date:rconvertedDate,
+                    return_time:rconvertedTime,
+                    return_time2:rconvertedTime2,
+                    choice:$("#sreturn").val()
                     }
         }
         else
@@ -457,6 +481,18 @@ function timeConv(param) {
 
 }
 
+formatDate =function (date) {
+    var d = new Date(date),
+        month = '' + (d.getMonth() + 1),
+        day = '' + d.getDate(),
+        year = d.getFullYear();
+
+    if (month.length < 2) month = '0' + month;
+    if (day.length < 2) day = '0' + day;
+
+    return [month, day, year].join('-');
+};
+
 function sendEmail() {
     $.ajax({
         url:"sendMonthlySchedule",
@@ -496,54 +532,6 @@ function sendEmail() {
 }
 
 
-                    deleteSchedule=function(s_id)
-                    {
-                        swal({
-                                title: "Do you want to delete this schedule?",
-                                text: "Make sure there is no booking in this schedule.",
-                                type: "warning",
-                                showCancelButton: true,
-                                confirmButtonColor: "#E71D36",
-                                confirmButtonText: "Delete",
-                                cancelButtonText: "Cancel",
-                                closeOnConfirm: false,
-                                closeOnCancel: true
-                            },
-                            function (isConfirm) {
-                                if (isConfirm) {
-                                    $.ajax({
-                                        url:'deleteSchedule?id='+s_id,
-                                        type:'GET',
-                                        success: function(response){
-                                            if(response.status=="1")
-                                            {
-                                                setTimeout(function() {
-                                                    swal({
-                                                        title: "Done!",
-                                                        text: response.message,
-                                                        type: "success"
-                                                    }, function() {
-                                                        window.location.reload();
-                                                    });
-                                                }, 10);
-
-                                            }
-
-                                            else
-                                            {
-                                                swal("Oops!",response.message, "error")
-
-                                            }
-                                        },
-                                        error: function(err){
-                                            swal("Oops!", "Cannot get all buses data", "error")
-                                            console.log(JSON.stringify(err));
-                                        }
-                                    });
-                                }
-                            });
-                    }
-                    
 </script>
 
 </body>

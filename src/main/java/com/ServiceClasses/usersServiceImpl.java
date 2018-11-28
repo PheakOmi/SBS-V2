@@ -250,6 +250,12 @@ public class usersServiceImpl implements usersService{
 	public Map<String, Object> saveSchedule(Schedule_Model schedule, String type) throws ParseException{
 		return usersDao1.saveSchedule(schedule, type);
 	}
+	public Map<String, Object> saveMultipleSchedule(Schedule_Model schedule, String type) throws ParseException{
+		return usersDao1.saveMultipleSchedule(schedule,type);
+	}
+	public Map<String, Object> saveMultipleSchedule(Schedule_Model schedule, String type, String choice) throws ParseException{
+		return usersDao1.saveMultipleSchedule(schedule,type,choice);
+	}
 }
 
 
