@@ -453,10 +453,18 @@ public class AdminController {
 	@RequestMapping(value="/create_schedule", method=RequestMethod.GET)
 	public ModelAndView create_schedule() {
 		Map<String,Object> map = new HashMap<String,Object>();
+		List<Student> list2 = new ArrayList<Student>();
 		map.put("code", getScheduleSequence());
 		map.put("main_locations", usersService1.getAllLocations());
 		map.put("locations", usersService1.getAllPickUpLocations());
 		map.put("buses", usersService1.getAllBuses());
+		for (Bus_Master bus:usersService1.getAllBuses()){
+			Student student = new Student();
+			student.setId(bus.getId());
+			student.setText(bus.getModel()+" "+bus.getPlate_number());
+			list2.add(student);
+		}
+		map.put("multibus", list2);
 		map.put("drivers", usersService1.getAlDrivers());
 		ObjectMapper mapper = new ObjectMapper();
 		String json="";

@@ -15,7 +15,8 @@
                                             <select class="form-control" style="width: inherit;" id="sdriver"><option></option></select> </div>
                                         <div class="form-group col-md-4" style="margin-bottom:2%;">
                                             <label for="exampleInputPassword3"  style="margin-right:4%;">Bus</label>
-                                            <select class="form-control" style="width: inherit;" id="sbus" required><option></option></select> </div>
+                                            <%--<select class="form-control" style="width: inherit;" id="sbus" required><option></option></select> </div>--%>
+                                            <select class="form-control boxed js-example-basic-multiple" multiple="multiple" id="sbus" required></select></div>
 										<div class="form-group col-md-4" style="margin-bottom:2%;">
                                             <label for="exampleInputEmail3"  style="margin-right:4%;">From</label>
                                             <select class="form-control" style="width: inherit;" id="sfrom" required><option></option></select></div>
@@ -104,8 +105,9 @@ load = function () {
 	locations = data.main_locations;
 	var drivers = data.drivers;
 	all_driver = drivers;
-	for(i=0; i<buses.length; i++)					
-		$("#sbus").append("<option value="+buses[i].id+">"+buses[i].model+" "+buses[i].plate_number+" </option>");
+	// for(i=0; i<buses.length; i++)
+	// 	$("#sbus").append("<option value="+buses[i].id+">"+buses[i].model+" "+buses[i].plate_number+" </option>");
+    $('#sbus').select2({data: data.multibus})
 	for(i=0; i<locations.length; i++)
 		$("#sfrom").append("<option value="+locations[i].id+">"+locations[i].name+" </option>");
 	for(i=0; i<drivers.length; i++)					
@@ -150,8 +152,18 @@ $(document).ready(function(){
 	});
 
     $("#sbus").change(function(){
-        var input  = this.value;
-        $("#sno_seat").val(searchBusSeat(input, all_bus))
+        var arr = $("#sbus").val()
+        var sum = 0
+        console.log(arr)
+        if(arr!=null) {
+            for (var i = 0; i < arr.length; i++) {
+                sum = sum + searchBusSeat(parseInt(arr[i]), all_bus)
+            }
+            $("#sno_seat").val(sum)
+        }
+        else
+            $("#sno_seat").val(0)
+
 
     });
 
@@ -191,12 +203,11 @@ $(document).ready(function(){
 		}
 		else
 		    driver = parseInt($("#sdriver").val())
-		if($("#sbus").val()==""||$("#sbus").val()==null)
+		if($("#sbus").val()==null)
 		{
-            bus = 0
+            swal("Action Disallowed!", "You cannot leave Bus field blank!", "error")
+            return
 		}
-		else
-		    bus = parseInt($("#sbus").val())
 		if($("#sfrom").val()==""||$("#sfrom").val()==null)
 		{
 		swal("Action Disallowed!", "You cannot leave From field blank!", "error")
@@ -222,7 +233,7 @@ $(document).ready(function(){
     		type:'GET',
     		data:{
     				driver_id:driver,
-    				bus_id:bus,
+    				bus_arr:$("#sbus").val(),
     				source_id:parseInt($("#sfrom").val()),
     				destination_id:parseInt($("#sto").val()),
     				no_seat:parseInt($("#sno_seat").val()),

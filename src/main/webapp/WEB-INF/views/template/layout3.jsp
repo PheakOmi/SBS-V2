@@ -88,15 +88,22 @@
     <spring:url value="/resources/Bootstrap/css/sweetalert.css" var="alertStyle"/>
     <link rel="stylesheet" href="${alertStyle}">
     <spring:url value="/resources/Bootstrap/js/sweetalert.min.js" var="alertJS"/>
-    <script src="${TimeJS}"></script>
-    <script src="${alertJS}"></script>
+
+    <!-- Multiple Select -->
+    <spring:url value="/resources/Bootstrap/js/multipleselect/select2.full.min.js" var="MultipleJS"/>
+    <spring:url value="/resources/Bootstrap/js/multipleselect/en.js" var="MultipleJS2"/>
+    <spring:url value="/resources/Bootstrap/css/multipleselect/select2.min.css" var="MultipleCSS"/>
+    <link rel="stylesheet" href="${MultipleCSS}"><link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.5.0/css/all.css" integrity="sha384-B4dIYHKNBt8Bc12p+WXckhzcICo0wtJAoU8YZTY5qE0Id1GSseTk6S+L3BlXeVIU" crossorigin="anonymous">
 
 </head>
 
 
 
 <body>
-
+<script src="${TimeJS}"></script>
+<script src="${alertJS}"></script>
+<script src="${MultipleJS}"></script>
+<script src="${MultipleJS2}"></script>
 
   <div class="main-wrapper">
             <div class="app" id="app">
@@ -126,6 +133,7 @@ var status = 0;
                                 for(i=0;i<response.schedules.length;i++) {
                                     var data = response.schedules[i]
                                     var sdate = new Date(data.dept_date)
+                                    console.log("********** ",new Date(sdate.getFullYear(), sdate.getMonth(), sdate.getDate()))
                                     var title = '&nbsp;'+searchLocation(data.source_id,response.locations) + "-" + searchLocation(data.destination_id, response.locations)+'&nbsp;&nbsp;&nbsp;&nbsp;'+ timeConv(data.dept_time)+'&nbsp;&nbsp;&nbsp;<span style="color:orange;">'+(parseInt(data.number_staff)+parseInt(data.number_student)+parseInt(data.number_customer))+'/'+searchBusSeat(data.bus_id,response.buses)+"</span>"
                                     var date_obj = {
                                         title: title,
