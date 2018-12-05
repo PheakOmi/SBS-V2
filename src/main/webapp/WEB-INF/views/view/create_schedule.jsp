@@ -121,7 +121,7 @@ load = function () {
 $(document).ready(function(){
 	$("#scheduleMng").addClass("active");
 	
-    $("[name=date]").keydown(function (event) {
+    $("[name=no_past_date]").keydown(function (event) {
             event.preventDefault();
         });
     $("[name=time]").keydown(function (event) { 
@@ -208,6 +208,18 @@ $(document).ready(function(){
             swal("Action Disallowed!", "You cannot leave Bus field blank!", "error")
             return
 		}
+        if(compareDate($("#sdeptdate").val(), $("#sreturndate").val()))
+        {
+            swal("Action Disallowed!", "Return Date has to be later than Departure Date!", "error")
+            return
+        }
+		else if(rconvertedDate==convertedDate)
+        {
+            if(!compareTime($("#sdepttime").val(),$("#sreturntime").val())){
+                swal("Action Disallowed!", "Return Time has to be later than Departure Time!", "error")
+                return
+            }
+        }
 		if($("#sfrom").val()==""||$("#sfrom").val()==null)
 		{
 		swal("Action Disallowed!", "You cannot leave From field blank!", "error")
@@ -314,8 +326,29 @@ function toDate(dStr,format) {
  		now.setMinutes(dStr.substr(dStr.indexOf(":")+1));
  		now.setSeconds(0);
  		return now.getHours()+":"+now.getMinutes()+":"+now.getSeconds();
-	}else 
+	}else
 		return "Invalid Format";
+}
+function compareTime(time1,time2) {
+    var leavet = new Date();
+    var returnt = new Date();
+
+    leavet.setHours(time1.substr(0,time1.indexOf(":")));
+    leavet.setMinutes(time1.substr(time1.indexOf(":")+1));
+    leavet.setSeconds(0);
+
+    returnt.setHours(time2.substr(0,time2.indexOf(":")));
+    returnt.setMinutes(time2.substr(time2.indexOf(":")+1));
+    returnt.setSeconds(0);
+
+    return returnt>leavet;
+}
+
+function compareDate(date1,date2) {
+    var leaveDate = new Date(date1);
+    var returnDate = new Date(date2);
+
+    return returnDate<leaveDate;
 }
 
 	

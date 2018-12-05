@@ -1207,18 +1207,31 @@ public class AdminController {
 				}
 			return map;
 			}
+
+
+
 //====================To delete location============================
 		@RequestMapping(value="/deleteLocation", method = RequestMethod.GET)
 		public @ResponseBody Map<String,String>  deleteLocation(@RequestParam(value = "id", required=false) Integer id){
 			Map<String,String> map = new HashMap<String,String>();
 			int status = 0;
 			status= usersService1.deleteLocation(id);
-			if(status==1)
-				map.put("status", "200");
-			else
-				map.put("status", "300");
-
-			return map;
+            if(status==1)
+            {
+                map.put("status", "200");
+                map.put("message","OK");
+            }
+            else if(status==5)
+            {
+                map.put("status", "500");
+                map.put("message","Cannot be deleted, This location has been assigned to either current or future schedule!");
+            }
+            else
+            {
+                map.put("status", "300");
+                map.put("message","Technical problem occurs");
+            }
+            return map;
 			}
 //====================To delete pick up location============================
 		@RequestMapping(value="/deletePickUpLocation", method = RequestMethod.GET)
@@ -1532,6 +1545,26 @@ public class AdminController {
 		return map;
 	}
 
+	@RequestMapping(value="/forCalendarview", method=RequestMethod.GET)
+	public @ResponseBody Map<String,Object> forCalendarview() throws ParseException {
+
+		Map<String,Object> map = new HashMap<String,Object>();
+		List<Schedule_Master> list = usersService1.forCalendarview();
+		if (list != null)
+		{
+			map.put("schedules", list);
+			map.put("locations", usersService1.getAllLocations());
+			map.put("buses", usersService1.getAllBuses2());
+			map.put("drivers", usersService1.getAlDrivers());
+		}
+		else
+			map.put("message","Data not found");
+
+		return map;
+	}
+
+
+
 
 
 
@@ -1591,14 +1624,20 @@ public class AdminController {
 	}
 //=========================Returns schedule list by month view================================
 	@RequestMapping(value="/schedule_list", method=RequestMethod.GET)
-	public ModelAndView schedule_list(@RequestParam(value = "date", required=true, defaultValue = "0") Integer date,@RequestParam(value = "month", required=true, defaultValue = "0") Integer month, @RequestParam(value = "year", required=true, defaultValue = "0") Integer year) throws ParseException{
-		List<Schedule_Master> list = usersService1.schedule_list(Integer.toString(date),Integer.toString(month),Integer.toString(year));
-		List<Pickup_Location_Master> list2 =  usersService1.getAllPickUpLocations();
-		List<Bus_Master> list3 =  usersService1.getAllBuses2();
+	public ModelAndView schedule_list(@RequestParam(value = "date", required=true, defaultValue = "0") Integer date,@RequestParam(value = "month", required=true, defaultValue = "0") Integer month, @RequestParam(value = "year", required=true, defaultValue = "0") Integer year,@RequestParam(value = "source_id", required=true, defaultValue = "0") Integer source_id,@RequestParam(value = "destination_id", required=true, defaultValue = "0") Integer destination_id,@RequestParam(value = "dept_time", required=true, defaultValue = "0") String dept_time) throws ParseException{
+		Schedule_Model model = new Schedule_Model();
+		model.setDate(Integer.toString(date));
+		model.setMonth(Integer.toString(month));
+		model.setYear(Integer.toString(year));
+		model.setSource_id(source_id);
+		model.setDestination_id(destination_id);
+		model.setDept_time(dept_time);
+		List<Schedule_Master> list = usersService1.schedule_list(model);
+
 		Map<String,Object> map = new HashMap<String,Object>();
 		map.put("schedules", list);
-		map.put("locations", list2);
-		map.put("buses", list3);
+		map.put("locations", usersService1.getAllLocations());
+		map.put("buses", usersService1.getAllBuses2());
 		map.put("drivers", usersService1.getAlDrivers());
 		ObjectMapper mapper = new ObjectMapper();
 		String json="";

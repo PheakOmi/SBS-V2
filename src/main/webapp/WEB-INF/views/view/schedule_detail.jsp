@@ -84,7 +84,7 @@
                             </div>
 
                         </div>
-                        <button onclick="goLog()" style="color:white;" class="btn btn-info pull-right btn-sm" id="logBtn"> <i class="fas fa-sticky-note"></i> View Log</button>
+                        <button onclick="goLog()" style="color:white; display: none" class="btn btn-info pull-right btn-sm" id="logBtn"> <i class="fas fa-sticky-note"></i> View Log</button>
                     </div>
 
 
@@ -158,6 +158,8 @@
             $(".cpast").prop('disabled', true);
             $("#ubtn").hide();
         }
+
+        $("#logBtn").show();
 
     }
 

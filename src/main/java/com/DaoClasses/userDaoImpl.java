@@ -1186,7 +1186,7 @@ public class userDaoImpl implements usersDao{
 		Transaction trns21 = null;
         Session session = HibernateUtil.getSessionFactory().openSession();
         Bus_Master bus = new Bus_Master();
-        List <Schedule_Master> schedules  = new ArrayList<Schedule_Master>();
+        List <Schedule_Master> schedules  = new ArrayList <Schedule_Master>();
         try {
             trns21 = session.beginTransaction();
             schedules =  new userDaoImpl().busBeforeDelete(id);
@@ -1209,18 +1209,21 @@ public class userDaoImpl implements usersDao{
 		return 1;
 	}
 	public int deleteLocation(int id){
-		Transaction trns21 = null;
+        Transaction trns21 = null;
         Session session = HibernateUtil.getSessionFactory().openSession();
         Location_Master location = new Location_Master();
+        List <Schedule_Master> schedules  = new ArrayList<Schedule_Master>();
         try {
             trns21 = session.beginTransaction();
+            schedules =  new userDaoImpl().locationBeforeDelete(id);
+            if (schedules.size()>0)
+                return 5;
             String queryString = "from Location_Master where id=:id";
             Query query = session.createQuery(queryString);
             query.setInteger("id",id);
             location=(Location_Master)query.uniqueResult();
             location.setEnabled(false);
             session.update(location);
-            deletePickUpLocationByLocatinId(id);
             session.getTransaction().commit();
         } catch (RuntimeException e) {
             e.printStackTrace();
@@ -1229,7 +1232,7 @@ public class userDaoImpl implements usersDao{
             session.flush();
             session.close();
         }
-		return 1;
+        return 1;
 	}
 	
 	public int deleteSchedule(int id){
@@ -1420,6 +1423,7 @@ public class userDaoImpl implements usersDao{
                 schedule.setIdd(iid);
                 schedule.setDescription("Create");
                 schedule.setBus_id(Integer.parseInt(schedule.getBus_arr()[i]));
+                schedule.setNo_seat(getBusById(Integer.parseInt(schedule.getBus_arr()[i])).getNumber_of_seat());
                 saveScheduleLog(schedule);
                 schedule.setDept_date2(java.sql.Date.valueOf(schedule.getDept_date()));
             }
@@ -1490,9 +1494,19 @@ public class userDaoImpl implements usersDao{
                 all_id = all_id+getScheduleSequence(iid)+", ";
                 s.setCode(getScheduleSequence(iid));
                 session.update(s);
-                schedule.setIdd(iid);
-                schedule.setDescription("Create");
-                saveScheduleLog(schedule);
+                schedule.setBus_id(Integer.parseInt(schedule.getBus_arr()[i]));
+
+                Schedule_Model model_send = new Schedule_Model();
+                model_send.setIdd(iid);
+                model_send.setDept_time(time);
+                model_send.setDept_date(date);
+                model_send.setNo_seat(getBusById(Integer.parseInt(schedule.getBus_arr()[i])).getNumber_of_seat());
+                model_send.setBus_id(Integer.parseInt(schedule.getBus_arr()[i]));
+                model_send.setSource_id(from);
+                model_send.setDestination_id(to);
+                model_send.setDescription("Create");
+
+                saveScheduleLog(model_send);
 
 
                 rs.setBus_id(Integer.parseInt(schedule.getBus_arr()[i]));
@@ -1511,9 +1525,16 @@ public class userDaoImpl implements usersDao{
                 all_r_id = all_r_id +getScheduleSequence(riid)+", ";
                 rs.setCode(getScheduleSequence(riid));
                 session.update(rs);
-                schedule.setIdd(riid);
-                schedule.setDescription("Create");
-                saveScheduleLog(schedule);
+
+                model_send.setIdd(riid);
+                model_send.setDept_time(rtime);
+                model_send.setDept_date(rdate);
+                model_send.setNo_seat(getBusById(Integer.parseInt(schedule.getBus_arr()[i])).getNumber_of_seat());
+                model_send.setBus_id(Integer.parseInt(schedule.getBus_arr()[i]));
+                model_send.setSource_id(rfrom);
+                model_send.setDestination_id(rto);
+
+                saveScheduleLog(model_send);
 
             }
             session.getTransaction().commit();
@@ -1563,27 +1584,32 @@ public class userDaoImpl implements usersDao{
         try {
             trns7 = session.beginTransaction();
             Timestamp created_at = new Timestamp(System.currentTimeMillis());
-            for(String date:schedule.getDate_arr())
-            {
-                Schedule_Master s = new Schedule_Master();
-                s.setBus_id(schedule.getBus_id());
-                s.setCreated_at(created_at);
-                s.setDept_date(java.sql.Date.valueOf(date));
-                s.setDept_time(java.sql.Time.valueOf(schedule.getDept_time()));
-                s.setSource_id(schedule.getSource_id());
-                s.setDestination_id(schedule.getDestination_id());
-                s.setNo_seat(schedule.getNo_seat());
-                s.setDriver_id(schedule.getDriver_id());
-                session.save(s);
-                iid = s.getId();
-                s.setCode(getScheduleSequence(iid));
-                all_id = all_id+getScheduleSequence(iid)+", ";
-                session.update(s);
-                schedule.setIdd(iid);
-                schedule.setDept_date(date);
-                schedule.setDescription("Create");
-                saveScheduleLog(schedule);
+            for (int i=0; i<schedule.getBus_arr().length; i++) {
+                for(String date:schedule.getDate_arr())
+                {
+                    Schedule_Master s = new Schedule_Master();
+                    s.setBus_id(Integer.parseInt(schedule.getBus_arr()[i]));
+                    s.setCreated_at(created_at);
+                    s.setDept_date(java.sql.Date.valueOf(date));
+                    s.setDept_time(java.sql.Time.valueOf(schedule.getDept_time()));
+                    s.setSource_id(schedule.getSource_id());
+                    s.setDestination_id(schedule.getDestination_id());
+                    s.setNo_seat(getBusById(Integer.parseInt(schedule.getBus_arr()[i])).getNumber_of_seat());
+                    s.setDriver_id(schedule.getDriver_id());
+                    session.save(s);
+                    iid = s.getId();
+                    s.setCode(getScheduleSequence(iid));
+                    all_id = all_id+getScheduleSequence(iid)+", ";
+                    session.update(s);
+                    schedule.setIdd(iid);
+                    schedule.setDept_date(date);
+                    schedule.setDescription("Create");
+                    schedule.setBus_id(Integer.parseInt(schedule.getBus_arr()[i]));
+                    schedule.setNo_seat(getBusById(Integer.parseInt(schedule.getBus_arr()[i])).getNumber_of_seat());
+                    saveScheduleLog(schedule);
+                }
             }
+
             session.getTransaction().commit();
 //            schedule.setDept_date2(java.sql.Date.valueOf(schedule.getDept_date()));
 //            email_schedule_create(schedule);
@@ -1630,49 +1656,58 @@ public class userDaoImpl implements usersDao{
         try {
             trns7 = session.beginTransaction();
             Timestamp created_at = new Timestamp(System.currentTimeMillis());
-            for(String date:schedule.getDate_arr())
-            {
-                Schedule_Master s = new Schedule_Master();
-                s.setBus_id(schedule.getBus_id());
-                s.setCreated_at(created_at);
-                s.setDept_date(java.sql.Date.valueOf(date));
-                s.setDept_time(java.sql.Time.valueOf(time));
-                s.setSource_id(from);
-                s.setDestination_id(to);
-                s.setNo_seat(schedule.getNo_seat());
-                s.setDriver_id(schedule.getDriver_id());
-                session.save(s);
-                iid = s.getId();
-                s.setCode(getScheduleSequence(iid));
-                all_id = all_id+getScheduleSequence(iid)+", ";
-                session.update(s);
-                schedule.setIdd(iid);
-                schedule.setDept_date(date);
-                schedule.setDescription("Create");
-                saveScheduleLog(schedule);
-            }
+            for (int i=0; i<schedule.getBus_arr().length; i++) {
+                for(String date:schedule.getDate_arr())
+                {
+                    Schedule_Master s = new Schedule_Master();
+                    s.setBus_id(Integer.parseInt(schedule.getBus_arr()[i]));
+                    s.setCreated_at(created_at);
+                    s.setDept_date(java.sql.Date.valueOf(date));
+                    s.setDept_time(java.sql.Time.valueOf(time));
+                    s.setSource_id(from);
+                    s.setDestination_id(to);
+                    s.setNo_seat(getBusById(Integer.parseInt(schedule.getBus_arr()[i])).getNumber_of_seat());
+                    s.setDriver_id(schedule.getDriver_id());
+                    session.save(s);
+                    iid = s.getId();
+                    s.setCode(getScheduleSequence(iid));
+                    all_id = all_id+getScheduleSequence(iid)+", ";
+                    session.update(s);
+                    schedule.setIdd(iid);
+                    schedule.setBus_id(Integer.parseInt(schedule.getBus_arr()[i]));
+                    schedule.setNo_seat(getBusById(Integer.parseInt(schedule.getBus_arr()[i])).getNumber_of_seat());
+                    schedule.setDept_date(date);
+                    schedule.setDescription("Create");
+                    saveScheduleLog(schedule);
+                }
 
 
-            for(String date:schedule.getDate_arr())
-            {
-                Schedule_Master s = new Schedule_Master();
-                s.setBus_id(schedule.getBus_id());
-                s.setCreated_at(created_at);
-                s.setDept_date(java.sql.Date.valueOf(rdate));
-                s.setDept_time(java.sql.Time.valueOf(rtime));
-                s.setSource_id(to);
-                s.setDestination_id(from);
-                s.setNo_seat(schedule.getNo_seat());
-                s.setDriver_id(schedule.getDriver_id());
-                session.save(s);
-                iid = s.getId();
-                s.setCode(getScheduleSequence(iid));
-                all_id = all_id+getScheduleSequence(iid)+", ";
-                session.update(s);
-                schedule.setIdd(iid);
-                schedule.setDept_date(date);
-                schedule.setDescription("Create");
-                saveScheduleLog(schedule);
+                for(String date:schedule.getDate_arr())
+                {
+                    Schedule_Master s = new Schedule_Master();
+                    s.setBus_id(Integer.parseInt(schedule.getBus_arr()[i]));
+                    s.setCreated_at(created_at);
+                    s.setDept_date(java.sql.Date.valueOf(rdate));
+                    s.setDept_time(java.sql.Time.valueOf(rtime));
+                    s.setSource_id(to);
+                    s.setDestination_id(from);
+                    s.setNo_seat(getBusById(Integer.parseInt(schedule.getBus_arr()[i])).getNumber_of_seat());
+                    s.setDriver_id(schedule.getDriver_id());
+                    session.save(s);
+                    iid = s.getId();
+                    s.setCode(getScheduleSequence(iid));
+                    all_id = all_id+getScheduleSequence(iid)+", ";
+                    session.update(s);
+                    schedule.setIdd(iid);
+                    schedule.setSource_id(rfrom);
+                    schedule.setDestination_id(rto);
+                    schedule.setBus_id(Integer.parseInt(schedule.getBus_arr()[i]));
+                    schedule.setNo_seat(getBusById(Integer.parseInt(schedule.getBus_arr()[i])).getNumber_of_seat());
+                    schedule.setDept_date(rdate);
+                    schedule.setDept_time(rtime);
+                    schedule.setDescription("Create");
+                    saveScheduleLog(schedule);
+                }
             }
 
 
@@ -1697,6 +1732,7 @@ public class userDaoImpl implements usersDao{
         return map;
 
     }
+
 
 
 
@@ -1713,7 +1749,7 @@ public class userDaoImpl implements usersDao{
         int to = schedule.getDestination_id();
 
         String rdate = schedule.getReturn_date();
-        String rtime = schedule.getReturn_time();
+        String rtime = schedule.getReturn_time2();
         int rfrom = schedule.getDestination_id();
         int rto = schedule.getSource_id();
 
@@ -1721,49 +1757,58 @@ public class userDaoImpl implements usersDao{
         try {
             trns7 = session.beginTransaction();
             Timestamp created_at = new Timestamp(System.currentTimeMillis());
-            for(String date:schedule.getDate_arr())
-            {
-                Schedule_Master s = new Schedule_Master();
-                s.setBus_id(schedule.getBus_id());
-                s.setCreated_at(created_at);
-                s.setDept_date(java.sql.Date.valueOf(date));
-                s.setDept_time(java.sql.Time.valueOf(time));
-                s.setSource_id(from);
-                s.setDestination_id(to);
-                s.setNo_seat(schedule.getNo_seat());
-                s.setDriver_id(schedule.getDriver_id());
-                session.save(s);
-                iid = s.getId();
-                s.setCode(getScheduleSequence(iid));
-                all_id = all_id+getScheduleSequence(iid)+", ";
-                session.update(s);
-                schedule.setIdd(iid);
-                schedule.setDept_date(date);
-                schedule.setDescription("Create");
-                saveScheduleLog(schedule);
-            }
+            for (int i=0; i<schedule.getBus_arr().length; i++) {
+                for(String date:schedule.getDate_arr())
+                {
+                    Schedule_Master s = new Schedule_Master();
+                    s.setBus_id(Integer.parseInt(schedule.getBus_arr()[i]));
+                    s.setCreated_at(created_at);
+                    s.setDept_date(java.sql.Date.valueOf(date));
+                    s.setDept_time(java.sql.Time.valueOf(time));
+                    s.setSource_id(from);
+                    s.setDestination_id(to);
+                    s.setNo_seat(getBusById(Integer.parseInt(schedule.getBus_arr()[i])).getNumber_of_seat());
+                    s.setDriver_id(schedule.getDriver_id());
+                    session.save(s);
+                    iid = s.getId();
+                    s.setCode(getScheduleSequence(iid));
+                    all_id = all_id+getScheduleSequence(iid)+", ";
+                    session.update(s);
+                    schedule.setIdd(iid);
+                    schedule.setBus_id(Integer.parseInt(schedule.getBus_arr()[i]));
+                    schedule.setNo_seat(getBusById(Integer.parseInt(schedule.getBus_arr()[i])).getNumber_of_seat());
+                    schedule.setDept_date(date);
+                    schedule.setDescription("Create");
+                    saveScheduleLog(schedule);
+                }
 
 
-            for(String date:schedule.getDate_arr())
-            {
-                Schedule_Master s = new Schedule_Master();
-                s.setBus_id(schedule.getBus_id());
-                s.setCreated_at(created_at);
-                s.setDept_date(java.sql.Date.valueOf(date));
-                s.setDept_time(java.sql.Time.valueOf(rtime));
-                s.setSource_id(to);
-                s.setDestination_id(from);
-                s.setNo_seat(schedule.getNo_seat());
-                s.setDriver_id(schedule.getDriver_id());
-                session.save(s);
-                iid = s.getId();
-                s.setCode(getScheduleSequence(iid));
-                all_id = all_id+getScheduleSequence(iid)+", ";
-                session.update(s);
-                schedule.setIdd(iid);
-                schedule.setDept_date(date);
-                schedule.setDescription("Create");
-                saveScheduleLog(schedule);
+                for(String date:schedule.getDate_arr())
+                {
+                    Schedule_Master s = new Schedule_Master();
+                    s.setBus_id(Integer.parseInt(schedule.getBus_arr()[i]));
+                    s.setCreated_at(created_at);
+                    s.setDept_date(java.sql.Date.valueOf(date));
+                    s.setDept_time(java.sql.Time.valueOf(rtime));
+                    s.setSource_id(to);
+                    s.setDestination_id(from);
+                    s.setNo_seat(getBusById(Integer.parseInt(schedule.getBus_arr()[i])).getNumber_of_seat());
+                    s.setDriver_id(schedule.getDriver_id());
+                    session.save(s);
+                    iid = s.getId();
+                    s.setCode(getScheduleSequence(iid));
+                    all_id = all_id+getScheduleSequence(iid)+", ";
+                    session.update(s);
+                    schedule.setIdd(iid);
+                    schedule.setSource_id(rfrom);
+                    schedule.setDestination_id(rto);
+                    schedule.setBus_id(Integer.parseInt(schedule.getBus_arr()[i]));
+                    schedule.setNo_seat(getBusById(Integer.parseInt(schedule.getBus_arr()[i])).getNumber_of_seat());
+                    schedule.setDept_date(date);
+                    schedule.setDept_time(rtime);
+                    schedule.setDescription("Create");
+                    saveScheduleLog(schedule);
+                }
             }
 
 
@@ -1788,9 +1833,6 @@ public class userDaoImpl implements usersDao{
         return map;
 
     }
-
-
-
 
 
 
@@ -2026,12 +2068,12 @@ public class userDaoImpl implements usersDao{
                 int f = 0 ;
                 if(schedules.size()<=5){
                     template = "email_monthly_schedule5.txt";
-                    for(int i=0; i<5-schedules.size();i++){
-                        model.put("date"+Integer.toString(5-schedules.size()-i), "N/A");
-                        model.put("time"+Integer.toString(5-schedules.size()), "N/A");
-                        model.put("from"+Integer.toString(5-schedules.size()), "N/A");
-                        model.put("to"+Integer.toString(5-schedules.size()), "N/A");
-                        model.put("allowed"+Integer.toString(5-schedules.size()), "N/A");
+                    for(int i=1; i<=5-schedules.size();i++){
+                        model.put("date"+Integer.toString(schedules.size()+i), "N/A");
+                        model.put("time"+Integer.toString(schedules.size()+i), "N/A");
+                        model.put("from"+Integer.toString(schedules.size()+i), "N/A");
+                        model.put("to"+Integer.toString(schedules.size()+i), "N/A");
+                        model.put("allowed"+Integer.toString(schedules.size()+i), "N/A");
                     }
                 }
                 else if(schedules.size()%5==0)
@@ -3281,6 +3323,34 @@ public class userDaoImpl implements usersDao{
         return schedules;
         
     }
+
+
+    public List <Schedule_Master> locationBeforeDelete(int id){
+        List <Schedule_Master> schedules  = new ArrayList<Schedule_Master>();
+        Transaction trns19 = null;
+        Session session = HibernateUtil.getSessionFactory().openSession();
+        try {
+            trns19 =  session.beginTransaction();
+            String queryString = "from Schedule_Master where dept_date>=:localDate and source_id=:id1 or destination_id=:id2";
+            Query query = session.createQuery(queryString);
+            DateTimeFormatter dtf = DateTimeFormatter.ofPattern("yyyy-MM-dd");
+            LocalDate localDate = LocalDate.now();
+            Date date = Date.from(localDate.atStartOfDay(ZoneId.systemDefault()).toInstant());
+            System.out.println(dtf.format(localDate));
+            query.setDate("localDate", date);
+            query.setInteger("id1",id);
+            query.setInteger("id2",id);
+            schedules=(List<Schedule_Master>)query.list();
+        } catch (RuntimeException e) {
+            e.printStackTrace();
+            return schedules;
+        } finally {
+            session.flush();
+            session.close();
+        }
+        return schedules;
+
+    }
 	
 	
 	public List <Schedule_Master> getAllSchedules(){
@@ -3478,6 +3548,28 @@ public class userDaoImpl implements usersDao{
 
 
 
+    public List<Schedule_Master> forCalendarview() throws ParseException{
+        List <?> schedules = getAllPreciseSchedules();
+        List <Schedule_Master> ss  = new ArrayList<Schedule_Master>();
+        for(int i=0; i<schedules.size(); i++) {
+            Object[] row = (Object[]) schedules.get(i);
+            Schedule_Master s = new Schedule_Master();
+            s.setDept_date((Date) row[0]);
+            s.setDept_time((Time)row[1]);
+            s.setSource_id((int)row[2]);
+            s.setDestination_id((int)row[3]);
+            s.setNo_seat(Integer.parseInt(row[4].toString()));
+            s.setNumber_student(Integer.parseInt(row[5].toString()));
+            s.setNumber_staff(Integer.parseInt(row[6].toString()));
+            s.setNumber_customer(Integer.parseInt(row[7].toString()));
+
+            ss.add(s);
+        }
+
+        return ss;
+    }
+
+
 
     public List <?> getAllSchedulesByMonth(String month, String year) throws ParseException{
         List <?> obj = new ArrayList<>();
@@ -3510,23 +3602,50 @@ public class userDaoImpl implements usersDao{
         return obj;
 
     }
-	
-	
-	
-	public List <Schedule_Master> schedule_list(String date, String month, String year) throws ParseException{
+
+
+
+    public List <?> getAllPreciseSchedules() throws ParseException{
+        List <?> obj = new ArrayList<>();
+        SimpleDateFormat formatter = new SimpleDateFormat("dd/MM/yyyy");
+        Transaction trns19 = null;
+        Session session = HibernateUtil.getSessionFactory().openSession();
+        try {
+            trns19 =  session.beginTransaction();
+            String queryString = "select s.dept_date, s.dept_time, s.source_id, s.destination_id, sum(s.no_seat), sum(s.number_student), sum(s.number_staff), sum(s.number_customer) from Schedule_Master s group by (s.dept_date, s.dept_time, s.source_id, s.destination_id) order by s.dept_date";
+            Query query = session.createQuery(queryString);
+            obj=query.list();
+        } catch (RuntimeException e) {
+            e.printStackTrace();
+            return obj;
+        } finally {
+            session.flush();
+            session.close();
+        }
+        return obj;
+
+    }
+
+
+
+
+    public List <Schedule_Master> schedule_list(Schedule_Model model) throws ParseException, java.text.ParseException{
 		List <Schedule_Master> schedules  = new ArrayList<Schedule_Master>();
 		SimpleDateFormat formatter = new SimpleDateFormat("dd/MM/yyyy");
         Transaction trns19 = null;
         Session session = HibernateUtil.getSessionFactory().openSession();
         try {
             trns19 =  session.beginTransaction();
-            String queryString = "from Schedule_Master s where s.dept_date=:date1";
+            String queryString = "from Schedule_Master s where s.dept_date=:date1 and s.dept_time=:dept_time and source_id=:source_id and destination_id=:destination_id";
             Query query = session.createQuery(queryString);
             Date date1;
-            String first = date+"/"+month+"/"+year;
+            String first = model.getDate()+"/"+model.getMonth()+"/"+model.getYear();
             date1 = formatter.parse(first);
       		query.setDate("date1", date1);
-      		schedules=(List<Schedule_Master>)query.list();        
+      		query.setTime("dept_time",java.sql.Time.valueOf(new StudentDaoImpl().converter(model.getDept_time())));
+      		query.setInteger("source_id", model.getSource_id());
+      		query.setInteger("destination_id", model.getDestination_id());
+      		schedules=(List<Schedule_Master>)query.list();
         } catch (RuntimeException e) {
             e.printStackTrace();
             return schedules;
@@ -3535,7 +3654,6 @@ public class userDaoImpl implements usersDao{
             session.close();
         }
         return schedules;
-		
 	}
 	
 	

@@ -147,7 +147,7 @@ $(document).ready(function(){
 		var b_model = $("#model").val().trim();
 		var b_number_of_seat = $("#number_of_seat").val().trim();
 		var b_des = $("#description").val().trim();
-		var format = /[!@#$%^&*()_+\-=\[\]{};':"\\|,.<>\/?]+/;
+		var format = /[!@#$%^&*()~`_+\-=\[\]{};':"\\|,.<>\/?]+/;
 		if((b_plate=='') || (b_model=='')||(b_number_of_seat==''))
 		{
 		swal("Oops!", "The input cannot be empty", "error")

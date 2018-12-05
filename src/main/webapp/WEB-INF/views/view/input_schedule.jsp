@@ -26,7 +26,7 @@
 						<select class="form-control boxed" id="sdriver"><option></option></select> </div>
 					<div class="form-group" style="margin-bottom:2%;">
 						<label class="control-label">Bus</label>
-						<select class="form-control boxed" id="sbus" required multiple><option></option></select> </div>
+						<select class="form-control boxed" id="sbus" multiple required></select> </div>
 						<%--<select class="form-control boxed js-example-basic-multiple" multiple="multiple" id="student" required></select>--%>
 					<div class="form-group" style="margin-bottom:2%;">
 						<label class="control-label">From</label>
@@ -48,8 +48,8 @@
 						<label class="control-label">Return</label>
 						<select class="form-control boxed" id="sreturn">
 							<option value=0></option>
-							<option value=1>Same Date</option>
-							<option value=2>Respectively</option>
+							<option value=1>Any Date</option>
+							<option value=2>Same Date</option>
 						</select>
 					</div>
 					<div id="option1" style="display:none">
