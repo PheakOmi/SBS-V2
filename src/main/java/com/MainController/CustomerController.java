@@ -155,6 +155,7 @@ public class CustomerController {
 	@RequestMapping(value="/confirm_phone_number", method=RequestMethod.GET)
 	public @ResponseBody String confirm_phone_number(UserModel cb) {
 		String ret = customer.confirm_phone_number(cb);
+		System.out.println("TTTTTTTTTTTTT "+cb.getPhone());
 		return ret;
 	}
 	//=========================Request Book Now================================
