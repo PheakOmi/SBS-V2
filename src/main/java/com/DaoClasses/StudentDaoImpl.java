@@ -1,7 +1,10 @@
 package com.DaoClasses;
 
 import java.sql.Timestamp;
+import java.text.ParseException;
 import java.text.SimpleDateFormat;
+import java.time.LocalDate;
+import java.time.ZoneId;
 import java.util.*;
 
 import com.EntityClasses.*;
@@ -268,7 +271,23 @@ public class StudentDaoImpl implements StudentDao{
         }
         return list_date_booking;
     }
-    public List<Map<String,Object>> getHistory(){
+
+    public boolean checkDateTime(Booking_Master booking) throws ParseException {
+
+        Calendar cal = Calendar.getInstance();
+        SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
+        String today=sdf.format(cal.getTime());
+        Date d1 = sdf.parse(today);
+        Date d2 = null;
+
+        d2 = booking.getDept_date();
+        d2.setHours(booking.getDept_time().getHours());
+        d2.setMinutes(booking.getDept_time().getMinutes());
+
+        return d1.after(d2);
+    }
+
+    public List<Map<String,Object>> getHistory() throws ParseException{
          List<Map<String,Object>> list_history = new ArrayList<Map<String,Object>>();
          List<Booking_Master> list_booking = new ArrayList<Booking_Master>();
          Session session = HibernateUtil.getSessionFactory().openSession();
@@ -311,7 +330,7 @@ public class StudentDaoImpl implements StudentDao{
                          map.put("plate_number",bus_master.getPlate_number());
                          map.put("total_seats",bus_master.getNumber_of_seat());
                      }
-                     map.put("schedule",true);
+                     map.put("schedule",checkDateTime(booking_master));
                      map.put("code",booking_master.getCode());
                  }
                  if(booking_master.getQr()!=null){

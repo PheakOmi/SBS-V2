@@ -33,7 +33,7 @@ public interface usersService {
 	public List <Booking_Master> getAllHistoricalBookings();
 	public Booking_Master getBookingById (int id);
 	public List <?> getAllSchedulesByMonth(String month, String year) throws ParseException, java.text.ParseException;
-	public List <Schedule_Master> schedule_list(String date, String month, String year) throws ParseException, java.text.ParseException;
+	public List <Schedule_Master> schedule_list(Schedule_Model model) throws ParseException, java.text.ParseException;
 	public List<Booking_Master> getBookingByScheduleId (int id);
 	public Schedule_Master getScheduleById (int id);
 	public List <Schedule_Master> getAllHistoricalSchedules();
@@ -86,4 +86,5 @@ public interface usersService {
 	public Map<String, Object> saveSchedule(Schedule_Model schedule, String type) throws ParseException;
 	public Map<String, Object> saveMultipleSchedule(Schedule_Model schedule, String type) throws ParseException;
 	public Map<String, Object> saveMultipleSchedule(Schedule_Model schedule, String type, String choice) throws ParseException;
+	public List<Schedule_Master> forCalendarview() throws ParseException;
 }

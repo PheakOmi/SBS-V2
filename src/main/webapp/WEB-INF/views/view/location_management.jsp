@@ -59,13 +59,13 @@
                  <form id="myForm">
                      <div class="form-group">
                          <label class="control-label">Name</label>
-                         <input type="text" class="form-control boxed" id="name" maxlength="30"  required> </div>
+                         <input type="text" class="form-control boxed" id="name" maxlength="30" placeholder="Name" required> </div>
                      <div>
 
 
                          <div class="form-group">
                              <label class="control-label">Abbreviation</label>
-                             <input type="text" class="form-control boxed" id="sname" maxlength="30"  required> </div>
+                             <input type="text" class="form-control boxed" id="sname" maxlength="30" placeholder="Abbr" required> </div>
                          <%--<div>--%>
 
                              <%--<label>--%>
@@ -82,7 +82,7 @@
                  </form>
              </div>
              <div class="modal-footer">
-                 <button type="button" class="btn btn-default pull-left" data-dismiss="modal">Close</button>
+                 <button type="button" class="btn btn-default pull-left" data-dismiss="modal" style="background: grey;">Close</button>
                  <button onClick="goTO()" class="btn btn-info">Create</button>
              </div>
          </div>
@@ -109,7 +109,7 @@
                  </form>
              </div>
              <div class="modal-footer">
-                 <button type="button" class="btn btn-default pull-left" data-dismiss="modal">Close</button>
+                 <button type="button" class="btn btn-default pull-left" data-dismiss="modal" style="background: grey;">Close</button>
                  <button onClick="goTO2()" class="btn btn-info">Create</button>
              </div>
          </div>
@@ -137,7 +137,7 @@
                  </form>
              </div>
              <div class="modal-footer">
-                 <button type="button" class="btn btn-default pull-left" data-dismiss="modal">Close</button>
+                 <button type="button" class="btn btn-default pull-left" data-dismiss="modal" style="background: grey;">Close</button>
                  <button onClick="goTO3()" class="btn btn-info">Update</button>
              </div>
          </div>
@@ -166,7 +166,7 @@
                  </form>
              </div>
              <div class="modal-footer">
-                 <button type="button" class="btn btn-default pull-left" data-dismiss="modal">Close</button>
+                 <button type="button" class="btn btn-default pull-left" data-dismiss="modal" style="background: grey;">Close</button>
                  <button onClick="goTO4()" class="btn btn-info">Update</button>
              </div>
          </div>
@@ -234,7 +234,6 @@ load = function(){
 
 goTO = function(){
 	$('#bsubmit').trigger('click');
-	$('#name').val("");
 }
 goTO2 = function(){
 	$('#bpsubmit').trigger('click');
@@ -293,7 +292,6 @@ $(document).ready(function(){
 	$("#locationMng").addClass("active");
     $(".sameheight-item").removeAttr("style");
 	$("#myForm").on('submit',function(e){
-		console.log("Fired")
 		e.preventDefault();
 		var b_name = $("#name").val().trim();
         var s_name = $("#sname").val().trim();
@@ -307,7 +305,7 @@ $(document).ready(function(){
             }
         }
 
-		var format = /[!@#$%^&*()_+\-=\[\]{};':"\\|,.<>\/?]+/;
+		var format = /[!@#$%^&*()_~`+\-=\[\]{};':"\\|,.<>\/?]+/;
 		if(b_name==''||s_name=='')
 		{
 		swal("Oops!", "The input cannot be empty", "error")
@@ -366,7 +364,7 @@ $(document).ready(function(){
 		console.log("Fired2")
 		e.preventDefault();
 		var p_name = $("#pname").val().trim();
-		var format = /[!@#$%^&*()_+\-=\[\]{};':"\\|,.<>\/?]+/;
+		var format = /[!@#$%^&*()_~`+\-=\[\]{};':"\\|,.<>\/?]+/;
 		if(p_name=='')
 		{
 		swal("Oops!", "The input cannot be empty", "error")
@@ -410,7 +408,7 @@ $(document).ready(function(){
 	$("#updateLocationForm").on('submit',function(e){
 		e.preventDefault();
 		var p_name = $("#updateLName").val().trim();
-		var format = /[!@#$%^&*()_+\-=\[\]{};':"\\|,.<>\/?]+/;
+		var format = /[!@#$%^&*()_~`+\-=\[\]{};':"\\|,.<>\/?]+/;
 		if(p_name=='')
 		{
 		swal("Oops!", "The input cannot be empty", "error")
@@ -475,7 +473,7 @@ $(document).ready(function(){
 	$("#updatePLocationForm").on('submit',function(e){
 		e.preventDefault();
 		var p_name = $("#updatePLName").val().trim();
-		var format = /[!@#$%^&*()_+\-=\[\]{};':"\\|,.<>\/?]+/;
+		var format = /[!@#$%^&*()_~`+\-=\[\]{};':"\\|,.<>\/?]+/;
 		if(p_name=='')
 		{
 		swal("Oops!", "The input cannot be empty", "error")
@@ -570,7 +568,7 @@ swal({
 
     	          else 
     	           {
-    	           swal("Oops!","It is not deleted", "error")
+    	           swal("Oops!",response.message, "error")
 
     	           } 
     	     },

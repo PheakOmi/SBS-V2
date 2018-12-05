@@ -33,8 +33,13 @@ public class Schedule_Model {
 	private Date dept_date2;
 	private Time dept_time2;
 	private String date_arr[];
+	private String bus_arr[];
 	private Boolean round;
 	private int choice;
+
+	private String date;
+	private String month;
+	private String year;
 
 
 	public int getChoice() {
@@ -231,5 +236,37 @@ public class Schedule_Model {
 
 	public void setReturn_time2(String return_time2) {
 		this.return_time2 = return_time2;
+	}
+
+	public String[] getBus_arr() {
+		return bus_arr;
+	}
+
+	public void setBus_arr(String[] bus_arr) {
+		this.bus_arr = bus_arr;
+	}
+
+	public String getDate() {
+		return date;
+	}
+
+	public void setDate(String date) {
+		this.date = date;
+	}
+
+	public String getMonth() {
+		return month;
+	}
+
+	public void setMonth(String month) {
+		this.month = month;
+	}
+
+	public String getYear() {
+		return year;
+	}
+
+	public void setYear(String year) {
+		this.year = year;
 	}
 }

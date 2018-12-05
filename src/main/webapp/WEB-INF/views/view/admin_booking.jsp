@@ -190,8 +190,8 @@ load = function(){
 				// 		cb = '<td class="unhoverr"><label class="item-check" id="select-all-items"><input type="checkbox" class="checkbox">'
     			// 		+'<span></span></label></td>';
     			// 	}
-				var booking = '<tr class="hoverr search '+bookings[i].description+'" tofind="'+bookings[i].id+'"style="'+color+'"s-title="'+bookings[i].code+searchCustomer(bookings[i].user_id,customers).toLowerCase()+'" deptdate="'+formatDate(bookings[i].dept_date)+'" from="'+bookings[i].from_id+'"'+
-				'destination="'+bookings[i].destination_id+'"'+'source="'+bookings[i].source_id+'"'+'to="'+bookings[i].to_id+'"'+'data-url="booking_detail?id='+bookings[i].id+'">'
+				var booking = '<tr class="hoverr search '+bookings[i].description+'" tofind="'+bookings[i].id+'"style="'+color+'"s-title="'+bookings[i].code+searchCustomer(bookings[i].user_id,customers).toLowerCase()+'" deptdate="'+formatDate(bookings[i].dept_date)+'" from="'+bookings[i].source_id+'"'+
+				'destination="'+bookings[i].destination_id+'"'+'source="'+bookings[i].source_id+'"'+'to="'+bookings[i].destination_id+'"'+'data-url="booking_detail?id='+bookings[i].id+'">'
 									// +cb
 									
 									+'<td>'+bookings[i].code+'</td>'

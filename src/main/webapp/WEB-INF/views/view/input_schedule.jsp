@@ -26,7 +26,8 @@
 						<select class="form-control boxed" id="sdriver"><option></option></select> </div>
 					<div class="form-group" style="margin-bottom:2%;">
 						<label class="control-label">Bus</label>
-						<select class="form-control boxed" id="sbus" required><option></option></select> </div>
+						<select class="form-control boxed" id="sbus" multiple required></select> </div>
+						<%--<select class="form-control boxed js-example-basic-multiple" multiple="multiple" id="student" required></select>--%>
 					<div class="form-group" style="margin-bottom:2%;">
 						<label class="control-label">From</label>
 						<select class="form-control boxed" id="sfrom" required><option></option></select></div>
@@ -47,8 +48,8 @@
 						<label class="control-label">Return</label>
 						<select class="form-control boxed" id="sreturn">
 							<option value=0></option>
-							<option value=1>Same Date</option>
-							<option value=2>Respectively</option>
+							<option value=1>Any Date</option>
+							<option value=2>Same Date</option>
 						</select>
 					</div>
 					<div id="option1" style="display:none">
@@ -78,10 +79,8 @@
 	</div>
 </div>
 <div style="width:800px; margin:10px auto;">
-<sec:authorize access="hasRole('ROLE_ADMIN')">
 	<button type="button" id="inputBtn" class="btn btn-success btn-lg btn-block" onclick="openModal()">Input Schedule</button>
 	<button type="button" id="emailBtn" class="btn btn-warning btn-lg btn-block" onclick="sendEmail()">Email All Schedules Of This Month</button>
-</sec:authorize>
 </div>
 
 </body>

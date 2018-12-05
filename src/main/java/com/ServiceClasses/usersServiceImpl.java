@@ -85,9 +85,6 @@ public class usersServiceImpl implements usersService{
 	public List <?> getAllSchedulesByMonth(String month, String year) throws ParseException, java.text.ParseException{
 		return usersDao1.getAllSchedulesByMonth(month, year);
 	}
-	public List <Schedule_Master> schedule_list(String date, String month, String year) throws ParseException, java.text.ParseException{
-		return usersDao1.schedule_list(date, month, year);
-	}
 	public List<Booking_Master> getBookingByScheduleId (int id){
 		return usersDao1.getBookingByScheduleId(id);
 	}
@@ -255,6 +252,12 @@ public class usersServiceImpl implements usersService{
 	}
 	public Map<String, Object> saveMultipleSchedule(Schedule_Model schedule, String type, String choice) throws ParseException{
 		return usersDao1.saveMultipleSchedule(schedule,type,choice);
+	}
+	public List<Schedule_Master> forCalendarview() throws ParseException{
+		return usersDao1.forCalendarview();
+	}
+	public List <Schedule_Master> schedule_list(Schedule_Model model) throws ParseException, java.text.ParseException{
+		return usersDao1.schedule_list(model);
 	}
 }
 

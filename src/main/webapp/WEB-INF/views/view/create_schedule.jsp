@@ -15,7 +15,8 @@
                                             <select class="form-control" style="width: inherit;" id="sdriver"><option></option></select> </div>
                                         <div class="form-group col-md-4" style="margin-bottom:2%;">
                                             <label for="exampleInputPassword3"  style="margin-right:4%;">Bus</label>
-                                            <select class="form-control" style="width: inherit;" id="sbus" required><option></option></select> </div>
+                                            <%--<select class="form-control" style="width: inherit;" id="sbus" required><option></option></select> </div>--%>
+                                            <select class="form-control boxed js-example-basic-multiple" multiple="multiple" id="sbus" required></select></div>
 										<div class="form-group col-md-4" style="margin-bottom:2%;">
                                             <label for="exampleInputEmail3"  style="margin-right:4%;">From</label>
                                             <select class="form-control" style="width: inherit;" id="sfrom" required><option></option></select></div>
@@ -104,8 +105,9 @@ load = function () {
 	locations = data.main_locations;
 	var drivers = data.drivers;
 	all_driver = drivers;
-	for(i=0; i<buses.length; i++)					
-		$("#sbus").append("<option value="+buses[i].id+">"+buses[i].model+" "+buses[i].plate_number+" </option>");
+	// for(i=0; i<buses.length; i++)
+	// 	$("#sbus").append("<option value="+buses[i].id+">"+buses[i].model+" "+buses[i].plate_number+" </option>");
+    $('#sbus').select2({data: data.multibus})
 	for(i=0; i<locations.length; i++)
 		$("#sfrom").append("<option value="+locations[i].id+">"+locations[i].name+" </option>");
 	for(i=0; i<drivers.length; i++)					
@@ -119,7 +121,7 @@ load = function () {
 $(document).ready(function(){
 	$("#scheduleMng").addClass("active");
 	
-    $("[name=date]").keydown(function (event) {
+    $("[name=no_past_date]").keydown(function (event) {
             event.preventDefault();
         });
     $("[name=time]").keydown(function (event) { 
@@ -150,8 +152,18 @@ $(document).ready(function(){
 	});
 
     $("#sbus").change(function(){
-        var input  = this.value;
-        $("#sno_seat").val(searchBusSeat(input, all_bus))
+        var arr = $("#sbus").val()
+        var sum = 0
+        console.log(arr)
+        if(arr!=null) {
+            for (var i = 0; i < arr.length; i++) {
+                sum = sum + searchBusSeat(parseInt(arr[i]), all_bus)
+            }
+            $("#sno_seat").val(sum)
+        }
+        else
+            $("#sno_seat").val(0)
+
 
     });
 
@@ -191,12 +203,23 @@ $(document).ready(function(){
 		}
 		else
 		    driver = parseInt($("#sdriver").val())
-		if($("#sbus").val()==""||$("#sbus").val()==null)
+		if($("#sbus").val()==null)
 		{
-            bus = 0
+            swal("Action Disallowed!", "You cannot leave Bus field blank!", "error")
+            return
 		}
-		else
-		    bus = parseInt($("#sbus").val())
+        if(compareDate($("#sdeptdate").val(), $("#sreturndate").val()))
+        {
+            swal("Action Disallowed!", "Return Date has to be later than Departure Date!", "error")
+            return
+        }
+		else if(rconvertedDate==convertedDate)
+        {
+            if(!compareTime($("#sdepttime").val(),$("#sreturntime").val())){
+                swal("Action Disallowed!", "Return Time has to be later than Departure Time!", "error")
+                return
+            }
+        }
 		if($("#sfrom").val()==""||$("#sfrom").val()==null)
 		{
 		swal("Action Disallowed!", "You cannot leave From field blank!", "error")
@@ -222,7 +245,7 @@ $(document).ready(function(){
     		type:'GET',
     		data:{
     				driver_id:driver,
-    				bus_id:bus,
+    				bus_arr:$("#sbus").val(),
     				source_id:parseInt($("#sfrom").val()),
     				destination_id:parseInt($("#sto").val()),
     				no_seat:parseInt($("#sno_seat").val()),
@@ -303,8 +326,29 @@ function toDate(dStr,format) {
  		now.setMinutes(dStr.substr(dStr.indexOf(":")+1));
  		now.setSeconds(0);
  		return now.getHours()+":"+now.getMinutes()+":"+now.getSeconds();
-	}else 
+	}else
 		return "Invalid Format";
+}
+function compareTime(time1,time2) {
+    var leavet = new Date();
+    var returnt = new Date();
+
+    leavet.setHours(time1.substr(0,time1.indexOf(":")));
+    leavet.setMinutes(time1.substr(time1.indexOf(":")+1));
+    leavet.setSeconds(0);
+
+    returnt.setHours(time2.substr(0,time2.indexOf(":")));
+    returnt.setMinutes(time2.substr(time2.indexOf(":")+1));
+    returnt.setSeconds(0);
+
+    return returnt>leavet;
+}
+
+function compareDate(date1,date2) {
+    var leaveDate = new Date(date1);
+    var returnDate = new Date(date2);
+
+    return returnDate<leaveDate;
 }
 
 	

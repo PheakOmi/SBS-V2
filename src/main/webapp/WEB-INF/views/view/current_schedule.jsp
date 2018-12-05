@@ -282,54 +282,6 @@ function searchBus(id, myArray){
 
 
 
-
-deleteSchedule=function(s_id)
-{
-swal({
-    title: "Do you want to delete this schedule?",
-    text: "Make sure there is no booking in this schedule.",
-    type: "warning",
-    showCancelButton: true,
-    confirmButtonColor: "#E71D36",
-    confirmButtonText: "Delete",
-    cancelButtonText: "Cancel",
-    closeOnConfirm: false,
-    closeOnCancel: true
-  },
-    function (isConfirm) {
-      if (isConfirm) {
-    	  $.ajax({
-    			url:'deleteSchedule?id='+s_id,
-    			type:'GET',
-    			success: function(response){
-    				if(response.status=="1")
-    	  	      {
-    	  	      setTimeout(function() {
-    	  	             swal({
-    	  	                 title: "Done!",
-    	  	                 text: response.message,
-    	  	                 type: "success"
-    	  	             }, function() {
-    	  	            	window.location.reload();
-    	  	             });
-    	  	         }, 10);
-
-    	  	      }
-
-    	  	          else
-    	  	           {
-    	  	           swal("Oops!",response.message, "error")
-
-    	  	           } 		
-    			},
-    			error: function(err){
-    			swal("Oops!", "Cannot get all buses data", "error")
-    			console.log(JSON.stringify(err));
-    			}
-    		});
-      } 
-    });
-    }
 function timeConverter(t){
 var time=t;
 var hours = Number(time.match(/^(\d+)/)[1]);
@@ -345,5 +297,53 @@ if (minutes < 10) sMinutes = "0" + sMinutes;
 
 return(sHours +':'+sMinutes);
 
+}
+
+deleteSchedule=function(s_id)
+{
+    swal({
+            title: "Do you want to delete this schedule?",
+            text: "Make sure there is no booking in this schedule.",
+            type: "warning",
+            showCancelButton: true,
+            confirmButtonColor: "#E71D36",
+            confirmButtonText: "Delete",
+            cancelButtonText: "Cancel",
+            closeOnConfirm: false,
+            closeOnCancel: true
+        },
+        function (isConfirm) {
+            if (isConfirm) {
+                $.ajax({
+                    url:'deleteSchedule?id='+s_id,
+                    type:'GET',
+                    success: function(response){
+                        if(response.status=="1")
+                        {
+                            setTimeout(function() {
+                                swal({
+                                    title: "Done!",
+                                    text: response.message,
+                                    type: "success"
+                                }, function() {
+                                    window.location.reload();
+                                });
+                            }, 10);
+
+                        }
+
+                        else
+                        {
+                            swal("Oops!",response.message, "error")
+
+                        }
+                    },
+                    error: function(err){
+                        swal("Oops!", "Cannot get all buses data", "error")
+                        console.log(JSON.stringify(err));
+                    }
+                });
+            }
+        });
 }
 </script>
