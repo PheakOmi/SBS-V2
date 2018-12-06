@@ -134,6 +134,51 @@ public class StudentDaoImpl implements StudentDao{
         int count_ticket = 0;
         int user_id = id.getAuthentic();
 
+        List<Booking_Master> dbooking = new ArrayList<Booking_Master>();
+        List<Booking_Master> rbooking = new ArrayList<Booking_Master>();
+
+        dbooking = new userDaoImpl().searchExistingBooking(java.sql.Date.valueOf(book_data.getDepart_date()),user_id);
+        if (dbooking.size()>=2)
+        {
+            map.put("status","dp");
+            return map;
+        }
+        else if (dbooking.size()==1){
+            if(dbooking.get(0).getSource_id()==book_data.getSource()&&dbooking.get(0).getDestination_id()==book_data.getDestination()){
+                map.put("status","dp");
+                return map;
+            }
+            else {
+                if(book_data.getDeparture_time().equals(dbooking.get(0).getDept_time().toString())){
+                    map.put("status","dp");
+                    return map;
+                }
+            }
+
+        }
+        if(book_data.getChoice()==2){
+            rbooking = new userDaoImpl().searchExistingBooking(java.sql.Date.valueOf(book_data.getDate_return()),user_id);
+            if (rbooking.size()>=2)
+            {
+                map.put("status","rp");
+                return map;
+            }
+            else if (rbooking.size()==1){
+                if(rbooking.get(0).getSource_id()==book_data.getDestination()&&rbooking.get(0).getDestination_id()==book_data.getSource()){
+                    map.put("status","rp");
+                    return map;
+                }
+                else {
+                    if(book_data.getReturn_time().equals(rbooking.get(0).getDept_time().toString())){
+                        map.put("status","rp");
+                        return map;
+                    }
+                }
+
+            }
+        }
+
+
         int schedule_id1 = new userDaoImpl().searchScheduleId(java.sql.Date.valueOf(book_data.getDepart_date()), java.sql.Time.valueOf(book_data.getDeparture_time()), book_data.getSource(), book_data.getDestination());
         int schedule_id2 =5;
         if(book_data.getChoice()==2){
@@ -284,7 +329,7 @@ public class StudentDaoImpl implements StudentDao{
         d2.setHours(booking.getDept_time().getHours());
         d2.setMinutes(booking.getDept_time().getMinutes());
 
-        return d1.after(d2);
+        return !d1.after(d2);
     }
 
     public List<Map<String,Object>> getHistory() throws ParseException{
@@ -295,7 +340,7 @@ public class StudentDaoImpl implements StudentDao{
              String hql = "From Booking_Master where notification != 'Cancelled' and user_id="+id.getAuthentic()+" order by dept_date desc";
              Query query = session.createQuery(hql);
              query.setMaxResults(10);
-              list_booking= query.list();
+             list_booking= query.list();
              for(Booking_Master booking_master : list_booking){
                  Map<String,Object> map = new HashMap<String, Object>();
                  Location_Master location_master = new Location_Master();
