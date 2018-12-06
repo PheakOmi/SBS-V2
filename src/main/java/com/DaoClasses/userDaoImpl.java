@@ -1135,6 +1135,33 @@ public class userDaoImpl implements usersDao{
     }
 
 
+
+
+    public List<Booking_Master> searchExistingBooking(Date date, int user_id){
+        List <Booking_Master> booking_masters  = new ArrayList<Booking_Master>();
+        org.hibernate.Transaction trns19 = null;
+        Session session = HibernateUtil.getSessionFactory().openSession();
+        try {
+            trns19 = session.beginTransaction();
+            String queryString = "from Booking_Master where dept_date=:date and user_id=:user_id";
+            Query query = session.createQuery(queryString);
+            query.setDate("date",date);
+            query.setInteger("user_id",user_id);
+            booking_masters=(List <Booking_Master>)query.list();
+            return booking_masters;
+        } catch (RuntimeException e) {
+            e.printStackTrace();
+            return null;
+        } finally {
+            session.flush();
+            session.close();
+        }
+    }
+
+
+
+
+
 	public Location_Master getLocationById (int id){
 		Location_Master location= new Location_Master();
         Transaction trns19 = null;
