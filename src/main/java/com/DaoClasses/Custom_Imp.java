@@ -105,7 +105,7 @@ public class Custom_Imp implements Custom_Dao{
 			        
 		        	Mail mail = new Mail();
 			        mail.setMailFrom("nanaresearch9@gmail.com");
-			        mail.setMailTo(user.getEmail());
+//			        mail.setMailTo(user.getEmail());
 			        mail.setMailSubject("vKirirom Shuttle Bus Password Reset");
 			        mail.setFile_name("forget_password_template.txt");
 			 
@@ -2125,7 +2125,7 @@ public class Custom_Imp implements Custom_Dao{
         			&&drop_off.size()>0&&destination.size()>0){
         		Mail mail = new Mail();
 		        mail.setMailFrom("nanaresearch9@gmail.com");
-		        mail.setMailTo(user.get(0).getEmail());
+//		        mail.setMailTo(user.get(0).getEmail());
 		        mail.setMailSubject("vKirirom Shuttle Bus Booked Confirmation");
 		        mail.setFile_name("qr_code_template.txt");
 				

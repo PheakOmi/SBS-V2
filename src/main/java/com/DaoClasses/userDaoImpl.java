@@ -24,6 +24,7 @@ import java.util.List;
 import java.util.Map;
 import java.util.Random;
 import java.util.Set;
+import java.util.concurrent.TimeUnit;
 
 import javax.crypto.SecretKey;
 import javax.servlet.http.HttpServlet;
@@ -1137,15 +1138,17 @@ public class userDaoImpl implements usersDao{
 
 
 
-    public List<Booking_Master> searchExistingBooking(Date date, int user_id){
+    public List<Booking_Master> searchExistingBooking(String date, String date2, int user_id){
         List <Booking_Master> booking_masters  = new ArrayList<Booking_Master>();
+
         org.hibernate.Transaction trns19 = null;
         Session session = HibernateUtil.getSessionFactory().openSession();
         try {
             trns19 = session.beginTransaction();
-            String queryString = "from Booking_Master where dept_date=:date and user_id=:user_id";
+            String queryString = "from Booking_Master where dept_date between '"+date+"' and '"+date2+"' and user_id=:user_id and notification!='Cancelled'";
             Query query = session.createQuery(queryString);
-            query.setDate("date",date);
+//            query.setDate("date1",java.sql.Timestamp.valueOf(date));
+//            query.setDate("date2",java.sql.Timestamp.valueOf(date2));
             query.setInteger("user_id",user_id);
             booking_masters=(List <Booking_Master>)query.list();
             return booking_masters;
@@ -1155,6 +1158,36 @@ public class userDaoImpl implements usersDao{
         } finally {
             session.flush();
             session.close();
+        }
+    }
+
+
+    public Boolean shouldReturnTicket(Booking_Master booking) throws ParseException{
+
+        Calendar cal = Calendar.getInstance();
+        SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
+        String today=sdf.format(cal.getTime());
+        String ddate = booking.getDept_date().toString();
+        ddate = ddate.substring(0, ddate.length()-11);
+        today = today.substring(0, today.length()-9);
+        if(!ddate.equals(today))
+            return true;
+        else{
+            String time1 = booking.getDept_time().toString();
+            Calendar cal2 = Calendar.getInstance();
+            SimpleDateFormat sdf2 = new SimpleDateFormat("HH:mm:ss");
+            String time2=sdf2.format(cal2.getTime());
+
+            SimpleDateFormat format = new SimpleDateFormat("HH:mm:ss");
+            Date date1 = format.parse(time1);
+            Date date2 = format.parse(time2);
+            long difference = (date1.getTime() - date2.getTime());
+            difference = TimeUnit.MILLISECONDS.toMinutes(difference);
+            System.out.println("SSSS "+difference);
+            if(difference>=180)
+                return true;
+            else
+                return false;
         }
     }
 
@@ -1986,29 +2019,33 @@ public class userDaoImpl implements usersDao{
             List<User_Info> users = new userDaoImpl().getAllUsersOfAllTypesButDriver();
             SimpleDateFormat formatter = new SimpleDateFormat("dd MMMM yyyy");
             String strDate = formatter.format(schedule.getDept_date2());
-            for(User_Info user:users){
-                Mail mail = new Mail();
-                mail.setMailFrom("vkirirom_shuttlebus@gmail.com");
-                mail.setMailTo(user.getEmail());
-                mail.setMailSubject("Newly Created Schedule");
+            List<String> user_list= new ArrayList<String>();
+            for (User_Info user:users)
+                user_list.add(user.getEmail());
+            String[] arr = new String[user_list.size()];
+            arr = user_list.toArray(arr);
 
-                Map<String, Object> model = new HashMap<String, Object>();
-                model.put("name", user.getUsername());
-                model.put("email", user.getEmail());
-                model.put("date", strDate);
-                model.put("time", schedule.getDept_time());
-                model.put("from", new userDaoImpl().getLocationById(schedule.getSource_id()).getName());
-                model.put("to", new userDaoImpl().getLocationById(schedule.getDestination_id()).getName());
-                model.put("allowed", schedule.getNo_seat());
-                mail.setModel(model);
-                mail.setFile_name("email_schedule_create.txt");
+            Mail mail = new Mail();
+            mail.setMailFrom("vkirirom_shuttlebus@gmail.com");
+            mail.setMailTo(arr);
+            mail.setMailSubject("Newly Created Schedule");
+
+            Map<String, Object> model = new HashMap<String, Object>();
+            model.put("name", "Valuable User");
+            model.put("date", strDate);
+            model.put("time", schedule.getDept_time());
+            model.put("from", new userDaoImpl().getLocationById(schedule.getSource_id()).getName());
+            model.put("to", new userDaoImpl().getLocationById(schedule.getDestination_id()).getName());
+            model.put("allowed", schedule.getNo_seat());
+            mail.setModel(model);
+            mail.setFile_name("email_schedule_create.txt");
 
 
-                AbstractApplicationContext context = new AnnotationConfigApplicationContext(ApplicationConfig.class);
-                MailService mailService = (MailService) context.getBean("mailService");
-                mailService.sendEmail(mail);
-                context.close();
-            }
+            AbstractApplicationContext context = new AnnotationConfigApplicationContext(ApplicationConfig.class);
+            MailService mailService = (MailService) context.getBean("mailService");
+            mailService.sendEmail(mail);
+            context.close();
+
         }
         catch (RuntimeException e){
             if (trns != null) {
@@ -2032,7 +2069,7 @@ public class userDaoImpl implements usersDao{
             for(User_Info user:users){
                 Mail mail = new Mail();
                 mail.setMailFrom("vkirirom_shuttlebus@gmail.com");
-                mail.setMailTo(user.getEmail());
+                //mail.setMailTo(user.getEmail());
                 mail.setMailSubject("Booking Request Confirmation");
 
                 Map<String, Object> model = new HashMap<String, Object>();
@@ -2074,15 +2111,20 @@ public class userDaoImpl implements usersDao{
             trns  = session.beginTransaction();
             List<User_Info> users = new userDaoImpl().getAllUsersOfAllTypesButDriver();
             SimpleDateFormat formatter = new SimpleDateFormat("dd MMMM yyyy");
-            for(User_Info user:users){
+
+            List<String> user_list= new ArrayList<String>();
+            for (User_Info user:users)
+                user_list.add(user.getEmail());
+            String[] arr = new String[user_list.size()];
+            arr = user_list.toArray(arr);
+
                 Mail mail = new Mail();
                 mail.setMailFrom("vkirirom_shuttlebus@gmail.com");
-                mail.setMailTo(user.getEmail());
+                mail.setMailTo(arr);
                 mail.setMailSubject("Monthly Schedules");
 
                 Map<String, Object> model = new HashMap<String, Object>();
-                model.put("name", user.getUsername());
-                model.put("email", user.getEmail());
+                model.put("name", "Valuable User");
                 for(int i = 0; i<schedules.size(); i++) {
                     String strDate = formatter.format(schedules.get(i).getDept_date());
                     model.put("date"+Integer.toString(i+1), strDate);
@@ -2126,7 +2168,7 @@ public class userDaoImpl implements usersDao{
                 MailService mailService = (MailService) context.getBean("mailService");
                 mailService.sendEmail(mail);
                 context.close();
-            }
+
         }
         catch (RuntimeException e){
             if (trns != null) {
@@ -2783,36 +2825,40 @@ public class userDaoImpl implements usersDao{
             SimpleDateFormat formatter = new SimpleDateFormat("dd MMMM yyyy");
             String strDate = formatter.format(schedule.getDept_date2());
             String new_strDate = formatter.format(new_schedule.getDept_date2());
-            for(User_Info user:users){
-                Mail mail = new Mail();
-                mail.setMailFrom("vkirirom_shuttlebus@gmail.com");
-                mail.setMailTo(user.getEmail());
-                System.out.println("Sent to "+user.getUsername());
-                mail.setMailSubject("Updated Schedule");
 
-                Map<String, Object> model = new HashMap<String, Object>();
-                model.put("name", user.getUsername());
-                model.put("email", user.getEmail());
-                model.put("date", strDate);
-                model.put("time", schedule.getDept_time());
-                model.put("from", new userDaoImpl().getLocationById(schedule.getSource_id()).getName());
-                model.put("to", new userDaoImpl().getLocationById(schedule.getDestination_id()).getName());
-                model.put("allowed", schedule.getNo_seat());
+            List<String> user_list= new ArrayList<String>();
+            for (User_Info user:users)
+                user_list.add(user.getEmail());
+            String[] arr = new String[user_list.size()];
+            arr = user_list.toArray(arr);
 
-                model.put("new_date", new_strDate);
-                model.put("new_time", new_schedule.getDept_time());
-                model.put("new_from", new userDaoImpl().getLocationById(new_schedule.getSource_id()).getName());
-                model.put("new_to", new userDaoImpl().getLocationById(new_schedule.getDestination_id()).getName());
-                model.put("new_allowed", new_schedule.getNo_seat());
-                mail.setModel(model);
-                mail.setFile_name("email_schedule_update.txt");
+            Mail mail = new Mail();
+            mail.setMailFrom("vkirirom_shuttlebus@gmail.com");
+            mail.setMailTo(arr);
+            mail.setMailSubject("Updated Schedule");
+
+            Map<String, Object> model = new HashMap<String, Object>();
+            model.put("name", "Valuable User");
+            model.put("date", strDate);
+            model.put("time", schedule.getDept_time());
+            model.put("from", new userDaoImpl().getLocationById(schedule.getSource_id()).getName());
+            model.put("to", new userDaoImpl().getLocationById(schedule.getDestination_id()).getName());
+            model.put("allowed", schedule.getNo_seat());
+
+            model.put("new_date", new_strDate);
+            model.put("new_time", new_schedule.getDept_time());
+            model.put("new_from", new userDaoImpl().getLocationById(new_schedule.getSource_id()).getName());
+            model.put("new_to", new userDaoImpl().getLocationById(new_schedule.getDestination_id()).getName());
+            model.put("new_allowed", new_schedule.getNo_seat());
+            mail.setModel(model);
+            mail.setFile_name("email_schedule_update.txt");
 
 
-                AbstractApplicationContext context = new AnnotationConfigApplicationContext(ApplicationConfig.class);
-                MailService mailService = (MailService) context.getBean("mailService");
-                mailService.sendEmail(mail);
-                context.close();
-            }
+            AbstractApplicationContext context = new AnnotationConfigApplicationContext(ApplicationConfig.class);
+            MailService mailService = (MailService) context.getBean("mailService");
+            mailService.sendEmail(mail);
+            context.close();
+
         }
         catch (RuntimeException e){
             if (trns != null) {
@@ -3079,7 +3125,7 @@ public class userDaoImpl implements usersDao{
         Session session = HibernateUtil.getSessionFactory().openSession();
         try {
             trns19 =  session.beginTransaction();
-            String queryString = "from Booking_Master where dept_date>=:localDate and (payment=:payment or payment=:payment2) and notification!=:notification";
+            String queryString = "from Booking_Master where dept_date>=:localDate and (payment=:payment or payment=:payment2)";
             Query query = session.createQuery(queryString);
             DateTimeFormatter dtf = DateTimeFormatter.ofPattern("yyyy-MM-dd");
             LocalDate localDate = LocalDate.now();
@@ -3087,8 +3133,7 @@ public class userDaoImpl implements usersDao{
             System.out.println(dtf.format(localDate));
             query.setDate("localDate", date);
             query.setString("payment", "Succeed");
-            query.setString("payment2", "Cash"); 
-            query.setString("notification", "Cancelled");
+            query.setString("payment2", "Cash");
             bookings=(List<Booking_Master>)query.list();
         } catch (RuntimeException e) {
             e.printStackTrace();
@@ -3938,7 +3983,7 @@ public class userDaoImpl implements usersDao{
 			trns  = session.beginTransaction();
 	  	        Mail mail = new Mail();
 		        mail.setMailFrom("vkirirom_shuttlebus@gmail.com.com");
-		        mail.setMailTo(email);
+		        //mail.setMailTo(email);
 		        mail.setMailSubject("Kirirom Shuttle Bus Booking Request");
 		 
 		        Map < String, Object > model = new HashMap < String, Object > ();
@@ -3975,7 +4020,7 @@ public class userDaoImpl implements usersDao{
 			trns  = session.beginTransaction();
 	  	        Mail mail = new Mail();
 		        mail.setMailFrom("vkirirom_shuttlebus@gmail.com.com");
-		        mail.setMailTo(email);
+		        //mail.setMailTo(email);
 		        mail.setMailSubject("Kirirom Shuttle Bus Booking Request");
 		 
 		        Map < String, Object > model = new HashMap < String, Object > ();

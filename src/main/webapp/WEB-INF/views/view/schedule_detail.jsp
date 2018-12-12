@@ -158,6 +158,64 @@
             $(".cpast").prop('disabled', true);
             $("#ubtn").hide();
         }
+        for (var i=0;i<bookings.length;i++)
+        {
+            var booking = '<tr style="background-color: #FADAD8" class="hoverr" data-url="booking_detail?id='+bookings[i].id+'">'
+                +'<td>'+(i+1)+'</td>'
+                +'<td>'+bookings[i].code+'</td>'
+                +'<td class="user_info" style="color:blue" data='+bookings[i].user_id+'>'+searchCustomer(bookings[i].user_id,all_customer)+'</td>'
+                +'<td>'+searchPhone(bookings[i].user_id,all_customer)+'</td>'
+                +'<td>'+bookings[i].number_booking+'</td>'
+                +'<td>'+bookings[i].description+'</td></tr>';
+            $("#allBooking").append(booking);
+        }
+
+        $( ".unhoverr" ).on('click', function(e) {
+            e.stopPropagation();
+        });
+
+
+        $( ".user_info" ).on('click', function(e) {
+            console.log("KK");
+            e.stopPropagation();
+            var id=$(this).attr('data');
+            console.log(id);
+            $.ajax({
+                async: false,
+                cache: false,
+                type: "GET",
+                url: "get_sch_driver_info2",
+                data :{'id':id},
+                timeout: 100000,
+                success: function(data) {
+                    console.log(data);
+                    if(data[0].phone_number==""||data[0].phone_number==null)
+                        data[0].phone_number = "";
+                    var data='<tr><th>User\'s Name</th><td><b>:</b>  &nbsp&nbsp '+data[0].name+'</td></tr>'
+                        +'<tr><th>Phone Number</th><td><b>:</b>  &nbsp&nbsp '+ data[0].phone_number+'</td></tr>'
+                        +'<tr><th>Email</th><td><b>:</b> &nbsp&nbsp '+data[0].email +'</td></tr>'
+                    document.getElementById('get_user_info').innerHTML=data;
+                    $('#user_info_modal').modal();
+                    $('#user_info_modal').modal('open');
+
+                },
+                error: function(e) {
+                    console.log("ERROR: ", e);
+                },
+                done: function(e) {
+                    console.log("DONE");
+                }
+            });
+        });
+
+
+
+
+        $(".hoverr").on('click', function(e) {
+            e.stopPropagation();
+            location.href=$(this).attr('data-url');
+        });
+
 
         $("#logBtn").show();
 
@@ -315,11 +373,35 @@
 
 
 
+    function searchCustomer(id, myArray){
+        for (var i=0; i < myArray.length; i++) {
+            if (myArray[i].id === id) {
+                return myArray[i].name;
+            }
+        }
+    }
+
+
+
 
     function searchBusSeat(id, myArray){
         for (var i=0; i < myArray.length; i++) {
             if (myArray[i].id === parseInt(id)) {
                 return myArray[i].number_of_seat;
+            }
+        }
+    }
+
+
+
+
+    function searchPhone(id, myArray){
+        for (var i=0; i < myArray.length; i++) {
+            if (myArray[i].id === id) {
+                if(myArray[i].phone_number==null||myArray[i].phone_number=="")
+                    return "";
+
+                return myArray[i].phone_number;
             }
         }
     }

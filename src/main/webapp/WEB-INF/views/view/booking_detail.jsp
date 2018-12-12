@@ -39,6 +39,10 @@
                                             <input type="text" class="form-control" id="bookedOn">
                                         </div>
                                         <div class="form-group">
+                                            <label for="exampleInputEmail3">Cancelled On</label>
+                                            <input type="text" class="form-control" id="canceledOn">
+                                        </div>
+                                        <div class="form-group">
                                             <label for="exampleInputEmail3">Number of bookings</label>
                                             <input type="text" class="form-control" id="no_booking">
                                         </div>
@@ -83,6 +87,7 @@ load = function () {
 	$("#dept_date").val(booking.dept_date);
 	$("#dept_time").val(booking.dept_time);
 	$("#bookedOn").val(booking.created_at);
+    $("#canceledOn").val(booking.updated_at);
 	$("#no_booking").val(booking.number_booking);
 	
 	
