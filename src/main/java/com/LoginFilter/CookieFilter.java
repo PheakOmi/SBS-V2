@@ -25,10 +25,12 @@ public class CookieFilter implements javax.servlet.Filter {
             System.out.println("header : " +header);
 
             if(( auth.getAuthorities().toString()).equals("[ROLE_ANONYMOUS]")){
+                System.out.println("anu");
                 HttpServletResponse httpResponse = (HttpServletResponse) resp;
                 httpResponse.sendError(HttpServletResponse.SC_FORBIDDEN);
                 return;
             }else{
+                System.out.println("forward");
                 chain.doFilter(req, resp);
             }
         }else{

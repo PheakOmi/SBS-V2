@@ -265,6 +265,7 @@ public class CustomerController {
 	//=========================To update customer phone number================================
 	@RequestMapping(value="/update_phone", method=RequestMethod.POST)
 	public @ResponseBody Map<String, Object> updatePhone(@RequestBody UserModel userModel) {
+		System.out.println("&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&& "+userModel.getPhone());
 		return customer.updatePhone(userModel);
 	}
 
