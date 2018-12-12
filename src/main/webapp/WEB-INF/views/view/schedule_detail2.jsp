@@ -165,7 +165,11 @@
 
         for (var i=0;i<bookings.length;i++)
         {
-            var booking = '<tr class="hoverr" data-url="booking_detail?id='+bookings[i].id+'">'
+            var color = ""
+            if(bookings[i].notification=="Cancelled")
+                color = "background-color: #FADAD8;";
+
+            var booking = '<tr class="hoverr" style="'+color+'" data-url="booking_detail?id='+bookings[i].id+'">'
                 +'<td>'+(i+1)+'</td>'
                 +'<td>'+bookings[i].code+'</td>'
                 +'<td class="user_info" style="color:blue" data='+bookings[i].user_id+'>'+searchCustomer(bookings[i].user_id,all_customer)+'</td>'

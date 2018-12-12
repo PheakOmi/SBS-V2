@@ -184,12 +184,10 @@ load = function(){
 
 				var color="";
 				var cb="<td></td>";
-				// if(bookings[i].notification=="Unassigned")
-				// 	{
-				// 		color = "background-color: coral;";
-				// 		cb = '<td class="unhoverr"><label class="item-check" id="select-all-items"><input type="checkbox" class="checkbox">'
-    			// 		+'<span></span></label></td>';
-    			// 	}
+
+                if(bookings[i].notification=="Cancelled")
+                    color = "background-color: #FADAD8;";
+
 				var booking = '<tr class="hoverr search '+bookings[i].description+'" tofind="'+bookings[i].id+'"style="'+color+'"s-title="'+bookings[i].code+searchCustomer(bookings[i].user_id,customers).toLowerCase()+'" deptdate="'+formatDate(bookings[i].dept_date)+'" from="'+bookings[i].source_id+'"'+
 				'destination="'+bookings[i].destination_id+'"'+'source="'+bookings[i].source_id+'"'+'to="'+bookings[i].destination_id+'"'+'data-url="booking_detail?id='+bookings[i].id+'">'
 									// +cb

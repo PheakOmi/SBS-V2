@@ -29,7 +29,7 @@ public class Test_Forget_Password {
 	        	User_Info user = (User_Info) query1.list().get(0);
 	        	Mail mail = new Mail();
 		        mail.setMailFrom("maimom2222@gmail.com");
-		        mail.setMailTo("maimom61@gmail.com");
+//		        mail.setMailTo("maimom61@gmail.com");
 		        mail.setMailSubject("vKirirom Shuttle Bus Password Reset");
 		        mail.setFile_name("forget_password_template.txt");
 		 

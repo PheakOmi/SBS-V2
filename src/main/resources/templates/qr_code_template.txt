@@ -18,21 +18,15 @@
 					    <td style="border: 1px solid #dddddd;text-align: left;padding: 8px;"> ${booking_code}</td>
 					  </tr>
 					  <tr style="background-color: #dddddd;">
-					    <td style="border: 1px solid #dddddd;text-align: left;padding: 8px;">Source</td>
-					    <td style="border: 1px solid #dddddd;text-align: left;padding: 8px;"> ${source}</td>
+					    <td style="border: 1px solid #dddddd;text-align: left;padding: 8px;">From</td>
+					    <td style="border: 1px solid #dddddd;text-align: left;padding: 8px;"> ${from}</td>
 					  </tr>
-					  <tr>
-					    <td style="border: 1px solid #dddddd;text-align: left;padding: 8px;">Pick-up location</td>
-					    <td style="border: 1px solid #dddddd;text-align: left;padding: 8px;"> ${pick_up}</td>
-					  </tr>
+
 					  <tr style="background-color: #dddddd;">
-					    <td style="border: 1px solid #dddddd;text-align: left;padding: 8px;">Destination</td>
-					    <td style="border: 1px solid #dddddd;text-align: left;padding: 8px;"> ${destination}</td>
+					    <td style="border: 1px solid #dddddd;text-align: left;padding: 8px;">To</td>
+					    <td style="border: 1px solid #dddddd;text-align: left;padding: 8px;"> ${to}</td>
 					  </tr>
-					  <tr>
-					    <td style="border: 1px solid #dddddd;text-align: left;padding: 8px;">Drop-off Location</td>
-					    <td style="border: 1px solid #dddddd;text-align: left;padding: 8px;"> ${drop_off}</td>
-					  </tr>
+
 					  <tr style="background-color: #dddddd;">
 					    <td style="border: 1px solid #dddddd;text-align: left;padding: 8px;">Departure Date</td>
 					    <td style="border: 1px solid #dddddd;text-align: left;padding: 8px;"> ${dept_date}</td>
@@ -41,21 +35,10 @@
 					    <td style="border: 1px solid #dddddd;text-align: left;padding: 8px;">Departure Time</td>
 					    <td style="border: 1px solid #dddddd;text-align: left;padding: 8px;"> ${dept_time}</td>
 					  </tr>
+
 					  <tr>
-					    <td style="border: 1px solid #dddddd;text-align: left;padding: 8px;">Child</td>
-					    <td style="border: 1px solid #dddddd;text-align: left;padding: 8px;"> ${child}</td>
-					  </tr>
-					  <tr style="background-color: #dddddd;">
-					    <td style="border: 1px solid #dddddd;text-align: left;padding: 8px;">Adult</td>
-					    <td style="border: 1px solid #dddddd;text-align: left;padding: 8px;"> ${adult}</td>
-					  </tr>
-					  <tr style="background-color: #dddddd;">
-					    <td style="border: 1px solid #dddddd;text-align: left;padding: 8px;">Total Amount</td>
-					    <td style="border: 1px solid #dddddd;text-align: left;padding: 8px;"> ${amount} </td>
-					  </tr>
-					  <tr>
-					    <td style="border: 1px solid #dddddd;text-align: left;padding: 8px;">Total Cost</td>
-					    <td style="border: 1px solid #dddddd;text-align: left;padding: 8px;"> ${total_cost} $</td>
+					    <td style="border: 1px solid #dddddd;text-align: left;padding: 8px;">Number of bookings</td>
+					    <td style="border: 1px solid #dddddd;text-align: left;padding: 8px;"> ${no_booking} $</td>
 					  </tr>
 					</table>
 					<br>

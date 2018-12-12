@@ -66,7 +66,7 @@ public class StudentController {
     @ResponseBody public Map<String,Object> remainingTicket(){ return studentDao.remainingTicket(); }
 
     @RequestMapping(value = "/student_cancel", method = RequestMethod.POST)
-    @ResponseBody public Map<String,Object> studentCancel(@RequestBody ID_Class id_class)
+    @ResponseBody public Map<String,Object> studentCancel(@RequestBody ID_Class id_class) throws ParseException
     { return studentDao.cancel_ticket(id_class);}
 
     @RequestMapping(value="/notification", method=RequestMethod.GET)

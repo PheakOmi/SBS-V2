@@ -16,7 +16,7 @@ public interface StudentDao {
     public List<Map<String,Object>>getHistory() throws ParseException;
     public Map<String,Object> customerHistory();
     public List<Integer> listBookedDate();
-    public Map<String,Object> cancel_ticket(ID_Class id_class);
+    public Map<String,Object> cancel_ticket(ID_Class id_class) throws ParseException;
     public Map<String,Object> remainingTicket();
     public Map<String,Object> Notification();
 }

@@ -1,6 +1,7 @@
 package com.DaoClasses;
 
 import java.sql.Timestamp;
+import java.sql.Time;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.time.LocalDate;
@@ -137,7 +138,8 @@ public class StudentDaoImpl implements StudentDao{
         List<Booking_Master> dbooking = new ArrayList<Booking_Master>();
         List<Booking_Master> rbooking = new ArrayList<Booking_Master>();
 
-        dbooking = new userDaoImpl().searchExistingBooking(java.sql.Date.valueOf(book_data.getDepart_date()),user_id);
+        dbooking = new userDaoImpl().searchExistingBooking(book_data.getDepart_date()+" 00:00:00",book_data.getDepart_date()+" 23:59:00",user_id);
+        System.out.println("******************************* "+dbooking.size());
         if (dbooking.size()>=2)
         {
             map.put("status","dp");
@@ -150,14 +152,14 @@ public class StudentDaoImpl implements StudentDao{
             }
             else {
                 if(book_data.getDeparture_time().equals(dbooking.get(0).getDept_time().toString())){
-                    map.put("status","dp");
+                    map.put("status","tp");
                     return map;
                 }
             }
 
         }
         if(book_data.getChoice()==2){
-            rbooking = new userDaoImpl().searchExistingBooking(java.sql.Date.valueOf(book_data.getDate_return()),user_id);
+            rbooking = new userDaoImpl().searchExistingBooking(book_data.getDate_return()+" 00:00:00",book_data.getDate_return()+" 23:59:00",user_id);
             if (rbooking.size()>=2)
             {
                 map.put("status","rp");
@@ -204,6 +206,12 @@ public class StudentDaoImpl implements StudentDao{
             try {
 
                 Booking_Master booking_master = new Booking_Master();
+//                Date ddate = java.sql.Date.valueOf(book_data.getDepart_date());
+//                ddate.setHours(0);
+//                ddate.setMinutes(0);
+//                ddate.setSeconds(0);
+                System.out.println("######################## "+java.sql.Date.valueOf(book_data.getDepart_date()));
+                System.out.println("dfdfdfdfdfd");
                 booking_master.setUser_id(user_id);
                 booking_master.setDestination_id(book_data.getDestination());
                 booking_master.setSource_id(book_data.getSource());
@@ -231,6 +239,10 @@ public class StudentDaoImpl implements StudentDao{
                 if (book_data.getChoice() == 2) {
 
                     Booking_Master booking_return = new Booking_Master();
+//                    Date rdate = java.sql.Date.valueOf(book_data.getDate_return());
+//                    rdate.setHours(0);
+//                    rdate.setMinutes(0);
+//                    rdate.setSeconds(0);
                     booking_return.setUser_id(user_id);
                     booking_return.setDestination_id(book_data.getSource());
                     booking_return.setSource_id(book_data.getDestination());
@@ -583,17 +595,25 @@ public class StudentDaoImpl implements StudentDao{
 
         return map;
     }
-    public Map<String,Object> cancel_ticket(ID_Class id_class){
+    public Map<String,Object> cancel_ticket(ID_Class id_class) throws ParseException{
         System.out.println("id: "+id_class.getId());
         Session session = HibernateUtil.getSessionFactory().openSession();
         Map<String,Object> map = new HashMap<String, Object>();
+        Timestamp updated_at = new Timestamp(System.currentTimeMillis());
         try {
             Booking_Master booking =(Booking_Master) session.load(Booking_Master.class,id_class.getId());
             booking.setNotification("Cancelled");
+            booking.setUpdated_at(updated_at);
+            if(new userDaoImpl().shouldReturnTicket(booking))
+            {
+                User_Info user_info=(User_Info) session.load(User_Info.class,booking.getUser_id());
+                user_info.setNumber_ticket(user_info.getNumber_ticket()+1);
+                session.update(user_info);
+            }
+            Schedule_Master schedule_master = new userDaoImpl().getScheduleById(booking.getSchedule_id());
+            schedule_master.setNumber_student(schedule_master.getNumber_student()-1);
+            session.update(schedule_master);
             session.update(booking);
-            User_Info user_info=(User_Info) session.load(User_Info.class,booking.getUser_id());
-            user_info.setNumber_ticket(user_info.getNumber_ticket()+1);
-            session.update(user_info);
             session.beginTransaction().commit();
             map.put("status",true);
         }

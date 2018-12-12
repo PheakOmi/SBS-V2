@@ -108,9 +108,9 @@ public class DriverController {
             for(int i=0;i<schedules.size();i++){
             	Map<String, Object> map1 = new HashMap<String, Object>();
             	Location_Master des_from=new Location_Master();
-            	des_from = (Location_Master) session.createQuery("from Location_Master where id=?").setParameter(0, schedules.get(i).getFrom_id()).list().get(0);
+            	des_from = (Location_Master) session.createQuery("from Location_Master where id=?").setParameter(0, schedules.get(i).getSource_id()).list().get(0);
             	Location_Master des_to=new Location_Master();
-            	des_to = (Location_Master) session.createQuery("from Location_Master where id=?").setParameter(0, schedules.get(i).getTo_id()).list().get(0);
+            	des_to = (Location_Master) session.createQuery("from Location_Master where id=?").setParameter(0, schedules.get(i).getDestination_id()).list().get(0);
             	
             	map1.put("id", schedules.get(i).getId());
             	map1.put("dep_date", DateFormat(schedules.get(i).getDept_date()));

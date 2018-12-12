@@ -9,11 +9,13 @@ public class Mail {
 
    private String mailFrom;
 
-   private String mailTo;
+//   private String mailTo;
 
    private String mailCc;
 
    private String mailBcc;
+
+   private String mailTo[];
 
    private String mailSubject;
 
@@ -79,15 +81,24 @@ private List < Object > attachments;
        this.mailSubject = mailSubject;
    }
 
-   public String getMailTo() {
-       return mailTo;
-   }
+//   public String getMailTo() {
+//       return mailTo;
+//   }
+//
+//   public void setMailTo(String mailTo) {
+//       this.mailTo = mailTo;
+//   }
 
-   public void setMailTo(String mailTo) {
-       this.mailTo = mailTo;
-   }
 
-   public Date getMailSendDate() {
+    public String[] getMailTo() {
+        return mailTo;
+    }
+
+    public void setMailTo(String[] mailTo) {
+        this.mailTo = mailTo;
+    }
+
+    public Date getMailSendDate() {
        return new Date();
    }
 

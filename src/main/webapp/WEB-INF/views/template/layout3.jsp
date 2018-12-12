@@ -84,6 +84,9 @@
     <spring:url value="/resources/Bootstrap/css/time/wickedpicker.css" var="timeStyle"/>
     <link rel="stylesheet" href="${timeStyle}">
     <spring:url value="/resources/Bootstrap/js/time/wickedpicker.js" var="TimeJS"/>
+    <spring:url value="/resources/Bootstrap/js/date/jquery-ui.js" var="dateJS2"/>
+    <spring:url value="/resources/Bootstrap/css/date/jquery-ui.css" var="dateStyle"/>
+    <link rel="stylesheet" href="${dateStyle}">
     <!-- Sweet alert -->
     <spring:url value="/resources/Bootstrap/css/sweetalert.css" var="alertStyle"/>
     <link rel="stylesheet" href="${alertStyle}">
@@ -101,6 +104,7 @@
 
 <body>
 <script src="${TimeJS}"></script>
+<script src="${dateJS2}"></script>
 <script src="${alertJS}"></script>
 <script src="${MultipleJS}"></script>
 <script src="${MultipleJS2}"></script>

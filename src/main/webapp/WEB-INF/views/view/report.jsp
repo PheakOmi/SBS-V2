@@ -78,12 +78,9 @@
                                          <div class="form-group">
                                             <label class="control-label">Departure Date</label>
                                             <input type="text" name ="date" class="form-control boxed" id="deptdate"> </div>
-                                         <div class="form-group">
-                                            <label class="control-label">Departure Time</label>
-                                            <select class="form-control boxed" id="depttime">
-                                                <option value="nth"></option>
-                                            </select> 
-                                            </div>
+                                          <div class="form-group">
+                                              <label class="control-label">Departure Time</label>
+                                              <input type="text" name ="time" class="form-control boxed" id="depttime"> </div>
                                          <div class="form-group">
                                             <label class="control-label">Status</label>
                                             <select class="form-control boxed" id="status">
@@ -206,7 +203,7 @@ $(document).ready(function(){
     		data:{	from_id:from,
     				to_id:to,
     				dept_date:date,
-    				n:time,
+    				n:toDate(time,'h:m'),
                     notification:status
 
     			},
@@ -266,6 +263,7 @@ $(document).ready(function(){
 
 load = function(){
 	$('#mybtn').trigger('click');
+    $(".wickedpicker").css('z-index',"1050");
     var ad = ${data};
     locations = ad.locations;
     var times = ad.times;
