@@ -349,11 +349,13 @@ public class StudentDaoImpl implements StudentDao{
          List<Map<String,Object>> list_history = new ArrayList<Map<String,Object>>();
          List<Booking_Master> list_booking = new ArrayList<Booking_Master>();
          Session session = HibernateUtil.getSessionFactory().openSession();
+        System.out.println("start");
          try {
              String hql = "From Booking_Master where notification != 'Cancelled' and user_id="+id.getAuthentic()+" order by dept_date desc";
              Query query = session.createQuery(hql);
              query.setMaxResults(10);
              list_booking= query.list();
+             System.out.println("&&&&&&&&&&" + list_booking.size());
              for(Booking_Master booking_master : list_booking){
                  Map<String,Object> map = new HashMap<String, Object>();
                  Location_Master location_master = new Location_Master();
@@ -372,7 +374,7 @@ public class StudentDaoImpl implements StudentDao{
                  map.put("destination_name",location_master.getName());
                  location_master = (Location_Master) session.load(Location_Master.class,booking_master.getSource_id());
                  map.put("source_name",location_master.getName());
-                 System.out.println(booking_master.getFrom_id());
+                 //System.out.println(booking_master.getFrom_id());
                  if(booking_master.getSchedule_id() !=0 ){
                      Schedule_Master schedule_master =
                              (Schedule_Master) session.load(Schedule_Master.class,booking_master.getSchedule_id());
@@ -402,10 +404,11 @@ public class StudentDaoImpl implements StudentDao{
             e.printStackTrace();
          }
          finally {
-            session.flush();
+             System.out.println("final");
+            //session.flush();
             session.close();
          }
-         System.out.println("****************Number*************** "+list_history.size());
+
          return list_history;
     }
 
