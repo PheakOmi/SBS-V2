@@ -51,7 +51,11 @@ public class StudentController {
 
     @RequestMapping(value = "/student_history", method = RequestMethod.GET)
     @ResponseBody public List<Map<String, Object>> getHistory() throws ParseException {
-        return studentDao.getHistory();
+        //System.out.println(studentDao.getHistory());
+        List<Map<String, Object>> map = new ArrayList<Map<String, Object>>();
+        map = studentDao.getHistory();
+        System.out.println(map);
+        return map;
     }
 
 
