@@ -345,6 +345,7 @@ public class StudentDaoImpl implements StudentDao{
     }
 
     public List<Map<String,Object>> getHistory() throws ParseException{
+        System.out.println("********************************History in DAO********************************");
          List<Map<String,Object>> list_history = new ArrayList<Map<String,Object>>();
          List<Booking_Master> list_booking = new ArrayList<Booking_Master>();
          Session session = HibernateUtil.getSessionFactory().openSession();
@@ -404,7 +405,7 @@ public class StudentDaoImpl implements StudentDao{
             session.flush();
             session.close();
          }
-
+         System.out.println("****************Number*************** "+list_history.size());
          return list_history;
     }
 

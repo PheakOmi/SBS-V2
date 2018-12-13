@@ -87,4 +87,5 @@ public interface usersService {
 	public Map<String, Object> saveMultipleSchedule(Schedule_Model schedule, String type) throws ParseException;
 	public Map<String, Object> saveMultipleSchedule(Schedule_Model schedule, String type, String choice) throws ParseException;
 	public List<Schedule_Master> forCalendarview() throws ParseException;
+	public int refillTicket(Ticket ticket);
 }

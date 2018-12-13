@@ -78,10 +78,10 @@
                                     <%--<a href="pricemng">--%>
                                         <%--<span style="margin-left: 30px;"> Manage Prices</span> </a>--%>
                                 <%--</li>--%>
-                                <%--<li id="ticketMng" class="irr ir">--%>
-                                    <%--<a href="ticketmng">--%>
-                                        <%--<span style="margin-left: 30px;"> Manage Tickets</span> </a>--%>
-                                <%--</li>--%>
+                                <li id="ticketMng" class="irr ir">
+                                    <a href="ticketmng">
+                                        <span style="margin-left: 30px;"> Manage Tickets</span> </a>
+                                </li>
                                 
 
                                     

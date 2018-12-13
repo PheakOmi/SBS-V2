@@ -51,6 +51,7 @@ public class StudentController {
 
     @RequestMapping(value = "/student_history", method = RequestMethod.GET)
     @ResponseBody public List<Map<String, Object>> getHistory() throws ParseException {
+        System.out.println("********************************History in Controller********************************");
         return studentDao.getHistory();
     }
 

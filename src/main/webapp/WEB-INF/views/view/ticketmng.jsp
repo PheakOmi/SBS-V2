@@ -30,31 +30,37 @@
           <button type="button" class="close" data-dismiss="modal">&times;</button>
         </div>
         <div class="modal-body">
-          <form id="myForm">
-              <div class="form-group">
-                  <label>
-                      <input class="checkbox rounded" type="checkbox" id="forall">
-                      <span>Refill for all user</span>
-                  </label>
-              </div>
-              <div class="form-group" id="duser">
-                  <label class="control-label">Users</label>
-                  <select class="form-control boxed js-example-basic-multiple" multiple="multiple" id="student" required></select>
-              </div>
+
+            <form id="myForm">
+                <div class="form-group">
+                    <label>
+                        <input class="checkbox rounded" type="checkbox" id="forall">
+                        <span>Refill for all user</span>
+                    </label>
+                </div>
+
+                <div class="form-group" id="duser">
+                    <label class="control-label">Users</label>
+                    <select class="form-control boxed js-example-basic-multiple" multiple="multiple" id="student"></select>
+                </div>
+
+                <div class="form-group">
+                    <label>
+                        <input class="checkbox rounded" type="checkbox" id="add">
+                        <span>Include with current ticket</span>
+                    </label>
+                </div>
+
+                <div class="form-group">
+                    <label class="control-label">Number of tickets</label>
+                    <input type="text" class="form-control boxed" id="noticket" maxlength="2" required>
+                </div>
 
 
-              <div class="form-group">
-                  <label>
-                      <input class="checkbox rounded" type="checkbox" id="add">
-                      <span>Include with current ticket</span>
-                  </label>
-              </div>
-              <div class="form-group">
-                  <label class="control-label">Number of tickets</label>
-                  <input type="text" class="form-control boxed" id="noticket" maxlength="2" required> </div>
+                    <button type="submit" id="bsubmit" class="btn btn-default" style="display:none;">Create</button>
+            </form>
 
-               <button type="submit" id="bsubmit" class="btn btn-default" style="display:none;">Create</button>
-          </form>
+
 
         </div>
         <div class="modal-footer">
@@ -67,6 +73,8 @@
   </div>
 </body>
 <script type="text/javascript">
+    var status1 = 0;
+    var status2 = 0;
 
 $(document).ready(function(){
 	$("#ticketMng").addClass("active");
@@ -78,18 +86,46 @@ $(document).ready(function(){
 	$( "#settingMng" ).off();
 
   $("#myForm").on('submit',function(e){
-    console.log("Fired");
   	e.preventDefault();
+  	    var user = false
+        var ticket = false
+
+      if(parseInt(status1)==0){
+          if($("#student").val()==""||$("#student").val()==null){
+                  swal("Action Disallowed!", "Users cannot be blank!", "error")
+                  return
+              }
+      }
+      if(parseInt(status1)>1){
+          if(status1%2==0)
+          {
+              if($("#student").val()==""||$("#student").val()==null){
+                  swal("Action Disallowed!", "Users cannot be blank!", "error")
+                  return
+              }
+          }
+
+      }
+
+
+      if ( $('input[id="forall"]').is(':checked') )
+          user = true
+      if ( $('input[id="add"]').is(':checked') )
+          ticket = true
+
+
+
   	$.ajax({
     		url:'refillTicket',
     		type:'GET',
-    		data:{	    forall:true,
-                    forold:true,
-                    users:[],
-                    noticket:10
+    		data:{	forall:user,
+                    forold:ticket,
+                    users:$("#student").val(),
+                    noticket:parseInt($("#noticket").val())
     			},
     		traditional: true,
     		success: function(response){
+    		    console.log(response)
     				if(response.status=="1")
     					{
     					setTimeout(function() {
@@ -98,7 +134,7 @@ $(document).ready(function(){
     				            text: response.message,
     				            type: "success"
     				        }, function() {
-    				            window.location = "location_management";
+    				            window.location = "ticketmng";
     				        });
     				    }, 10);
 
@@ -142,6 +178,19 @@ goTO = function(){
   $('#bsubmit').trigger('click');
   console.log("AAA");
 }
+
+$('#forall').on('click', function(){
+    console.log("forallclicked")
+    status1 = parseInt(status1) +1;
+});
+
+
+$('#add').on('click', function(){
+    console.log("addclicked")
+    $('.dreturn').toggle();
+    status2 = parseInt(status2) +1;
+});
+
 
 load = function(){
   $.ajax({

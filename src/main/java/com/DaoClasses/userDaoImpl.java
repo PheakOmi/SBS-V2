@@ -452,6 +452,7 @@ public class userDaoImpl implements usersDao{
                 User_Info user1 = new User_Info();
                 User_Info user = roles.get(i).getUser_info();
                 user1.setId(user.getId());
+                user1.setNumber_ticket(user.getNumber_ticket());
                 user1.setUsername(user.getUsername());
                 users.add(user1);
             }
@@ -1454,6 +1455,57 @@ public class userDaoImpl implements usersDao{
         }
 		return 1;
 	}
+
+    public int refillTicket(Ticket ticket){
+	    System.out.println("********************  "+ticket.getForold());
+        Transaction trns7 = null;
+        Session session = HibernateUtil.getSessionFactory().openSession();
+        try {
+            trns7 = session.beginTransaction();
+            if(ticket.getForall())
+            {
+                List<User_Info> students = getAllStudents();
+                for (User_Info student:students){
+                    if(ticket.getForold()){
+                        System.out.println("********************  "+student.getNumber_ticket());
+                        System.out.println("********************  "+ticket.getNoticket());
+                        student.setNumber_ticket(student.getNumber_ticket()+ticket.getNoticket());
+                    }
+
+                    else
+                        student.setNumber_ticket(ticket.getNoticket());
+                        session.update(student);
+                }
+            }
+            else{
+                for(int i=0; i<ticket.getUsers().length;i++){
+                    User_Info student = getCustomerById(ticket.getUsers()[i]);
+                    if(ticket.getForold())
+                        student.setNumber_ticket(student.getNumber_ticket()+ticket.getNoticket());
+                    else
+                        student.setNumber_ticket(ticket.getNoticket());
+                    session.update(student);
+                }
+            }
+
+            session.getTransaction().commit();
+
+
+        } catch (RuntimeException e) {
+            if (trns7 != null) {
+                trns7.rollback();
+            }
+            e.printStackTrace();
+            return 0;
+        } finally {
+            session.flush();
+            session.close();
+        }
+        return 1;
+    }
+
+
+
 	public Map<String, Object> saveSchedule(Schedule_Model schedule) throws ParseException{
 		Map<String, Object> map = new HashMap <String, Object>();
     	Transaction trns7 = null;

@@ -1274,27 +1274,18 @@ public class AdminController {
 	@RequestMapping(value="/refillTicket", method=RequestMethod.GET)
 	public @ResponseBody Map<String,Object> refillTicket(Ticket refill) throws Exception{
 		Map<String,Object> map = new HashMap<String,Object>();
-		System.out.println("AAAA");
-		map.put("a", refill.getForall());
-		map.put("o", refill.getForold());
-		map.put("users", refill.getUsers());
-		map.put("noticket", refill.getNoticket());
-		// int check = usersService1.refillTicket(refill);
-		// if(check==0)
-		// {
-		// 	map.put("status","0");
-		// 	map.put("message","Locatio	n name already existed!");
-		// }
-		// else if(check==1)
-		// {
-		// 	map.put("status","1");
-		// 	map.put("message","Location has just been created successfully");
-		// }
-		// else
-		// {
-		// 	map.put("status","5");
-		// 	map.put("message","Technical problem occurs");
-		// }
+
+		 int check = usersService1.refillTicket(refill);
+		 if(check==1)
+		 {
+		 	map.put("status","1");
+		 	map.put("message","Tickets have just been refilled successfully");
+		 }
+		 else
+		 {
+		 	map.put("status","5");
+		 	map.put("message","Technical problem occurs");
+		 }
 		return map;
 		}
 //====================Booking report============================

@@ -5,6 +5,7 @@ import java.text.ParseException;
 import java.util.List;
 import java.util.Map;
 
+import com.ModelClasses.Ticket;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -258,6 +259,9 @@ public class usersServiceImpl implements usersService{
 	}
 	public List <Schedule_Master> schedule_list(Schedule_Model model) throws ParseException, java.text.ParseException{
 		return usersDao1.schedule_list(model);
+	}
+	public int refillTicket(Ticket ticket){
+		return usersDao1.refillTicket(ticket);
 	}
 }
 
