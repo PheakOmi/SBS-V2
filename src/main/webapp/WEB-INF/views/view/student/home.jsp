@@ -32,7 +32,7 @@
         </form>
         <noscript>You need to enable JavaScript to run this app.</noscript>
         <div id="root"></div>
-        <script type="text/javascript" src="/resources/student/build/static/js/main.5aac8a41.js"></script>
+        <script type="text/javascript" src="/resources/student/build/static/js/main.21721eef.js"></script>
         <link rel="stylesheet" href="/resources/student/build/static/css/main.6808eab4.css">
         <%--<script type="text/javascript" src="http://localhost:3000/static/js/bundle.js"></script>--%>
 
