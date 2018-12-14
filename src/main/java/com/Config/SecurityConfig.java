@@ -28,38 +28,26 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
 
 	
 
-	private static final String[] KIT_ADMIN_MATCHERS = {
 
-
-			"admin_booking_request",
-			"historical_booking_request",
-			"request_detail",
-		
- 
-    };
-
-	private static final String[] SAME_MATCHERS = {
-
-			"current_schedule",
-			"input_schedule",
-			"historical_schedule",
-			"schedule_detail",
-			"admin_booking",
-			"historical_booking",
-			"booking_detail"
-	};
 
 	private static final String[] ADMIN_MATCHERS = {
+			"/current_schedule",
+			"/input_schedule",
+			"/historical_schedule",
+			"/schedule_detail",
+			"/admin_booking",
+			"/historical_booking",
+			"/booking_detail",
 
-			"bus_management",
-			"bus_update",
-			"location_management",
-			"report", "sReport",
-			"create_user",
-			"departure_time",
-			"departure_date",
-			"pricemng",
-			"ticketmng"
+			"/bus_management",
+			"/bus_update",
+			"/location_management",
+			"/report", "/sReport",
+			"/create_user",
+			"/departure_time",
+			"/departure_date",
+			"/pricemng",
+			"/ticketmng"
     };
 	private static final String[] USER_MATCHERS = {
 
@@ -87,26 +75,6 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
 	protected void configure(HttpSecurity http) throws Exception {
 
 
-		http.authorizeRequests()
-				.antMatchers(KIT_ADMIN_MATCHERS).access("hasRole('ROLE_KIT_ADMIN')").and().formLogin()
-				.loginPage("/login").failureUrl("/login?error")
-				.usernameParameter("username")
-				.passwordParameter("password")
-				.and().logout().logoutSuccessUrl("/login?logout")
-				.and().csrf()
-				.and().exceptionHandling().accessDeniedPage("/403");
-
-
-		http.authorizeRequests()
-				.antMatchers(SAME_MATCHERS).access("hasRole('ROLE_KIT_ADMIN') or hasRole('ROLE_ADMIN')").and().formLogin()
-				.loginPage("/login").failureUrl("/login?error")
-				.usernameParameter("username")
-				.passwordParameter("password")
-				.and().logout().logoutSuccessUrl("/login?logout")
-				.and().csrf()
-				.and().exceptionHandling().accessDeniedPage("/403");
-
-		
 		http.authorizeRequests()
         .antMatchers(USER_MATCHERS).access("hasRole('ROLE_CUSTOMER')").and().formLogin().loginPage("/login").failureUrl("/login?error")
 		   .usernameParameter("username")

@@ -47,7 +47,7 @@ public class SecurityController {
 			 Object role2=(Object) role.get("role1");
 			 StringBuffer userRole=new StringBuffer(role2.toString());
 			 System.out.print(userRole);
-			 if ("[ROLE_ADMIN]".contentEquals(userRole)||"[ROLE_KIT_ADMIN]".contentEquals(userRole))
+			 if ("[ROLE_ADMIN]".contentEquals(userRole))
 			 {
 				 return "redirect:current_schedule";
 			 }

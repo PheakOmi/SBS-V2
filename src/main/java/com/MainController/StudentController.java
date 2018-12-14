@@ -3,7 +3,12 @@ import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.*;
 
+import com.EntityClasses.Booking_Master;
 import com.ModelClasses.ID_Class;
+import com.ModelClasses.Schedule_Model;
+import com.ThreadClasses.SendBookingDetailRoundThread;
+import com.ThreadClasses.SendBookingDetailThread;
+import com.ThreadClasses.SendCreateThread;
 import org.springframework.scheduling.annotation.Scheduled;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
@@ -37,9 +42,25 @@ public class StudentController {
     @RequestMapping(value = "/student_booking", method = RequestMethod.POST)
     @ResponseBody
     public Map<String, Object> student_booking(@RequestBody Student_Booking book_data) {
-        System.out.println(book_data.getChoice()+" # "+book_data.getDestination()+" # "+book_data.getSource()+" # "+book_data.getDepart_date()+" # "+book_data.getDeparture_time()+" # "+book_data.getDate_return()+" # "+book_data.getReturn_time());
-        return studentDao.student_booking(book_data);
-//        return null;
+        Map<String,Object> map = new HashMap<String,Object>();
+        map = studentDao.student_booking(book_data);
+        if(map.get("status").equals("1"))
+        {
+            if(map.get("choice").equals("2"))
+            {
+                SendBookingDetailRoundThread t2 = new SendBookingDetailRoundThread((Booking_Master) map.get("dbooking"), (Booking_Master) map.get("rbooking"));
+                t2.start();
+            }
+            else
+            {
+                SendBookingDetailThread t1 = new SendBookingDetailThread((Booking_Master) map.get("dbooking"));
+                t1.start();
+            }
+        }
+
+
+        return map;
+//        return studentDao.student_booking(book_data);
     }
 
 

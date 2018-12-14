@@ -131,6 +131,7 @@ public class StudentDaoImpl implements StudentDao{
         book_data.setReturn_time(converter(book_data.getReturn_time()));
         Custom_Imp custom_dao = new Custom_Imp();
         Location_Master location_master = new Location_Master();
+        Custom_Imp c=new Custom_Imp();
         Timestamp created_at = new Timestamp(System.currentTimeMillis());
         int count_ticket = 0;
         int user_id = id.getAuthentic();
@@ -206,6 +207,7 @@ public class StudentDaoImpl implements StudentDao{
             try {
 
                 Booking_Master booking_master = new Booking_Master();
+                Booking_Master booking_return = new Booking_Master();
 //                Date ddate = java.sql.Date.valueOf(book_data.getDepart_date());
 //                ddate.setHours(0);
 //                ddate.setMinutes(0);
@@ -233,12 +235,12 @@ public class StudentDaoImpl implements StudentDao{
                 session.update(schedule_master);
                 session.save(booking_master);
                 booking_master.setCode(Custom_Imp.getBookingSequence(booking_master.getId()));
+                booking_master.setQr_name(c.Key(50, booking_master.getId()));
                 count_ticket++;
 
 
                 if (book_data.getChoice() == 2) {
 
-                    Booking_Master booking_return = new Booking_Master();
 //                    Date rdate = java.sql.Date.valueOf(book_data.getDate_return());
 //                    rdate.setHours(0);
 //                    rdate.setMinutes(0);
@@ -264,6 +266,7 @@ public class StudentDaoImpl implements StudentDao{
                     session.update(schedule_return);
                     session.save(booking_return);
                     booking_return.setCode(Custom_Imp.getBookingSequence(booking_return.getId()));
+                    booking_return.setQr_name(c.Key(50, booking_return.getId()));
                     count_ticket++;
 
                 }
@@ -276,6 +279,10 @@ public class StudentDaoImpl implements StudentDao{
                 }
                 session.beginTransaction().commit();
                 map.put("status", "1");
+                map.put("choice", Integer.toString(book_data.getChoice()));
+                map.put("dbooking", new userDaoImpl().getBookingById(booking_master.getId()));
+                map.put("rbooking", new userDaoImpl().getBookingById(booking_return.getId()));
+
 
             } catch (RuntimeException e) {
                 e.printStackTrace();
