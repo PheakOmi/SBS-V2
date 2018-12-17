@@ -19,8 +19,8 @@ public class ApplicationConfig {
  
         mailSender.setHost("smtp.gmail.com");
         mailSender.setPort(587);
-        mailSender.setUsername("daraheng049@gmail.com");
-        mailSender.setPassword("Pj4@krkk");
+        mailSender.setUsername("shuttlebus@kit.edu.kh");
+        mailSender.setPassword("shuttlebus");
  
         Properties javaMailProperties = new Properties();
         javaMailProperties.put("mail.smtp.starttls.enable", "true");
@@ -39,3 +39,5 @@ public class ApplicationConfig {
         return fmConfigFactoryBean;
     }
 }
+
+

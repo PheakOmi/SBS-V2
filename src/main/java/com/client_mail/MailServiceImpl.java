@@ -35,6 +35,7 @@ public class MailServiceImpl implements MailService {
  
             MimeMessageHelper mimeMessageHelper = new MimeMessageHelper(mimeMessage, true);
             System.out.println("sendEmail");
+            System.out.println("****************** "+mail.getMailSubject()+" "+mail.getMailFrom()+" "+mail.getMailTo());
             mimeMessageHelper.setSubject(mail.getMailSubject());
             mimeMessageHelper.setFrom(mail.getMailFrom());
             mimeMessageHelper.setTo(mail.getMailTo());

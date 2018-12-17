@@ -35,8 +35,8 @@ public class DriverController {
 	@RequestMapping(value = "/checkValidity", method = RequestMethod.GET)
 	@ResponseBody public Map<String,Object> checkValidity(String email,String password){
 		User_Info user = usersServiceD.findByUserName(email);
-		System.out.println(email);
-		System.out.println(password);
+		//System.out.println(email);
+		//System.out.println(password);
 		boolean validity = false;
 		String role = "";
 		Map<String,Object> map = new HashMap<String,Object>();
@@ -70,7 +70,7 @@ public class DriverController {
 	@SuppressWarnings("unchecked")
 	@ResponseBody public Map<String,Object> checkValidity(String email){
 		User_Info user = usersServiceD.findByUserName(email);
-		System.out.println(email);
+		//System.out.println(email);
 		boolean validity = false;
 		String role = "";
 		Map<String,Object> map = new HashMap<String,Object>();
@@ -103,7 +103,7 @@ public class DriverController {
         try { 
             trns =  session.beginTransaction(); 
             schedules = session.createQuery("from Schedule_Master where driver_id=? and dept_date>=? order by dept_date asc").setParameter(0, userId).setDate(1, new Date()).list();
-            System.out.println("Schedules: "+schedules);
+            //System.out.println("Schedules: "+schedules);
             
             for(int i=0;i<schedules.size();i++){
             	Map<String, Object> map1 = new HashMap<String, Object>();
@@ -127,7 +127,7 @@ public class DriverController {
             	map1.put("driver_id",schedules.get(i).getDriver_id());
             	
             	List<Booking_Master> pass = new ArrayList<Booking_Master>();
-            	pass = (List<Booking_Master>) session.createQuery("from Booking_Master where schedule_id=?")
+            	pass = (List<Booking_Master>) session.createQuery("from Booking_Master where schedule_id=? and notification='Booked'")
                 		.setParameter(0,schedules.get(i).getId()).list();
    
             	List<Map<String,Object>> list_pass = new ArrayList<Map<String,Object>>();
@@ -150,7 +150,7 @@ public class DriverController {
             		map_pass.put("email", passenger.getEmail());
             		map_pass.put("qrcode", pass.get(j).getQr());
             		map_pass.put("qr_status", pass.get(j).getQr_status());
-            		System.out.println("Qr_Status: "+pass.get(j).getQr_status());
+            		//System.out.println("Qr_Status: "+pass.get(j).getQr_status());
             		list_pass.add(map_pass);
             	}
             	
@@ -174,7 +174,7 @@ public class DriverController {
 //		Date d=new Date();
         SimpleDateFormat sdf=new SimpleDateFormat("yyyy-M-dd");
         String currentDateTimeString = sdf.format(date);
-        System.out.println("DateFormat: "+ currentDateTimeString);
+        //System.out.println("DateFormat: "+ currentDateTimeString);
         return currentDateTimeString;
 	}
 	
@@ -182,15 +182,15 @@ public class DriverController {
 	@SuppressWarnings("unchecked")
 	@RequestMapping(value = "/updatePassenger", method = RequestMethod.GET)
 	@ResponseBody public Map<String, Object> updatePassenger(@RequestHeader(value="data") Map<String,Object> obj, String email) throws JsonParseException, JsonMappingException, IOException{
-		System.out.println("UPDATE DATA: "+obj.get("data"));
+		//System.out.println("UPDATE DATA: "+obj.get("data"));
 		String ids = (String) obj.get("data");
 		
 		ObjectMapper mapper = new ObjectMapper();
 		List<Integer> integers = mapper.readValue(ids, List.class);
 		Map<String,Object> scheduleReturn = new HashMap<String,Object>();
 		scheduleReturn = checkValidity(email);
-		System.out.println("Email: "+email);
-		System.out.println("Validity: "+scheduleReturn.get("validity").equals(true));
+		//System.out.println("Email: "+email);
+		//System.out.println("Validity: "+scheduleReturn.get("validity").equals(true));
 		if ( scheduleReturn.get("validity").equals(true) ){
 			if(checkUpdate(integers)){
 				scheduleReturn.put("update", "success");
@@ -208,6 +208,7 @@ public class DriverController {
         Session session = HibernateUtil.getSessionFactory().openSession();
         try {
             trns = session.beginTransaction();
+            System.out.println("Lengthhhhhhhhh: "+integers.size());
             System.out.println("Integers: "+integers);
             if(integers.isEmpty()){
             	  System.out.println("No Passengers to update!!!");
@@ -215,17 +216,18 @@ public class DriverController {
             	for(Integer i:integers)
                 {
                 	String queryString = "FROM Booking_Master where id=:id";
+                    System.out.println("Update Booking ############# "+i);
                     Query query = session.createQuery(queryString);
                     query.setInteger("id",i);
                     Booking_Master updatedPassenger  = (Booking_Master) query.uniqueResult();
                     Timestamp updated_at = new Timestamp(System.currentTimeMillis());
                     updatedPassenger.setQr_status(true);; // set status
-                	updatedPassenger.setUpdated_at(updated_at);
-                    session.update(updatedPassenger); 
-                    session.getTransaction().commit();
-                    System.out.println("Update Passengers is committed. ");
+//                	updatedPassenger.setUpdated_at(updated_at);
+                    session.update(updatedPassenger);
+                    //System.out.println("Update Passengers is committed. ");
                     
-                } 
+                }
+                session.getTransaction().commit();
             }
             status = true;  
             

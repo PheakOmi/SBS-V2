@@ -257,7 +257,7 @@ public class StudentDaoImpl implements StudentDao{
                     booking_return.setAdult(1);
                     booking_return.setChild(0);
                     booking_return.setNotification("Booked");
-                    booking_return.setQr(book_data.getDestination() + "" + book_data.getSource() + "" + book_data.getReturn_time() + "" + book_data.getReturn_time() + "" + user_id);
+                    booking_return.setQr(book_data.getDestination() + "" + book_data.getSource() + "" + book_data.getDate_return() + "" + book_data.getReturn_time() + "" + user_id);
                     booking_return.setDescription("student");
                     booking_return.setCreated_at(created_at);
                     booking_return.setQr_status(false);
@@ -372,6 +372,12 @@ public class StudentDaoImpl implements StudentDao{
                  map.put("departure_date",booking_master.getDept_date());
                  map.put("child",booking_master.getChild());
                  map.put("adult",booking_master.getAdult());
+
+                 if(new userDaoImpl().getScheduleById(booking_master.getSchedule_id()).getDriver_id()==0)
+                    map.put("driver", "0");
+                 else
+                    map.put("driver", new userDaoImpl().getCustomerById(new userDaoImpl().getScheduleById(booking_master.getSchedule_id()).getDriver_id()).getUsername());
+
                  map.put("number_of_seats",booking_master.getNumber_booking());
                  map.put("schedule_id",booking_master.getId());
                  map.put("status",booking_master.getNotification());

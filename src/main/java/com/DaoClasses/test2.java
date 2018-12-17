@@ -27,16 +27,23 @@ public class test2 {
 
 	public static void main(String[] args) throws ParseException {
 
-		List<User_Info> users = new userDaoImpl().getAllUsersOfAllTypesButDriver();
+		String[] arr = new String[2];
+		arr[0] = "sopheakdy23@gmail.com";
+		arr[1] = "dysopheak15@kit.edu.kh";
 
-		List<String> user_list= new ArrayList<String>();
-		for (User_Info user:users)
-			user_list.add(user.getEmail());
-		String[] arr = new String[user_list.size()];
-		arr = user_list.toArray(arr);
-		for(String a:arr)
-			System.out.println(a);
+		Mail mail = new Mail();
+		mail.setMailFrom("shuttlebus@kit.edu.kh");
+		mail.setMailTo(arr);
+		mail.setMailSubject("Updated Schedule");
 
+		Map<String, Object> model = new HashMap<String, Object>();
+		mail.setModel(model);
+		mail.setFile_name("blank.txt");
+
+
+		AbstractApplicationContext context = new AnnotationConfigApplicationContext(ApplicationConfig.class);
+		MailService mailService = (MailService) context.getBean("mailService");
+		mailService.sendEmail(mail);
 
 	}
 

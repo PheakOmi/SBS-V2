@@ -2884,8 +2884,11 @@ public class userDaoImpl implements usersDao{
             String[] arr = new String[user_list.size()];
             arr = user_list.toArray(arr);
 
+            for (String str:arr)
+                System.out.println("^^^^^^^^^^^^ "+str);
+
             Mail mail = new Mail();
-            mail.setMailFrom("vkirirom_shuttlebus@gmail.com");
+            mail.setMailFrom("shuttlebus@kit.edu.kh");
             mail.setMailTo(arr);
             mail.setMailSubject("Updated Schedule");
 
@@ -2909,6 +2912,7 @@ public class userDaoImpl implements usersDao{
             AbstractApplicationContext context = new AnnotationConfigApplicationContext(ApplicationConfig.class);
             MailService mailService = (MailService) context.getBean("mailService");
             mailService.sendEmail(mail);
+            System.out.println("*******************Send emaillllll nowwwww***************");
             context.close();
 
         }

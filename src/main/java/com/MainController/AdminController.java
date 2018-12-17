@@ -241,7 +241,10 @@ public class AdminController {
 		model.setN(usersService1.getCustomerById(booking.getUser_id()).getName());
 		model.setCode(booking.getCode());
 		model.setCreated_at(booking.getCreated_at().toString());
-		model.setUpdated_at(booking.getUpdated_at().toString());
+		if(booking.getNotification().equals("Cancelled"))
+			model.setUpdated_at(booking.getUpdated_at().toString());
+		else
+			model.setUpdated_at("");
 		model.setDept_date(booking.getDept_date().toString());
 		model.setDept_time(booking.getDept_time());
 		model.setDescription(booking.getDescription());

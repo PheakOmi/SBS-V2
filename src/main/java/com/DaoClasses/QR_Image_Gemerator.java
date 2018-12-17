@@ -69,8 +69,8 @@ public class QR_Image_Gemerator {
         		// SMTP info
                 String host = "smtp.gmail.com";
                 String port = "587";
-                String mailFrom = "daraheng049@gmail.com";
-                String password = "Pj4@krkk";
+                String mailFrom = "shuttlebus@kit.edu.kh";
+                String password = "shuttlebus";
          
                 // message info
                 String mailTo = user.get(0).getEmail();
@@ -115,7 +115,7 @@ public class QR_Image_Gemerator {
                 //End Table
                 body.append("<img src=\"cid:image1\" width=\"300px\" height=\"300px\" /><br>");
                 body.append("<p style=\"font-family: arial, sans-serif; color:black\">Thank you</p>"
-                		+ "<p style=\"font-family: arial, sans-serif; color:black\">KIT Technical Support</p>");
+                		+ "<p style=\"font-family: arial, sans-serif; color:black\">A2A Shuttle Bus Team</p>");
                 
                 body.append("</div>");
                 body.append("</html>");
@@ -165,8 +165,8 @@ public class QR_Image_Gemerator {
 				// SMTP info
 				String host = "smtp.gmail.com";
 				String port = "587";
-				String mailFrom = "daraheng049@gmail.com";
-				String password = "Pj4@krkk";
+				String mailFrom = "shuttlebus@kit.edu.kh";
+				String password = "shuttlebus";
 
 				// message info
 				String mailTo = user.get(0).getEmail();
@@ -225,7 +225,7 @@ public class QR_Image_Gemerator {
 
 
 				body.append("<p style=\"font-family: arial, sans-serif; color:black\">Thank you</p>"
-						+ "<p style=\"font-family: arial, sans-serif; color:black\">KIT Technical Support</p>");
+						+ "<p style=\"font-family: arial, sans-serif; color:black\">A2A Shuttle Bus Team</p>");
 
 				body.append("</div>");
 				body.append("</html>");
@@ -288,7 +288,7 @@ public class QR_Image_Gemerator {
     				+bm.getDestination_id()
     				+dateToString(bm.getDept_date())
     				+timeToString(bm.getDept_time())
-    				+bm.getId();
+    				+bm.getUser_id();
         ByteArrayOutputStream out = QRCode.from(qr_code).to(ImageType.PNG).stream();  
   		byte[] test = out.toByteArray();
   		String encodedImage = java.util.Base64.getEncoder().encodeToString(test);
