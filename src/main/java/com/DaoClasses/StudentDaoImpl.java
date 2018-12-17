@@ -374,9 +374,9 @@ public class StudentDaoImpl implements StudentDao{
                  map.put("adult",booking_master.getAdult());
 
                  if(new userDaoImpl().getScheduleById(booking_master.getSchedule_id()).getDriver_id()==0)
-                    map.put("driver", "0");
+                    map.put("driverr", "0");
                  else
-                    map.put("driver", new userDaoImpl().getCustomerById(new userDaoImpl().getScheduleById(booking_master.getSchedule_id()).getDriver_id()).getUsername());
+                    map.put("driverr", new userDaoImpl().getCustomerById(new userDaoImpl().getScheduleById(booking_master.getSchedule_id()).getDriver_id()).getUsername());
 
                  map.put("number_of_seats",booking_master.getNumber_booking());
                  map.put("schedule_id",booking_master.getId());

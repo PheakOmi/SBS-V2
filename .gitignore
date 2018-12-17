@@ -1,3 +1,5 @@
 src/main/java/com/ATable
 target/
 .idea/
+.DS_Store/
+.DS_Store
