@@ -2790,16 +2790,9 @@ public class userDaoImpl implements usersDao{
         Session session = HibernateUtil.getSessionFactory().openSession();
         try {
             trns7 = session.beginTransaction();
-            String queryString = "FROM Schedule_Master where code=:code";
-            Query query = session.createQuery(queryString);
-            query.setString("code",schedule.getCode());
-            schedules=(List<Schedule_Master>)query.list();
-            if(schedules.size()>0)
-    				return 0;
     		Timestamp created_at = new Timestamp(System.currentTimeMillis());
 //    		int remaining =  new userDaoImpl().getBusById(schedule.getBus_id()).getNumber_of_seat()-schedule.getNumber_booking();
     		s.setBus_id(schedule.getBus_id());
-    		s.setCode(schedule.getCode());
     		s.setCreated_at(created_at);
     		s.setDept_date(getScheduleById(schedule.getIdd()).getDept_date());
     		s.setDept_time(getScheduleById(schedule.getIdd()).getDept_time());
@@ -2809,12 +2802,12 @@ public class userDaoImpl implements usersDao{
     		s.setNumber_customer(schedule.getNumber_customer());
     		s.setNumber_staff(schedule.getNumber_staff());
     		s.setNumber_student(schedule.getNumber_student());
-//    		s.setRemaining_seat(remaining);
+    		s.setNo_seat(new userDaoImpl().getBusById(schedule.getBus_id()).getNumber_of_seat());
     		s.setSource_id(schedule.getSource_id());
-    		s.setFrom_id(schedule.getFrom_id());
-    		s.setTo_id(schedule.getTo_id());
             session.save(s);
             id = s.getId();
+            s.setCode(getScheduleSequence(id));
+            session.update(s);
             session.getTransaction().commit();
         } catch (RuntimeException e) {
         	if (trns7 != null) {
@@ -3805,8 +3798,7 @@ public class userDaoImpl implements usersDao{
             trns19 =  session.beginTransaction();
             old_id = new userDaoImpl().getBookingById(a[0]).getSchedule_id();
             Schedule_Master master = new userDaoImpl().getScheduleById(old_id);
-//            master.setNumber_booking(master.getNumber_booking()-new userDaoImpl().getScheduleById(id).getNumber_booking());
-//            master.setRemaining_seat(master.getRemaining_seat()+new userDaoImpl().getScheduleById(id).getNumber_booking());
+            master.setNumber_student(master.getNumber_student()-new userDaoImpl().getScheduleById(id).getNumber_student());
             session.update(master);
             for (int i = 0; i < a.length; i++)
    		   {
@@ -3847,12 +3839,10 @@ public class userDaoImpl implements usersDao{
    		     
    		   }
             Schedule_Master old_schedule = getScheduleById(old_id);
-//            old_schedule.setNumber_booking(old_schedule.getNumber_booking()-bookings);
-//            old_schedule.setRemaining_seat(old_schedule.getRemaining_seat()+bookings);
+            old_schedule.setNumber_student(old_schedule.getNumber_student()-bookings);
             
             Schedule_Master new_schedule = getScheduleById(new_id);
-//            new_schedule.setNumber_booking(new_schedule.getNumber_booking()+bookings);
-//            new_schedule.setRemaining_seat(new_schedule.getRemaining_seat()-bookings);
+            new_schedule.setNumber_student(new_schedule.getNumber_student()+bookings);
             
             session.update(old_schedule);
             session.update(new_schedule);

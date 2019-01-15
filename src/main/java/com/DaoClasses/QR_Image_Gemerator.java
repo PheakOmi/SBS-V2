@@ -4,14 +4,17 @@ import java.awt.image.BufferedImage;
 import java.io.ByteArrayInputStream;  
 import java.io.ByteArrayOutputStream;
 import java.io.File;  
-import java.io.IOException;  
+import java.io.IOException;
+import java.nio.file.Files;
+import java.nio.file.Path;
+import java.nio.file.Paths;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
-import java.util.Scanner;  
+import java.util.Scanner;
 
 import javax.imageio.ImageIO;
 
@@ -37,7 +40,7 @@ public class QR_Image_Gemerator {
       * @param args  
       */  
 	
-	 public static String QR_Dir="./QRCode/";
+	 public static String QR_Dir=QR_Image_Gemerator.class.getResource("").getPath();
      public static void main(String[] args) throws IOException {  
           // TODO Auto-generated method stub  
           Scanner s=new Scanner(System.in);  
@@ -128,6 +131,8 @@ public class QR_Image_Gemerator {
                     EmbeddedImageEmailUtil.send(host, port, mailFrom, password, mailTo,
                         subject, body.toString(), inlineImages);
                     System.out.println("Email sent.");
+					Path path1= Paths.get(QR_Dir+bm.getQr_name()+".png");
+					Files.delete(path1);
                 } catch (Exception ex) {
                     System.out.println("Could not send email.");
                     ex.printStackTrace();
@@ -151,6 +156,8 @@ public class QR_Image_Gemerator {
 		List<Location_Master> destination = new ArrayList<Location_Master>();
 		Map<String, Object> map=new HashMap<String, Object>();
 		try {
+            System.out.println("%%%%%%%%%%%%%%%%%% *************"+bm.getQr());
+            System.out.println("%%%%%%%%%%%%%%%%%% *************"+rbooking.getQr());
 			user = session.createQuery("from User_Info where id=:id")
 					.setParameter("id", bm.getUser_id()).list();
 			source = session.createQuery("from Location_Master where id=:id")
@@ -241,6 +248,11 @@ public class QR_Image_Gemerator {
 					EmbeddedImageEmailUtil.send(host, port, mailFrom, password, mailTo,
 							subject, body.toString(), inlineImages);
 					System.out.println("Email sent.");
+					Path path1 = Paths.get(QR_Dir+bm.getQr_name()+".png");
+					Path path2= Paths.get(QR_Dir+rbooking.getQr_name()+".png");
+					Files.delete(path1);
+					Files.delete(path2);
+
 				} catch (Exception ex) {
 					System.out.println("Could not send email.");
 					ex.printStackTrace();
@@ -284,12 +296,7 @@ public class QR_Image_Gemerator {
      public Boolean qr_generator(Booking_Master bm) {
     	System.out.println(bm.getQr());
     	//QR---> source_id+destin_id+dept_date+dept_time+booing_master_id
-    	String qr_code=	bm.getSource_id()
-    				+bm.getDestination_id()
-    				+dateToString(bm.getDept_date())
-    				+timeToString(bm.getDept_time())
-    				+bm.getUser_id();
-        ByteArrayOutputStream out = QRCode.from(qr_code).to(ImageType.PNG).stream();  
+        ByteArrayOutputStream out = QRCode.from(bm.getQr()).to(ImageType.PNG).stream();
   		byte[] test = out.toByteArray();
   		String encodedImage = java.util.Base64.getEncoder().encodeToString(test);
          

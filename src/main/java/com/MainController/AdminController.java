@@ -422,7 +422,7 @@ public class AdminController {
         Schedule_Master schedule = usersService1.getScheduleById(id);
         String screen = "";
 		map.put("schedule", schedule);
-		map.put("schedules", usersService1.getAllSchedules());
+		map.put("schedules", usersService1.getAllCurrentSchedules());
 		map.put("locations", usersService1.getAllLocations());
 		map.put("p_locations", usersService1.getAllPickUpLocations());
 		map.put("buses", usersService1.getAllBuses2());
@@ -912,14 +912,11 @@ public class AdminController {
 		Schedule_Model newSchedule = new Schedule_Model();
 		Schedule_Master schedule = usersService1.getScheduleById(s.getId());
 		newSchedule.setIdd(s.getId());
-		newSchedule.setCode(getScheduleSequence());
 		newSchedule.setDriver_id(s.getDriver_id());
 		newSchedule.setBus_id(s.getBus_id());
 		newSchedule.setSource_id(schedule.getSource_id());
 		newSchedule.setDestination_id(schedule.getDestination_id());
-//		newSchedule.setNumber_booking(all_booking);
-		newSchedule.setFrom_id(schedule.getFrom_id());
-		newSchedule.setTo_id(schedule.getTo_id());
+		newSchedule.setNumber_student(all_booking);
 		int check = usersService1.saveSchedule2(newSchedule);
 		if(check==0)
 		{
@@ -984,17 +981,17 @@ public class AdminController {
 	@RequestMapping(value="/moveSimple", method=RequestMethod.GET)
 	public @ResponseBody Map<String,Object> toMoveSimlple(Schedule_Model s) throws Exception{
 		Map<String,Object> map = new HashMap<String,Object>();
-//		int check = usersService1.moveSimple(s.getB(), s.getOld_id(), s.getNew_id(), s.getNumber_booking());
-//		if(check==1)
-//		{
-//			map.put("status","1");
-//			map.put("message","Bookings have just been successfully moved!");
-//		}
-//		else
-//		{
-//			map.put("status","0");
-//			map.put("message","Bookings have not been successfully moved!");
-//		}
+		int check = usersService1.moveSimple(s.getB(), s.getOld_id(), s.getNew_id(), s.getNumber_student());
+		if(check==1)
+		{
+			map.put("status","1");
+			map.put("message","Bookings have just been successfully moved!");
+		}
+		else
+		{
+			map.put("status","0");
+			map.put("message","Bookings have not been successfully moved!");
+		}
 		return map;
 		}
 

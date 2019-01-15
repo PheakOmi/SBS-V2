@@ -189,7 +189,7 @@ load = function(){
                     color = "background-color: #FADAD8;";
 
 				var booking = '<tr class="hoverr search '+bookings[i].description+'" tofind="'+bookings[i].id+'"style="'+color+'"s-title="'+bookings[i].code+searchCustomer(bookings[i].user_id,customers).toLowerCase()+'" deptdate="'+formatDate(bookings[i].dept_date)+'" from="'+bookings[i].source_id+'"'+
-				'destination="'+bookings[i].destination_id+'"'+'source="'+bookings[i].source_id+'"'+'to="'+bookings[i].destination_id+'"'+'data-url="booking_detail?id='+bookings[i].id+'">'
+				'to="'+bookings[i].destination_id+'"'+'data-url="booking_detail?id='+bookings[i].id+'">'
 									// +cb
 									
 									+'<td>'+bookings[i].code+'</td>'
@@ -280,7 +280,7 @@ $(document).ready(function(){
 		   
 		   
 		   $(".search").each(function(){
-	 	         
+
 		          $(this).show();
 		         
 		        });
@@ -376,13 +376,18 @@ $(document).ready(function(){
 		else
 			{
 				$(".search").each(function(){
+                            $(this).attr("visible","yes")
 							$(this).show();
 				});
 				if(from!=0)
 					{
 						$(".search").each(function(){
 							if($(this).attr("from")!=from)
-							$(this).hide();
+                            {
+                                $(this).attr("visible","no")
+                                $(this).hide();
+                            }
+
 						});
 					}
 
@@ -390,14 +395,20 @@ $(document).ready(function(){
 					{
 						$(".search").each(function(){
 							if($(this).attr("to")!=to)
-							$(this).hide();
+                            {
+                                $(this).attr("visible","no")
+                                $(this).hide();
+                            }
 						});
 					}
 				if(filter_date!="")
 					{
 						$(".search").each(function(){
 							if($(this).attr("deptdate")!=filter_date)
-							$(this).hide();
+                            {
+                                $(this).attr("visible","no")
+                                $(this).hide();
+                            }
 						});
 					}
 				if(filter_user!="")
@@ -408,16 +419,19 @@ $(document).ready(function(){
 							filter_user = "customer"
 						
 						$("."+filter_user).each(function(){
-						    	 $(this).hide();
+                            {
+                                $(this).attr("visible","no")
+                                $(this).hide();
+                            }
 						  });	
 						
 					}
 				var c = 0
 				$(".search").each(function(){
-							if($(this).attr("style") == 'display: none;')
+							if($(this).attr("visible") =='yes')
 								c++
 					});
-				swal("Filtering Done!", all-c+" bookings found!", "success")
+				swal("Filtering Done!", c+" bookings found!", "success")
 				$('#filterModal').modal('toggle');
 
 			}

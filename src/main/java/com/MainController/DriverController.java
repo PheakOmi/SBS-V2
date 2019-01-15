@@ -189,15 +189,15 @@ public class DriverController {
 		List<Integer> integers = mapper.readValue(ids, List.class);
 		Map<String,Object> scheduleReturn = new HashMap<String,Object>();
 		scheduleReturn = checkValidity(email);
-		//System.out.println("Email: "+email);
-		//System.out.println("Validity: "+scheduleReturn.get("validity").equals(true));
-		if ( scheduleReturn.get("validity").equals(true) ){
+		System.out.println("Email: "+email);
+		System.out.println("Validity: "+scheduleReturn.get("validity").equals(true));
+//		if ( scheduleReturn.get("validity").equals(true) ){
 			if(checkUpdate(integers)){
 				scheduleReturn.put("update", "success");
 			}else{
 				scheduleReturn.put("update", "fail");
 			}
-		}
+//		}
 		
 		return scheduleReturn;
 	}

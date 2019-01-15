@@ -34,7 +34,7 @@
                         </select></div>
 
                     <div class="form-group col-md-12" style="margin-bottom:2%;">
-						<button type="submit" class="btn btn-info" id="cbtn">Create</button>
+						<button type="submit" class="btn btn-info">Create</button>
 						</div>
                 </form>
   <!--                  <div class="col-xl-12">
@@ -112,7 +112,6 @@ $(document).ready(function(){
 	
 	$("#myForm").on('submit',function(e){
 		e.preventDefault();
-        $( "#cbtn" ).prop('disabled', true);
         var format = /[!@#$%^&*()~`_+\-=\[\]{};':"\\|,.<>\/?]+/;
 		if($("#uusername").val()==""||$("#uusername").val()==null)
 		{
